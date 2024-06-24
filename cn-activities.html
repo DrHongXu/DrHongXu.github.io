@@ -204,6 +204,40 @@
   }
 
 
+/* Sport Container */
+
+.three-col-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.grid-image {
+    width: 100%;
+    height: 150px; /*统一图片高度*/
+    object-fit: cover;
+    display: block;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.grid-image:hover {
+    transform: scale(1.07);
+}
+
+.image-title {
+    margin-top: 8px;
+    font-size: normal;
+    color: #333;
+}
+
   </style>
 
 
@@ -382,6 +416,8 @@
             <li><a href="#writing">&nbsp;• 写作</a></li>
             <li><a href="#visiting">&nbsp;• 参访</a></li>
             <li><a href="#travel">&nbsp;• 旅行</a></li>
+            <li><a href="#sports">&nbsp;• 运动</a></li>
+            <li><a href="https://photo.h-xu.com" target="_blank">&nbsp;• 摄影</a></li>
             <p>____</p>
             <li><a href="#contact"><span class='blue'>联系我</span></a></li>
             <p>____</p>
@@ -491,6 +527,7 @@
               <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#visiting">&nbsp;&nbsp;&nbsp;<small>• 参访</small></a></li>
               <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#travel">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
               <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#photography">&nbsp;&nbsp;&nbsp;<small>• 摄影</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#sports">&nbsp;&nbsp;&nbsp;<small>• 运动</small></a></li>
             </div>          
               
             <li><a href="#contact"><small style="color: rgb(97, 97, 97);">▸ <strong>联系我</strong></small></a><br></li>
@@ -1583,13 +1620,66 @@
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
 
-      <div class="doc-section" id="sports">
+      <div class="doc-section" id="sports" style="width:111%">
         <h3>运动</h3>
+        
         <ul class="square">
           <li>
-            <strong>骑行</strong>, <strong>徒步</strong>, <strong>雪山</strong>, <strong>乒乓球</strong><br>
+            <strong>骑行 (环湖/登山)</strong><br><br>
+            
+            <div class="three-col-grid">
+              <div class="grid-item">
+                <img src="images/sports/3.jpg" alt="Image 1" class="grid-image">
+                <div class="image-title"><span>🇨🇭 环苏黎世湖70KM骑行</span></div>
+            </div>
+            <div class="grid-item">
+                <img src="images/sports/2.jpg" alt="Image 2" class="grid-image">
+                <div class="image-title">🇭🇷 克罗地亚杜城Srđ山 (412m)</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/sports/4.jpg" alt="Image 3" class="grid-image">
+                <div class="image-title">🇩🇪 慕尼黑奥林匹克山 (565m)</div>
+            </div>
+          </div>
+          </li>
+          <hr style="width:90%">
+          <li>
+            <strong>山区徒步</strong><br><br>
+            <div class="three-col-grid">
+              <div class="grid-item">
+                <img src="images/sports/6.jpg" alt="Image 1" class="grid-image">
+                <div class="image-title"><span>🇨🇭布雷恩茨山脊线 (2350m) </span></div>
+            </div>
+            <div class="grid-item">
+                <img src="images/sports/7.jpg" alt="Image 2" class="grid-image">
+                <div class="image-title">🇪🇸 马略卡岛/天涯海角灯塔 (384m)</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/sports/9.jpg" alt="Image 3" class="grid-image">
+                <div class="image-title">🇨🇭 俯瞰阿莱奇冰川 (1905m)</div>
+            </div>
+          </div>
+          </li>
+          <hr style="width:90%">
+          <li>
+            <strong>其他运动</strong><br><br>
+            <div class="three-col-grid">
+              <div class="grid-item">
+                <img src="images/sports/1.jpg" alt="Image 1" class="grid-image">
+                <div class="image-title"><span>🇨🇭铁力士山冰屋搭建/夜宿 </span></div>
+            </div>
+            <div class="grid-item">
+                <img src="images/sports/10.jpg" alt="Image 2" class="grid-image">
+                <div class="image-title">🇩🇪 慕尼黑啤酒节广场/攀岩</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/sports/11.jpg" alt="Image 3" class="grid-image">
+                <div class="image-title">🇨🇭 瑞吉山/日落/堆雪人</div>
+            </div>
+          </div>
           </li>
         </ul>
+
       </div>
 
       
@@ -1879,7 +1969,9 @@
     </script>
 
 
+<script>
 
+</script>
 
 
 <script type="text/javascript" src="/js/block_save_as.js"></script>
