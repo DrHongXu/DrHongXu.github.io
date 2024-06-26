@@ -83,6 +83,20 @@
       /* 更新动画时序函数 */
     }
 
+    .orange-dot-eth {
+      position: absolute;
+      top: 23.1%;
+      left: 50.9%;
+      width: 5px;
+      /* 减小红点尺寸 */
+      height: 5px;
+      /* 减小红点尺寸 */
+      background-color: rgba(255, 140, 0, 0.994);
+      border-radius: 50%;
+      animation: ripple 2s infinite ease-out;
+      /* 更新动画时序函数 */
+    }
+
     @keyframes ripple {
       0% {
         box-shadow: 0 0 0 0 rgba(255, 128, 0, 0.765),
@@ -292,6 +306,7 @@
 
       <div class="image-wrapper hidden-mobile">
         <img src="images/banner_en5.gif" style="width: 100%; margin-bottom: 5px;" alt="banner Image" />
+        <div class="orange-dot-eth" alt="Munich" style="top: 12.3%; left: 52.2%; z-index: 9999;"></div>
        </div>
 
       <p class="hidden-mobile"></p>

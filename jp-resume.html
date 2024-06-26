@@ -82,6 +82,20 @@
       /* 更新动画时序函数 */
     }
 
+    .orange-dot-eth {
+      position: absolute;
+      top: 23.1%;
+      left: 50.9%;
+      width: 5px;
+      /* 减小红点尺寸 */
+      height: 5px;
+      /* 减小红点尺寸 */
+      background-color: rgba(255, 140, 0, 0.994);
+      border-radius: 50%;
+      animation: ripple 2s infinite ease-out;
+      /* 更新动画时序函数 */
+    }
+
     @keyframes ripple {
       0% {
         box-shadow: 0 0 0 0 rgba(255, 128, 0, 0.765),
@@ -317,7 +331,7 @@
 
       <div class="image-wrapper hidden-mobile">
         <img src="images/banner_jp5.gif" width="800" alt="banner Image" />
-
+        <div class="orange-dot-eth" alt="Munich" style="top: 12.3%; left: 52.2%; z-index: 9999;"></div>
       </div>
 
 
@@ -334,7 +348,7 @@
             onchange="window.location.href=this.options [this.selectedIndex].value">
             <option value="jp-resume.html" select>日本語</option>
             <option value="cn-resume.html">中文</option>
-            <option value="kr.html">한국어</option>
+            <option value="kr-resume.html">한국어</option>
             <option value="de.html">Deutsch</option>
             <option value="en-resume.html">English</option>
             <option value="es.html">Español</option>
@@ -410,7 +424,7 @@
             onchange="window.location.href=this.options [this.selectedIndex].value">
             <option value="jp-resume.html" select>🇯🇵 日本語</option>
             <option value="cn-resume.html">🇨🇳 中文</option>
-            <option value="kr.html">🇰🇷 한국어</option>
+            <option value="kr-resume.html">🇰🇷 한국어</option>
             <option value="de.html">🇩🇪 Deutsch</option>
             <option value="en-resume.html">🇬🇧 English</option>
             <option value="es.html">🇪🇸 Español</option>
