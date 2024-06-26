@@ -11,6 +11,7 @@ let recurringHolidays = [
     { date: '10-03', greeting: '🇩🇪 德国统一日<br>', range: 1 },
     { date: '10-31', greeting: '🇺🇸🇨🇦 万圣节快乐!<br>', range: 2 },
     { date: '12-25', greeting: '🇪🇺 圣诞节快乐!<br>', range: 5 },
+    { date: '05-17', greeting: '🏳️‍🌈 IDAHOTB<br>', range: 5 },
 
 ];
 
