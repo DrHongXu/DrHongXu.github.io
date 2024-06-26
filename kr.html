@@ -158,9 +158,11 @@
       const data = await response.json();
       const countryCode = data.country;
       const language = 'ko'; // 更改为您想要显示的语言，这里使用 'zh' 代表简体中文
-      const countryName = getCountryNameByCode(countries, countryCode, language);
-      document.getElementById("location").textContent = countryName;
+      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
       document.getElementById("location2").textContent = countryName;
+      document.getElementById("location").textContent = countryName;
+      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
+      document.getElementById("country-flag").alt = countryName;
     }
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
@@ -519,7 +521,7 @@
       </p>
       
       <p style="text-align:left;">
-        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> NEXT?
+        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)->  <img id="country-flag" class="flag-icon" src="" alt=""> ?
         </span>
       </p>
 

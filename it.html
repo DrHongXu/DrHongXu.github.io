@@ -162,11 +162,14 @@
       const data = await response.json();
       const countryCode = data.country;
       const language = 'italian'; // 更改为意大利语
-      const countryName = getCountryNameByCode(countries, countryCode, language);
+
+      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
       const formattedCountryName = addItalianArticle(countryName);
 
-      document.getElementById("location").textContent = formattedCountryName;
       document.getElementById("location2").textContent = formattedCountryName;
+      document.getElementById("location").textContent = formattedCountryName;
+      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
+      document.getElementById("country-flag").alt = countryName;
     }
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
@@ -509,7 +512,7 @@
         
 
       <p style="text-align:left;">
-        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> NEXT?
+        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)->  <img id="country-flag" class="flag-icon" src="" alt=""> ?
         </span>
       </p>
       <!---

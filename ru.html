@@ -149,9 +149,11 @@
       const data = await response.json();
       const countryCode = data.country;
       const language = 'russian'; // 更改为您想要显示的语言
-      const countryName = getCountryNameByCode(countries, countryCode, language);
-      document.getElementById("location").textContent = countryName;
+      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
       document.getElementById("location2").textContent = countryName;
+      document.getElementById("location").textContent = countryName;
+      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
+      document.getElementById("country-flag").alt = countryName;
     }
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
@@ -489,7 +491,10 @@
     <p align="justify">
         Он получил степень доктора философии в области <strong>возобновляемых источников энергии</strong> в <strong><a href="https://ethz.ch/en.html" target="_blank">ЭФГ Цюриха</a></strong>, совместно с <strong><a href="https://psi.ch" target="_blank">Институтом Пауля Шеррера</a></strong> в Швейцарии. До этого он получил степень магистра по науке о материалах в <strong><a href="https://tum.de" target="_blank">Техническом университете Мюнхена</a></strong>, проходя стажировки в <strong><a href="https://xfel.eu" target="_blank">Европейском XFEL</a></strong> и <strong><a href="https://infineon.com" target="_blank">Инфинеон</a></strong> в Германии. Страсть доктора Шу к научным исследованиям, оказывающим влияние, привела его к долгосрочному взаимодействию с лидерами отрасли в области водорода и топливных элементов, включая компанию <strong>Тойота Мотор</strong> в Японии и <strong>Группа Фройденберг</strong> в Германии. Параллельно он получил степень <strong>МБА</strong> в <strong><a href="https://quantic.edu/mba" target="_blank">Школе бизнеса Квантик</a></strong> и прошел исполнительные курсы в <strong><a href="https://www.jbs.cam.ac.uk/" target="_blank">Школе бизнеса Кембриджского университета</a></strong>, получив практический опыт в венчурной капитальной фирме с двойной валютой и в ведущей ценной бумагами компании в Китае.
     </p>
-
+    <p style="text-align:left;">
+      PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> LHR (Hello)-> <img id="country-flag" class="flag-icon" src="" alt=""> ?
+      </span>
+    </p>
       <!---
          <p class="display-mobile" style="text-align:left; padding: 0px; margin: 0px;">
           <strong><a class="display-mobile"href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank" target="_blank"><span class='blue'>G-Scholar</span></a></strong><text class="display-mobile"> | </text><strong><a class="display-mobile" href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span class='blue'>LinkedIn</span></a></strong> 

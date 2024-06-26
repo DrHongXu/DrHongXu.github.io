@@ -165,11 +165,15 @@
       const data = await response.json();
       const countryCode = data.country;
       const language = 'french'; // 更改为您想要显示的语言
-      const countryName = getCountryNameByCode(countries, countryCode, language);
+
+      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
       const formattedCountryName = addFrenchArticle(countryName);
 
       document.getElementById("location").textContent = formattedCountryName;
       document.getElementById("location2").textContent = formattedCountryName;
+
+      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
+      document.getElementById("country-flag").alt = countryName;
     }
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
@@ -340,7 +344,7 @@
       <!--<img class="hidden-mobile" src="images/banner_fr2.png" width="800" />-->
 
       <div class="image-wrapper hidden-mobile">
-        <img src="images/banner_fr3.png" width="800" alt="banner Image" />
+        <img src="images/banner_fr3.gif" width="800" alt="banner Image" />
         <div class="orange-dot" alt="Hamburg" style="top: 23.1%; left: 50.9%;"></div>
         <div class="orange-dot" alt="Paris" style="top: 29.5%; left: 48.4%;"></div>
         <div class="orange-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
@@ -348,9 +352,10 @@
         <div class="orange-dot" alt="Zurich" style="top: 33.5%; left: 50.6%;"></div>
         <div class="orange-dot" alt="Beijing" style="top: 43.6%; left: 90.2%;"></div>
         <div class="orange-dot" alt="Anqing" style="top: 54.9%; left: 90.8%;"></div>
-        <div class="orange-dot" alt="DC" style="top: 44.9%; left: 18%;"></div>
+        <div class="orange-dot" alt="DC" style="top: 44.7%; left: 19.05%;"></div>
+        <div class="orange-dot" alt="Oxford" style="top: 26.7%; left: 46.9%;"></div>
 
-        <div class="red-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
+        <div class="red-dot" alt="Munich" style="top: 31.3%; left: 51.6%; z-index: 9999;"></div>
 
         <div class="tooltip" style="top:50%; left: 65%;">
           <h6><img src="images/flag_de.png" alt="Flagge"
@@ -517,7 +522,7 @@
       
 
       <p style="text-align:left;">
-        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> NEXT?
+        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> <img id="country-flag" class="flag-icon" src="" alt=""> ?
         </span>
       </p>
       <!---
