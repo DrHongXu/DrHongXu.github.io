@@ -64,10 +64,6 @@
   src: url('https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1/dist/TwemojiCountryFlags.woff2') format('woff2');
 }
 
-body {
-  font-family: var(--user-defined-font), sans-serif;
-}
-
 .win {
   font-family: "Twemoji Country Flags", var(--user-defined-font), sans-serif;
 }
@@ -76,7 +72,31 @@ body {
 
   <!-- block save as
       ================================================== -->
-  <script type="text/javascript" src="/js/block_save_as.js"></script>
+      <script type="text/javascript">
+        window.onload = function () {
+          document.onkeydown = function () {
+            var e = window.event || arguments[0];
+            //屏蔽F12
+            if (e.keyCode == 123) {
+    
+              return false;
+              //屏蔽Ctrl+Shift+I
+            } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+    
+              return false;
+              //屏蔽Shift+F10
+            } else if ((e.shiftKey) && (e.keyCode == 121)) {
+    
+              return false;
+            }
+          };
+          //屏蔽右键单击
+          document.oncontextmenu = function () {
+    
+            return false;
+          }
+        }
+      </script>
 
 
   <nav class="display-mobile">
