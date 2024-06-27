@@ -18,11 +18,12 @@
   <!-- Mobile Specific Metas
   ================================================== -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+ 
   <!-- CSS
   ================================================== -->
   <link rel="stylesheet" href="stylesheets/base.css">
   <link rel="stylesheet" href="stylesheets/skeleton.css">
+  <link rel="stylesheet" href="stylesheets/yuanzhuo3.css">
   <link rel="stylesheet" href="stylesheets/layout.css">
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" href="stylesheets/navi5.css">
@@ -129,6 +130,54 @@
         display: none;
       }
     }
+
+
+
+/* Sport Container */
+
+.three-col-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.grid-image {
+    width: 103%;
+    height: 150px; /*统一图片高度*/
+    object-fit: cover;
+    display: block;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.grid-image:hover {
+    transform: scale(1.07);
+}
+
+.image-title {
+    margin-top: 8px;
+    font-size: normal;
+    color: #333;
+}
+
+    /* Mobile styles - hide .flex-container */
+    @media (max-width: 768px) {
+      .three-col-grid {
+        width: 100%;
+      }
+      .grid-image {
+        height: 110px;
+      }
+    }
+
+
   </style>
 
 
@@ -407,11 +456,11 @@
           <select id="languages" name="languages"
             style="width: 85px; color:inherit;display:inline-block;margin-bottom:0px;"
             onchange="window.location.href=this.options [this.selectedIndex].value">
-            <option value="kr.html" select>한국어</option>
-            <option value="jp.html">日本語</option>
-            <option value="cn.html">中文</option>
+            <option value="kr-activities.html" select>한국어</option>
+            <option value="jp-activities.html">日本語</option>
+            <option value="cn-activities.html">中文</option>
             <option value="de.html">Deutsch</option>
-            <option value="en.html">English</option>
+            <option value="en-activities.html">English</option>
             <option value="es.html">Español</option>
             <option value="fr.html">Français</option>
             <option value="it.html">Italiano</option>
@@ -483,11 +532,11 @@
             <select id="languages" name="languages"
               style="width: 90px;color:inherit;display:inline-block;margin-bottom:0px;"
               onchange="window.location.href=this.options [this.selectedIndex].value">
-              <option value="kr.html" select>🇰🇷 한국어</option>
-              <option value="jp.html">🇯🇵 日本語</option>
-              <option value="cn.html">🇨🇳 中文</option>
+              <option value="kr-activities.html" select>🇰🇷 한국어</option>
+              <option value="jp-activities.html">🇯🇵 日本語</option>
+              <option value="cn-activities.html">🇨🇳 中文</option>
               <option value="de.html">🇩🇪 Deutsch</option>
-              <option value="en.html">🇬🇧 English</option>
+              <option value="en-activities.html">🇬🇧 English</option>
               <option value="es.html">🇪🇸 Español</option>
               <option value="fr.html">🇫🇷 Français</option>
               <option value="it.html">🇮🇹 Italiano</option>
@@ -501,837 +550,843 @@
         </span>
       </p>
 
-      <p align="justify">
-        <span class="display-mobile">환영합니다, <span id="location2">지구</span>에서 온 친구들 :-）</br></br></span>
-      
-        현재, 쉬홍 (<script id="first-script">const currentYear = new Date().getFullYear() - 1993; document.write(currentYear);</script>세) 박사는 독일 산업계에서 <strong>신 에너지 동력 시스템</strong> 전문 엔지니어로 활동하며, <strong>에너지와 교통</strong> 분야의 <strong>탄소 중립</strong>을 실현하기 위해 노력하고 있습니다. 그는 <strong>유엔 본 클라이메트 변화 컨퍼런스</strong>에서 "중국의 에너지 전환과 기술 혁신" 주제의 세션을 주관하고, 유엔 유럽 경제위원회의 교통과 기후 <strong>전문가 그룹 회의</strong>에 참여했습니다. 그는 학위 과정 중에 국제 기업 및 중유럽 학술 기관과 협력하여 <strong>15편 이상의 논문</strong>을 발표하고, <strong>280회 이상 인용</strong>되었으며, <strong>3개의 특허</strong>를 획득했습니다. 또한 그는 에너지와 교통 분야에서 7개의 고 영향력 저널의 <strong>심사위원</strong>을 맡고 있으며, <strong>스위스 성갈렌 국제 경제 포럼</strong>의 <strong>학술 심사위원</strong>도 맡고 있습니다. 그는 미국 전기화학회 논문 초대 및 여행상, 인텔 엣지 AI 장학금, 유럽연합 에라스무스 장학금, 중국 "도전컵" 창업 국가 동상 등을 수상했습니다.
-      </p>
-      
-      <p align="justify">
-        그는 2021년 초에 <strong><a href="https://ethz.ch/en.html" target="_blank">취리히 연방 공과대학교</a></strong>에서 박사 학위를 받았으며, 스위스 에너지 연구 경쟁 센터의 <strong><a href="https://electrochemistry.ethz.ch/people/person-detail.html?persid=177926" target="_blank">토마스 슈미트 교수</a></strong> 아래서 공부했습니다. 그의 학부, 석사, 박사 과정은 주로 <strong>탄소 중립/신 에너지</strong> 분야에 중점을 두고 있으며, <strong><a href="https://psi.ch" target="_blank">스위스 폴쉬어 연구소</a></strong>, <strong><a href="https://oxfordenergy.org" target="_blank">영국 옥스포드 에너지 연구소</a></strong>, <strong><a href="https://tum.de" target="_blank">독일 뮌헨 공과대학교</a></strong>, <strong><a href="https://ecoledesponts.fr/en" target="_blank">프랑스 파리 고등도로교량대학</a></strong>, <strong><a href="https://xfel.eu" target="_blank">EU 자유 전자 레이저</a></strong> 등의 국제 기관에서 연구 및 인턴십을 하였습니다. 또한 그는 <strong>토요타 자동차</strong>, <strong>인피니온 테크놀로지스</strong>, <strong>코르보 그룹</strong> 등과의 국제 기업과의 심층적인 연구 개발 협력도 진행하고 있습니다. 더불어, 그는 <strong><a href="https://quantic.edu/mba" target="_blank">미국 쿠앤틱 비즈니스 스쿨</a></strong>로부터 전액 장학금을 받고 원격 학습으로 MBA 학위를 받았으며, <strong>케임브리지 대학교 비즈니스 스쿨</strong>에서 "그린 전환" 기업 경영 과정을 배우기도 했으며, 주식 연구소(A주식 및 미국 주식)에서 개별 주식 및 산업 연구 보고서를 작성했으며, 이중화 펀드(시드 라운드➔A 라운드)에서 신 에너지 트랙 벤처 투자 실무에 종사하기도 했습니다.
-      </p>
-      
-      <p style="text-align:left;">
-        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)->  <img id="country-flag" class="flag-icon" src="" alt=""> ?
-        </span>
-      </p>
-
-      <!---
-         <p class="display-mobile" style="text-align:left; padding: 0px; margin: 0px;">
-          <strong><a class="display-mobile"href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank" target="_blank"><span class='blue'>G-Scholar</span></a></strong><text class="display-mobile"> | </text><strong><a class="display-mobile" href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span class='blue'>LinkedIn</span></a></strong> 
-          <span style="float:right;">
-            <strong><a class="display-mobile" href="mailto:h.xu@tum.de" target="_blank" target="_blank"><span class='blue'>h.xu [at] tum.de</span></a>
-          </span></strong>
-        </p>
--->
-
-      <p class="hidden-mobile" style="text-align:left;">
-        <strong><a href="//24timezones.com/Zurich/time" style="text-decoration: none" class="clock24"
-            id="tz24-1658678414-c1268-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMSIsInNob3d0aW1lem9uZSI6IjAiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9"
-            title="World Clock :: Zurich" target="_blank" rel="nofollow">유럽 시간 [CET] </a></strong>
-        <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
-        <span style="float:right;">
-          <strong><a href="//24timezones.com/Beijing/time" style="text-decoration: none" class="clock24"
-              id="tz24-1658678453-c133-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMSIsInNob3d0aW1lem9uZSI6IjAiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9"
-              title="actual time Beijing" target="_blank" rel="nofollow">베이징 시간 [CST] </a></strong>
-          <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
-        </span>
-      </p>
-
-
-      <p class="display-mobile" style="text-align:left;">
-        <strong><a href="//24timezones.com/Zurich/time" style="text-decoration: none" class="clock24"
-            id="tz24-1658714807-c1268-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
-            title="timezone - Zurich" target="_blank" rel="nofollow">유럽</a></strong>
-        <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
-        <span style="float:right;">
-          <strong><a href="//24timezones.com/Beijing/time" style="text-decoration: none" class="clock24"
-              id="tz24-1658714942-c133-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
-              title="Time - Beijing" target="_blank" rel="nofollow">베이징</a></strong>
-          <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
-        </span>
-      </p>
-
-
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <div class="doc-section hidden-mobile" id="Carbon-Neutral">
-        <h3 class="hidden-mobile" style="display:inline-block">지속 가능한 개발 목표 2030</h3>
-        <div style="float: right">
-          <h3>
-            <!-- weather widget start --><a class="hidden-mobile" id="weather" target="_blank"
-              href="https://www.booked.net/weather/beijing-18391"><img
-                src="https://w.bookcdn.com/weather/picture/5_18391_1_1_137AE9_160_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=w209&anc_id=60060"
-                width="100px" alt="booked.net" style="margin-left: 110px; margin-top: -10px;" /></a>
-            <!-- weather widget end -->
-          </h3>
-        </div>
-
-      </div>
-
-      <div class="doc-section display-mobile" id="Carbon-Neutral" style="width:113%">
-        <h3 class="display-mobile" style="display:inline-block">지속 가능한 개발 목표 2030</h3>
-
-        <!---
--->
-      </div>
-
-      <div class="doc-section" id="sdgs">
-
-
-        <div class="slideshow-container">
-
-          <div class="mySlides fade">
-            <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg_kr.png" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg_kr_mobi.png" style="width:100%">
-            <div class="text"></div>
-          </div>
-
-          <div class="mySlides fade">
-            <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg7_kr.png" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg7_kr_mobi.png" style="width:100%">
-            <div class="text"></div>
-          </div>
-
-          <div class="mySlides fade">
-            <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg8_kr.png" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg8_kr_mobi.png" style="width:100%">
-            <div class="text"></div>
-          </div>
-
-          <div class="mySlides fade">
-            <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg9_kr.png" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg9_kr_mobi.png" style="width:100%">
-            <div class="text"></div>
-          </div>
-
-          <div class="mySlides fade">
-            <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg11_kr.png" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg11_kr_mobi.png" style="width:100%">
-            <div class="text"></div>
-          </div>
-
-          <div class="mySlides fade">
-            <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg13_kr.png" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg13_kr_mobi.png" style="width:100%">
-            <div class="text"></div>
-          </div>
-
-          <div class="mySlides fade">
-            <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg14_kr.png" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg14_kr_mobi.png" style="width:100%">
-            <div class="text"></div>
-          </div>
-
-          <a class="prev" onclick="plusSlides(-1)">❮</a>
-          <a class="next" onclick="plusSlides(1)">❯</a>
-
-        </div>
-
-
-
-        <div style="text-align:center">
-          <span class="dot" onclick="currentSlide(1)"></span>
-          <span class="dot" onclick="currentSlide(2)"></span>
-          <span class="dot" onclick="currentSlide(3)"></span>
-          <span class="dot" onclick="currentSlide(4)"></span>
-          <span class="dot" onclick="currentSlide(5)"></span>
-          <span class="dot" onclick="currentSlide(6)"></span>
-          <span class="dot" onclick="currentSlide(7)"></span>
-        </div>
-
-
-
-        <!---<img class="hidden-mobile" src="images/SDG_all.png" style="width:100%" alt="">
-          <img class="display-mobile" src="images/SDG_all.png" style="width:100%" alt="">--->
-
-
-      </div>
-
-
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <div class="doc-section" id="education">
-        <h3>교육</h3>
-        <ul class="square">
-          <li>2017-2021 | <strong>박사, 신재생 에너지 기술</strong>
-            <div style="float: right"></div><br />
-            <strong><a href="https://ethz.ch/en.html" target="_blank">스위스 · 취리히 연방 공과대학</a></strong> (직무제/전액 장학금)<br />
-          </li>
-          <li>2014-2016 | <strong>석사, 재료 과학/물리학</strong>
-            <div style="float: right"></div><br />
-            <strong><a href="https://www.tum.de/en/" target="_blank">독일 · 뮌헨 공과대학</a></strong> (EU/EM 장학금) <br />
-          </li>
-          <li>2009-2013 | <strong>학사, 재료 화학</strong>
-            <div style="float: right"></div><br />
-            <strong><a href="http://bjtu.edu.cn/" target="_blank">중국 · 북경 교통대학</a></strong> (특허 획득)<br />
-          </li>
-          <p>____</p>
-          <li>2023-현재 | <strong>방문 학자, 에너지 경제 및 정책</strong>
-            <div style="float: right"></div><br />
-            <strong><a href="https://oxfordenergy.org" target="_blank">영국 · 옥스퍼드 에너지 연구소</a></strong>
-            (싱크탱크/Fellow)<br />
-          </li>
-          <li>2023-2023 | <strong>경영 교육 과정, 녹색 전환</strong>
-            <div style="float: right"></div><br />
-            <strong><a href="https://quantic.edu/mba" target="_blank">영국 · 케임브리지 대학교 비즈니스 스쿨</a></strong> (산탄데르 은행
-            장학금)<br />
-          </li>
-          <li>2019-2021 | <strong>MBA, 경영 관리/지속 가능한 발전</strong>
-            <div style="float: right"></div><br />
-            <strong><a href="https://quantic.edu/mba" target="_blank">미국 · 콴틱 비즈니스 스쿨</a></strong> (전액 장학금/Fellow)<br />
-          </li>
-
-        </ul>
-      </div>
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <div class="doc-section" id="research-interests">
-        <h3 class="doc-sectione" style="display:inline-block">연구 관심사</h3>
-        <div class="doc-section hidden-mobile" id="Carbon-Neutral">
-         
-          <div style="float: right">
-            <h3>
-            
-            </h3>
-          </div>
-          <span class="chemicals hidden-mobile">
-            <div class="box-wrapper hidden-mobile">
-              <div class="box hidden-mobile">
-                <h2>H</h2>
-                <p>수소</br>에너지</p>
-              </div>
-            </div>
-            <div class="box-wrapper hidden-mobile">
-              <div class="box hidden-mobile">
-                <h2>Li</h2>
-                <p>리튬</br>배터리</p>
-              </div>
-            </div>
-            <div class="box-wrapper hidden-mobile">
-              <div class="box hidden-mobile">
-                <h2>C</h2>
-                <p>탄소</br>중립성</p>
-              </div>
-            </div>
-            <div class="box-wrapper hidden-mobile">
-              <div class="box hidden-mobile">
-                <h2>Si</h2>
-                <p>실리콘</br>태양광/PV</p>
-              </div>
-            </div>
-            <div class="box-wrapper hidden-mobile">
-              <div class="box hidden-mobile">
-                <h2>Re</h2>
-                <p>연구</br>혁신</p>
-                <a href="#research-interests"></a>
-              </div>
-            </div>
-            <div class="box-wrapper hidden-mobile">
-              <div class="box hidden-mobile">
-                <h2>In</h2>
-                <p>산업</br>업그레이드</p>
-              </div>
-            </div>
-            <div class="box-wrapper hidden-mobile">
-              <div class="box hidden-mobile">
-                <h2>Po</h2>
-                <p>정책</br>안내</p>
-              </div>
-            </div>
-            <div class="box-wrapper hidden-mobile">
-              <div class="box hidden-mobile">
-                <h2>Sc</h2>
-                <p>사회의</br>약혼</p>
-              </div>
-            </div>
-          </span>
-        </div>
-
-        <!---<hr class="hidden-mobile">
-        <div class="video-container hidden-mobile">
-          <video controls>
-            <source src="https://github.com/DrHongXu/DrHongXu.github.io/raw/main/images/Bonn_Climate_v1_8MB.mp4"
-              type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <div class="video-container display-mobile" style="width:113%;padding-bottom: 63.25%;">
-          <video controls>
-            <source src="https://github.com/DrHongXu/DrHongXu.github.io/raw/main/images/Bonn_Climate_v1_8MB.mp4"
-              type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>--->
-       
-        <ul class="square">
-          <li><strong>재생 에너지</strong>, 수소, 연료전지, 전해질, 태양광, 배터리<br />
-          <li><strong>에너지 경제학</strong>, 에너지 정책, ESG 투자, 지속 가능성<br />
-          <li><strong>기능성 물질</strong>, 반도체, 폴리머, 금속 산화물<br />
-          <li><strong>컴퓨터 비전</strong>, X선 기술, 컴퓨터 비전<br />
-          <li><strong>주식 연구</strong>, 빅데이터 분석, 비즈니스 분석<br />
-        </ul>
-        
-      </div>
-
-      <hr />
-      <div class="doc-section" id="academic-services">
-        <h3>학업 서비스</h3>
-        <ul class="square">
-          <li><strong>동료 검토자: </strong> <br />
-            - <strong>파워 소스 학술지</strong> (IF=9.13, 2022)<br />
-            - <strong>국제 수소 에너지 학술지</strong> (IF=7.14, 2021)<br />
-            - <strong>지속가능한 에너지 학술지</strong> (IF=5.76, 2021)<br />
-            - <strong>열 및 질량 전달 국제 학술지</strong> (IF=5.58, 2022)<br />
-            - <strong>녹색 기술 및 지속가능성 학술지</strong> (새로운 학술지, 2022)<br />
-            - <strong>녹색 에너지 및 지능형 교통 학술지</strong> (새로운 학술지, 2022)<br />
-            <hr>
-          <li><strong>조교</strong>: <br />
-            - <strong>재생 에너지 기술</strong> II(석사 과정, 취리히 연방 공과대학교, 2017-2019) <br />
-          <li><strong>연구원</strong>: <br />
-            - <strong>수소 및 연료 전지</strong>(에너지환경사업부, 폴 셰러 연구소, 스위스, 2016-2021) <br />
-            - <strong>고분자 센서</strong> (물리학과, 뮌헨 공과 대학, 독일, 2015-2016) <br />
-            - <strong>태양전지 및 리튬전지</strong> (과학 학교, 베이징 교통 대학, 중국, 2012-2013) <br />
-          <li><strong>조직</strong>: <br />
-            - <strong>전기화학학회</strong> 초청논문/수상비자 (2019, USA) <br />
-            - <strong>국제전기화학학회</strong> 회원 (2019, IT) <br />
-            - <strong>독일 물리학회</strong> 회원 (2016, DE)
-
-        </ul>
-      </div>
-      <hr />
-      <div class="doc-section" id="publications">
-        <h3>간행물</h3>
-        <ul class="square">
-          <li><strong>청정에너지기술 / 전기화학</strong></li>
-        </ul>
-        <ol>
-          <li>
-            S. N. Artigas, <strong>H. Xu*</strong> [FDB], F. Mack<br />
-            Use of distribution of relaxation times analysis as an in-situ diagnostic tool for water management in PEM fuel cells applications [J] <br/>
-            2024 | <em><strong>J. Power Sources</strong></em> [<a
-              href="https://www.sciencedirect.com/science/article/abs/pii/S0378775324001307" target="_blank">PDF</a>] <text
-              style="color:rgb(0, 103, 159)">[프로이덴베르크]</text> <text style="color:red">[새로운!]</text>
-          </li>
-          <li>
-            <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt, F. N. Büchi, J. Eller<br />
-            Effects of gas diffusion layer substrates on PEFC water management: Part II. In situ liquid water
-            desaturation via evaporation [J] <br />
-            2022 | <em><strong>J. Electrochem. Soc.</strong></em> [<a
-              href="https://iopscience.iop.org/article/10.1149/1945-7111/ac94a2" target="_blank">PDF</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text>
-          </li>
-          <li>
-            <strong>H. Xu*</strong> [PSI], S. Nagashima [토요타], H. Nguyen, K. Kishita, F. Marone, F. N. Büchi, J.
-            Eller [PSI]<br />
-            Temperature dependent water transport mechanism in PEFC gas diffusion layers revealed by subsecond operando
-            X-ray tomographic microscopy. [J] <br />
-            2021 | <em><strong>J. Power Sources </strong></em> [<a
-              href="https://www.sciencedirect.com/science/article/pii/S0378775321000422" target="_blank">PDF</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(250, 49, 14)">[토요타]</text>
-
-          </li>
-          <li>
-            <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt [ETH], F. N. Büchi, J. Eller
-            [PSI]<br />
-            Effects of gas diffusion layer substrates on PEFC water management: Part I. Operando liquid water
-            saturation
-            and gas diffusion properties [J] <br />
-            2021 | <em><strong>J. Electrochem. Soc.</strong></em> [<a
-              href="https://iopscience.iop.org/article/10.1149/1945-7111/ac1035" target="_blank">PDF</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text>
-          </li>
-
-
-          <li>
-            C. Csoklich, <strong>H. Xu*</strong> [PSI], F. Marone, Prof. T. J. Schmidt [ETH], F. N. Büchi [PSI]<br />
-            Laser Structured Gas Diffusion Layers for Improved Water Transport and Fuel Cell Performance [J] <br />
-            2021 | <em><strong>ACS Appl. Energy Mater. </strong></em> [<a
-              href="https://pubs.acs.org/doi/full/10.1021/acsaem.1c02454" target="_blank">링크</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text>
-          </li>
-          <li>
-            S. van Rooij, M. Magnini, A. Mularczyk, <strong>H. Xu*</strong> [PSI], F. N. Büchi [PSI], Prof. S. Haussener
-            [EPFL]<br />
-            Conductive heat transfer in partially saturated gas diffusion layers with evaporative cooling [J] <br />
-            2022 | <em><strong>J. Electrochem. Soc.</strong></em> [<a
-              href="https://iopscience.iop.org/article/10.1149/1945-7111/ac4e5c" target="_blank">PDF</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(250, 49, 14)">[EPFL]</text>
-          </li>
-          <li>
-            Y. Nagai [토요타], J. Eller, T. Hatanaka, S. Yamaguchi, S. Kato, A. Kato, F. Marone, <strong>H.
-              Xu*</strong>
-            [PSI], F. N. Büchi. <br />
-            Improving water management in fuel cells through microporous layer modifications: Fast operando
-            tomographic
-            imaging of liquid water. [J] <br />
-            2019 | <em><strong>J. Power Sources </strong></em> [<a
-              href="https://www.sciencedirect.com/science/article/abs/pii/S0378775319307943" target="_blank">링크</a>]
-            <text style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(250, 49, 14)">[토요타]</text>
-          </li>
-
-
-        </ol>
-
-
-        <ul class="square">
-          <li><strong>전산영상 / 딥러닝</strong></li>
-        </ul>
-
-        <ol>
-
-          <li>
-            M. Bührer, <strong>H. Xu*</strong> [PSI], A. Hendriksend, F. N. Büchi, J. Eller, Prof. M. Stampanoni [ETH],
-            F. Marone [SLS]<br />
-            Deep learning based classification of dynamic processes in time-resolved XTM [J] <br />
-            2021 | <em><strong>Scientific Reports </strong></em> [<a
-              href="https://www.nature.com/articles/s41598-021-03546-8" target="_blank">PDF</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(191, 9, 228)">[CWI 암스테르담]</text>
-          </li>
-
-          <li>
-            M. Bührer, <strong>H. Xu*</strong> [PSI], J. Eller, J. Sijbers, Prof. M. Stampanoni [ETH], F. Marone
-            [SLS]<br />
-            Unveiling water dynamics in fuel cells from time-resolved tomographic microscopy data [J] <br />
-            2021 | <em><strong>Scientific Reports </strong></em> [<a
-              href="https://www.nature.com/articles/s41598-020-73036-w" target="_blank">PDF</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(104, 9, 228)">[앤트워프대학]</text>
-          </li>
-
-
-
-          <li>
-            <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt [ETH], F. N. Büchi, J. Eller
-            [PSI]<br />
-            Optimal image denoising for operando XTM of liquid water in PEFC gas diffusion layers. [J] <br />
-            2020 | <em><strong>J. Electrochem. Soc. </strong></em> [<a
-              href="https://www.research-collection.ethz.ch/handle/20.500.11850/422241" target="_blank">PDF</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text>
-          </li>
-
-          <li>
-            <strong>H. Xu*</strong> [PSI], F. Marone, S. Nagashima [토요타], H. Nguyen, K. Kishita, F. N. Büchi, J.
-            Eller [PSI]<br />
-            <strong>(Invited)</strong> Exploring sub-second and sub-micron XTM imaging of liquid water in PEFC
-            GDLs.[J]
-            <br />
-            2019 | <em><strong>ECS Transactions </strong></em> [<a
-              href="https://iopscience.iop.org/article/10.1149/09208.0011ecst" target="_blank">PDF</a>] <text
-              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(250, 49, 14)">[토요타]</text> <text
-              style="color:rgb(14, 97, 250)">[ECS Travel Grant]</text>
-          </li>
-
-
-          <li>
-            <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt [ETH], F. N. Büchi, J. Eller
-            [PSI]<br />
-            Fighting the noise: towards the limits of subsecond X-ray tomographic microscopy of PEFC. [J] <br />
-            2017 | <em><strong>ECS Transactions </strong></em><strong></strong></em> [<a
-              href="https://www.research-collection.ethz.ch/handle/20.500.11850/224830" target="_blank">링크</a>]
-            <text style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(14, 97, 250)">[ModVal Poster
-              Award]</text>
-          </li>
-
-
-        </ol>
-
-        <ul class="square">
-          <li><strong>재료과학 / 화학공학</strong></li>
-        </ul>
-
-        <ol>
-          <li>
-            Prof. H. Zhang, R. Wu, <strong>H. Xu*</strong> [BJTU], F. Li, S. Wang, J. Wang [BJUT], T. Zhang <br />
-            A simple spray reaction synthesis and characterization of hierarchically porous SnO2 microspheres for an
-            enhanced dye sensitized solar cell. [J] <br />
-            2017 | <em><strong>RSC Advances</strong></em> [<a
-              href="https://pubs.rsc.org/en/content/articlelanding/2017/ra/c6ra27235e#!divAbstract" target="_blank">링크</a>] <text style="color:rgb(14, 144, 250)">[BJTU]</text>
-          </li>
-
-          <li>
-            Prof. H. Zhang [BJTU], <strong>H. Xu*</strong> [BJTU], J. Wan, Prof. L. Yan, C. Dai <br />
-            Preparations of new porous oxides spherical powders by spray reaction technique.[J] <br />
-            2012 | <em><strong>Vacuum & Cryogenics</strong></em> [<a
-              href="https://tow.cnki.net/kcms/detail/detail.aspx?filename=ZKDW201203005&dbcode=CRJT_CJFD&dbname=CJFD2012&v="
-              target="_blank">링크(중국어)</a>] <text style="color:rgb(14, 144, 250)">[BJTU]</text>
-          </li>
-
-          <li>
-            X. Qi, <strong>H. Xu*</strong> [BJTU], X. Zhou <br />
-            Degradation of highly active cypermethrin via ultrasonic irradiation combined with TiO2 photocatalysis.[J]
-            <br />
-            2012 | <em><strong>Chem. Res.</strong></em></em> [<a
-              href="http://hxya.chinajournal.net.cn/WKB/WebPublication/paperDigest.aspx?paperID=10f49d02-6d79-49d1-93cf-d1d7a98f9887"
-              target="_blank">링크(중국어)</a>] <text style="color:rgb(14, 144, 250)">[BJTU]</text>
-          </li>
-        </ol>
-      </div>
-
-      <hr />
-      <div class="doc-section" id="patents">
-        <h3>특허</h3>
-        <ol>
-          <li>
-            <strong>Annular gas-liquid interface jigging magnetic separation device [P]</strong><br />
-            발명가: Prof. M. Fu, Prof. H. Zhang, <strong>H. Xu</strong> (BJTU), Prof. L. Yan<br />
-            중국 특허 번호: CN102441489B, Oct 11, 2013. [<a href="https://patents.google.com/patent/CN102441489B/en"
-              target="_blank">Grant</a>]
-          </li>
-          <li>
-            <strong>Continuously operating annular gas-liquid interface jigging magnetic separation device
-              [P]</strong><br />
-            발명가: Prof. H. Zhang, <strong>H. Xu</strong> (BJTU), Prof. M. Fu, Prof. L. Yan<br />
-            중국 특허 번호: CN102441490A, Nov 1, 2013. [<a href="https://patents.google.com/patent/CN102441490A/en"
-              target="_blank">Grant</a>]
-          </li>
-          <li>
-            <strong>Ultrasonic-photocatalytic oxidation coupled fruit and vegetable cleaning device [P]</strong><br />
-            발명가: X. Zhou, <strong>H. Xu</strong> (BJTU), Prof. H. Jiang, X. Qi<br />
-            중국 특허 번호: CN202311136U, May 9, 2012. [<a href="https://patents.google.com/patent/CN202311136U/en"
-              target="_blank">Grant</a>]
-          </li>
-        </ol>
-      </div>
-
-      <hr />
-      <div class="doc-section" id="Dissertations">
-        <h3>논문</h3>
-        <ol>
-
-          <li>
-            <strong>H. Xu</strong> [ETH], Prof. T. J. Schmidt (examiner), Prof. M. Stampanoni (co-examiner), Dr. J.
-            Eller (advisor)<br />
-            Subsecond Operando X-ray Tomographic Microscopy of Liquid Water in Polymer Electrolyte Fuel Cells [D] <br />
-            <em><strong>박사 </strong>논문. 과학 박사. 취리히 연방 공과대학교, 스위스 취리히, 2021년.</em> [<a
-              href="https://doi.org/10.3929/ethz-b-000487441" target="_blank">PDF</a>]
-          </li>
-
-          <li>
-            <strong>H. Xu</strong> [TUM], Prof. P. Müller-Buschbaum (examiner), Prof. W. Schmahl (co-examiner), Dr. E.
-            Metwalli <br />
-            Structure & Properties of Thermoresponsive DBC Embedded with Metal Oxide Nanoparticles. [D] <br />
-            <em><strong>석사</strong> 논문. 과학의 마스터. 뮌헨 대학교 및 뮌헨 공과 대학교, 독일 뮌헨, 2016년.</em> [<a
-              href="https://arxiv.org/abs/2007.10111" target="_blank">PDF</a>]
-          </li>
-
-          <li>
-            <strong>H. Xu</strong> [BJTU], Prof. H. Zhang (examiner) <br />
-            Application of Mesoporous SnO2 Materials in Dye-sensitized Solar Cells and Lithium Batteries. [D] <br />
-            <em><strong>학사</strong> 학위 논문. 과학 학사. 베이징 교통 대학, 베이징, 중국, 2013년.</em> [<a href="" target="_blank">PDF</a>]
-          </li>
-        </ol>
-      </div>
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <h3 class="hidden-mobile" style="display:inline-block">박사 학위 수여식</h3>
-      <div class="video-container hidden-mobile" style="padding-bottom: 48.25%">
-        <video controls poster="images/graduation_preview.png">
-          <source src="/images/Graduation_Ceremony_25MB.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <div class="video-container display-mobile" style="width:113%;padding-bottom: 55.25%;">
-        <video controls poster="images/graduation_preview.png">
-          <source src="/images/Graduation_Ceremony_25MB.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <div class="doc-section" id="Teaching">
-        <h3>조교 · 조교</h3>
-        <ol>
-          <li>
-            <strong>재생 에너지 기술 II, 에너지 저장 및 변환 </strong><br />
-            취리히 연방 공과대학교, 석사 과정 (529-0191-01L)<br />
-            2017-2019 | 봄 학기 [<a
-              href="http://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2018S&ansicht=ALLE&lerneinheitId=120719&lang=en"
-              target="_blank">Link</a>]
-          </li>
-        </ol>
-      </div>
-
-      <hr />
-      <div class="doc-section" id="presentations">
-        <h3>컨퍼런스</h3>
-        <ol>
-          <li>
-            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller <br />
-            Influence of Pore Size Distribution on Operando GDL Liquid Saturation.<br />
-            <em>236th Electrochemical Society Meeting (ECS)</em>, Atlanta, USA. 2019. <strong>[Oral]</strong> [<a
-              href="http://ma.ecsdl.org/content/MA2019-02/32/1409.short" target="_blank">Link</a>]
-          </li>
-          <li>
-            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller <br />
-            Advancements in 10Hz operando X-ray Tomographic Imaging of Water in GDLs of PEFC. <br />
-            <em>8th Int. Conference on Fundamentals & Devel. of Fuel Cells (FDFC)</em>, Nantes, France. 2018.
-            <strong>[Oral]</strong> [<a href="" target="_blank">Link</a>]
-          </li>
-          <li>
-            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller <br />
-            Studies of Water Distribution in the Gas Diffusion Layer of PEFCs using X-ray Tomographic Microscopy <br />
-            <em>69th Annual Meeting of the Int. Society of Electrochemistry (ISE)</em>, Bologna, Italy. 2018.
-            <strong>[Poster]</strong> [<a href="https://unknown/files/ModVal2018_Hong_Xu_final.pdf"
-              target="_blank">Link</a>]
-          </li>
-          <li>
-            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller <br />
-            Water Distribution in the Gas Diffusion Layer of PEFCs: X-ray Tomographic Microscopy Studies <br />
-            <em>15th Symposium on Modeling & Exp. Validation (ModVal)</em>, Aarau, Switzerland. 2018. <strong>[Poster
-              Prize]</strong> [<a href="https://unknown/files/ModVal2018_Hong_Xu_final.pdf" target="_blank">Link</a>]
-          </li>
-          <li>
-            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller <br />
-            Quantification of Feature Detectability for Subsecond X-ray Tomographic Microscopy of PEFC. <br />
-            <em>21st European Fuel Cell & Electrolyser Forum (EFCF)</em>, Luzern, Switzerland. 2017.
-            <strong>[Oral]</strong>[<a href="" target="_blank">Link</Link></a>]
-          </li>
-          <li>
-            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller <br />
-            Contrast-to-Noise Ratio Evaluation for X-ray Computed Tomographic Imaging of Water in Polymer Electrolyte
-            Fuel Cells <br />
-            <em>14th Symposium on Modeling & Exp. Validation (ModVal)</em>, Karlsruhe, Germany. 2017.
-            <strong>[Poster]</strong>[<a href="https://unknown/files/ModVal2017_Hong_Xu_Final.pdf" target="_blank">Link
-              </Link></a>]
-          </li>
-          <li>
-            <strong>H. Xu</strong> [TUM], E. Metwalli, P. Müller-Buschbaum <br />
-            Nanoparticles Embeded Thermoresponsive Diblock Copolymers for Magnetic Sensor Application. <br />
-            <em>2016 Erasmus MaMaSELF Program Status Meeting</em>, Rigi Kulm, Switzerland. 2016. <strong>[Oral]</strong>
-            [<a href="" target="_blank">Link</a>]
-          </li>
-          <li>
-            <strong>H. Xu</strong> [TUM], E. Metwalli, P. Müller-Buschbaum <br />
-            Magnetic properties and structure of thermoresponsive polystyrene-block-poly(N-isopropylacrylamide)/iron
-            oxide nanocomposite thin films. <br />
-            <em>80th Annual Meeting of German Physical Society (DPG)</em>, Regensburg, Germany. 2016.
-            <strong>[Poster]</strong> [<a href="https://unknown/files/Poster_DPG2016_Hong Xu.pdf"
-              target="_blank">Link</a>]
-          </li>
-          <li>
-            <strong>H. Xu</strong> [BJTU], Prof. H. Zhang, R. Wu <br />
-            Mesoporous SnO2Microspheres: Synthesis, Characterization, and Application in Enhanced Dye-sensitized Solar
-            Cells and Lithium Batteries. <br />
-            <em>2013 Energy Particles Frontier Seminar at Tsinghua University</em>, Beijing, China. 2013.
-            <strong>[Poster]</strong> [<a href="https://unknown/files/2013_Bachelor_Thesis_Poster.pdf"
-              target="_blank">Link</a>]
-          </li>
-        </ol>
-      </div>
-      <hr />
-
-      <!--- <div class="doc-section" id="equity-research">
-          <h3>Equity Research</h3>
-          <ol>
-            <li>
-              2021 [<strong>National Silicon Industry Group</strong> 688126.SH] Silicon Pioneer Group Leading China's Domestic Chip Development (First-time Coverage Report)<br/>
-          </li>
-            <li>
-              2021 [<strong>CREE</strong>: NASDAQ] Technology Pioneer Series Report on CREE: Global Power/RF Device and LED Provider (Secondary Market Research)<br/>
-          </li>
-          <li>
-            2021 [<strong>Jingwei Hirain</strong> 688326.SH] Technology Pioneer Series Report on Jingwei Hirain: Automotive Electronic Technology System Service Provider (Secondary Market Research) <br/>
-        </li>
-        <li>
-          2021 [<strong>UISEE (Beijing)</strong>] Technology Pioneer Series Report on UISEE: Multi-Scenario Autonomous Driving Solution Provider (Primary Market Research) <br/>
-      </li>
-      <li>
-        2021 [<strong>SemiDrive</strong>] Technology Pioneer Series Report - SemiDrive: Intelligent Vehicle Independent IP Chip Provider (Primary Market Research)<br/>
+ <!---内容开始-->
+
+ <div>
+ <hr class="display-mobile" style="width:113%">
+
+ <h3 class="display-mobile">연설 & 사회</h3>
+ <p align="justify">
+ 
+   <strong>▸ 유엔 본 기후변화 회의</strong> 분과 사회자/연사 《중국의 에너지 전환과 기술 혁신》(글로벌 생중계)
+ 
+   <div class="video-container hidden-mobile">
+     <video controls poster="images/Bonn_preview_cn.png">
+       <source src="/images/Bonn_Climate_v1_8MB.mp4" type="video/mp4">
+       귀하의 브라우저는 비디오 태그를 지원하지 않습니다.
+     </video>
+   </div>
+ 
+   <div class="video-container display-mobile" style="width:113%;padding-bottom: 63.25%;">
+     <video controls poster="images/Bonn_preview_cn.png">
+       <source src="/images/Bonn_Climate_v1_8MB.mp4" type="video/mp4">
+       귀하의 브라우저는 비디오 태그를 지원하지 않습니다.
+     </video>
+   </div>
+
+   <div class="doc-section" id="Other-activities">
+    <h4>기타 활동:</h4>
+  
+    <li>
+      2022 | <strong>IN3 캐피털 살롱</strong> 초청 게스트: 중요한 "수소", 큰 주목을 받는 "수소 에너지"의 장점은 무엇인가 (제8회, 100명 이상 온라인 참가)<br>
     </li>
+    <li>
+      2022 | <strong>기적 창업 포럼</strong> 내부 공유: 탄소 중립 비전 하의 신에너지 기회와 도전—기술 최전선, 정책 및 투자 기회 (50명 이상 온라인 참가)<br>
+    </li>
+    <li>
+      2022 | <strong>박사 변신 프로젝트</strong> 프로그램 사회자: 집적회로/칩/반도체/최첨단—국내외 박사과정 학생 온라인 라운드테이블 (100명 이상 온라인 참가)<br>
+    </li>
+    <li>
+      2021 | <strong>Clubhouse</strong> 사회자: 에너지 위기 속 박사들의 시각—각국 신에너지 정책/기술에 초점 (태양/풍력/리튬/수소/원자력) (200명 이상 회원)<br>
+    </li>
+  </div>
+  
+  </p>
+  
+  </div>
 
-          <li>
-            2021 [<strong>ESWIN (Xi'an)</strong>] Xi'an ESWIN Research and Analysis Report (Primary Market Research)  <br/>
-        </li>
-          <li>
-              2020 [<strong>TankeBlue</strong> 870013.OC] China's Leading Domestic SiC Wafer Manufacturer (Secondary Market Research)  <br/>
-        </li>
-        <li>
-          2020 [<strong>Li-on (Hangzhou)</strong> 605358.SH] Massive Domestic Production Substitution Market: Large Silicon Wafer Industrialization is on the Way (Secondary Market Research) <br/>
-       </li>
-        <li>
-              2020 [<strong>New Materials Industry</strong> Semiconductor Materials Series Report No. 4] 5G pulls optical communication industry chain, indium phosphide materials ready for development (Secondary Market Research)  <br/>
-        </li>
-        <li>
-              2020 [<strong>SinoCera</strong> 300285.SZ] Zirconia Materials Gaining Momentum in Denture Ceramic Materials Industry (Secondary Market Research)   <br/>
-        </li>
-        </ol>
-        </div>       
-        <hr />   
 
-        <div class="doc-section" id="talks">
-          <h3>토크 및 사회자</h3>
-          <ol>
-            <li>
-              2022 | <strong>IN3 Capital Salon</strong> Invited Speaker: What is the best thing about "hydrogen energy"? (Session 8 / 100+ online participants)<br/>
-          </li>
-          <li>
-              2022 | <strong>MiraclePlus</strong> Insider Sharing: New Energy Opportunities and Challenges under Carbon Neutral Vision - Technology Frontiers, Policies and Investment Opportunities (50+ online participants)<br/>
-          </li>
-          <li>
-              2022 | <strong>Dr. Transformer</strong> Roundtable Moderator: IC/Chip/Semiconductor/Frontier - Online Roundtable for Domestic and International PhD Students (100+ online participants)<br/>
-          </li>
-          <li>
-              2021 | <strong>Clubhouse</strong> Moderator: PhD Vision in the Energy Crisis - Focus on New Energy Policies/Technologies by Countries (Light/Wind/Lithium/Hydrogen/Nuclear) (200+ members)<br/>
-        </li>
-        </ol>
-        </div>       
-        <hr />   
 
-        <div class="doc-section" id="writing">
-          <h3>글쓰기</h3>
-          <ol>
-            <li>
-              2023 | <strong>Once Upon A PhD</strong> (Memoir): Once Upon A PhD: Ten Years in Europe (in progress)<br/>
-          </li>
-            <li>
-              2022 | <strong>Huiyin Capital China</strong> (WeChat Public Account Reproduction): New Energy Taichi Diagram: Lithium vs. Hydrogen, Who Can Take the Carbon Neutral Crown?<br/>
-          </li>
-          <li>
-              2022 | <strong>Zhihu Roundtable</strong> (Sponsored by the World Congress of New Energy Vehicles): Which of the three major power of new energy vehicles: battery swapping, battery charging, or fuel cell, will be the future?<br/>
-        </li>
-          <li>
-              2022 | <strong>Dr. Transformer</strong> (Wechat Public Account): Russia-Ukraine Conflict: Undercurrents and Crises in European Energy Security, and the Impacts on China and the United States<br/>
-          </li>
-        </ol>
-        </div>       
-        <hr />   
 
-        <div class="doc-section" id="awards">
-          <h3>영예 및 수상</h3>
-          <ol>
-            <li>
-              2019 | <strong>ECS Travel Grant</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
-              <em>ECS Conference Committee</em>, Atlanta, USA. [USD 1'500]
-            </li>                
-            <li>
-              2018 | <strong>Poster Prize</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
-              <em>ModVal Conference Committee</em>, Aarau, Switzerland. [CHF 300]
-            </li>      
+  <hr class="display-mobile" style="width:113%">
+  <hr class="hidden-mobile">
 
-            <li>
-              2015 | <strong>Erasmus Scholarship</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
-              <em>European Education, Audiovisual and Culture Executive Agency</em>. [EUR 2'640]
-            </li>   
+  
+  <div class="doc-section" id="phd-round-table">
+    <h3>박사 라운드테이블</h3>
 
-            <li>
-              2012 | <strong>TECO Finalist</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
-              <em>Taipei TECO Technology Foundation</em>, Taipei, R.O.China. [NTD 50'000]
-            </li>
+  <div class="tabset">
+    <!-- Tab 1 -->
+    <input type="radio" name="tabset" id="tab1" aria-controls="session1" >
+    <label for="tab1">제1회</label>
+    <!-- Tab 2 -->
+    <input type="radio" name="tabset" id="tab2" aria-controls="session2">
+    <label for="tab2">제2회</label>
+    <!-- Tab 3 -->
+    <input type="radio" name="tabset" id="tab3" aria-controls="session3"  checked>
+    <label for="tab3">제3회</label>
+    <!-- Tab 4 -->
+    <input type="radio" name="tabset" id="tab4" aria-controls="session4" >
+    <label for="tab4">제4회</label>
+      <!-- Tab 5-->
+      <!-- <input type="radio" name="tabset" id="tab5" aria-controls="session5" >
+      <label for="tab5">第5期</label> -->
+        <!-- Tab 6 -->
+    <!-- <input type="radio" name="tabset" id="tab6" aria-controls="session6" >
+    <label for="tab6">第6期</label> -->
+      <!-- Tab 7 -->
+      <!-- <input type="radio" name="tabset" id="tab7" aria-controls="session7" >
+      <label for="tab7">第7期</label> -->
+        <!-- Tab 8 -->
+    <!-- <input type="radio" name="tabset" id="tab8" aria-controls="session8" >
+    <label for="tab8">第8期</label> -->
+      <!-- Tab 9 -->
+      <!-- <input type="radio" name="tabset" id="tab9" aria-controls="session9" >
+      <label for="tab9">第9期</label>  -->
+  
+      <div class="tab-panels">
+        <section id="session1" class="tab-panel">
+          <h4><span style="color:#131414">박사 과정을 할지 말지? 어떻게 할지? 해외 전액 장학금 박사 과정은 어떤 경험일까?</span></h4> 
+          <p>시간: 2022년 5월 15일 베이징 시간 저녁 7:00 - 8:00 <br>
+             주소: 텐센트 미팅 (<a href="https://meeting.tencent.com/dm/Y1iH9zedITzs" target="_blank">미팅 링크</a>)<br>
+             질문: Sli.do (<a href="https://app.sli.do/event/pVt1EY9ogPoF5vUxk71XtK" target="_blank">질문 링크</a>)</p><img src="images/PhDTable01.jpg" width=45% align="right">
+          
+          <p><span style="color:#102955"><strong>게스트: C. Zhou</strong></span> <br>
+            - 로잔 연방 공과대학교 (EPFL) 박사과정 <br>
+            - 도쿄대학교 학사/석사 <br>
+            - 광학 & 마이크로나노 기술
+          </p>
+          <p><span style="color:#102955"><strong>게스트: Yuanfei Lin</strong></span> <br>
+            - 뮌헨 공과대학교 (TUM) 석사/박사과정 <br>
+            - 통지대학교 학사 <br>
+            - 기계 & 컴퓨터 & 자율주행
+          </p>
+          <p><span style="color:#102955"><strong>사회자: Dr. Helios Xu </strong></span> <br>   
+            - 취리히 연방 공과대학교 (ETH) 박사 <br>
+            - 뮌헨 대학교 & 공과대학교 석사 <br>
+            - 신에너지 & 반도체
+          </p>
+          <p class="hidden-mobile"><br></p>
+          <p class="hidden-mobile"><br></p>
+          <p class="hidden-mobile"><br></p>
+          <p class="hidden-mobile"><br></p>
+        </section>
+      
+        <section id="session2" class="tab-panel">
+          <h4><span style="color:#131414">집적회로/칩/반도체/최첨단: 박사과정 학생 온라인 라운드테이블</span></h4>
+          <p>시간: 2022년 5월 22일 베이징 시간 저녁 7:00 - 8:00 <br>
+            주소: 텐센트 미팅 (<a href="https://meeting.tencent.com/dm/UDC2yR3cTDFd" target="_blank">미팅 링크</a>)<br>
+            질문: Sli.do (<a href="https://app.sli.do/event/71yvBNQ4934Up6TCmXJMzF" target="_blank">질문 링크</a>)</p><img src="images/PhDTable02.jpg" width=45% align="right">
+      
+          <p><span style="color:#102955"><strong>게스트: Dr. Bohan Yang</strong></span> <br>
+            - 벨기에 루벤 대학교 (KUL) 박사 <br>
+            - 칭화대학교 박사후 연구원 <br>
+            - 암호화 보안 칩
+          </p>
+          <p><span style="color:#102955"><strong>게스트: Jiayang Li</strong></span> <br>
+            - 런던 대학교 (UCL) 박사과정 <br>
+            - 전 앤섹 반도체 엔지니어 <br>
+            - 생체의료 칩 & 혼합 신호 칩 설계
+          </p>
+          <p><span style="color:#102955"><strong>게스트: Henry Wang</strong></span> <br>
+            - 사우샘프턴 대학교 박사과정 <br>
+            - 임페리얼 칼리지 런던 석사 <br>
+            - 전 AMD 선임 엔지니어 <br>
+            - 시스템온칩 & 온칩 네트워크 아키텍처 연구
+          </p>
+          <p><span style="color:#102955"><strong>사회자: Dr. Helios Xu</strong></span> <br>   
+            - 취리히 연방 공과대학교 (ETH) 박사 <br>
+            - 전 인피니언 테크놀로지 인턴 <br>
+            - 반도체 & 신소재
+          </p>
+        </section>
+  
+        <section id="session3" class="tab-panel">
+          <h4><span style="color:#131414">박사 생활 전략 관리: 고집 / 회복력 / 인간성</span></h4>
+          <p>시간: 2023년 10월 22일 베이징 시간 저녁 7:00 - 8:00 <br>
+            주소: 텐센트 미팅 <br>
+            질문: Sli.do </p>  <img src="images/PhDTable03.png" width=45% align="right">
+      
+            <p><span style="color:#102955"><strong>게스트: Shiyu Deng</strong></span> <br>   
+              - 케임브리지 대학교 캐번디시 연구소 박사과정 <br>
+              - 학제간 교류 열렬한 애호가
+            </p>
+      
+            <p><span style="color:#102955"><strong>게스트: Dr. Daohe Yuan</strong></span> <br>   
+              - 옥스퍼드 대학교 화학 박사 <br>
+              - 임페리얼 칼리지 런던 학사 및 석사
+            </p>
+      
+            <p><span style="color:#102955"><strong>게스트: Lin Xu</strong></span> <br>   
+              - 홍콩 대학교 공공관리 박사과정 <br>
+              - 전 미스 홍콩 참가자 광동어 학습 중
+            </p>
+      
+            <p><span style="color:#102955"><strong>게스트: Yekai Xu</strong></span> <br>   
+              - 도쿄 대학교 학제간 정보 연구 박사과정 <br>
+              - 예일 대학교 Fox Fellow 
+            </p>
+      
+            <p><span style="color:#102955"><strong>진행자: Vivian Long</strong></span> <br>   
+            - 베이징 대학교 법학대학 학사 <br>
+            - 외국계 로펌 법률 보조원
+          </p>
+          <p><span style="color:#102955"><strong>공동 진행자: Helios Xu</strong></span> <br>   
+            - 취리히 연방 공과대학교 (ETH) 박사 <br>
+          </p>
+      
+        </section>
+      
+      
+        <section id="session4" class="tab-panel">
+          <h4><span style="color:#131414">법학 여행/국제 중재: 학술 경험 & 직업 탐구</span></h4>
+          <p>시간: 2023년 11월 26일 베이징 시간 저녁 7:00 - 8:00 <br>
+            주소: 텐센트 미팅 <br>
+            질문: Sli.do </p>   <img src="images/PhDTable04.png" width=45% align="right">
+      
+            <p><span style="color:#102955"><strong>게스트: Yuri Zhang</strong></span> <br>   
+              - 베이징 대학교 법학대학 <br>
+              - 듀크 대학교 JD 법학 박사 <br>
+              - 싱가포르 국제 중재 센터 근무 경험
+            </p>
+            <p><span style="color:#102955"><strong>게스트: Violetta Gao</strong></span> <br>   
+              - 중국정법대학교 석사 <br>
+              - 지 런 로펌 국제 중재 <br>
+              - 리즈 대학교/홍콩 시티 대학교 교환 학생
+            </p>
+      
+            <p><span style="color:#102955"><strong>게스트: Anthony Chen</strong></span> <br>   
+              - 비엔나 대학교 국제법 박사과정 <br>
+              - 제네바 국제관계개발대학원 국제법 전액 장학금 석사 <br>
+              - 대외경제무역대학교 국제법 석사
+            </p>
+      
+            <p><span style="color:#102955"><strong>진행자: Vivian Long</strong></span> <br>   
+              - 베이징 대학교 법학대학 학사 <br>
+              - 외국계 로펌 법률 보조원 <br>
+              - 베이징 대학교 법학대학 법률 실무 훈련 캠프
+            </p>
+      
+            <p><span style="color:#102955"><strong>공동 진행자: Helios Xu</strong></span> <br>   
+              - 취리히 연방 공과대학교 (ETH) 박사 <br>
+            </p>
+      
+        </section>
+  
+  
+      <section id="session5" class="tab-panel">
+        <h4><span style="color:#131414">博士/创新/创业/创投/融资<br>国内外博士生在线圆桌会</span></h4>
+        <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+          地址：腾讯会议 <br>
+          提问：Sli.do </p>   <img src="images/PhDTable05.jpg" width=45% align="right">
+        <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
+          - 苏黎世联邦理工大学 (ETH) 博士 <br>
+          - 丰田汽车 合作研发 <br>
+          - 新能源车辆
+        </p>
+  
+      </section>
+  
+      <section id="session6" class="tab-panel">
+        <h4><span style="color:#131414">AI/机器学习/计算机视觉/前沿<br>国内外博士生在线圆桌会</span></h4>
+        <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+          地址：腾讯会议 <br>
+          提问：Sli.do </p>   <img src="images/PhDTable06.jpg" width=45% align="right">
+        <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
+          - 苏黎世联邦理工大学 (ETH) 博士 <br>
+          - 丰田汽车 合作研发 <br>
+          - 新能源车辆
+        </p>
+  
+      </section>
+  
+      <section id="session7" class="tab-panel">
+        <h4><span style="color:#131414">博士生职业发展<br>国内外博士生在线圆桌会</span></h4>
+        <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+          地址：腾讯会议 <br>
+          提问：Sli.do </p>   <img src="images/PhDTable07.jpg" width=45% align="right">
+        <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
+          - 苏黎世联邦理工大学 (ETH) 博士 <br>
+          - 丰田汽车 合作研发 <br>
+          - 新能源车辆
+        </p>
+  
+      </section>
+  
+  
+      <section id="session8" class="tab-panel">
+        <h4><span style="color:#131414">FinTech/金融科技/前沿<br>国内外博士生在线圆桌会</span></h4>
+        <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+          地址：腾讯会议 <br>
+          提问：Sli.do </p>   <img src="images/PhDTable08.jpg" width=45% align="right">
+        <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
+          - 苏黎世联邦理工大学 (ETH) 博士 <br>
+          - 丰田汽车 合作研发 <br>
+          - 新能源车辆
+        </p>
+  
+      </section>
+  
+  
+      <section id="session9" class="tab-panel">
+        <h4><span style="color:#131414">生物医药/医疗器械/前沿<br>国内外博士生在线圆桌会</span></h4>
+        <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+          地址：腾讯会议 <br>
+          提问：Sli.do </p>   <img src="images/PhDTable09.jpg" width=45% align="right">
+        <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
+          - 苏黎世联邦理工大学 (ETH) 博士 <br>
+          - 丰田汽车 合作研发 <br>
+          - 新能源车辆
+        </p>
+  
+      </section>
+  
+    </div>
+  </div>
+</div>
 
-            <li>
-              2012 | <strong>National Bronze</strong> [<a href="" target="_blank">Cert.</Link></a>] <br/>
-              <em>8th CHALLENGE CUP Business Plan Competition</em>, Beijing, China. [RMB 5'000]
-            </li>
-            <li>
-              2012 | <strong>Innovation Scholarship</strong> <br/>
-              <em>Beijing Jiaotong University</em>, Beijing, China. [RMB 2'500]
-            </li>
-            <li>
-              2010 | <strong>Learning Scholarship (3 years)</strong> <br/>
-              <em>Beijing Jiaotong University</em>, Beijing, China. [RMB 2'400]
-            </li>
-          </ol>
-        </div>       
-        <hr />    
+
+
+<hr class="display-mobile" style="width:113%">
+<hr class="hidden-mobile">
+
+
+<div class="doc-section" id="writing">
+  <h3>저술</h3>
+  <ul class="square">
+    <li>
+      2022 | <strong>후이인 캐피탈</strong> (공식 계정 재게시): 신에너지 태극도: 리튬 배터리 vs 수소 에너지, 누가 탄소 중립의 왕관을 차지할 것인가  <a href="https://mp.weixin.qq.com/s/d3ittBYgANRRPPvhV20aCw" target="_blank">[링크]➚	</a><br>
+    </li>
+    <li>
+      2022 | <strong>지후 라운드테이블</strong> (세계 신에너지 자동차 대회 주최): 신에너지 3대 유파: 배터리 교체, 충전, 수소 연료, 과연 어느 것이 미래가 될 것인가? <a href="https://www.zhihu.com/question/453005871/answer/2476806475" target="_blank">[링크]➚	</a><br>
+    </li>
+    <li>
+      2022 | <strong>박사 변형계</strong> (공식 계정 원작): 러시아-우크라이나 분쟁: 유럽 에너지 안보의 암류와 위기, 그리고 중국과 미국의 영향<br>
+    </li>
+    <li>2024 | <strong>유럽 10년 ⋅ 박사 변형계</strong> (회고록): Once Upon A PhD: Ten Years in Europe (집필 중)<br>
+      <br>
+      <div class="row" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        <div class="four-columns hidden-mobile" style="flex: 1 0 23.33%; padding-right: 0px;">
+          <h4>박사 변형계</h4>
+          <p>Once Upon A PhD</br>
+          </br>
+          목차 / Contents </br>
+          </br>
+          서막: 인간 세상에서 / Universe</br>
+          박사 전: 방랑 / Roam</br>
+          박사 1년: 황혼 / Twilight</br>
+          박사 2년: 위기 / Skyfall</br>
+          박사 3년: 데자뷰 / Déjà-vu</br>
+          박사 4년: 새벽 / Aurora</br>
+          박사 후: 동경 / Fernweh</br>
+          후기: 변화된 인간 세상 / Metaverse</br>
+          </br>
+          감사의 말: Acknowledgement</p>
+        </div>
+
+        <div class="four-columns display-mobile" style="flex: 1 0 45%; padding-right: 0px;">
+          <h5>유럽 10년</h5> 
+          <h5>박사 변형계</h5>
+          <p>
+          </br>
+          서막: 인간 세상에서</br>
+          박사 전: 방랑</br>
+          박사 1년: 황혼</br>
+          박사 2년: 위기</br>
+          박사 3년: 데자뷰</br>
+          박사 4년: 새벽</br>
+          박사 후: 동경</br>
+          후기: 변화된 인간 세상</br>
+        </p>
+        </div>
+
+        <div class="eight-columns  display-mobile" style="flex: 2 0 55%; padding-left: 0px; text-align: left;">
+          <h5>Once Upon A PhD</h5>
+          <h5>Ten Years in Europe</h5>
+          <p>
+          </br>
+          Prologue: Universe</br>
+          Predoc: Roam</br>
+          Year 1: Twilight</br>
+          Year 2: Skyfall</br>
+          Year 3: Déjà-vu</br>
+          Year 4: Aurora</br>
+          Postdoc Fernweh</br>
+          Epilogue: Metaverse</br>
+        </p>
+
+        </div>
+
+        <div class="eight columns" style="flex: 2 0 63.66%; padding-left: 0px; text-align: right;">
+          <h4 style="text-align: right;" class="hidden-mobile">표지/뒷표지</h4>
+          <img src="images/phd_memo_cover.gif" alt="Front Cover" style="width: 110%; padding-left: 2px; height: auto;" class="hidden-mobile">
+        </div>
+
+        <img src="images/phd_memo_cover.gif" alt="Front Cover" style="width: 100%; padding-left: 0px;padding-right: 0px; height: auto;" class="display-mobile">
+      </div>
+    </li>
+    </ul>
+</div>
+
+
+<hr class="display-mobile" style="width:113%">
+<hr class="hidden-mobile">
+
+<div class="doc-section" id="visiting">
+  <h3>방문 및 견학</h3>
+ <ul class="square">
+  <li><strong>국제 기구: </strong><br>
+    2024 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>유엔 유럽 본부 </strong>  (제네바, 스위스)<br>
+    2023 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>유엔 비엔나 사무소 </strong>  (비엔나, 오스트리아)<br>
+    2023 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>유엔 본 사무소 </strong>  (본, 독일)<br>
+    2019 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>유엔 본부 </strong>  (뉴욕, 미국)<br>
+    <hr>
+    <li><strong>정부 기관: </strong><br>
+      2016 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>프랑스 세느-노르망디 수자원 관리청 </strong>  (파리, 프랑스)<br>
+      2016 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>쑤저우시 도시계획국 </strong>  (장쑤성, 중국)<br>
+      2014 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>정저우시 생태환경국 </strong>  (허난성, 중국)<br>
+      2014 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>카이펑시 환경보호국 </strong>  (허난성, 중국)<br>
+      <hr>
+  <li><strong>싱크로트론 가속기: </strong><br>
+    2023 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>유럽 입자물리 연구소/CERN </strong>  (제네바, 스위스)<br>
+    2017 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>스위스 광원/SLS </strong>  (필리겐, 스위스)<br>
+    2016 | <img class="flag-icon" src="./images/wflags/it.png" alt="Italy"> <strong>이탈리아 싱크로트론/Elettra </strong>  (트리에스테, 이탈리아)<br>
+    2016 | <img class="flag-icon" src="./images/wflags/eu.png" alt="EU"> <strong>유럽 X선 자유전자레이저/EUXFEL </strong>  (함부르크, 독일)<br>
+    2016 | <img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> <strong>독일 전자 싱크로트론/DESY </strong>  (함부르크, 독일)<br>
+    2015 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>프랑스 싱크로트론 가속기/SOLEIL </strong>  (파리, 프랑스)<br>
+      <hr>
+  <li><strong>원자력 반응로:  </strong><br>
+  2018 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>스위스 베츠나우 원자력 발전소 </strong>  (아르가우 주, 스위스)<br>
+  2015 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>프랑스 사클레이 원자력 연구센터 </strong>  (파리, 프랑스)<br>
+  2016 | <img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> <strong>독일 하인츠 마이어-라이프니츠 중성자원 연구소 </strong>  (뮌헨, 독일)<br>
+</ul>
+
+</div>
+
+
+<hr class="display-mobile" style="width:113%">
+<hr class="hidden-mobile">
+<h3 class="hidden-mobile">影像 <small><small>「<span id="subsection-title">以光之名</span>」</small></small></h3>
+<h3 class="display-mobile">影像 <small><small>「<span>会议/典礼</span>」</small></small><br><small><small><small>▷ <span id="subsection-title-mobile">会议/典礼</span></small></small></small></h3>
+
+<!-- <div class="doc-section hidden-mobile" id="photography">
+    <div class="gallery-wrap">
+      <div class="item item-1"></div>
+      <div class="item item-2"></div>
+      <div class="item item-3"></div>
+      <div class="item item-4"></div>
+      <div class="item item-5"></div>
+      <div class="item item-6"></div>
+      <div class="item item-7"></div>
+      <div class="item item-8"></div>
+      <div class="item item-9"></div>
+      <div class="item item-10"></div>
+    </div>
+  </div> -->
+
+  <div class="doc-section" id="gallery">
+
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+        <img class="display-mobile" src="images/formal/1.jpg" alt="Image"  style="width: 100%; height: 60vh; object-fit: cover;">
+        <img class="hidden-mobile" src="images/formal/1.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+        <div class="text" style="display: none;" id="img-title-1">유엔 기후변화 회의 🇩🇪 독일 본</div>
+      </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/2.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/2.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text" style="display: none;" id="img-title-2">유엔 팔레 데 나시옹 🇨🇭 스위스 제네바</div>
+      </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/3.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/3.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text" style="display: none;" id="img-title-3">유엔 산업개발기구 🇦🇹 오스트리아 비엔나</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/4.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/4.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-4">ETH 박사 졸업식 🇨🇭 스위스 취리히</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/5.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/5.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-5">상트갈렌 국제경제포럼 🇨🇭 스위스 상트갈렌</div>
+    </div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/6.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/6.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-6">유엔 기후변화 회의 🇺🇳 독일 본</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/7.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/7.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-7">유럽 입자물리연구소 CERN 🇨🇭 스위스 제네바</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/8.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/8.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-8">스위스 방사광 가속기 🇨🇭 스위스 빌리겐</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/9.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/9.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-9">유엔 기후변화 회의 🇺🇳 COP28 UAE</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/10.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/10.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-10">국제 연료전지 기초연구 회의 🇫🇷 프랑스 낭트</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/11.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/11.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-11">유엔 기후변화 회의 🇺🇳 독일 본</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/12.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/12.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-12">국제 전기화학회 회의 🇮🇹 이탈리아 볼로냐</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/13.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/13.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-13">유엔 본 사무소 🇺🇳 독일 본</div>     
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/14.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/14.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-14">미국 전기화학회 연례 회의 🇺🇸 미국 애틀랜타</div>
+    </div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/15.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/15.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-15">국제 에너지 및 기후 포럼 🇦🇹 오스트리아 비엔나</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/16.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/16.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-16">칭화대 슈웨이민 학원 셰란 원장과 함께 🇨🇭 스위스 상트갈렌</div>   
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/17.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/17.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-17">룩셈부르크 상공회의소 🇱🇺 룩셈부르크</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/18.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/18.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-18">ETH 박사 졸업식 🇨🇭 스위스 취리히</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/19.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/19.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-19">🇪🇺 석사 졸업 논문 발표 🇨🇭 스위스 리기 산 </div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/20.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/20.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-20">독일 물리학회 연례 회의 🇩🇪 독일 레겐스부르크</div>
+    </div>
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+      <img class="display-mobile" src="images/formal/21.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+      <img class="hidden-mobile" src="images/formal/21.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+      <div class="text"></div>
+      <div class="text" style="display: none;" id="img-title-21">유엔 유럽경제위원회 전문가 그룹 회의 🇨🇭 스위스 제네바</div>
+    </div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+          <img class="display-mobile" src="images/formal/22.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+          <img class="hidden-mobile" src="images/formal/22.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          <div class="text"></div>
+          <div class="text" style="display: none;" id="img-title-22">동원 그린 테크놀로지 경연 대회 🇨🇳 중국 타이베이</div>
+      </div>
+  </div>
+  <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+          <img class="display-mobile" src="images/formal/23.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+          <img class="hidden-mobile" src="images/formal/23.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          <div class="text"></div>
+          <div class="text" style="display: none;" id="img-title-23">학사 졸업식 🇨🇳 중국 베이징</div>
+      </div>
+  </div>
+  <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+          <img class="display-mobile" src="images/formal/24.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+          <img class="hidden-mobile" src="images/formal/24.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          <div class="text"></div>
+          <div class="text" style="display: none;" id="img-title-24">APEC 청년 창업가 정상 회담 🇨🇳 중국 베이징</div>
+      </div>
+  </div>
+  <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+          <img class="display-mobile" src="images/formal/25.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+          <img class="hidden-mobile" src="images/formal/25.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          <div class="text"></div>
+          <div class="text" style="display: none;" id="img-title-25">학사 졸업반 단체 사진 🇨🇳 중국 베이징</div>
+      </div>
+  </div>
+  <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <div class="image-container">
+          <img class="display-mobile" src="images/formal/26.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
+          <img class="hidden-mobile" src="images/formal/26.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          <div class="text"></div>
+          <div class="text" style="display: none;" id="img-title-26">학사 졸업식 🇨🇳 중국 베이징</div>
+      </div>
+  </div>
+  
+
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+
+    </div>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+      <span class="dot" onclick="currentSlide(6)"></span>
+      <span class="dot" onclick="currentSlide(7)"></span>
+      <span class="dot" onclick="currentSlide(8)"></span>
+      <span class="dot" onclick="currentSlide(9)"></span>
+      <span class="dot" onclick="currentSlide(10)"></span>
+      <span class="dot" onclick="currentSlide(11)"></span>
+      <span class="dot" onclick="currentSlide(12)"></span>
+      <span class="dot" onclick="currentSlide(13)"></span>
+      <span class="dot" onclick="currentSlide(14)"></span>
+      <span class="dot" onclick="currentSlide(15)"></span>
+      <span class="dot" onclick="currentSlide(16)"></span>
+      <span class="dot" onclick="currentSlide(17)"></span>
+      <span class="dot" onclick="currentSlide(18)"></span>
+      <span class="dot" onclick="currentSlide(19)"></span>
+      <span class="dot" onclick="currentSlide(20)"></span>
+      <span class="dot" onclick="currentSlide(21)"></span>
+      <span class="dot" onclick="currentSlide(22)"></span>
+      <span class="dot" onclick="currentSlide(23)"></span>
+      <span class="dot" onclick="currentSlide(24)"></span>
+      <span class="dot" onclick="currentSlide(25)"></span>
+      <span class="dot" onclick="currentSlide(26)"></span>
+    </div>
+
+
+
+    <!---<img class="hidden-mobile" src="images/SDG_all.png" style="width:100%" alt="">
+      <img class="display-mobile" src="images/SDG_all.png" style="width:100%" alt="">--->
+
+
+  </div>
+
+
+  <hr class="display-mobile" style="width:113%">
+  <hr class="hidden-mobile">
+
+
+  <div class="doc-section" id="travel">
+    <h3>여행</h3>
+    <ul class="square" >
+      <li><strong>아시아</strong>：
+        <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> 중국 본토 (13개 이상 성/시)、
+        대만、
+        <img class="flag-icon" src="./images/wflags/ru.png" alt="Russia"> 러시아、
+        <img class="flag-icon" src="./images/wflags/tr.png" alt="Turkey"> 터키、
+        <img class="flag-icon" src="./images/wflags/th.png" alt="Thailand"> 태국、
+        <img class="flag-icon" src="./images/wflags/ae.png" alt="UAE"> 아랍에미리트</li>
+      <li><strong>유럽</strong>：
+        <img class="flag-icon" src="./images/wflags/al.png" alt="Albania"> 알바니아、
+        <img class="flag-icon" src="./images/wflags/at.png" alt="Austria"> 오스트리아、
+        <img class="flag-icon" src="./images/wflags/be.png" alt="Belgium"> 벨기에、
+        <img class="flag-icon" src="./images/wflags/ba.png" alt="Bosnia and Herzegovina"> 보스니아 헤르체고비나、
+        <img class="flag-icon" src="./images/wflags/hr.png" alt="Croatia"> 크로아티아、
+        <img class="flag-icon" src="./images/wflags/cz.png" alt="Czech Republic"> 체코、
+        <img class="flag-icon" src="./images/wflags/dk.png" alt="Denmark"> 덴마크、
+        <img class="flag-icon" src="./images/wflags/ee.png" alt="Estonia"> 에스토니아、
+        <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> 프랑스 (5개 이상 도시)、
+        <img class="flag-icon" src="./images/wflags/fi.png" alt="Finland"> 핀란드、
+        <img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> 독일 (25개 이상 도시)、
+        <img class="flag-icon" src="./images/wflags/hu.png" alt="Hungary"> 헝가리、
+        <img class="flag-icon" src="./images/wflags/is.png" alt="Iceland"> 아이슬란드、
+        <img class="flag-icon" src="./images/wflags/it.png" alt="Italy"> 이탈리아、
+        <img class="flag-icon" src="./images/wflags/li.png" alt="Liechtenstein"> 리히텐슈타인、
+        <img class="flag-icon" src="./images/wflags/lu.png" alt="Luxembourg"> 룩셈부르크、
+        <img class="flag-icon" src="./images/wflags/mt.png" alt="Malta"> 몰타、
+        <img class="flag-icon" src="./images/wflags/nl.png" alt="Netherlands"> 네덜란드、
+        <img class="flag-icon" src="./images/wflags/no.png" alt="Norway"> 노르웨이、
+        <img class="flag-icon" src="./images/wflags/pt.png" alt="Portugal"> 포르투갈、
+        <img class="flag-icon" src="./images/wflags/pl.png" alt="Poland"> 폴란드、
+        <img class="flag-icon" src="./images/wflags/rs.png" alt="Serbia"> 세르비아、
+        <img class="flag-icon" src="./images/wflags/sk.png" alt="Slovakia"> 슬로바키아、
+        <img class="flag-icon" src="./images/wflags/si.png" alt="Slovenia"> 슬로베니아、
+        <img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> 스페인、
+        <img class="flag-icon" src="./images/wflags/gr.png" alt="Greece"> 그리스、
+        <img class="flag-icon" src="./images/wflags/se.png" alt="Sweden"> 스웨덴、
+        <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 스위스 (30개 이상 도시)、<img class="flag-icon" src="./images/wflags/ie.png" alt="Ireland"> 아일랜드、
+        <img class="flag-icon" src="./images/wflags/gb-sct.png" alt="Scotland"> 스코틀랜드、
+        <img class="flag-icon" src="./images/wflags/gb-wls.png" alt="Wales"> 웨일스、
+        <img class="flag-icon" src="./images/wflags/gb.png" alt="United Kingdom"> 영국、
+        <img class="flag-icon" src="./images/wflags/gi.png" alt="Gibraltar"> 지브롤터 (영국령)
+      </li>
+      <li><strong>북아메리카</strong>：
+        <img class="flag-icon" src="./images/wflags/ca.png" alt="Canada"> 캐나다、
+        <img class="flag-icon" src="./images/wflags/us.png" alt="United States"> 미국</li>
+      <li><strong>아프리카</strong>：
+        <img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> 카나리아 제도 (스페인령)</li>
+      
+      <!-- <li><strong>합계</strong>：방문한 국가/지역 35개 (전 세계 197개 중) / 비행 거리 누적 약 24만 km (지구 약 6바퀴)</li> -->
+      <img src="/images/visited_map.gif" style="width:100%;" alt="Example GIF">
+    </ul>
+
+    <!---<iframe style="width: 100%; height:300px" src="https://visitedplaces.com/embed/?map=world&projection=geoOrthographic&theme=light-yellow&water=1&graticule=0&names=1&duration=2000&placeduration=100&slider=0&autoplay=1&autozoom=all&autostep=1&home=CH&places=Europe~AT_BE_BA_HR_CZ_DK_EE_FI_FR_GI_HU_IS_IE_IT_LI_LU_MT_NL_NO_PL_PT_RU_RS_SK_SI_ES_SE_CH_TR_GB_VA_DE~3.1_21.3_47.1_-19_0*North%20America~CA_US~1.6_-100.6_44.4_100.6_-44.4*Asia~CN_HK_TW_TH~1.5_83.8_33.3_-83.8_-33.3" style="width: 100%; height: 300px;"></iframe>--->
+    <!---<img src="images/travel.png" width="100%" alt="">--->
+    <!---<img class="hidden-mobile" src="images/flights.png" style="width:100%" alt="">
+    <img class="display-mobile" src="images/flights.png" style="width:100%" alt="">
+    --->
+  </div>
+
+
+  <hr class="display-mobile" style="width:113%">
+  <hr class="hidden-mobile">
+
+  <div class="doc-section" id="sports" style="width:111%">
+    <h3>스포츠</h3>
+    
+    <ul class="square">
+      <li>
+        <strong>사이클링 (호수 주변/등산)</strong><br><br>
         
-        
-        <div class="doc-section" id="training">
-          <h3>훈련 및 과외활동</h3>
-          <ol>
-            <li>
-              2020 | <strong>Applied Machine Learning</strong> <br/>
-              <em>EPF Lausanne</em>, Lausanne, Switzerland.
-            </li>
-            <li>
-              2020 | <strong>Industrial Computed Tomography</strong> <br/>
-              <em>University of Applied Sciences</em>, Wels, Austria
-            </li>
-            <li>
-              2019 | <strong>IBM Data Science Professional Certificate</strong> <br/>
-              <em>IBM Inc. & Coursera</em>, USA. [<a href="https://www.coursera.org/account/accomplishments/specialization/RKL5DP32L697?utm_medium=certificate&utm_source=link&utm_campaign=copybutton_certificate" target="_blank">Credential</Link></a>]
-            </li>
-            <li>
-              2019 | <strong>Machine Learning in Imaging</strong> <br/>
-                <em>University of Bern</em>, Bern, Switzerland.
-              </li>
-            <li>
-              2019 | <strong>Neural Networks & Deep Learning</strong> <br/>
-                <em>deeplearning.ai & Coursera</em>, USA. [<a href="https://www.coursera.org/account/accomplishments/verify/ZL4B8AXLLQ8P?utm_medium=certificate&utm_source=link&utm_campaign=copybutton_certificate" target="_blank">Credential</Link></a>]
-              </li>
-            <li>
-              2017 | <strong>Biomedical Imaging Summer School</strong> <br/>
-              <em>University Hospital Zurich (USZ)</em>, Zurich, Switzerland.
-            </li>
-            <li>
-              2016 | <strong>Applied Physics Summer School</strong> <br/>
-              <em>Technical University of Munich</em>, München, Germany.
-            </li>
-            <li>
-              2015 | <strong>X-ray & Neutron Summer School</strong> <br/>
-              <em>Université de Montpellier</em>, Montpellier, France. 
-            </li>
-          </ol>
-        </div>  
-
-        <hr />
-      --->
-      <div class="doc-section" id="visiting">
-        <h3>방문</h3>
-        <ul class="square">
-          <li><strong>싱크로트론</strong>: SOLEIL (파리, 2015), 독일 전자 싱크로트론 (함부르크, 2016), 유럽 XFEL (함부르크, 2016), ELETTRA (트리에스테,
-            2016), 스위스 광원 (빌리겐, 2017)</li>
-          <li><strong>원자로</strong>: CEA 사클레이 원자력 연구 센터 (파리, 2015), 연구 중성자 소스 하인츠 마이어 라이프니츠 (뮌헨, 2016), 베즈나우 원자력 발전소
-            (아르가우, 2018) </li>
-          <li><strong>조직</strong>: 유엔 사무국 (뉴욕, 2019), 세느 노르망디 수도국 (파리, 2016), 쑤저우시 도시계획국 (장쑤, 2016), 정저우시 생태환경국 (허난,
-            2014), 카이펑시 환경보호국 (허난, 2014)</li>
-        </ul>
+        <div class="three-col-grid">
+          <div class="grid-item">
+            <img src="images/sports/3.jpg" alt="Image 1" class="grid-image">
+            <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 취리히 호수 70km 사이클링</span></div>
+        </div>
+        <div class="grid-item">
+            <img src="images/sports/2.jpg" alt="Image 2" class="grid-image">
+            <div class="image-title"><img class="flag-icon" src="./images/wflags/hr.png" alt="Croatia"> 크로아티아 두브로브니크 Srđ 산 (412m)</div>
+        </div>
+        <div class="grid-item">
+            <img src="images/sports/4.jpg" alt="Image 3" class="grid-image">
+            <div class="image-title"><img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> 뮌헨 올림픽 산 (565m)</div>
+        </div>
       </div>
-
-
-      <hr />
-      <div class="doc-section" id="skills">
-        <h3>스킬</h3>
-        <ul class="square">
-          <li><strong>영어</strong> (유창함, C1), <strong>중국어</strong> (네이티브, C2), <strong>독일어</strong> (진행 중, B1),
-            <strong>프랑스어</strong> (기본, A2)</strong><br />
-          </li>
-          <li><a href="https://xgraphy.github.io" target="_blank">사진</a>, 글쓰기, 동영상 편집, 하이킹, 사이클링, 탁구, 중국 요리<br /></li>
-        </ul>
+      </li>
+      <hr style="width:90%">
+      <li>
+        <strong>산악 트레킹</strong><br><br>
+        <div class="three-col-grid">
+          <div class="grid-item">
+            <img src="images/sports/6.jpg" alt="Image 1" class="grid-image">
+            <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">브리엔츠 산맥 능선 (2350m) </span></div>
+        </div>
+        <div class="grid-item">
+            <img src="images/sports/7.jpg" alt="Image 2" class="grid-image">
+            <div class="image-title"><img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> 마요르카 섬/포르멘토르 등대 (384m)</div>
+        </div>
+        <div class="grid-item">
+            <img src="images/sports/9.jpg" alt="Image 3" class="grid-image">
+            <div class="image-title"><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 알레치 빙하 전망대 (1905m)</div>
+        </div>
       </div>
-
-      <hr />
-      <div class="doc-section" id="travel">
-        <h3>여행하다</h3>
-        <ul class="square">
-          <li><strong>아시아</strong>: 중국(본토), 대만, 러시아, 터키, 태국</li>
-          <li><strong>유럽</strong>: 오스트리아, 벨기에, 보스니아 헤르체고비나, 크로아티아,
-            체코, 덴마크, 에스토니아, 핀란드, 프랑스, 독일(25개 이상의 도시), 지브롤터, 헝가리, 아이슬란드, 아일랜드, 이탈리아, 리히텐슈타인, 룩셈부르크, 몰타, 네덜란드, 노르웨이, 포르투갈, 폴란드,
-            세르비아, 슬로베니아, 스페인, 스웨덴, 스위스(30개 이상의 도시), 영국</li>
-          <li><strong>북미</strong>: 미국, 캐나다</li>
-          <li><strong>아프리카</strong>: 그란 카나리아(스페인)</li>
-          <li><strong>전체</strong>: 전 세계 197개 국가/지역 중 35개 방문</li>
-          <img src="/images/visited_map.gif" style="width:100%;" alt="Example GIF">
-        </ul>
+      </li>
+      <hr style="width:90%">
+      <li>
+        <strong>기타 스포츠</strong><br><br>
+        <div class="three-col-grid">
+          <div class="grid-item">
+            <img src="images/sports/1.jpg" alt="Image 1" class="grid-image">
+            <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">티틀리스 산 얼음집 만들기/숙박 </span></div>
+        </div>
+        <div class="grid-item">
+            <img src="images/sports/10.jpg" alt="Image 2" class="grid-image">
+            <div class="image-title"><img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> 뮌헨 옥토버페스트 광장/암벽 등반</div>
+        </div>
+        <div class="grid-item">
+            <img src="images/sports/11.jpg" alt="Image 3" class="grid-image">
+            <div class="image-title"><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 리기 산/일몰/눈사람 만들기</div>
+        </div>
       </div>
+      </li>
+    </ul>
+
+  </div>
 
 
       <hr class="display-mobile" style="width:113%">
@@ -1346,12 +1401,12 @@
           <li><strong>링크드인</strong>: <a href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span
                 class='blue'>linkedin.com/in/xuhong/</span></a><br /></li>
           <li><strong>구글 학자 아이디</strong>: <a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en"
-              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a><br /></li>
-          <!-- <a href="https://info.flagcounter.com/D897" target="_blank"><img
+              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a><br /></li><br />
+          <a href="https://info.flagcounter.com/D897" target="_blank"><img
             src="https://s01.flagcounter.com/count/D897/bg_FFFFFF/txt_404040/border_FFFFFF/columns_8/maxflags_16/viewers_3/labels_0/pageviews_1/flags_0/percent_0/"
-            border="0"></a> -->
-          <a href="https://www.flagcounter.me/details/enB"><img src="https://www.flagcounter.me/enB/"
-              alt="Flag Counter"></a> <!---Pass: AHlUufteU-->
+            border="0"></a>
+          <!-- <a href="https://www.flagcounter.me/details/enB"><img src="https://www.flagcounter.me/enB/"
+              alt="Flag Counter"></a> -Pass: AHlUufteU -->
         </ul>
 
 
@@ -1445,46 +1500,68 @@
     }
   </script>
 
+
 <script>
-  let slideIndex = 1;
-  showSlides(slideIndex);
+  //轮播 + 标题更新
+let slideIndex = 1;
+showSlides(slideIndex);
 
-  // Auto transition the slides every 1.5 seconds
-  let slideInterval = setInterval(() => {
-    plusSlides(1);
-  }, 3500);
+// Auto transition the slides every 3.5 seconds
+let slideInterval = setInterval(() => {
+plusSlides(1);
+}, 3500);
 
-  function plusSlides(n) {
-    clearInterval(slideInterval);
-    showSlides(slideIndex += n);
-    slideInterval = setInterval(() => {
-      plusSlides(1);
-    }, 3500);
-  }
+function plusSlides(n) {
+clearInterval(slideInterval);
+showSlides(slideIndex += n);
+slideInterval = setInterval(() => {
+  plusSlides(1);
+}, 3500);
+}
 
-  function currentSlide(n) {
-    clearInterval(slideInterval);
-    showSlides(slideIndex = n);
-    slideInterval = setInterval(() => {
-      plusSlides(1);
-    }, 3500);
-  }
+function currentSlide(n) {
+clearInterval(slideInterval);
+showSlides(slideIndex = n);
+slideInterval = setInterval(() => {
+  plusSlides(1);
+}, 3500);
+}
 
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1; }
-    if (n < 1) { slideIndex = slides.length; }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }
+function showSlides(n) {
+let i;
+let slides = document.getElementsByClassName("mySlides");
+let dots = document.getElementsByClassName("dot");
+if (n > slides.length) { slideIndex = 1; }
+if (n < 1) { slideIndex = slides.length; }
+for (i = 0; i < slides.length; i++) {
+  slides[i].style.display = "none";
+}
+for (i = 0; i < dots.length; i++) {
+  dots[i].className = dots[i].className.replace(" active", "");
+}
+slides[slideIndex - 1].style.display = "block";
+dots[slideIndex - 1].className += " active";
+
+// 更新标题
+updateSlideTitle(slideIndex);
+}
+
+function updateSlideTitle(index) {
+let titleElement = document.getElementById('img-title-' + index);
+let subsectionTitle = document.getElementById('subsection-title');
+let subsectionTitleMobile = document.getElementById('subsection-title-mobile');
+
+if (titleElement) {
+  subsectionTitle.textContent = titleElement.textContent;
+  subsectionTitleMobile.textContent = titleElement.textContent;
+
+} else {
+  subsectionTitle.textContent = '以光之名'; // 处理没有找到标题的情况
+  subsectionTitleMobile.textContent = '以光之名';
+}
+} 
+
+
 </script>
 
   <script>
