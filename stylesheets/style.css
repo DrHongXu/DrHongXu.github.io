@@ -602,3 +602,18 @@ ul ul ul li {
   width: 16px; /* 设置图片宽度 */
   height: 11px; /* 让高度自适应 */
 }
+
+
+.orange-dot-eth {
+  position: absolute;
+  top: 23.1%;
+  left: 50.9%;
+  width: 5px;
+  /* 减小红点尺寸 */
+  height: 5px;
+  /* 减小红点尺寸 */
+  background-color: rgba(255, 140, 0, 0.994);
+  border-radius: 50%;
+  animation: ripple 2s infinite ease-out;
+  /* 更新动画时序函数 */
+}
