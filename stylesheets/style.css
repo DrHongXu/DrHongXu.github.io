@@ -617,3 +617,48 @@ ul ul ul li {
   animation: ripple 2s infinite ease-out;
   /* 更新动画时序函数 */
 }
+
+
+/* Sport Container */
+
+.three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.grid-item {
+  text-align: center;
+}
+
+.grid-image {
+  width: 103%;
+  height: 150px; /*统一图片高度*/
+  object-fit: cover;
+  display: block;
+  border: 0px solid #ccc;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.grid-image:hover {
+  transform: scale(1.07);
+}
+
+.image-title {
+  margin-top: 8px;
+  font-size: normal;
+  color: #333;
+}
+
+  /* Mobile styles - hide .flex-container */
+  @media (max-width: 768px) {
+    .three-col-grid {
+      width: 100%;
+    }
+    .grid-image {
+      height: 110px;
+    }
+  }
