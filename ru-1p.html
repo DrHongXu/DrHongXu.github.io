@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Доктор Сюй | Новая энергия</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" href="stylesheets/base.css">
+  <link rel="stylesheet" href="stylesheets/skeleton.css">
+  <link rel="stylesheet" href="stylesheets/layout.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/navi5.css">
+  <link rel="stylesheet" href="stylesheets/navi6.css">
+  <link rel="stylesheet" href="stylesheets/type.css">
+  <link rel="stylesheet" href="stylesheets/slider.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- Favicons
+  ================================================== -->
+  <link rel="shortcut icon" href="">
+
+  <!-- Google Analytics Tracking Code
+  ================================================== -->
+  <!-- 
+   <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-8161570-5', '');
+    ga('send', 'pageview');
+  </script>
+  -->
+
+  <style>
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+      /* This value is for a 16:9 aspect ratio. Adjust as needed for your video */
+      overflow: hidden;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .red-dot {
+      position: absolute;
+      top: 23.1%;
+      left: 50.9%;
+      width: 5px;
+      /* 减小红点尺寸 */
+      height: 5px;
+      /* 减小红点尺寸 */
+      background-color: rgb(255, 77, 0);
+      border-radius: 50%;
+      animation: ripple 2s infinite ease-out;
+      /* 更新动画时序函数 */
+    }
+
+    @keyframes ripple {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 128, 0, 0.765),
+          0 0 0 10px rgba(255, 0, 0, 0),
+          0 0 0 20px rgba(255, 0, 0, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 5px rgba(255, 0, 0, 0),
+          0 0 0 15px rgba(255, 102, 0, 0.306),
+          0 0 0 25px rgba(255, 0, 0, 0.1);
+      }
+    }
+
+
+
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      /* 或者可以使用 flex-start 来左对齐 */
+      align-items: center;
+      width: 100%;
+      flex-wrap: nowrap;
+      /* 防止元素换行 */
+      padding: 0;
+      /* 移除内边距 */
+      margin: 0;
+      /* 移除外边距 */
+      list-style: none;
+      /* 如果是列表项，移除列表样式 */
+    }
+
+    .flex-container>div,
+    .flex-container>a {
+      margin: 0;
+      /* 移除外边距 */
+      padding: 0;
+      /* 移除内边距 */
+      white-space: nowrap;
+      /* 防止内容换行 */
+    }
+  </style>
+
+  <script type="module">
+    async function fetchCountries() {
+      const response = await fetch('/js/countries.json');
+      const countries = await response.json();
+      return countries;
+    }
+
+    function getCountryNameByCode(countries, code, language = 'english') {
+      const country = countries.find(country => country.abbr === code);
+
+      if (country) {
+        return country[language] || country.english;
+      } else {
+        return 'Земля';
+      }
+    }
+
+    async function displayCountryName() {
+      const countries = await fetchCountries();
+      const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
+      const data = await response.json();
+      const countryCode = data.country.toLowerCase();
+      const language = 'russian'; // 更改为您想要显示的语言
+      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
+      document.getElementById("location2").textContent = countryName;
+      document.getElementById("location").textContent = countryName;
+      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
+      document.getElementById("country-flag").alt = countryName;
+    }
+
+    document.addEventListener('DOMContentLoaded', displayCountryName);
+  </script>
+  <!-- block save as
+      ================================================== -->
+  <script type="text/javascript">
+    window.onload = function () {
+      document.onkeydown = function () {
+        var e = window.event || arguments[0];
+        //屏蔽F12
+        if (e.keyCode == 123) {
+
+          return false;
+          //屏蔽Ctrl+Shift+I
+        } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+
+          return false;
+          //屏蔽Shift+F10
+        } else if ((e.shiftKey) && (e.keyCode == 121)) {
+
+          return false;
+        }
+      };
+      //屏蔽右键单击
+      document.oncontextmenu = function () {
+
+        return false;
+      }
+    }
+  </script>
+
+  <script src="js/language.js"></script>
+
+  <nav class="display-mobile">
+
+    <div class='nav-container'>
+      <div>
+        <a class='slide' href='#'>
+          <span class='element'>X</span>
+          <span class='name'>Хун</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href='#education'>
+          <span class='element'>Ob</span>
+          <span class='name'>Образование</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href='#research-interests'>
+          <span class='element'>Is</span>
+          <span class='name'>Исследовать</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href='#publications'>
+          <span class='element'>Pb</span>
+          <span class='name'>Публикация</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href='#awards'>
+          <span class='element'>Ha</span>
+          <span class='name'>Награды</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href="https://www.linkedin.com/in/xuhong/" target="_blank">
+          <span class='element'>Li</span>
+          <span class='name'>LinkedIn</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href="mailto:h.xu@tum.de" target="_blank">
+          <span class='element'>Ea</span>
+          <span class='name'>Эл.адрес</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank">
+          <span class='element'>Uc</span>
+          <span class='name'>Ученый</span>
+        </a>
+      </div>
+
+      <div>
+        <a class='slide' href='#contact'>
+          <span class='element'>K</span>
+          <span class='name'>Контакт</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+</head>
+
+<body>
+
+  <button onclick="topFunction()" id="myBtn" title="Go to top">⇧</button>
+
+  <!-- Top Navigation Menu -->
+
+
+  <!-- partial:index.partial.html -->
+
+  <!-- Primary Page Layout
+  ================================================== -->
+
+  <!-- Delete everything in this .container and get started on your own site! -->
+  <img class="display-mobile" src="images/banner_mobile_ru3.png" width="800" style="margin-top: -10px;" />
+
+  <div class="container">
+
+    <!-- Sidebar -->
+    <div class="hidden-mobile" class="three columns sidebar">
+      <nav>
+        <h3 id="logo" style="text-align:center;">
+          <img id="optionalstuff" src="images/hong8.png" width="155" />
+          <div style="margin-bottom: 16px;"></div>
+          <h3 class="hidden-mobile" align="left">Хун Сюй</h3>
+
+          <ul>
+            <span style="display: block; height: 6px;"></span>
+            <li><a href="#"> <span class='blue'>Исследователь</span> :: <span class='blue'>Инженер</span> :: <span
+                  class='blue'>Аналитик</span></a></li>
+            <p>____</p>
+            <!--<li><a href="#whoami">Who am I?</a></li>-->
+            <li><a href="#education">Образование</a></li>
+            <!--<li><a href="#work">Работа</a></li>-->
+            <!--<li><a href="#project">Проекты</a></li>-->
+            <!--<li><a href="#activities">Действия</a></li> -->
+            <li><a href="#publications">Публикации</a></li>
+            <!--<li><a href="#patents">Патенты</a></li>-->
+            <!--<li><a href="#presentations">Конференции</a></li>-->
+            <li><a href="#awards">Награды</a></li>
+            <!--<li><a href="#training">Обучение</a></li>-->
+            <!--<li><a href="#fund">Финансирование</a></li>-->
+            <!--<li><a href="#skills">Навыки</a></li>-->
+            <li><a href="#contact">Контакт</a></li>
+            <p>____</p>
+            <!-- <li><a href="#services">Services</a></li> -->
+            <!-- <li><a href="#contact">Contact</a></li> -->
+            <li><a href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span
+                  class='blue'>ЛинкедИн</span></a></li>
+            <li><a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank"
+                target="_blank"><span class='blue'>Google Scholar</span></a></li>
+            <!--<li><a href="https://unknown/files/Hong_XU_CV_github.io.pdf" target="_blank" target="_blank"><span class='blue'>CV</span></a></li>-->
+            <!-- <li><a href="http://www.linkedin.com/in/" target="_blank" target="_blank"><span class='blue'>LinkedIn Profile</span></a></li> -->
+            <li><a href="mailto:h.xu@tum.de" target="_blank" target="_blank"><span class='blue'>h.xu [at]
+                  tum.de</span></a></li>
+            <p>____</p>
+            <!--<li><a href="index.html" target="_self">EN</a> | <a href="cn.html" target="_self">中文</br> 
+          <a href="de.html" target="_self">DE</a> | <a href="fr.html" target="_self">FR</a></li>-->
+            <p></p>
+            <img src="images/logo.png" width="45" />
+
+          </ul>
+      </nav>
+
+    </div>
+
+    <!-- Content -->
+    <div class="twelve columns offset-by-four content">
+
+
+      <!--<img class="hidden-mobile" src="images/banner_ru2.png" width="800" />-->
+
+      <div class="image-wrapper hidden-mobile">
+        <img src="images/banner_ru3.png" width="800" alt="banner Image" />
+        <div class="orange-dot" alt="Hamburg" style="top: 23.1%; left: 50.9%;"></div>
+        <div class="orange-dot" alt="Paris" style="top: 29.5%; left: 48.4%;"></div>
+        <div class="orange-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
+        <div class="orange-dot" alt="Rennes" style="top: 32.3%; left: 47.2%;"></div>
+        <div class="orange-dot" alt="Zurich" style="top: 33.5%; left: 50.6%;"></div>
+        <div class="orange-dot" alt="Beijing" style="top: 43.6%; left: 90.2%;"></div>
+        <div class="orange-dot" alt="Anqing" style="top: 54.9%; left: 90.8%;"></div>
+        <div class="orange-dot" alt="DC" style="top: 44.9%; left: 18%;"></div>
+        <div class="red-dot" alt="Oxford" style="top: 26.7%; left: 46.7%;"></div>
+        <div class="tooltip" style="top:50%; left: 65%;">
+          <h6><img src="images/flag_de.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Гамбург, Германия</h6>
+          <p>Стажировка EuXFEL 2015</p>
+        </div>
+        <div class="tooltip" style="top:54%; left:41%;">
+          <h6><img src="images/flag_fr.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Париж, Франция</h6>
+          <p>Стажировка ENPC 2015</p>
+        </div>
+        <div class="tooltip" style="top:60%; left: 70%;">
+          <h6><img src="images/flag_de.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Мюнхен, Германия</h6>
+          <p>2015-16 MSc ТУМ и ЛМУ</p>
+          <p>2021–23 Инженер НИОКР</p>
+        </div>
+        <div class="tooltip" style="top:58%; left: 39%;">
+          <h6><img src="images/flag_fr.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Ренн, Франция</h6>
+          <p>2014-15 MSc UR1</p>
+        </div>
+        <div class="tooltip" style="top:64%; left:68%;">
+          <h6><img src="images/flag_ch.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Цюрих, Швейцария</h6>
+          <p>2017-21 кандидат наук ETH</p>
+          <p>2016-21 Исследователь PSI</p>
+        </div>
+        <div class="tooltip" style="top:60%; left: 80%;">
+          <h6><img src="images/flag_cn.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Пекин, Китай</h6>
+          <p>2009-13 BSc BJTU</p>
+        </div>
+        <div class="tooltip" style="top:80%; left: 80%;">
+          <h6><img src="images/flag_cn.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Аньцин, Китай</h6>
+          <p>1993–2009 Родной город</p>
+        </div>
+        <div class="tooltip" style="top:55%; left: 37%;">
+          <h6><img src="images/flag_us.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Вашингтон, США</h6>
+          <p>2019-21 QSB MBA</p>
+        </div>
+      </div>
+
+      <p class="hidden-mobile"></p>
+      <h3 class="hidden-mobile">Привет! <small><small><small>Добро пожаловать, друзья из <span id="location">всего мира</span>
+              :-)</small></small> </small>
+        <span style="float:right;font-family:verdana;">
+          <img src="images/flag_ru.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
+          <select id="languages" name="languages"
+            style="width: 85px; color:inherit;display:inline-block;margin-bottom:0px;"
+            onchange="window.location.href=this.options [this.selectedIndex].value">
+            <option value="ru.html" select>Русский</option>
+            <option value="de.html">Deutsch</option>
+            <option value="en.html">English</option>
+            <option value="es.html">Español</option>
+            <option value="fr.html">Français</option>
+            <option value="it.html">Italiano</option>
+            <option value="cn.html">中文</option>
+            <option value="jp.html">日本語</option>
+            <option value="kr.html">한국어</option>
+            <option value="ar.html">اللغة العربية</option>
+          </select>
+        </span>
+      </h3>
+      <p class="hidden-mobile"></p>
+      <p class="display-mobile"></p>
+
+
+      <div class="topnav">
+        <a href="ru.html" class="active">
+          <h3 class="display-mobile">Доктор Хун Сюй</h3>
+        </a>
+        <div id="myLinks">
+          <ul>
+              <hr>
+              <li><img src="images/logo.png" style="float:right" width="45"><strong><a href="ru.html"><small>▸ Обо мне ⇨</small></a></strong><br>
+              </li>
+      
+              <li><a href="ru-research.html"><small><span style="color: rgb(97, 97, 97);">▸ <strong>Научная работа</strong></span></small></a></li>
+              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-research.html#publications" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Публикации</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-research.html#patents" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Патенты</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-research.html#presentations" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Конференции</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-research.html#equity-research" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Ценные бумаги</small></a></li>
+              </div>
+      
+              <li><a href="ru-resume.html"><small style="color: rgb(97, 97, 97);">▸ <strong>Резюме</strong></small></a></li>
+              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-resume.html#education-mobile" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Образование</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-resume.html#academic-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Академический</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-resume.html#industrial-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Промышленный</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-resume.html#awards" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Награды</small></a></li>
+              </div>
+      
+              <li><a href="ru-activities.html"><small style="color: rgb(97, 97, 97);">▸ <strong>Деятельность</strong></small></a></li>
+              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-activities.html" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Выступления</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-activities.html#writing" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Письмо</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-activities.html#visiting" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Посещение</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-activities.html#travel" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Путешествия</small></a></li>
+                  <li style="width: 50%; box-sizing: border-box;"><a href="ru-activities.html#photography" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Фотография</small></a></li>
+              </div>
+      
+              <li><a href="#contact"><small style="color: rgb(97, 97, 97);">▸ <strong>Связаться со мной</strong></small></a><br></li>
+              <hr>
+          </ul>
+      </div>
+      
+      <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()" style="margin-top: 9px; display: inline-block;">
+          <div style="display: flex; align-items: center;">
+              <span style="display: inline-block; height: 15px; line-height: 15px;"><small>МЕНЮ</small></span>
+              <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
+          </div>
+      </a></strong>
+      </div>
+      
+
+
+      <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
+        <text style="color:rgb(237, 118, 7);font-size:15px">➔ Привет! </text>
+        <span style="float:right;">
+          <span style="float:right;font-family:verdana">
+            <select id="languages" name="languages"
+              style="width: 100px;color:inherit;display:inline-block;margin-bottom:0px;"
+              onchange="window.location.href=this.options [this.selectedIndex].value">
+              <option value="ru.html" select>🇷🇺 Русский</option>
+              <option value="de.html">🇩🇪 Deutsch</option>
+              <option value="en.html">🇬🇧 English</option>
+              <option value="es.html">🇪🇸 Español</option>
+              <option value="fr.html">🇫🇷 Français</option>
+              <option value="it.html">🇮🇹 Italiano</option>
+              <option value="cn.html">🇨🇳 中文</option>
+              <option value="jp.html">🇯🇵 日本語</option>
+              <option value="kr.html">🇰🇷 한국어</option>
+              <option value="ar.html">🇸🇦 اللغة العربية</option>
+            </select>
+          </span>
+        </span>
+      </p>
+
+      <p align="justify">
+        <span class="display-mobile">Добро пожаловать, друзья из <span id="location2">всего мира</span> :-)</br></br></span>
+
+      В настоящее время доктор Хун Сюй занимает должность <strong>инженера по НИОКР</strong>, специализирующегося на <strong>системах электропитания</strong> с местом работы в Мюнхене, посвятив себя достижению углеродной нейтральности в секторах <strong>энергетики</strong> и <strong>транспорта</strong>. За время своей карьеры он сотрудничал с международными корпорациями и академическими учреждениями в Европе и Китае, опубликовав более <strong>15 научных статей</strong> с почти <strong>300 цитированиями</strong> и получив <strong>3 патента</strong>. Кроме того, он возглавлял сессию на <strong><a href="https://unfccc.int/" target="_blank">Конференции ООН по изменению климата</a></strong> в Бонне, участвовал в Группе экспертов <strong><a href="https://unece.org/" target="_blank">Экономической комиссии ООН для Европы</a></strong> в Женеве и был членом <strong>академического жюри</strong> на <strong><a href="https://symposium.org/" target="_blank">Симпозиуме в Санкт-Галлене</a></strong> в Швейцарии. Доктор Шу также является рецензентом для нескольких высокоценных журналов в области <strong>энергетики</strong>, <strong>транспорта</strong> и <strong>устойчивого развития</strong>. Его междисциплинарные усилия были отмечены наградами, включая стипендию Сантандер Банк, приглашение на ECS и стипендию на путешествие, стипендию Intel Edge AI, стипендию Эразмус и другие.
+    </p>
+    
+    <p align="justify">
+        Он получил степень доктора философии в области <strong>возобновляемых источников энергии</strong> в <strong><a href="https://ethz.ch/en.html" target="_blank">ЭФГ Цюриха</a></strong>, совместно с <strong><a href="https://psi.ch" target="_blank">Институтом Пауля Шеррера</a></strong> в Швейцарии. До этого он получил степень магистра по науке о материалах в <strong><a href="https://tum.de" target="_blank">Техническом университете Мюнхена</a></strong>, проходя стажировки в <strong><a href="https://xfel.eu" target="_blank">Европейском XFEL</a></strong> и <strong><a href="https://infineon.com" target="_blank">Инфинеон</a></strong> в Германии. Страсть доктора Шу к научным исследованиям, оказывающим влияние, привела его к долгосрочному взаимодействию с лидерами отрасли в области водорода и топливных элементов, включая компанию <strong>Тойота Мотор</strong> в Японии и <strong>Группа Фройденберг</strong> в Германии. Параллельно он получил степень <strong>МБА</strong> в <strong><a href="https://quantic.edu/mba" target="_blank">Школе бизнеса Квантик</a></strong> и прошел исполнительные курсы в <strong><a href="https://www.jbs.cam.ac.uk/" target="_blank">Школе бизнеса Кембриджского университета</a></strong>, получив практический опыт в венчурной капитальной фирме с двойной валютой и в ведущей ценной бумагами компании в Китае.
+    </p>
+    <p style="text-align:left;">
+      PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> LHR (Hello)-> <img id="country-flag" class="flag-icon" src="" alt=""> ?
+      </span>
+    </p>
+      <!---
+         <p class="display-mobile" style="text-align:left; padding: 0px; margin: 0px;">
+          <strong><a class="display-mobile"href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank" target="_blank"><span class='blue'>G-Scholar</span></a></strong><text class="display-mobile"> | </text><strong><a class="display-mobile" href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span class='blue'>LinkedIn</span></a></strong> 
+          <span style="float:right;">
+            <strong><a class="display-mobile" href="mailto:h.xu@tum.de" target="_blank" target="_blank"><span class='blue'>h.xu [at] tum.de</span></a>
+          </span></strong>
+        </p>
+-->
+
+      <p class="hidden-mobile" style="text-align:left;">
+        <strong><a href="//24timezones.com/Zurich/time" style="text-decoration: none" class="clock24"
+            id="tz24-1658678414-c1268-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMSIsInNob3d0aW1lem9uZSI6IjAiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9"
+            title="World Clock :: Zurich" target="_blank" rel="nofollow">Европейское время [CET] </a></strong>
+        <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+        <span style="float:right;">
+          <strong><a href="//24timezones.com/Beijing/time" style="text-decoration: none" class="clock24"
+              id="tz24-1658678453-c133-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMSIsInNob3d0aW1lem9uZSI6IjAiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9"
+              title="actual time Beijing" target="_blank" rel="nofollow">Пекинское время [CST] </a></strong>
+          <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+        </span>
+      </p>
+
+
+      <p class="display-mobile" style="text-align:left;">
+        <strong><a href="//24timezones.com/Zurich/time" style="text-decoration: none" class="clock24"
+            id="tz24-1658714807-c1268-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
+            title="timezone - Zurich" target="_blank" rel="nofollow">Европа</a></strong>
+        <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+        <span style="float:right;">
+          <strong><a href="//24timezones.com/Beijing/time" style="text-decoration: none" class="clock24"
+              id="tz24-1658714942-c133-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
+              title="Time - Beijing" target="_blank" rel="nofollow">Пекин</a></strong>
+          <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+        </span>
+      </p>
+
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+      <div class="doc-section hidden-mobile" id="Carbon-Neutral">
+        <h3 class="hidden-mobile" style="display:inline-block">Цели устойчивого развития ООН</h3>
+        <div style="float: right">
+          <h3>
+            <!-- weather widget start --><a class="hidden-mobile" id="weather" target="_blank"
+              href="https://www.booked.net/weather/beijing-18391"><img
+                src="https://w.bookcdn.com/weather/picture/5_18391_1_1_137AE9_160_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=w209&anc_id=60060"
+                width="100px" alt="booked.net" style="margin-left: 110px; margin-top: -10px;" /></a>
+            <!-- weather widget end -->
+          </h3>
+        </div>
+
+      </div>
+
+      <div class="doc-section display-mobile" id="Carbon-Neutral" style="width:113%">
+        <h3 class="display-mobile" style="display:inline-block">Цели устойчивого развития ООН</h3>
+
+        <!---
+-->
+      </div>
+
+      <div class="doc-section" id="sdgs">
+
+
+        <div class="slideshow-container">
+
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img class="hidden-mobile" src="images/sdg/slider_sdg_ru.png" style="width:100%">
+            <img class="display-mobile" src="images/sdg/slider_sdg_ru_mobi.png" style="width:100%">
+            <div class="text"></div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img class="hidden-mobile" src="images/sdg/slider_sdg7_ru.png" style="width:100%">
+            <img class="display-mobile" src="images/sdg/slider_sdg7_ru_mobi.png" style="width:100%">
+            <div class="text"></div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img class="hidden-mobile" src="images/sdg/slider_sdg8_ru.png" style="width:100%">
+            <img class="display-mobile" src="images/sdg/slider_sdg8_ru_mobi.png" style="width:100%">
+            <div class="text"></div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img class="hidden-mobile" src="images/sdg/slider_sdg9_ru.png" style="width:100%">
+            <img class="display-mobile" src="images/sdg/slider_sdg9_ru_mobi.png" style="width:100%">
+            <div class="text"></div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img class="hidden-mobile" src="images/sdg/slider_sdg11_ru.png" style="width:100%">
+            <img class="display-mobile" src="images/sdg/slider_sdg11_ru_mobi.png" style="width:100%">
+            <div class="text"></div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img class="hidden-mobile" src="images/sdg/slider_sdg13_ru.png" style="width:100%">
+            <img class="display-mobile" src="images/sdg/slider_sdg13_ru_mobi.png" style="width:100%">
+            <div class="text"></div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img class="hidden-mobile" src="images/sdg/slider_sdg14_ru.png" style="width:100%">
+            <img class="display-mobile" src="images/sdg/slider_sdg14_ru_mobi.png" style="width:100%">
+            <div class="text"></div>
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+
+        </div>
+
+
+
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+          <span class="dot" onclick="currentSlide(6)"></span>
+          <span class="dot" onclick="currentSlide(7)"></span>
+        </div>
+
+
+
+        <!---<img class="hidden-mobile" src="images/SDG_all.png" style="width:100%" alt="">
+          <img class="display-mobile" src="images/SDG_all.png" style="width:100%" alt="">--->
+
+
+      </div>
+
+
+      <!---<hr class="hidden-mobile">
+      <div class="video-container hidden-mobile">
+        <video controls>
+          <source src="https://github.com/DrHongXu/DrHongXu.github.io/raw/main/images/Bonn_Climate_v1_8MB.mp4"
+            type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="video-container display-mobile" style="width:113%;padding-bottom: 63.25%;">
+        <video controls>
+          <source src="https://github.com/DrHongXu/DrHongXu.github.io/raw/main/images/Bonn_Climate_v1_8MB.mp4"
+            type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>--->
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+      <div class="doc-section" id="education">
+        <h3>Образование</h3>
+        <ul class="square">
+          <li>2017-2021 | <strong>Доктор наук, Возобновляемая энергия </strong> (полностью финансируется)<br />
+            <strong><a href="https://ethz.ch/en.html" target="_blank">Швейцарский федеральный технологический
+                институт</a></strong>, Швейцария</p>
+
+          <li>2014-2016 | <strong>Магистр, материалы и физика </strong>(двойная степень ЕС)<br />
+            <strong><a href="https://www.tum.de/en/" target="_blank">Технический университет Мюнхена</a></strong>,
+            Германия<br />
+            <strong><a href="https://www.lmu.de/en/" target="_blank">Мюнхенский университет</a></strong>,
+            Германия<br /></p>
+            <!-- <strong><a href="https://www.univ-rennes1.fr/" target="_blank">Университет Ренна 1</a></strong>,
+            Франция<br /> -->
+            <!--[<a href="https://unknown/files/Master_Thesis_LMU_TUM-Xu_Hong.pdf" target="_blank">Диссертация</a>]-->
+
+          <li>2009-2013 | <strong>Бакалавриат, химия материалов</strong> (патент получен)<br />
+            <strong><a href="http://en.bjtu.edu.cn/" target="_blank">Пекинский транспортный университет</a></strong>,
+            Китай<br />
+            <!--[<a href="https://unknown/files/Master_Thesis_LMU_TUM-Xu_Hong.pdf" target="_blank">Диссертация</a>]-->
+            <p>____</p>
+          <li>2023-2023 | <strong>Исполнительное образование, Зелёный переход</strong> (Стипендия)<br />
+            <strong><a href="https://www.jbs.cam.ac.uk/" target="_blank">Бизнес-школа Университета
+                Кембриджа</a></strong>,
+            Великобритания<br />
+          <li>2019-2021 | <strong>МБА, бизнес-администрирование </strong>(неполный рабочий день)<br />
+            <strong><a href="https://quantic.edu/mba" target="_blank">Школе бизнеса Квантик</a></strong>, Вашингтон,
+            округ Колумбия<br /></p>
+
+        </ul>
+      </div>
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+      <div class="doc-section" id="research-interests">
+
+        <h3 class="doc-section" style="display:inline-block">Научные интересы</h3>
+
+        <div class="doc-section hidden-mobile" id="Carbon-Neutral">
+         
+          <div style="float: right">
+            <h3>
+             
+            </h3>
+          </div>
+          <span class="chemicals hidden-mobile">
+            <div class="box-wrapper hidden-mobile">
+              <div class="box hidden-mobile">
+                <h2>H</h2>
+                <p>Водород</br>Энергия</p>
+              </div>
+            </div>
+            <div class="box-wrapper hidden-mobile">
+              <div class="box hidden-mobile">
+                <h2>Li</h2>
+                <p>Литий</br>Батареи</p>
+              </div>
+            </div>
+            <div class="box-wrapper hidden-mobile">
+              <div class="box hidden-mobile">
+                <h2>C</h2>
+                <p>Углерод</br>Ноль</p>
+              </div>
+            </div>
+            <div class="box-wrapper hidden-mobile">
+              <div class="box hidden-mobile">
+                <h2>Si</h2>
+                <p>Кремний</br>Солнечная</p>
+              </div>
+            </div>
+            <div class="box-wrapper hidden-mobile">
+              <div class="box hidden-mobile">
+                <h2>Ic</h2>
+                <p>Изучение</br>Интересы</p>
+                <a href="#research-interests"></a>
+              </div>
+            </div>
+            <div class="box-wrapper hidden-mobile">
+              <div class="box hidden-mobile">
+                <h2>Uc
+                </h2>
+                <p>Учебные</br>курсы</p>
+                <a href="#teaching-services"></a>
+              </div>
+            </div>
+            <div class="box-wrapper hidden-mobile">
+              <div class="box hidden-mobile">
+                <h2>St</h2>
+                <p>Статьи</br>Патенты</p>
+                <a href="#publications"></a>
+              </div>
+            </div>
+            <div class="box-wrapper hidden-mobile">
+              <div class="box hidden-mobile">
+                <h2>Sr</h2>
+                <p>Встречи</br>Переговоры</p>
+                <a href="#presentations"></a>
+              </div>
+            </div>
+          </span>
+        </div>
+  
+        
+        <ul class="square">
+          <li><strong>Возобновляемая энергия</strong>, водород, топливные элементы, электролизер, PV, батареи<br />
+          <li><strong>Энергетическая экономика</strong>, энергетическая политика, ESG-инвестирование, устойчивость<br />
+          <li><strong>Функциональные материалы</strong>, полупроводники, полимеры, металлические оксиды<br />
+          <li><strong>Вычислительная томография</strong>, рентгеновские технологии, компьютерное зрение <br />
+          <li><strong>Исследование акций</strong>, анализ больших данных, бизнес-аналитика<br />
+        </ul>
+      </div>
+
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+      <div class="doc-section" id="academic-services">
+        <h3>Академические услуги</h3>
+        <ul class="square">
+          <li><strong>Рецензент: </strong> <br />
+            – <strong>Преобразование энергии и управление ею</strong> (импакт-фактор = 11,2, 2021 г.)<br />
+            – <strong>Журнал источников энергии</strong> (IF=9.13, 2022 г.)<br />
+            – <strong>Международный журнал водородной энергетики</strong> (IF=7.14, 2021 г.) <br />
+            – <strong>Энергия для устойчивого развития</strong> (IF=5.76, 2021 г.) <br />
+            – <strong>Международный журнал тепло- и массообмена</strong> (IF=5.58, 2022 г.) <br />
+            – <strong>Зеленые технологии и устойчивость</strong> (Новый журнал, 2022 г.) <br />
+            – <strong>Зеленая энергетика и интеллектуальный транспорт</strong> (Новый журнал, 2022 г.) <br />
+          <li><strong>Ассистент преподавателя</strong>: <br />
+            - <strong>Технологии возобновляемых источников энергии</strong> II (магистерский курс, ETH Zurich,
+            2017–2019) <br />
+          <li><strong>Научный сотрудник</strong>: <br />
+            - <strong>Водород и топливные элементы</strong> (Отдел энергетики и окружающей среды, Институт Пауля
+            Шеррера, Швейцария, 2016–2021 гг.) <br />
+            - <strong>Полимерные датчики</strong> (факультет физики Мюнхенского технического университета, Германия,
+            2015–2016 гг.) <br />
+            – <strong>Солнечные элементы и батареи</strong> (Научный факультет Пекинского транспортного университета,
+            Китай, 2012–2013 гг.) <br />
+          <li><strong>Организация</strong>: <br />
+            - Получатель приглашенных докладов/грантов, <strong>The Electrochemical Society</strong> (2019 г., USA)
+            <br />
+            – Член <strong>Международного электрохимического общества</strong> (2019 г., IT) <br />
+            - Член <strong>Физического общества Германии</strong> (2016 г., DE)
+
+
+
+        </ul>
+      </div>
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+      <div class="doc-section" id="publications">
+        <h3>Публикации</h3>
+        <ul class="square">
+          <li><strong>Чистая энергетика / электрохимия</strong></li>
+        </ul>
+        <ol>
+          <li>
+            S. N. Artigas, <strong>H. Xu*</strong> [FDB], F. Mack<br />
+            Use of distribution of relaxation times analysis as an in-situ diagnostic tool for water management in PEM fuel cells applications [J] <br/>
+            2024 | <em><strong>J. Power Sources</strong></em> [<a
+              href="https://www.sciencedirect.com/science/article/abs/pii/S0378775324001307" target="_blank">PDF</a>] <text
+              style="color:rgb(0, 103, 159)">[Фройденберг]</text> <text style="color:red">[Новый!]</text>
+          </li>
+          <li>
+            <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt, F. N. Büchi, J. Eller<br />
+            Effects of gas diffusion layer substrates on PEFC water management: Part II. In situ liquid water
+            desaturation via evaporation [J] <br />
+            2022 | <em><strong>J. Electrochem. Soc.</strong></em> [<a
+              href="https://iopscience.iop.org/article/10.1149/1945-7111/ac94a2" target="_blank">PDF</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text>
+          </li>
+          <li>
+            <strong>H. Xu*</strong> [PSI], S. Nagashima [Тойота], H. Nguyen, K. Kishita, F. Marone, F. N. Büchi, J.
+            Eller [PSI]<br />
+            Temperature dependent water transport mechanism in PEFC gas diffusion layers revealed by subsecond operando
+            X-ray tomographic microscopy. [J] <br />
+            2021 | <em><strong>J. Power Sources </strong></em> [<a
+              href="https://www.sciencedirect.com/science/article/pii/S0378775321000422" target="_blank">PDF</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(250, 49, 14)">[Тойота]</text>
+
+          </li>
+          <li>
+            <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt [ETH], F. N. Büchi, J. Eller
+            [PSI]<br />
+            Effects of gas diffusion layer substrates on PEFC water management: Part I. Operando liquid water
+            saturation
+            and gas diffusion properties [J] <br />
+            2021 | <em><strong>J. Electrochem. Soc.</strong></em> [<a
+              href="https://iopscience.iop.org/article/10.1149/1945-7111/ac1035" target="_blank">PDF</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text>
+          </li>
+
+
+          <li>
+            C. Csoklich, <strong>H. Xu*</strong> [PSI], F. Marone, Prof. T. J. Schmidt [ETH], F. N. Büchi [PSI]<br />
+            Laser Structured Gas Diffusion Layers for Improved Water Transport and Fuel Cell Performance [J] <br />
+            2021 | <em><strong>ACS Appl. Energy Mater. </strong></em> [<a
+              href="https://pubs.acs.org/doi/full/10.1021/acsaem.1c02454" target="_blank">Ссылка</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text>
+          </li>
+          <li>
+            S. van Rooij, M. Magnini, A. Mularczyk, <strong>H. Xu*</strong> [PSI], F. N. Büchi [PSI], Prof. S. Haussener
+            [EPFL]<br />
+            Conductive heat transfer in partially saturated gas diffusion layers with evaporative cooling [J] <br />
+            2022 | <em><strong>J. Electrochem. Soc.</strong></em> [<a
+              href="https://iopscience.iop.org/article/10.1149/1945-7111/ac4e5c" target="_blank">PDF</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(250, 49, 14)">[EPFL]</text>
+          </li>
+          <li>
+            Y. Nagai [Тойота], J. Eller, T. Hatanaka, S. Yamaguchi, S. Kato, A. Kato, F. Marone, <strong>H.
+              Xu*</strong>
+            [PSI], F. N. Büchi. <br />
+            Improving water management in fuel cells through microporous layer modifications: Fast operando
+            tomographic
+            imaging of liquid water. [J] <br />
+            2019 | <em><strong>J. Power Sources </strong></em> [<a
+              href="https://www.sciencedirect.com/science/article/abs/pii/S0378775319307943" target="_blank">Ссылка</a>]
+            <text style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(250, 49, 14)">[Тойота]</text>
+          </li>
+
+
+        </ol>
+
+
+        <ul class="square">
+          <li><strong>Вычислительная визуализация/глубокое обучение</strong></li>
+        </ul>
+
+        <ol>
+
+          <li>
+            M. Bührer, <strong>H. Xu*</strong> [PSI], A. Hendriksend, F. N. Büchi, J. Eller, Prof. M. Stampanoni [ETH],
+            F. Marone [SLS]<br />
+            Deep learning based classification of dynamic processes in time-resolved XTM [J] <br />
+            2021 | <em><strong>Scientific Reports </strong></em> [<a
+              href="https://www.nature.com/articles/s41598-021-03546-8" target="_blank">PDF</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(191, 9, 228)">[CWI Амстердам]</text>
+          </li>
+
+          <li>
+            M. Bührer, <strong>H. Xu*</strong> [PSI], J. Eller, J. Sijbers, Prof. M. Stampanoni [ETH], F. Marone
+            [SLS]<br />
+            Unveiling water dynamics in fuel cells from time-resolved tomographic microscopy data [J] <br />
+            2021 | <em><strong>Scientific Reports </strong></em> [<a
+              href="https://www.nature.com/articles/s41598-020-73036-w" target="_blank">PDF</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(104, 9, 228)">[Университет Антверпена]</text>
+          </li>
+
+
+
+          <li>
+            <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt [ETH], F. N. Büchi, J. Eller
+            [PSI]<br />
+            Optimal image denoising for operando XTM of liquid water in PEFC gas diffusion layers. [J] <br />
+            2020 | <em><strong>J. Electrochem. Soc. </strong></em> [<a
+              href="https://www.research-collection.ethz.ch/handle/20.500.11850/422241" target="_blank">PDF</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text>
+          </li>
+
+          <li>
+            <strong>H. Xu*</strong> [PSI], F. Marone, S. Nagashima [Тойота], H. Nguyen, K. Kishita, F. N. Büchi, J.
+            Eller [PSI]<br />
+            <strong>(Invited)</strong> Exploring sub-second and sub-micron XTM imaging of liquid water in PEFC
+            GDLs.[J]
+            <br />
+            2019 | <em><strong>ECS Transactions </strong></em> [<a
+              href="https://iopscience.iop.org/article/10.1149/09208.0011ecst" target="_blank">PDF</a>] <text
+              style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(250, 49, 14)">[Тойота]</text> <text
+              style="color:rgb(14, 97, 250)">[ECS Travel Grant]</text>
+          </li>
+
+
+          <li>
+            <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt [ETH], F. N. Büchi, J. Eller
+            [PSI]<br />
+            Fighting the noise: towards the limits of subsecond X-ray tomographic microscopy of PEFC. [J] <br />
+            2017 | <em><strong>ECS Transactions </strong></em><strong></strong></em> [<a
+              href="https://www.research-collection.ethz.ch/handle/20.500.11850/224830" target="_blank">Ссылка</a>]
+            <text style="color:rgb(8, 114, 31)">[SLS]</text> <text style="color:rgb(14, 97, 250)">[ModVal Poster
+              Award]</text>
+          </li>
+
+
+        </ol>
+
+        <ul class="square">
+          <li><strong>Материаловедение / Химическая инженерия</strong></li>
+        </ul>
+
+        <ol>
+          <li>
+            Prof. H. Zhang, R. Wu, <strong>H. Xu*</strong> [BJTU], F. Li, S. Wang, J. Wang [BJUT], T. Zhang <br />
+            A simple spray reaction synthesis and characterization of hierarchically porous SnO2 microspheres for an
+            enhanced dye sensitized solar cell. [J] <br />
+            2017 | <em><strong>RSC Advances</strong></em> [<a
+              href="https://pubs.rsc.org/en/content/articlelanding/2017/ra/c6ra27235e#!divAbstract" target="_blank">Ссылка</a>] <text style="color:rgb(14, 144, 250)">[BJTU]</text>
+          </li>
+
+          <li>
+            Prof. H. Zhang [BJTU], <strong>H. Xu*</strong> [BJTU], J. Wan, Prof. L. Yan, C. Dai <br />
+            Preparations of new porous oxides spherical powders by spray reaction technique.[J] <br />
+            2012 | <em><strong>Vacuum & Cryogenics</strong></em> [<a
+              href="https://tow.cnki.net/kcms/detail/detail.aspx?filename=ZKDW201203005&dbcode=CRJT_CJFD&dbname=CJFD2012&v="
+              target="_blank">Ссылка (китайский)</a>] <text style="color:rgb(14, 144, 250)">[BJTU]</text>
+          </li>
+
+          <li>
+            X. Qi, <strong>H. Xu*</strong> [BJTU], X. Zhou <br />
+            Degradation of highly active cypermethrin via ultrasonic irradiation combined with TiO2 photocatalysis.[J]
+            <br />
+            2012 | <em><strong>Chem. Res.</strong></em></em> [<a
+              href="http://hxya.chinajournal.net.cn/WKB/WebPublication/paperDigest.aspx?paperID=10f49d02-6d79-49d1-93cf-d1d7a98f9887"
+              target="_blank">Ссылка (китайский)</a>] <text style="color:rgb(14, 144, 250)">[BJTU]</text>
+          </li>
+        </ol>
+      </div>
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+      <div class="doc-section" id="patents">
+        <h3>Патенты</h3>
+        <ol>
+          <li>
+            <strong>Annular gas-liquid interface jigging magnetic separation device [P]</strong><br />
+            Inventors: Prof. M. Fu, Prof. H. Zhang, <strong>H. Xu</strong> (BJTU), Prof. L. Yan<br />
+            Chinese Patent No.: CN102441489B, Granted on Oct 11, 2013. [<a
+              href="https://patents.google.com/patent/CN102441489B/en" target="_blank">Grant</a>]
+          </li>
+          <li>
+            <strong>Continuously operating annular gas-liquid interface jigging magnetic separation device
+              [P]</strong><br />
+            Inventors: Prof. H. Zhang, <strong>H. Xu</strong> (BJTU), Prof. M. Fu, Prof. L. Yan<br />
+            Chinese Patent No.: CN102441490A, Granted on Nov 1, 2013. [<a
+              href="https://patents.google.com/patent/CN102441490A/en" target="_blank">Grant</a>]
+          </li>
+          <li>
+            <strong>Ultrasonic-photocatalytic oxidation coupled fruit and vegetable cleaning device [P]</strong><br />
+            Inventors: X. Zhou, <strong>H. Xu</strong> (BJTU), Prof. H. Jiang, X. Qi<br />
+            Chinese Patent No.: CN202311136U, Granted on May 9, 2012. [<a
+              href="https://patents.google.com/patent/CN202311136U/en" target="_blank">Grant</a>]
+          </li>
+        </ol>
+      </div>
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+      <div class="doc-section" id="Dissertations">
+        <h3>Тезис</h3>
+        <ol>
+
+          <li>
+            <strong>H. Xu</strong> [ETH], Prof. T. J. Schmidt (examiner), Prof. M. Stampanoni (co-examiner), Dr. J.
+            Eller (advisor)<br />
+            Subsecond Operando X-ray Tomographic Microscopy of Liquid Water in Polymer Electrolyte Fuel Cells [D] <br />
+            <em><strong>PhD </strong>Dissertation. Doctor of Sciences. ETH ZÜRICH, Zürich, Switzerland, 2021.</em> [<a
+              href="https://doi.org/10.3929/ethz-b-000487441" target="_blank">PDF</a>]
+          </li>
+
+          <li>
+            <strong>H. Xu</strong> [TUM], Prof. P. Müller-Buschbaum (examiner), Prof. W. Schmahl (co-examiner), Dr. E.
+            Metwalli <br />
+            Structure & Properties of Thermoresponsive DBC Embedded with Metal Oxide Nanoparticles. [D] <br />
+            <em><strong>Master</strong> Dissertation. Master of Science. LMU & TU MÜNCHEN, Munich, Germany, 2016.</em>
+            [<a href="https://arxiv.org/abs/2007.10111" target="_blank">PDF</a>]
+          </li>
+
+          <li>
+            <strong>H. Xu</strong> [BJTU], Prof. H. Zhang (examiner) <br />
+            Application of Mesoporous SnO2 Materials in Dye-sensitized Solar Cells and Lithium Batteries. [D] <br />
+            <em><strong>Bachelor</strong> Dissertation. Bachelor of Science. BEIJING JIAOTONG UNIV. Beijing, China,
+              2013.</em> [<a href="" target="_blank">PDF</a>]
+          </li>
+        </ol>
+      </div>
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+
+      <h3 class="hidden-mobile" style="display:inline-block">Церемония вручения докторских наград</h3>
+      <div class="video-container hidden-mobile" style="padding-bottom: 48.25%">
+        <video controls poster="images/graduation_preview.png">
+          <source src="/images/Graduation_Ceremony_25MB.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="video-container display-mobile" style="width:113%;padding-bottom: 55.25%;">
+        <video controls poster="images/graduation_preview.png">
+          <source src="/images/Graduation_Ceremony_25MB.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+
+      <div class="doc-section" id="Teaching">
+        <h3>Ассистент преподавателя</h3>
+        <ol>
+          <li>
+            <strong>Технологии возобновляемых источников энергии II, хранение и преобразование энергии </strong><br />
+            ETH Zürich, мастер-курс (529-0191-01L)<br />
+            2017-2019 | Весенний семестр [<a
+              href="http://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2018S&ansicht=ALLE&lerneinheitId=120719&lang=en"
+              target="_blank">Link</a>]
+          </li>
+        </ol>
+      </div>
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+      <div class="doc-section" id="presentations">
+        <h3>Конференции</h3>
+        <ol>
+          <li>
+            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller <br />
+            Influence of Pore Size Distribution on Operando GDL Liquid Saturation.<br />
+            <em>236th Electrochemical Society Meeting (ECS)</em>, Atlanta, USA. 2019. <strong>[Oral]</strong> [<a
+              href="http://ma.ecsdl.org/content/MA2019-02/32/1409.short" target="_blank">Link</a>]
+          </li>
+          <li>
+            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller <br />
+            Advancements in 10Hz operando X-ray Tomographic Imaging of Water in GDLs of PEFC. <br />
+            <em>8th Int. Conference on Fundamentals & Devel. of Fuel Cells (FDFC)</em>, Nantes, France. 2018.
+            <strong>[Oral]</strong> [<a href="" target="_blank">Link</a>]
+          </li>
+          <li>
+            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller <br />
+            Studies of Water Distribution in the Gas Diffusion Layer of PEFCs using X-ray Tomographic Microscopy <br />
+            <em>69th Annual Meeting of the Int. Society of Electrochemistry (ISE)</em>, Bologna, Italy. 2018.
+            <strong>[Poster]</strong> [<a href="https://unknown/files/ModVal2018_Hong_Xu_final.pdf"
+              target="_blank">Link</a>]
+          </li>
+          <li>
+            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller <br />
+            Water Distribution in the Gas Diffusion Layer of PEFCs: X-ray Tomographic Microscopy Studies <br />
+            <em>15th Symposium on Modeling & Exp. Validation (ModVal)</em>, Aarau, Switzerland. 2018. <strong>[Poster
+              Prize]</strong> [<a href="https://unknown/files/ModVal2018_Hong_Xu_final.pdf" target="_blank">Link</a>]
+          </li>
+          <li>
+            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller <br />
+            Quantification of Feature Detectability for Subsecond X-ray Tomographic Microscopy of PEFC. <br />
+            <em>21st European Fuel Cell & Electrolyser Forum (EFCF)</em>, Luzern, Switzerland. 2017.
+            <strong>[Oral]</strong>[<a href="" target="_blank">Link</Link></a>]
+          </li>
+          <li>
+            <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller <br />
+            Contrast-to-Noise Ratio Evaluation for X-ray Computed Tomographic Imaging of Water in Polymer Electrolyte
+            Fuel Cells <br />
+            <em>14th Symposium on Modeling & Exp. Validation (ModVal)</em>, Karlsruhe, Germany. 2017.
+            <strong>[Poster]</strong>[<a href="https://unknown/files/ModVal2017_Hong_Xu_Final.pdf" target="_blank">Link
+              </Link></a>]
+          </li>
+          <li>
+            <strong>H. Xu</strong> [TUM], E. Metwalli, P. Müller-Buschbaum <br />
+            Nanoparticles Embeded Thermoresponsive Diblock Copolymers for Magnetic Sensor Application. <br />
+            <em>2016 Erasmus MaMaSELF Program Status Meeting</em>, Rigi Kulm, Switzerland. 2016. <strong>[Oral]</strong>
+            [<a href="" target="_blank">Link</a>]
+          </li>
+          <li>
+            <strong>H. Xu</strong> [TUM], E. Metwalli, P. Müller-Buschbaum <br />
+            Magnetic properties and structure of thermoresponsive polystyrene-block-poly(N-isopropylacrylamide)/iron
+            oxide nanocomposite thin films. <br />
+            <em>80th Annual Meeting of German Physical Society (DPG)</em>, Regensburg, Germany. 2016.
+            <strong>[Poster]</strong> [<a href="https://unknown/files/Poster_DPG2016_Hong Xu.pdf"
+              target="_blank">Link</a>]
+          </li>
+          <li>
+            <strong>H. Xu</strong> [BJTU], Prof. H. Zhang, R. Wu <br />
+            Mesoporous SnO2Microspheres: Synthesis, Characterization, and Application in Enhanced Dye-sensitized Solar
+            Cells and Lithium Batteries. <br />
+            <em>2013 Energy Particles Frontier Seminar at Tsinghua University</em>, Beijing, China. 2013.
+            <strong>[Poster]</strong> [<a href="https://unknown/files/2013_Bachelor_Thesis_Poster.pdf"
+              target="_blank">Link</a>]
+          </li>
+        </ol>
+      </div>
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+      <!--- <div class="doc-section" id="equity-research">
+          <h3>Equity Research</h3>
+          <ol>
+            <li>
+              2021 [<strong>National Silicon Industry Group</strong> 688126.SH] Silicon Pioneer Group Leading China's Domestic Chip Development (First-time Coverage Report)<br/>
+          </li>
+            <li>
+              2021 [<strong>CREE</strong>: NASDAQ] Technology Pioneer Series Report on CREE: Global Power/RF Device and LED Provider (Secondary Market Research)<br/>
+          </li>
+          <li>
+            2021 [<strong>Jingwei Hirain</strong> 688326.SH] Technology Pioneer Series Report on Jingwei Hirain: Automotive Electronic Technology System Service Provider (Secondary Market Research) <br/>
+        </li>
+        <li>
+          2021 [<strong>UISEE (Beijing)</strong>] Technology Pioneer Series Report on UISEE: Multi-Scenario Autonomous Driving Solution Provider (Primary Market Research) <br/>
+      </li>
+      <li>
+        2021 [<strong>SemiDrive</strong>] Technology Pioneer Series Report - SemiDrive: Intelligent Vehicle Independent IP Chip Provider (Primary Market Research)<br/>
+    </li>
+
+          <li>
+            2021 [<strong>ESWIN (Xi'an)</strong>] Xi'an ESWIN Research and Analysis Report (Primary Market Research)  <br/>
+        </li>
+          <li>
+              2020 [<strong>TankeBlue</strong> 870013.OC] China's Leading Domestic SiC Wafer Manufacturer (Secondary Market Research)  <br/>
+        </li>
+        <li>
+          2020 [<strong>Li-on (Hangzhou)</strong> 605358.SH] Massive Domestic Production Substitution Market: Large Silicon Wafer Industrialization is on the Way (Secondary Market Research) <br/>
+       </li>
+        <li>
+              2020 [<strong>New Materials Industry</strong> Semiconductor Materials Series Report No. 4] 5G pulls optical communication industry chain, indium phosphide materials ready for development (Secondary Market Research)  <br/>
+        </li>
+        <li>
+              2020 [<strong>SinoCera</strong> 300285.SZ] Zirconia Materials Gaining Momentum in Denture Ceramic Materials Industry (Secondary Market Research)   <br/>
+        </li>
+        </ol>
+        </div>       
+        <hr />   
+
+        <div class="doc-section" id="talks">
+          <h3>Дискуссии и модератор</h3>
+          <ol>
+            <li>
+              2022 | <strong>IN3 Capital Salon</strong> Invited Speaker: What is the best thing about "hydrogen energy"? (Session 8 / 100+ online participants)<br/>
+          </li>
+          <li>
+              2022 | <strong>MiraclePlus</strong> Insider Sharing: New Energy Opportunities and Challenges under Carbon Neutral Vision - Technology Frontiers, Policies and Investment Opportunities (50+ online participants)<br/>
+          </li>
+          <li>
+              2022 | <strong>Dr. Transformer</strong> Roundtable Moderator: IC/Chip/Semiconductor/Frontier - Online Roundtable for Domestic and International PhD Students (100+ online participants)<br/>
+          </li>
+          <li>
+              2021 | <strong>Clubhouse</strong> Moderator: PhD Vision in the Energy Crisis - Focus on New Energy Policies/Technologies by Countries (Light/Wind/Lithium/Hydrogen/Nuclear) (200+ members)<br/>
+        </li>
+        </ol>
+        </div>       
+        <hr />   
+
+        <div class="doc-section" id="writing">
+          <h3>Пишу</h3>
+          <ol>
+            <li>
+              2023 | <strong>Once Upon A PhD</strong> (Memoir): Once Upon A PhD: Ten Years in Europe (in progress)<br/>
+          </li>
+            <li>
+              2022 | <strong>Huiyin Capital China</strong> (WeChat Public Account Reproduction): New Energy Taichi Diagram: Lithium vs. Hydrogen, Who Can Take the Carbon Neutral Crown?<br/>
+          </li>
+          <li>
+              2022 | <strong>Zhihu Roundtable</strong> (Sponsored by the World Congress of New Energy Vehicles): Which of the three major power of new energy vehicles: battery swapping, battery charging, or fuel cell, will be the future?<br/>
+        </li>
+          <li>
+              2022 | <strong>Dr. Transformer</strong> (Wechat Public Account): Russia-Ukraine Conflict: Undercurrents and Crises in European Energy Security, and the Impacts on China and the United States<br/>
+          </li>
+        </ol>
+        </div>       
+        <hr />   
+
+        <div class="doc-section" id="awards">
+          <h3>Честь и Почет</h3>
+          <ol>
+            <li>
+              2019 | <strong>ECS Travel Grant</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
+              <em>ECS Conference Committee</em>, Atlanta, USA. [USD 1'500]
+            </li>                
+            <li>
+              2018 | <strong>Poster Prize</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
+              <em>ModVal Conference Committee</em>, Aarau, Switzerland. [CHF 300]
+            </li>      
+
+            <li>
+              2015 | <strong>Erasmus Scholarship</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
+              <em>European Education, Audiovisual and Culture Executive Agency</em>. [EUR 2'640]
+            </li>   
+
+            <li>
+              2012 | <strong>TECO Finalist</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
+              <em>Taipei TECO Technology Foundation</em>, Taipei, R.O.China. [NTD 50'000]
+            </li>
+
+            <li>
+              2012 | <strong>National Bronze</strong> [<a href="" target="_blank">Cert.</Link></a>] <br/>
+              <em>8th CHALLENGE CUP Business Plan Competition</em>, Beijing, China. [RMB 5'000]
+            </li>
+            <li>
+              2012 | <strong>Innovation Scholarship</strong> <br/>
+              <em>Beijing Jiaotong University</em>, Beijing, China. [RMB 2'500]
+            </li>
+            <li>
+              2010 | <strong>Learning Scholarship (3 years)</strong> <br/>
+              <em>Beijing Jiaotong University</em>, Beijing, China. [RMB 2'400]
+            </li>
+          </ol>
+        </div>       
+        <hr />    
+        
+        
+        <div class="doc-section" id="training">
+          <h3>Внеклассные занятия</h3>
+          <ol>
+            <li>
+              2020 | <strong>Applied Machine Learning</strong> <br/>
+              <em>EPF Lausanne</em>, Lausanne, Switzerland.
+            </li>
+            <li>
+              2020 | <strong>Industrial Computed Tomography</strong> <br/>
+              <em>University of Applied Sciences</em>, Wels, Austria
+            </li>
+            <li>
+              2019 | <strong>IBM Data Science Professional Certificate</strong> <br/>
+              <em>IBM Inc. & Coursera</em>, USA. [<a href="https://www.coursera.org/account/accomplishments/specialization/RKL5DP32L697?utm_medium=certificate&utm_source=link&utm_campaign=copybutton_certificate" target="_blank">Credential</Link></a>]
+            </li>
+            <li>
+              2019 | <strong>Machine Learning in Imaging</strong> <br/>
+                <em>University of Bern</em>, Bern, Switzerland.
+              </li>
+            <li>
+              2019 | <strong>Neural Networks & Deep Learning</strong> <br/>
+                <em>deeplearning.ai & Coursera</em>, USA. [<a href="https://www.coursera.org/account/accomplishments/verify/ZL4B8AXLLQ8P?utm_medium=certificate&utm_source=link&utm_campaign=copybutton_certificate" target="_blank">Credential</Link></a>]
+              </li>
+            <li>
+              2017 | <strong>Biomedical Imaging Summer School</strong> <br/>
+              <em>University Hospital Zurich (USZ)</em>, Zurich, Switzerland.
+            </li>
+            <li>
+              2016 | <strong>Applied Physics Summer School</strong> <br/>
+              <em>Technical University of Munich</em>, München, Germany.
+            </li>
+            <li>
+              2015 | <strong>X-ray & Neutron Summer School</strong> <br/>
+              <em>Université de Montpellier</em>, Montpellier, France. 
+            </li>
+          </ol>
+        </div>  
+
+        <hr />
+--->
+      <div class="doc-section" id="visiting">
+        <h3>Посещение</h3>
+        <ul class="square">
+          <li><strong>Синхротрон</strong>: SOLEIL (Париж, 2015 г.), Немецкий электронный синхротрон (Гамбург, 2016 г.),
+            European XFEL (Гамбург, 2016 г.), ELETTRA (Триест, 2016 г.), Swiss Light Source (Виллиген, 2017 г.)</li>
+          <li><strong>Реактор</strong>: Центр ядерных исследований CEA Saclay (Париж, 2015 г.), Исследовательский
+            источник нейтронов Хайнца Майера-Лейбница (Мюнхен, 2016 г.), Атомная электростанция Безнау (Аргау, 2018 г.)
+          </li>
+          <li><strong>Организация</strong>: Офис Организации Объединенных Наций (Нью-Йорк, 2019 г.), Агентство водных
+            ресурсов Сена-Нормандия (Париж, 2016 г.), Бюро городского планирования города Сучжоу (Цзянсу, 2016 г.), Бюро
+            экологической среды города Чжэнчжоу (Хэнань, 2014 г.), Бюро охраны окружающей среды города Кайфэн (Хэнань,
+            2014 г.)</li>
+        </ul>
+      </div>
+
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+      <div class="doc-section" id="skills">
+        <h3>Навыки</h3>
+        <ul class="square">
+          <li><strong>английский</strong> (свободно, C1), <strong>китайский</strong> (родной, C2),
+            <strong>немецкий</strong> (в процессе, B1), <strong>Французский</strong> (базовый, A2)</strong><br />
+          </li>
+          <li><a href="https://xgraphy.github.io" target="_blank">Фотография</a>, написание текстов, монтаж видео,
+            походы, езда на велосипеде, настольный теннис, китайская кухня<br /></li>
+        </ul>
+      </div>
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+      <div class="doc-section" id="travel">
+        <h3>Путешествовать</h3>
+        <ul class="square">
+          <li><strong>Азия</strong>: Китай (материк), Тайвань, Россия, Турция, Таиланд</li>
+          <li><strong>Европа</strong>: Австрия, Бельгия, Босния и Герцеговина, Хорватия,
+            Чехия, Дания, Эстония, Финляндия, Франция, Германия (25+ городов), Гибралтар, Венгрия, Исландия, Ирландия, Италия,
+            Лихтенштейн, Люксембург, Мальта, Нидерланды, Норвегия, Португалия, Польша, Сербия, Словения, Испания,
+            Швеция, Швейцария (30+ городов), Великобритания</li>
+          <li><strong>Северная Америка</strong>: США, Канада</li>
+          <li><strong>Африка</strong>: Гран-Канария (Испания)</li>
+          <li><strong>Всего</strong>: посетили 35 из 197 стран/регионов мира.</li>
+          <img src="/images/visited_map.gif" style="width:100%;" alt="Example GIF">
+        </ul>
+      </div>
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+
+
+
+
+      <div class="doc-section" id="contact">
+        <h3>Свяжитесь со мной</h3>
+        <ul class="square">
+          <li><strong>Эл. адрес</strong>: <a href="mailto:h.xu@tum.de" target="_blank" target="_blank"><span
+                class='blue'>h.xu [at] tum.de</span></a><br /></li>
+          <li><strong>ЛинкедИн</strong>: <a href="https://www.linkedin.com/in/xuhong/" target="_blank"
+              target="_blank"><span class='blue'>linkedin.com/in/xuhong/</span></a><br /></li>
+          <li><strong>Google Scholar ID</strong>: <a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en"
+              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a><br /></li>
+          <!-- <a href="https://info.flagcounter.com/D897" target="_blank"><img
+            src="https://s01.flagcounter.com/count/D897/bg_FFFFFF/txt_404040/border_FFFFFF/columns_8/maxflags_16/viewers_3/labels_0/pageviews_1/flags_0/percent_0/"
+            border="0"></a> -->
+          <a href="https://www.flagcounter.me/details/enB"><img src="https://www.flagcounter.me/enB/"
+              alt="Flag Counter"></a> <!---Pass: AHlUufteU-->
+        </ul>
+
+        <!--
+              <div id="findipwidget"></div><div class="findiplink" id="findipurl">  <a href="http://www.find-ip.net/" target="_blank"> </a></div><script defer src="https://api.find-ip.net/widget.js?width=380&bg=white&border=white&textcol=black&region=0&language=0&browser=0&system=0&flag=0&"></script> -->
+        </ul>
+      </div>
+
+
+
+      <br>
+
+
+    </div><!-- Content -->
+
+    <footer class="eleven center-column">
+      <!-- <img src="images/logoline.png" width="80%" />-->
+      <div class="flex-container">
+        <div id="date-display"></div>
+        <div><a href="//24timezones.com/San-Francisco/time" style="text-decoration: none;color:#f35212" class="clock24"
+            id="tz24-1705207058-c1224-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
+            title="Clock-San Francisco" target="_blank" rel="nofollow">Ванкувер</a></div>
+
+        <div><a href="//24timezones.com/%E7%B4%90%E7%B4%84%E5%B8%82/%E6%97%B6%E9%97%B4"
+            style="text-decoration: none;color:#f35212" class="clock24"
+            id="tz24-1705206204-c1179-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6InpoIn0="
+            title="時間 紐約市" target="_blank" rel="nofollow">Нью-Йорк</a></div>
+
+        <div><a href="//24timezones.com/London/time" style="text-decoration: none;color:#f35212" class="clock24"
+            id="tz24-1705206827-c1136-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
+            title="time in London" target="_blank" rel="nofollow">Лондон</a></div>
+
+        <div><a href="//24timezones.com/Paris/time" style="text-decoration: none;color:#f35212" class="clock24"
+            id="tz24-1705206628-c1195-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
+            title="Paris current time" target="_blank" rel="nofollow">Париж</a></div>
+
+        <div><a href="//24timezones.com/Moscow/time" style="text-decoration: none;color:#f35212" class="clock24"
+            id="tz24-1705207393-c1166-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
+            title="current time in Moscow" target="_blank" rel="nofollow">Москва</a></div>
+
+        <div><a href="//24timezones.com/Beijing/time" style="text-decoration: none;color:#f35212" class="clock24"
+            id="tz24-1705206677-c133-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
+            title="Beijing time now" target="_blank" rel="nofollow">Пекин</a></div>
+        <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+
+      </div>
+      <hr class="large" />
+      <p><strong>Конечная игра</strong> проводится для <strong>выигрыша</strong>, а <strong>бесконечная игра</strong>
+        используется для <strong>продолжения</strong> игры. <br /><small>Авторское право © 2016-
+          <script>const currentYear = new Date().getFullYear(); document.write(currentYear);</script> | Доктор Хун Сюй |
+          Обновлено: 03.2023
+        </small>
+
+      </p>
+    </footer>
+
+  </div><!-- container -->
+  <!-- js partial -->
+  <script>
+    const orangeDots = document.querySelectorAll('.orange-dot');
+    const tooltips = document.querySelectorAll('.tooltip');
+
+    orangeDots.forEach((dot, index) => {
+      const tooltip = tooltips[index];
+      dot.addEventListener('mouseover', () => {
+        tooltip.classList.add('show');
+      });
+
+      dot.addEventListener('mouseout', () => {
+        tooltip.classList.remove('show');
+      });
+    });
+  </script>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+  </script>
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  // Auto transition the slides every 1.5 seconds
+  let slideInterval = setInterval(() => {
+    plusSlides(1);
+  }, 3500);
+
+  function plusSlides(n) {
+    clearInterval(slideInterval);
+    showSlides(slideIndex += n);
+    slideInterval = setInterval(() => {
+      plusSlides(1);
+    }, 3500);
+  }
+
+  function currentSlide(n) {
+    clearInterval(slideInterval);
+    showSlides(slideIndex = n);
+    slideInterval = setInterval(() => {
+      plusSlides(1);
+    }, 3500);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+  }
+</script>
+
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('date-display').innerHTML = getCurrentDateFormatted('ru-RU');
+    });
+
+    function getCurrentDateFormatted(locale) {
+      const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        weekday: 'short'
+      };
+
+      const currentDate = new Date().toLocaleDateString(locale, options);
+      // Split the string to get the components.
+      // Russian format comes as "weekday, day.month.year" (depending on browser implementation)
+      const parts = currentDate.split(', ');
+      const weekday = parts[0].trim();
+      const date = parts[1].trim().replace(/\./g, '.'); // Keep dots as they are
+
+      // Construct the date as "Weekday - DD.MM.YYYY г."
+      return `<span style="color:#f35212;">${weekday}</span> - ${date}`;
+    }
+  </script>
+
+  <script type="text/javascript">
+    window.onload = function () {
+      // Block certain keyboard shortcuts
+      document.onkeydown = function (e) {
+        e = e || window.event;
+
+        // Block F12
+        if (e.keyCode == 123) {
+          return false;
+        }
+        // Block Ctrl+Shift+I
+        else if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+          return false;
+        }
+        // Block Shift+F10
+        else if (e.shiftKey && e.keyCode == 121) {
+          return false;
+        }
+        // Block Ctrl+S (Save As)
+        else if (e.ctrlKey && e.keyCode == 83) {
+          e.preventDefault();
+          return false;
+        }
+        // Block Ctrl+C (Copy)
+        else if (e.ctrlKey && e.keyCode == 67) {
+          return false;
+        }
+      };
+
+      // Block right-click context menu
+      document.oncontextmenu = function () {
+        return false;
+      };
+
+      // Block text selection (Copy action)
+      document.onselectstart = function () {
+        return false;
+      };
+    };
+  </script>
+
+  <!-- End Document
+================================================== -->
+</body>
+
+</html>

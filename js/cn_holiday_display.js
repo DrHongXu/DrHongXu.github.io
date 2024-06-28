@@ -12,6 +12,7 @@ let recurringHolidays = [
     { date: '10-31', greeting: '🇺🇸🇨🇦 万圣节快乐!<br>', range: 2 },
     { date: '12-25', greeting: '🇪🇺 圣诞节快乐!<br>', range: 5 },
     { date: '05-17', greeting: '🏳️‍🌈 IDAHOTB<br>', range: 5 },
+    { date: '06-27', greeting: '🇩🇪 欧洲杯！<br>', range: 5 },
 
 ];
 

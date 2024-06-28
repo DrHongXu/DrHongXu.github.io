@@ -69,34 +69,27 @@
 }
   </style>
 
+<style>
+  .image-container {
+      position: relative;
+      display: inline-block;
+  }
+  .image-container img {
+      width: 800px;
+  }
+  .image-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 16px;
+      background-color: rgba(0, 0, 0, 0);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+  }
+</style>
 
-  <!-- block save as
-      ================================================== -->
-      <script type="text/javascript">
-        window.onload = function () {
-          document.onkeydown = function () {
-            var e = window.event || arguments[0];
-            //屏蔽F12
-            if (e.keyCode == 123) {
-    
-              return false;
-              //屏蔽Ctrl+Shift+I
-            } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
-    
-              return false;
-              //屏蔽Shift+F10
-            } else if ((e.shiftKey) && (e.keyCode == 121)) {
-    
-              return false;
-            }
-          };
-          //屏蔽右键单击
-          document.oncontextmenu = function () {
-    
-            return false;
-          }
-        }
-      </script>
+
 
 
   <nav class="display-mobile">
@@ -203,6 +196,8 @@
     document.addEventListener('DOMContentLoaded', displayCountryInfo);
   </script>
 
+<script type="text/javascript" src="/js/block_save_as.js"></script> 
+
 </head>
 
 
@@ -267,6 +262,7 @@
             <img src="images/logo.png" width="45" />
             <br>
             <span id="greetings" style="color: rgb(253, 93, 7); font-weight: bold;"></span>
+            
 
           </ul>
       </nav>
@@ -279,7 +275,11 @@
       <!--<img class="hidden-mobile" src="images/banner_cns2.png" width="800" />-->
 
       <div class="image-wrapper hidden-mobile ">
-        <img src="images/banner_cns3.gif" width="800" alt="banner Image" />
+        <div class="image-container">
+          <img src="images/banner_cns3.gif" alt="banner Image">
+          <div class="image-caption"></div>
+      </div>
+
         <div class="orange-dot" alt="Hamburg" style="top: 23.1%; left: 50.9%;"></div>
         <div class="orange-dot" alt="Paris" style="top: 29.5%; left: 48.4%;"></div>
         <div class="orange-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
@@ -888,7 +888,7 @@ if (/windows/i.test(navigator.userAgent)) {
   document.body.classList.add('win')
 }
 </script>
-<script type="text/javascript" src="/js/block_save_as.js"></script>
+
 
 <script type="text/javascript" src="/js/cn_fanti_translate.js"></script>
 
