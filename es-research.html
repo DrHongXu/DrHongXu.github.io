@@ -11,7 +11,7 @@
   <!-- Basic Page Needs
   ================================================== -->
   <meta charset="utf-8">
-  <title>Dr. Hóng Xú | Nouvelle énergie</title>
+  <title>Dr. Hong Xú | Energía nueva</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -135,7 +135,6 @@
   </style>
 
 
-  <!---法语冠词特别版，请勿copy-->
   <script type="module">
     async function fetchCountries() {
       const response = await fetch('/js/countries.json');
@@ -149,14 +148,8 @@
       if (country) {
         return country[language] || country.english;
       } else {
-        return 'monde';
+        return 'mundo';
       }
-    }
-
-    function addFrenchArticle(countryName) {
-      const firstLetter = countryName.charAt(0).toLowerCase();
-      const isVowel = 'aeiou'.indexOf(firstLetter) !== -1;
-      return isVowel ? `d'${countryName}` : `de ${countryName}`;
     }
 
     async function displayCountryName() {
@@ -164,21 +157,16 @@
       const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
       const data = await response.json();
       const countryCode = data.country.toLowerCase();
-      const language = 'french'; // 更改为您想要显示的语言
-
+      const language = 'spanish'; // 更改为您想要显示的语言
       const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
-      const formattedCountryName = addFrenchArticle(countryName);
-
-      document.getElementById("location").textContent = formattedCountryName;
-      document.getElementById("location2").textContent = formattedCountryName;
-
+      document.getElementById("location2").textContent = countryName;
+      document.getElementById("location").textContent = countryName;
       document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
       document.getElementById("country-flag").alt = countryName;
     }
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
   </script>
-
 
   <!-- block save as
       ================================================== -->
@@ -220,25 +208,25 @@
       <div>
         <a class='slide' href='#education'>
           <span class='element'>Ed</span>
-          <span class='name'>Éducation</span>
+          <span class='name'>Educación</span>
         </a>
       </div>
       <div>
         <a class='slide' href='#research-interests'>
-          <span class='element'>Re</span>
-          <span class='name'>Recherche</span>
+          <span class='element'>In</span>
+          <span class='name'>Investigación</span>
         </a>
       </div>
       <div>
         <a class='slide' href='#publications'>
           <span class='element'>Pb</span>
-          <span class='name'>Publication</span>
+          <span class='name'>Publicaciones</span>
         </a>
       </div>
       <div>
         <a class='slide' href='#awards'>
           <span class='element'>Pr</span>
-          <span class='name'>Prix</span>
+          <span class='name'>Premios</span>
         </a>
       </div>
       <div>
@@ -249,7 +237,7 @@
       </div>
       <div>
         <a class='slide' href="https://www.linkedin.com/in/xuhong/" target="_blank">
-          <span class='element'>In</span>
+          <span class='element'>Li</span>
           <span class='name'>LinkedIn</span>
         </a>
       </div>
@@ -285,7 +273,7 @@
   ================================================== -->
 
   <!-- Delete everything in this .container and get started on your own site! -->
-  <img class="display-mobile" src="images/banner_mobile_fr3.png" width="800" style="margin-top: -10px;" />
+  <img class="display-mobile" src="images/banner_mobile_es3.png" width="800" style="margin-top: -10px;" />
 
   <div class="container">
 
@@ -295,25 +283,23 @@
         <h3 id="logo" style="text-align:center;">
           <img id="optionalstuff" src="images/hong8.png" width="155" />
           <div style="margin-bottom: 18px;"></div>
-          <h3 class="hidden-mobile" align="left">Dr. Hóng Xú</h3>
+          <h3 class="hidden-mobile" align="left">Dr. Hong Xú</h3>
 
           <ul>
             <span style="display: block; height: 6px;"></span>
-            <li><a href="#"> <span class='blue'>Chercheur</span> :: <span class='blue'>Ingénieur</span> :: <span
-                  class='blue'>Analyste</span></a></li>
+            <li><a href="#"> <span class='blue'>Investigador</span> :: <span class='blue'>Ingeniero</span> :: <span
+                  class='blue'>Analista</span></a></li>
                   <p>____</p>
-                  <li><a href="fr.html"><span style="color: rgb(253, 93, 7);">Biographie ⏴</span></a></li>
-                  <li><a href="fr-research.html">Recherche</a></li>
-                  <li><a href="fr-resume.html">Résumé</a></li>
-                  <li><a href="fr-activities.html">Activités</a></li>
-                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="es.html"><span >Biografía</span></a></li>
+                  <li><a href="es-research.html"><span style="color: rgb(253, 93, 7);">Investigación ⏴</span></a></li>
+                  <li><a href="#publications">&nbsp;• Publicaciones</a></li>
+                  <li><a href="#patents">&nbsp;• Patentes</a></li>
+                  <li><a href="#presentaciones">&nbsp;• Conferencias</a></li>
+                  <li><a href="#equity-research">&nbsp;• Investigación de acciones</a></li>
+                  <li><a href="es-resume.html">Currículum vitae</a></li>
+                  <li><a href="es-activities.html">Actividades</a></li>
                   <p>____</p>
-                  <li><a href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span
-                  class='blue'>LinkedIn</span></a></li>
-                  <li><a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank"
-                  target="_blank"><span class='blue'>Google Scholar</span></a></li>
-                  <li><a href="mailto:h.xu@tum.de" target="_blank" target="_blank"><span class='blue'>h.xu [at]
-                  tum.de</span></a></li>
+                  <li><a href="#contacto"><span style="color: rgb(253, 93, 7);">Contacto</span></a></li>
                   <p>____</p>
             <p></p>
             <img src="images/logo.png" width="45" />
@@ -327,10 +313,10 @@
     <div class="twelve columns offset-by-four content">
 
 
-      <!--<img class="hidden-mobile" src="images/banner_fr2.png" width="800" />-->
+      <!--<img class="hidden-mobile" src="images/banner_es2.png" width="800" />-->
 
       <div class="image-wrapper hidden-mobile">
-        <img src="images/banner_fr3.gif" width="800" alt="banner Image" />
+        <img src="images/banner_es3.gif" width="800" alt="banner Image" />
         <div class="orange-dot" alt="Hamburg" style="top: 23.1%; left: 50.9%;"></div>
         <div class="orange-dot" alt="Paris" style="top: 29.5%; left: 48.4%;"></div>
         <div class="orange-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
@@ -343,78 +329,78 @@
 
         <div class="red-dot" alt="Munich" style="top: 31.3%; left: 51.6%; z-index: 9999;"></div>
 
+
         <div class="tooltip" style="top:50%; left: 65%;">
           <h6><img src="images/flag_de.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
-            Hambourg, Allemagne</h6>
+            Hamburgo, Alemania</h6>
           <p>2015</p>
         </div>
         <div class="tooltip" style="top:54%; left:41%;">
           <h6><img src="images/flag_fr.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
-            Paris, France</h6>
+            París, Francia</h6>
           <p>2015</p>
         </div>
         <div class="tooltip" style="top:60%; left: 70%;">
           <h6><img src="images/flag_de.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
-            Munich, Allemagne</h6>
+            Múnich, Alemania</h6>
           <p>2015-16</p>
           <p>2021-24</p>
         </div>
         <div class="tooltip" style="top:58%; left: 39%;">
           <h6><img src="images/flag_fr.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
-            Rennes, France</h6>
+            Rennes, Francia</h6>
           <p>2014-15</p>
         </div>
         <div class="tooltip" style="top:64%; left:68%;">
           <h6><img src="images/flag_ch.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
-            Zurich, Suisse</h6>
+            Zúrich, Suiza</h6>
           <p>2016-21</p>
         </div>
         <div class="tooltip" style="top:60%; left: 80%;">
           <h6><img src="images/flag_cn.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
-            Pékin, Chine</h6>
+            Pekín, China</h6>
           <p>2009-13</p>
         </div>
         <div class="tooltip" style="top:80%; left: 80%;">
           <h6><img src="images/flag_cn.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
-            Anqing, Chine</h6>
+            Anqing, China</h6>
           <p>1993–2009</p>
         </div>
-        <div class="tooltip" style="top:55%; left: 37%;">
+        <div class="tooltip" style="top:55%; left: 41%;">
           <h6><img src="images/flag_us.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
-            Washington DC, États-Unis</h6>
+            Washington D.C., EE.UU.</h6>
           <p>2019-21</p>
         </div>
       </div>
 
 
       <p class="hidden-mobile"></p>
-      <h3 class="hidden-mobile">Bonjour! Salut! <small><small><small> Bienvenue aux amis <span id="location">du monde</span>
-              :-)</small></small> </small>
+      <h3 class="hidden-mobile">¡Hola, qué alegría! <small><small> <small>Bienvenidos amigos de <span
+                id="location">mundo</span> :-)</small></small> </small>
         <span style="float:right;font-family:verdana">
-          <img src="images/flag_fr.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
-          <img src="images/flag_ch.png" alt="flag" style="height:16px;display:inline-block;top:3px;position:relative;">
+          <img src="images/flag_es.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
+          <img src="images/flag_ar.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
           <select id="languages" name="languages"
             style="width: 85px; color:inherit;display:inline-block;margin-bottom:0px;"
             onchange="window.location.href=this.options [this.selectedIndex].value">
-            <option value="fr.html" select>Français</option>
-            <option value="de.html">Deutsch</option>
-            <option value="en.html">English</option>
-            <option value="es.html">Español</option>
-            <!---
-            <option value="it.html">Italiano</option>
-            <option value="ru.html">Русский</option>
-            <option value="cn.html">中文</option>
-            <option value="jp.html">日本語</option>
-            <option value="kr.html">한국어</option>
-            <option value="ar.html">اللغة العربية</option>
+            <option value="es-research.html" select>Español</option>
+            <option value="de-research.html">Deutsch</option>
+            <option value="en-research.html">English</option>
+            <option value="fr-research.html">Français</option>
+            <!---<option value="it-research.html">Italiano</option>
+            <option value="ru-research.html">Русский</option>
+            <option value="cn-research.html">中文</option>
+            <option value="jp-research.html">日本語</option>
+            <option value="kr-research.html">한국어</option>
+            <option value="ar-research.html">اللغة العربية</option>
             --->
           </select>
         </span>
@@ -424,72 +410,72 @@
 
 
       <div class="topnav">
-        <a href="fr.html" class="active">
-          <h3 class="display-mobile">Dr. Hóng Xú</h3>
+        <a href="es.html" class="active">
+          <h3 class="display-mobile">Dr. Hong Xú</h3>
         </a>
         <div id="myLinks">
           <ul>
             <hr>
-            <li><img src="images/logo.png" style="float:right" width="45"><strong><a href="fr.html"><small>▸ Biographie ⇨</small></a></strong><br>
+            <li><img src="images/logo.png" style="float:right" width="45"><strong><a href="es.html"><small>▸ Biografía ⇨</small></a></strong><br>
             </li> 
             
-            <li><a href="fr-research.html"><small><span style="color: rgb(97, 97, 97);">▸ <strong>Progrès de la recherche</strong></span></small></a></li>
+            <li><a href="es-research.html"><small><span style="color: rgb(97, 97, 97);">▸ <strong>Avances de la investigación</strong></span></small></a></li>
             <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-research.html#publications" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Publications</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-research.html#patents" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Brevets</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-research.html#presentations" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Conférences</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-research.html#equity-research" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Les titres</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-research.html#publications" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Publicaciones</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-research.html#patents" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Patentes</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-research.html#presentations" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Conferencias</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-research.html#equity-research" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Los valores</small></a></li>
           </div>
              
-            <li><a href="fr-resume.html"><small style="color: rgb(97, 97, 97);">▸ <strong>Résumé</strong></small></a></li>
+            <li><a href="es-resume.html"><small style="color: rgb(97, 97, 97);">▸ <strong>Currículum vitae</strong></small></a></li>
             <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-resume.html#education-mobile" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Éducation</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-resume.html#academic-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Académique</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-resume.html#industrial-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Industriel</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-resume.html#awards" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Distinctions</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-resume.html#education-mobile" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Educación</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-resume.html#academic-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Académico</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-resume.html#industrial-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Industrias</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-resume.html#awards" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Premios</small></a></li>
           </div>
              
-            <li><a href="fr-activities.html"><small style="color: rgb(97, 97, 97);">▸ <strong>Extracurriculars</strong></small></a></li>
+            <li><a href="es-activities.html"><small style="color: rgb(97, 97, 97);">▸ <strong>Actividades</strong></small></a></li>
             <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-activities.html" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Conférencier</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-activities.html#writing" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• En écrivant</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-activities.html#visiting" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• En visite</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-activities.html#travel" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• En voyage</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="fr-activities.html#photography" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• La photographie</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-activities.html" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Orador público</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-activities.html#writing" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Escribiendo</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-activities.html#visiting" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Visitando</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-activities.html#travel" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• El viajar</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="es-activities.html#photography" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• Fotografía</small></a></li>
             </div>          
               
-            <li><a href="#contact"><small style="color: rgb(97, 97, 97);">▸ <strong>Contactez-moi</strong></small></a><br></li>
+            <li><a href="#contact"><small style="color: rgb(97, 97, 97);">▸ <strong>Contacto</strong></small></a><br></li>
             <hr>
           </ul>
         </div>
   
         <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()" style="margin-top: 9px; display: inline-block;">
           <div style="display: flex; align-items: center;">
-            <span style="display: inline-block; height: 15px; line-height: 15px;"><small>MENU</small></span>
+            <span style="display: inline-block; height: 15px; line-height: 15px;"><small>MENÚ</small></span>
             <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
           </div>
         </a></strong>
       </div>
 
+
       <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
-        <text style="color:rgb(237, 118, 7);font-size:15px">➔ Bonjour! Salut! </text>
+        <text style="color:rgb(237, 118, 7);font-size:15px">➔ ¡Hola, qué alegría!</text>
         <span style="float:right;">
           <span style="float:right;font-family:verdana">
             <select id="languages" name="languages"
               style="width: 100px; color:inherit;display:inline-block;margin-bottom:0px;"
               onchange="window.location.href=this.options [this.selectedIndex].value">
-              <option value="fr.html" select>🇫🇷 Français</option>
-              <option value="de.html">🇩🇪 Deutsch</option>
-              <option value="en.html">🇬🇧 English</option>
-              <option value="es.html">🇪🇸 Español</option>
-              <!---
-              <option value="it.html">🇮🇹 Italiano</option>
-              <option value="ru.html">🇷🇺 Русский</option>
-              <option value="cn.html">🇨🇳 中文</option>
-              <option value="jp.html">🇯🇵 日本語</option>
-              <option value="kr.html">🇰🇷 한국어</option>
-              <option value="ar.html">🇸🇦 اللغة العربية</option>
-              --->
+              <option value="es-research.html" select>🇪🇸 Español</option>
+              <option value="de-research.html">🇩🇪 Deutsch</option>
+              <option value="en-research.html">🇬🇧 English</option>
+              <option value="fr-research.html">🇫🇷 Français</option>
+              <!--- <option value="it-research.html">🇮🇹 Italiano</option>
+              <option value="ru-research.html">🇷🇺 Русский</option>
+              <option value="cn-research.html">🇨🇳 中文</option>
+              <option value="jp-research.html">🇯🇵 日本語</option>
+              <option value="kr-research.html">🇰🇷 한국어</option>
+              <option value="ar-research.html">🇸🇦 اللغة العربية</option>
+            -->
             </select>
           </span>
         </span>
@@ -497,18 +483,18 @@
 
 
         <p align="justify">
-          <span class="display-mobile">Bienvenue aux amis <span id="location2">du monde</span> :-)</br></br></span>
-      
-          Actuellement, le Dr. Hong Xu est <strong>Ingénieur en R&D</strong> spécialisé dans les <strong>systèmes e-Power</strong> basé à Munich, dédié à la réalisation de la neutralité carbone dans les secteurs de <strong>l'énergie</strong> et des <strong>transports</strong>. Au cours de sa carrière, il a travaillé avec des entreprises internationales et des institutions académiques en Europe et en Chine, réalisant plus de <strong>15 articles publiés</strong> avec près de <strong>300 citations</strong>, et <strong>3 brevets accordés</strong>. De plus, il a présidé une session à la <strong><a href="https://unfccc.int/" target="_blank">Conférence de l'ONU sur les changements climatiques</a></strong> à Bonn, a participé au Groupe d'experts de la <strong><a href="https://unece.org/" target="_blank">Commission économique de l'ONU pour l'Europe</a></strong> basée à Genève, et a servi en tant que <strong>Jury académique</strong> au <strong><a href="https://symposium.org/" target="_blank">Symposium de St. Gallen</a></strong> en Suisse. Le Dr. Xu est également <strong>examinateur</strong> pour plusieurs revues à fort impact dans les domaines de <strong>l'énergie</strong>, des <strong>transports</strong> et de la <strong>durabilité</strong>. Ses efforts interdisciplinaires ont été reconnus par des récompenses telles que la bourse de la Banque Santander, l'article invité par l'ECS et la bourse de voyage, la bourse Intel Edge AI et la bourse Erasmus.
+          <span class="display-mobile">Bienvenidos amigos de <span id="location2">mundo</span> :-)</br></br></span>
+          
+          Actualmente, el Dr. Hong Xu trabaja como <strong>Ingeniero de I+D</strong> especializado en <strong>Sistemas e-Power</strong> con sede en Múnich, dedicado a lograr la neutralidad de carbono en los sectores de <strong>Energía</strong> y <strong>Transporte</strong>. A lo largo de su carrera, ha trabajado con corporaciones internacionales e instituciones académicas en Europa y China, logrando más de <strong>15 artículos publicados</strong> con casi <strong>300 citas</strong> y <strong>3 patentes otorgadas</strong>. Además, presidió una sesión en la <strong><a href="https://unfccc.int/" target="_blank">Conferencia de la ONU sobre el Cambio Climático</a></strong> en Bonn, participó en el Grupo de Expertos de la <strong><a href="https://unece.org/" target="_blank">Comisión Económica de la ONU para Europa</a></strong> con sede en Ginebra, y sirvió como miembro del <strong>Jurado Académico</strong> en el <strong><a href="https://symposium.org/" target="_blank">Simposio de St. Gallen</a></strong> en Suiza. El Dr. Xu también es <strong>revisor</strong> para varias revistas de alto impacto en los campos de <strong>Energía</strong>, <strong>Transporte</strong> y <strong>Sostenibilidad</strong>. Sus esfuerzos interdisciplinarios han sido reconocidos con premios como la beca del Banco Santander, la beca de viaje y artículos invitados de ECS, la beca Intel Edge AI y la beca Erasmus.
       </p>
       
       <p align="justify">
-          Il a poursuivi son doctorat en <strong>énergies renouvelables</strong> à l'<strong><a href="https://ethz.ch/en.html" target="_blank">École polytechnique fédérale de Zurich</a></strong>, en collaboration avec l'<strong><a href="https://psi.ch" target="_blank">Institut Paul Scherrer</a></strong> en Suisse. Auparavant, il a obtenu un master en science des matériaux de l'<strong><a href="https://tum.de" target="_blank">Université technique de Munich</a></strong> avec des stages au <strong><a href="https://xfel.eu" target="_blank">XFEL européen</a></strong> et chez <strong><a href="https://infineon.com" target="_blank">Infineon</a></strong> en Allemagne. La passion du Dr. Xu pour la recherche à fort impact l'a conduit à s'engager à long terme avec des leaders de l'industrie dans le domaine de l'hydrogène et des piles à combustible, y compris <strong>Toyota Motor</strong> au Japon et le <strong>groupe Freudenberg</strong> en Allemagne. Parallèlement, il a suivi un <strong>MBA</strong> à l'<strong><a href="https://quantic.edu/mba" target="_blank">École de commerce quantique</a></strong> et a suivi des cours exécutifs à l'<strong><a href="https://www.jbs.cam.ac.uk/" target="_blank">École de commerce de l'Université de Cambridge</a></strong>, acquérant une expérience pratique dans une entreprise de capital-risque en monnaie duale et une société de valeurs mobilières leader en Chine.
+          Obtuvo su doctorado en <strong>Energías Renovables</strong> en la <strong><a href="https://ethz.ch/en.html" target="_blank">Escuela Politécnica Federal de Zúrich</a></strong>, en colaboración con el <strong><a href="https://psi.ch" target="_blank">Instituto Paul Scherrer</a></strong> en Suiza. Antes de eso, recibió un máster en Ciencias de los Materiales de la <strong><a href="https://tum.de" target="_blank">Universidad Técnica de Múnich</a></strong> con prácticas en el <strong><a href="https://xfel.eu" target="_blank">XFEL Europeo</a></strong> y en <strong><a href="https://infineon.com" target="_blank">Infineon</a></strong> en Alemania. La pasión del Dr. Xu por la investigación con impacto le ha llevado a compromisos a largo plazo con líderes de la industria en hidrógeno y pilas de combustible, incluyendo <strong>Toyota Motor</strong> en Japón y el <strong>Grupo Freudenberg</strong> en Alemania. Paralelamente, obtuvo un <strong>MBA</strong> en la <strong><a href="https://quantic.edu/mba" target="_blank">Escuela de Negocios Cuántica</a></strong> y completó cursos ejecutivos en la <strong><a href="https://www.jbs.cam.ac.uk/" target="_blank">Escuela de Negocios Judge de Cambridge</a></strong>, adquiriendo experiencia práctica en una firma de capital de riesgo de doble moneda y una compañía de valores líder en China.
       </p>
       
 
       <p style="text-align:left;">
-        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> <img id="country-flag" class="flag-icon" src="" alt=""> ?
+        PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)->  <img id="country-flag" class="flag-icon" src="" alt=""> ?
         </span>
       </p>
       <!---
@@ -523,12 +509,12 @@
       <p class="hidden-mobile" style="text-align:left;">
         <strong><a href="//24timezones.com/Zurich/time" style="text-decoration: none" class="clock24"
             id="tz24-1658678414-c1268-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMSIsInNob3d0aW1lem9uZSI6IjAiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9"
-            title="World Clock :: Zurich" target="_blank" rel="nofollow">Heure de l'Europe [CET] </a></strong>
+            title="World Clock :: Zurich" target="_blank" rel="nofollow">Hora de Europa [CET] </a></strong>
         <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
         <span style="float:right;">
           <strong><a href="//24timezones.com/Beijing/time" style="text-decoration: none" class="clock24"
               id="tz24-1658678453-c133-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMSIsInNob3d0aW1lem9uZSI6IjAiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9"
-              title="actual time Beijing" target="_blank" rel="nofollow">Heure de Pékin [CST] </a></strong>
+              title="actual time Beijing" target="_blank" rel="nofollow">Hora de Beijing [CST] </a></strong>
           <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
         </span>
       </p>
@@ -537,23 +523,22 @@
       <p class="display-mobile" style="text-align:left;">
         <strong><a href="//24timezones.com/Zurich/time" style="text-decoration: none" class="clock24"
             id="tz24-1658714807-c1268-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
-            title="timezone - Zurich" target="_blank" rel="nofollow">Europe</a></strong>
+            title="timezone - Zurich" target="_blank" rel="nofollow">Europa</a></strong>
         <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
         <span style="float:right;">
           <strong><a href="//24timezones.com/Beijing/time" style="text-decoration: none" class="clock24"
               id="tz24-1658714942-c133-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
-              title="Time - Beijing" target="_blank" rel="nofollow">Pékin</a></strong>
+              title="Time - Beijing" target="_blank" rel="nofollow">Beijing</a></strong>
           <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
         </span>
       </p>
 
-
-      <hr class="display-mobile" style="width:113%">
+      <!-- <hr class="display-mobile" style="width:113%"> -->
       <hr class="hidden-mobile">
 
 
       <div class="doc-section hidden-mobile" id="Carbon-Neutral">
-        <h3 class="hidden-mobile" style="display:inline-block">Stratégie net zéro</h3>
+        <h3 class="hidden-mobile" style="display:inline-block">Estrategia de cero neto</h3>
         <div style="float: right">
           <h3>
             <!-- weather widget start --><a class="hidden-mobile" id="weather" target="_blank"
@@ -567,58 +552,57 @@
           <div class="box-wrapper hidden-mobile">
             <div class="box hidden-mobile">
               <h2>H</h2>
-              <p>Hydrogène</br>Énergie</p>
+              <p>Hidrógeno</br>Energía</p>
             </div>
           </div>
           <div class="box-wrapper hidden-mobile">
             <div class="box hidden-mobile">
               <h2>Li</h2>
-              <p>Lithium</br>Batteries</p>
+              <p>Litio</br>Baterías</p>
             </div>
           </div>
           <div class="box-wrapper hidden-mobile">
             <div class="box hidden-mobile">
               <h2>C</h2>
-              <p>Carbone</br>Neutralité</p>
+              <p>Carbono</br>Neutralidad</p>
             </div>
           </div>
           <div class="box-wrapper hidden-mobile">
             <div class="box hidden-mobile">
               <h2>Si</h2>
-              <p>Silicium</br>Solaire/PV</p>
+              <p>Silicio</br>Solar/PV</p>
             </div>
           </div>
           <div class="box-wrapper hidden-mobile">
             <div class="box hidden-mobile">
               <h2>Re</h2>
-              <p>Recherche</br>Intérêts</p>
+              <p>Investigación</br>Intereses</p>
               <a href="#research-interests"></a>
             </div>
           </div>
           <div class="box-wrapper hidden-mobile">
             <div class="box hidden-mobile">
-              <h2>Do</h2>
-              <p>Donner</br>des cours</p>
+              <h2>Tc</h2>
+              <p>Enseñanza</br>Actividades</p>
               <a href="#teaching-services"></a>
             </div>
           </div>
           <div class="box-wrapper hidden-mobile">
             <div class="box hidden-mobile">
-              <h2>Pb</h2>
-              <p>Publications</br>Brevets</p>
+              <h2>Pr</h2>
+              <p>Publicacion</br>Patentes</p>
               <a href="#publications"></a>
             </div>
           </div>
           <div class="box-wrapper hidden-mobile">
             <div class="box hidden-mobile">
               <h2>Cf</h2>
-              <p>Conférences</br>Discours</p>
+              <p>Conferencia</br>Charlas</p>
               <a href="#presentations"></a>
             </div>
           </div>
         </span>
       </div>
-
 
       <!---
       <hr class="hidden-mobile">
@@ -634,38 +618,38 @@
             <source src="https://github.com/DrHongXu/DrHongXu.github.io/raw/main/images/Bonn_Climate_v1_8MB.mp4" type="video/mp4" >
             Your browser does not support the video tag.
         </video>
-      </div>
+      </div>-->
 
       <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">-->
-      <!-- <hr class="display-mobile" style="width:113%">-->
-      <hr class="hidden-mobile"> 
+      <hr class="hidden-mobile">
 
 
       <div class="doc-section" id="education">
-        <h3>Éducation</h3>
+        <h3>Educación</h3>
         <ul class="square">
-          <li>2017-2021 | <strong>Doctorat, Énergie renouvelable </strong> (entièrement financée)<br />
-            <strong><a href="https://ethz.ch/en.html" target="_blank">École polytechnique fédérale de
-                Zurich</a></strong>, Suisse</p>
+          <li>2017-2021 | <strong>Doctorado, Energías renovables</strong> (Financiación total)<br />
+            <strong><a href="https://ethz.ch/en.html" target="_blank">Escuela Politécnica Federal de
+                Zúrich</a></strong>, Suiza</p>
 
-          <li>2014-2016 | <strong>MSc, Matériaux & Physique </strong>(double diplôme UE)<br />
-            <strong><a href="https://www.tum.de/en/" target="_blank">Université technique de Munich</a></strong>, Allemagne<br/><strong><a href="https://www.lmu.de/en/" target="_blank">Université Louis-et-Maximilien de Munich</a></strong>, Allemagne<br /></p>
-            <!--<strong><a href="https://www.univ-rennes1.fr/" target="_blank">Université de Rennes 1</a></strong>,
-            France<br /></p>-->
-            <!--[<a href="https://unknown/files/Master_Thesis_LMU_TUM-Xu_Hong.pdf" target="_blank">Thesis</a>]-->
+          <li>2014-2016 | <strong>MSc, Materiales y Física</strong> (doble titulación de la UE)<br />
+            <strong><a href="https://www.tum.de/en/" target="_blank">Universidad Técnica de Múnich</a></strong>,
+            Alemania<br /><strong><a href="https://www.lmu.de/en/" target="_blank">Universidad Luiso-Maximiliana de Múnich</a></strong>,
+            Alemania<br /></p>
+            <!--<strong><a href="https://www.univ-rennes1.fr/" target="_blank">Universidad de Rennes 1</a></strong>,
+            Francia<br /></p>-->
+            <!--[<a href="https://unknown/files/Master_Thesis_LMU_TUM-Xu_Hong.pdf" target="_blank">Tesis</a>]-->
 
-          <li>2009-2013 | <strong>BSc, Chimie des matériaux</strong> (brevets délivrés)<br />
-            <strong><a href="http://en.bjtu.edu.cn/" target="_blank">Université des transports de Pékin</a></strong>,
-            Chine<br />
-            <!--[<a href="https://unknown/files/Master_Thesis_LMU_TUM-Xu_Hong.pdf" target="_blank">Thesis</a>]-->
+          <li>2009-2013 | <strong>BSc, Química de materiales</strong> (Patentes otorgadas)<br />
+            <strong><a href="http://en.bjtu.edu.cn/" target="_blank">Universidad de Transporte de Beijing</a></strong>,
+            China<br />
+            <!--[<a href="https://unknown/files/Master_Thesis_LMU_TUM-Xu_Hong.pdf" target="_blank">Tesis</a>]-->
             <p>____</p>
-          <li>2023-2023 | <strong>Formation des cadres, Transition verte</strong> (Bourse)<br />
-            <strong><a href="https://www.jbs.cam.ac.uk/" target="_blank">École de commerce de l'Université de
+          <li>2023-2023 | <strong>Educación ejecutiva, Transición Verde</strong> (Beca)<br />
+            <strong><a href="https://www.jbs.cam.ac.uk/" target="_blank">Escuela de Negocios Judge de
                 Cambridge</a></strong>,
-            Royaume-Uni<br />
-          <li>2020-2021 | <strong>MBA, Administration des affaires</strong> (temps partiel)<br />
-            <strong><a href="https://quantic.edu/mba" target="_blank">École de commerce quantique</a></strong>,
+            Reino Unido<br />
+          <li>2020-2021 | <strong>MBA, Administración de Empresas</strong> (tiempo parcial)<br />
+            <strong><a href="https://quantic.edu/mba" target="_blank">Escuela de Negocios Cuántica</a></strong>,
             Washington D.C.<br /></p>
 
         </ul>
@@ -673,67 +657,66 @@
 
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
+      
       <div class="doc-section" id="research-interests">
-        <h3>Intérêts de recherche</h3>
+        <h3>Intereses de investigación</h3>
         <ul class="square">
-          <li><strong>Énergie renouvelable</strong>, Hydrogène, Piles à combustible, Électrolyseurs, Photovoltaïque,
-            Batteries<br />
-          <li><strong>Économie de l'énergie</strong>, Politique énergétique, Investissement ESG, Durabilité<br />
-          <li><strong>Matériaux fonctionnels</strong>, Semi-conducteurs, Polymères, Oxydes métalliques<br />
-          <li><strong>Imagerie computationnelle</strong>, Techniques de rayons X, Vision par ordinateur<br />
-          <li><strong>Recherche sur les actions</strong>, Analyse de données massives, Analyse commerciale<br />
+          <li><strong>Energías renovables</strong>, hidrógeno, células de combustible, electrólisis, PV, baterías<br />
+          <li><strong>Economía energética</strong>, política energética, inversión ESG, sostenibilidad<br />
+          <li><strong>Materiales funcionales</strong>, semiconductores, polímeros, óxidos metálicos<br />
+          <li><strong>Imagen computacional</strong>, técnicas de rayos X, visión por computadora <br />
+          <li><strong>Investigación de acciones</strong>, análisis de big data, análisis empresarial<br />
         </ul>
       </div>
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
 
       <div class="doc-section" id="academic-services">
-        <h3>Services Académiques</h3>
+        <h3>Servicios Académicos</h3>
         <ul class="square">
-          <li><strong>Relecteur par les pairs:</strong><br />
-            - <strong>Conversion de l'énergie et gestion</strong> (Facteur d'impact=11,2, 2021)<br />
-            - <strong>Énergie appliquée</strong> (IF=11.4, 2022)<br />
-            - <strong>Journal des sources d'énergie</strong> (FI=9,13, 2022)<br />
-            - <strong>Journal international de l'énergie de l'hydrogène</strong> (FI=7,14, 2021)<br />
-            - <strong>Énergie pour le développement durable</strong> (FI=5,76, 2021)<br />
-            - <strong>Journal international de la chaleur et du transfert de masse</strong> (FI=5,58, 2022)<br />
-            - <strong>Technologies vertes et durabilité</strong> (Nouveau journal, 2022)<br />
-            - <strong>Énergie verte et transport intelligent</strong> (Nouveau journal, 2022)<br />
+          <li><strong>Revisor por Pares:</strong><br />
+            - <strong>Conversión de Energía y Gestión</strong> (Factor de Impacto=11,2, 2021)<br />
+            - <strong>Energía Aplicada</strong> (IF=11.4, 2022)<br />
+            - <strong>Revista de Fuentes de Energía</strong> (FI=9,13, 2022)<br />
+            - <strong>Revista Internacional de Energía de Hidrógeno</strong> (FI=7,14, 2021)<br />
+            - <strong>Energía para el Desarrollo Sostenible</strong> (FI=5,76, 2021)<br />
+            - <strong>Revista Internacional de Transferencia de Calor y Masa</strong> (FI=5,58, 2022)<br />
+            - <strong>Tecnologías Verdes y Sostenibilidad</strong> (Nueva Revista, 2022)<br />
+            - <strong>Energía Verde y Transporte Inteligente</strong> (Nueva Revista, 2022)<br />
             <hr>
-          <li><strong>Organisation internationale/Think tank:</strong><br />
-            <!---- Chercheur invité, <strong>Institut d'études sur l'énergie d'Oxford</strong> (Économie et politique énergétiques, 2023, Royaume-Uni)
+          <li><strong>Organización Internacional/Centro de Estudios:</strong><br />
+            <!---- Investigador Visitante, <strong>Instituto de Estudios de Energía de Oxford</strong> (Economía y Política Energética, 2023, Reino Unido)
                 <br />--->
-            <!----- Délégué jeune, <strong>Conférence des Nations unies sur le changement climatique de Bonn</strong> (Climat et énergie, 2023, Allemagne)
+            <!----- Delegado Juvenil, <strong>Conferencia de Cambio Climático de las Naciones Unidas en Bonn</strong> (Clima y Energía, 2023, Alemania)
                 <br/>--->
-            <!------ Co-fondateur, <strong>Association de durabilité numérique</strong> (ESG et ODD, 2023, Suisse)
+            <!------ Cofundador, <strong>Asociación de Sostenibilidad Digital</strong> (ESG y ODS, 2023, Suiza)
                 <br />--->
-            - Jury académique, <strong>St. Gallen Symposium</strong> (Think-tank suisse, Économie et politique, 2023,
-            Suisse)
+            - Jurado Académico, <strong>Simpósio de St. Gallen</strong> (Think-tank Suizo, Economía y Política, 2023,
+            Suiza)
             <br />
-          <li><strong>Société académique:</strong><br />
-            - Membre, <strong>L'Association des ingénieurs allemands</strong> (2023, Allemagne)<br />
-            - Auteur invité/Bénéficiaire de subventions, <strong>La Société électrochimique</strong> (2019, États-Unis)
+          <li><strong>Sociedad Académica:</strong><br />
+            - Miembro, <strong>Asociación de Ingenieros Alemanes</strong> (2023, Alemania)<br />
+            - Autor Invitado/Receptor de Subvenciones, <strong>La Sociedad Electroquímica</strong> (2019, EE. UU.)
             <br />
-            - Membre, <strong>Société internationale d'électrochimie</strong> (2018, Italie) <br />
-            - Membre, <strong>Société allemande de physique</strong> (2016, Allemagne)
+            - Miembro, <strong>Sociedad Internacional de Electroquímica</strong> (2018, Italia) <br />
+            - Miembro, <strong>Sociedad Alemana de Física</strong> (2016, Alemania)
             <hr>
-          <li><strong>Activités de recherche:</strong><br />
-            - <strong>Hydrogène et piles à combustible</strong> (Division Énergie et Environnement, Institut Paul
+          <li><strong>Actividades de Investigación:</strong><br />
+            - <strong>Hidrógeno y Celdas de Combustible</strong> (División de Energía y Medio Ambiente, Instituto Paul
             Scherrer |
             2016-2021)<br />
-            - <strong>Semi-conducteurs et capteurs</strong> (Département de physique, Université technique de Munich |
+            - <strong>Semiconductores y Sensores</strong> (Departamento de Física, Universidad Técnica de Múnich |
             2015-2016)<br />
-            - <strong>Panneaux solaires et batteries lithium-ion</strong> (École des sciences, Université Jiaotong de
+            - <strong>Celdas Solares y Baterías de Iones de Litio</strong> (Escuela de Ciencias, Universidad Jiaotong de
             Beijing |
             2012-2013)<br />
-            - <strong>Imagerie CT par rayons X 4D</strong> (Groupe de Tomographie par rayons X, Source de lumière suisse
-            |
+            - <strong>Imágenes CT de Rayos X en 4D</strong> (Grupo de Tomografía de Rayos X, Fuente de Luz Suiza |
             2017-2020)<br />
-            - <strong>Diffusion des rayons X à petit angle</strong> (Ligne de diffusion des rayons X, Synchrotron
-            électronique allemand |
+            - <strong>Difracción de Rayos X de Ángulo Pequeño</strong> (Línea de Difracción de Rayos X, Sincrotrón de
+            Electrones Alemán |
             2015-2016)<br />
-            - <strong>Imagerie par rayons X à haute énergie</strong> (Groupe d'imagerie et de dynamique des matériaux,
-            European XFEL | 2015)
+            - <strong>Imágenes de Rayos X de Alta Energía</strong> (Grupo de Imágenes y Dinámica de Materiales, European
+            XFEL | 2015)
             <br />
 
         </ul>
@@ -742,23 +725,23 @@
       <hr class="hidden-mobile">
 
       <div class="doc-section" id="teaching-services">
-        <h3>Enseignement & Tutorat</h3>
+        <h3>Enseñanza y Tutoría</h3>
         <ul class="square">
-          <li><strong>Assistant d'enseignement:</strong><br />
-            - <strong>Technologies des énergies renouvelables II</strong> (ETH Zurich, Programme de master du printemps,
+          <li><strong>Asistente de Enseñanza:</strong><br />
+            - <strong>Tecnologías de Energía Renovable II</strong> (ETH Zurich, Programa de Maestría de Primavera,
             2017-2019 [<a
-              href="http://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2018S&ansicht=ALLE&lerneinheitId=120719&lang=fr"
-              target="_blank">lien</a>])
+              href="http://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2018S&ansicht=ALLE&lerneinheitId=120719&lang=es"
+              target="_blank">enlace</a>])
 
             <hr>
 
-          <li><strong>Tutorat étudiant:</strong><br />
-            - <strong>Programme de mentorat des anciens élèves de la TUM, Mentor</strong> (Programme de mentorat des
-            anciens élèves de la TUM | 2021-présent)<br />
-            - <strong>Institut Paul Scherrer, Tuteur de stage</strong> (Cristina Crețu, Master TU Delft, PolyU
-            Bucarest Licence | 2018-2019)<br />
+          <li><strong>Tutoría de Estudiantes:</strong><br />
+            - <strong>Programa de Mentoría de Antiguos Alumnos de la TUM, Mentor</strong> (Programa de Mentoría de
+            Antiguos Alumnos de la TUM | 2021-presente)<br />
+            - <strong>Instituto Paul Scherrer, Tutor de Prácticas</strong> (Cristina Crețu, Maestría TU Delft, PolyU
+            Licenciatura en Bucarest | 2018-2019)<br />
             <!---
-            - Membre de <strong>l'Association internationale d'économie de l'énergie</strong> (IAEE, 2023)
+            - Miembro de <strong>la Asociación Internacional de Economía de la Energía</strong> (IAEE, 2023)
             -->
         </ul>
       </div>
@@ -767,9 +750,9 @@
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
       <div class="doc-section" id="publications">
-        <h3>Publications</h3>
+        <h3>Publicaciones</h3>
         <ul class="square">
-          <li><strong>Technologie des énergies propres / Électrochimie</strong></li>
+          <li><strong>Tecnología de energía limpia / Electroquímica</strong></li>
         </ul>
         <ol>
           <li>
@@ -777,7 +760,7 @@
             Use of distribution of relaxation times analysis as an in-situ diagnostic tool for water management in PEM fuel cells applications [J] <br/>
             2024 | <em><strong>J. Power Sources</strong></em> [<a
               href="https://www.sciencedirect.com/science/article/abs/pii/S0378775324001307" target="_blank">PDF</a>] <text
-              style="color:rgb(0, 103, 159)">[Freudenberg]</text> <text style="color:red">[Nouveau!]</text>
+              style="color:rgb(0, 103, 159)">[Freudenberg]</text> <text style="color:red">[Nuevo!]</text>
           </li>
           <li>
             <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt, F. N. Büchi, J. Eller<br />
@@ -841,7 +824,7 @@
 
 
         <ul class="square">
-          <li><strong>Imagerie computationnelle / Deep Learning</strong></li>
+          <li><strong>Imágenes computacionales / Deep Learning</strong></li>
         </ul>
 
         <ol>
@@ -902,7 +885,7 @@
         </ol>
 
         <ul class="square">
-          <li><strong>Science des matériaux / Génie chimique</strong></li>
+          <li><strong>Ciencia de Materiales / Ingeniería Química</strong></li>
         </ul>
 
         <ol>
@@ -934,44 +917,42 @@
         </ol>
       </div>
 
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
+      <hr />
       <div class="doc-section" id="patents">
-        <h3>Brevets</h3>
+        <h3>Patentes</h3>
         <ol>
           <li>
             <strong>Annular gas-liquid interface jigging magnetic separation device [P]</strong><br />
-            Inventeurs: Prof. M. Fu, Prof. H. Zhang, <strong>H. Xu</strong> (BJTU), Prof. L. Yan<br />
-            Brevet chinois n°: CN102441489B, Granted on Oct 11, 2013. [<a
-              href="https://patents.google.com/patent/CN102441489B/en" target="_blank">Grant</a>]
+            Inventores: Prof. M. Fu, Prof. H. Zhang, <strong>H. Xu</strong> (BJTU), Prof. L. Yan<br />
+            Patente china n°: CN102441489B, Concedida el 11/10/2013. [<a
+              href="https://patents.google.com/patent/CN102441489B/en" target="_blank">Conceder</a>]
           </li>
           <li>
             <strong>Continuously operating annular gas-liquid interface jigging magnetic separation device
               [P]</strong><br />
-            Inventeurs: Prof. H. Zhang, <strong>H. Xu</strong> (BJTU), Prof. M. Fu, Prof. L. Yan<br />
-            Brevet chinois n°: CN102441490A, Granted on Nov 1, 2013. [<a
-              href="https://patents.google.com/patent/CN102441490A/en" target="_blank">Grant</a>]
+            Inventores: Prof. H. Zhang, <strong>H. Xu</strong> (BJTU), Prof. M. Fu, Prof. L. Yan<br />
+            Patente china n°: CN102441490A, Concedida el 11/01/2013. [<a
+              href="https://patents.google.com/patent/CN102441490A/en" target="_blank">Conceder</a>]
           </li>
           <li>
             <strong>Ultrasonic-photocatalytic oxidation coupled fruit and vegetable cleaning device [P]</strong><br />
-            Inventeurs: X. Zhou, <strong>H. Xu</strong> (BJTU), Prof. H. Jiang, X. Qi<br />
-            Brevet chinois n°: CN202311136U, Granted on May 9, 2012. [<a
-              href="https://patents.google.com/patent/CN202311136U/en" target="_blank">Grant</a>]
+            Inventores: X. Zhou, <strong>H. Xu</strong> (BJTU), Prof. H. Jiang, X. Qi<br />
+            Patente china n°: CN202311136U, Concedida el 09/05/2012. [<a
+              href="https://patents.google.com/patent/CN202311136U/en" target="_blank">Conceder</a>]
           </li>
         </ol>
       </div>
 
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
+      <hr />
       <div class="doc-section" id="Dissertations">
-        <h3>Thèses</h3>
+        <h3>Tesis</h3>
         <ol>
 
           <li>
             <strong>H. Xu</strong> [ETH], Prof. T. J. Schmidt (examiner), Prof. M. Stampanoni (co-examiner), Dr. J.
             Eller (advisor)<br />
             Subsecond Operando X-ray Tomographic Microscopy of Liquid Water in Polymer Electrolyte Fuel Cells [D] <br />
-            <em><strong>Thèse de doctorat</strong>. Docteur en Sciences. EPF ZURICH, Zurich, Suisse, 2021.</em> [<a
+            <em><strong>Tesis de doctorado</strong>. Doctor en Ciencias. ETH ZURICH, Zúrich, Suiza, 2021.</em> [<a
               href="https://doi.org/10.3929/ethz-b-000487441" target="_blank">PDF</a>]
           </li>
 
@@ -979,23 +960,24 @@
             <strong>H. Xu</strong> [TUM], Prof. P. Müller-Buschbaum (examiner), Prof. W. Schmahl (co-examiner), Dr. E.
             Metwalli <br />
             Structure & Properties of Thermoresponsive DBC Embedded with Metal Oxide Nanoparticles. [D] <br />
-            <em><strong>Thèse de master</strong>. Maître des sciences. LMU et TU MUNICH, Munich, Allemagne, 2016.</em>
+            <em><strong>Tesis de maestría</strong>. Maestro de la ciencia. LMU y TU MUNICH, Múnich, Alemania, 2016.</em>
             [<a href="https://arxiv.org/abs/2007.10111" target="_blank">PDF</a>]
           </li>
 
           <li>
             <strong>H. Xu</strong> [BJTU], Prof. H. Zhang (examiner) <br />
             Application of Mesoporous SnO2 Materials in Dye-sensitized Solar Cells and Lithium Batteries. [D] <br />
-            <em><strong>Thèse de baccalauréat</strong>. Baccalauréat en sciences. Univ. des transports de Pékin, Chine,
-              2013.</em> [<a href="" target="_blank">PDF</a>]
+            <em><strong>Tesis de licenciatura</strong>. Licenciado en Ciencias. Universidad de transporte en Beijing,
+              China, 2013.</em> [<a href="" target="_blank">PDF</a>]
           </li>
         </ol>
       </div>
 
+
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
 
-      <h3 class="hidden-mobile" style="display:inline-block">Cérémonie des prix doctoraux</h3>
+      <h3 class="hidden-mobile" style="display:inline-block">Ceremonia de entrega de premios doctorales</h3>
       <div class="video-container hidden-mobile" style="padding-bottom: 48.25%">
         <video controls poster="images/graduation_preview.png">
           <source src="https://github.com/DrHongXu/DrHongXu.github.io/raw/main/images/Graduation_Ceremony_25MB.mp4"
@@ -1012,11 +994,11 @@
         </video>
       </div>
 
-
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
+
       <div class="doc-section" id="presentations">
-        <h3>Conférences</h3>
+        <h3>Conferencias</h3>
         <ol>
           <li>
             <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller <br />
@@ -1081,8 +1063,7 @@
           </li>
         </ol>
       </div>
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
+      <hr />
       <!---
         <div class="doc-section" id="equity-research">
           <h3>Recherche Actions</h3>
@@ -1123,7 +1104,7 @@
         <hr />   
 
         <div class="doc-section" id="talks">
-          <h3>Discussions et Modérateur</h3>
+          <h3>Discusiones y Moderador</h3>
           <ol>
             <li>
               2022 | <strong>IN3 Capital Salon</strong> Invited Speaker: What is the best thing about "hydrogen energy"? (Session 8 / 100+ online participants)<br/>
@@ -1142,7 +1123,7 @@
         <hr />   
 
         <div class="doc-section" id="writing">
-          <h3>L'écriture</h3>
+          <h3>Escritura</h3>
           <ol>
             <li>
               2023 | <strong>Once Upon A PhD</strong> (Memoir): Once Upon A PhD: Ten Years in Europe (in progress)<br/>
@@ -1161,7 +1142,7 @@
         <hr />   
 
         <div class="doc-section" id="awards">
-          <h3>Honeurs et Prix</h3>
+          <h3>Honores y Premios</h3>
           <ol>
             <li>
               2019 | <strong>ECS Travel Grant</strong>  [<a href="" target="_blank">Cert.</Link></a>]<br/>
@@ -1200,7 +1181,7 @@
         
         
         <div class="doc-section" id="training">
-          <h3>Formation et Parascolaires</h3>
+          <h3>Formación y Extraescolares</h3>
           <ol>
             <li>
               2020 | <strong>Applied Machine Learning</strong> <br/>
@@ -1240,49 +1221,43 @@
         <hr />
 --->
       <div class="doc-section" id="visiting">
-        <h3>Visite</h3>
+        <h3>Visitando</h3>
         <ul class="square">
-          <li><strong>Organisation</strong> : Nations Unies (Genève, 2023), Nations Unies (New York, 2019), Agence de
-            l'Eau Seine-Normandie
-            (Paris, 2016), Bureau de Planification Urbaine de la Ville de Suzhou (Jiangsu, 2016), Bureau de
-            l'Environnement Écologique de la Ville de Zhengzhou
-            (Henan, 2014), Bureau de Protection de l'Environnement de la Ville de Kaifeng (Henan, 2014)</li>
-          <li><strong>Synchrotron</strong> : CERN (Genève, 2023), Swiss Light Source (Villigen, 2017), SOLEIL (Paris,
-            2015), Synchrotron à Électrons Allemand (Hambourg, 2016), European XFEL (Hambourg, 2016), ELETTRA (Trieste,
-            2016)</li>
-          <li><strong>Réacteur</strong> : Centrale Nucléaire de Beznau (Aargau, 2018), Source de Neutrons de Recherche
-            Heinz Maier-Leibnitz (Munich, 2016), Centre de Recherche Nucléaire CEA Saclay (Paris, 2015) </li>
+          <li><strong>Sincrotrón</strong>: SOLEIL (París, 2015), Sincrotrón electrónico alemán (Hamburgo, 2016), XFEL
+            Europea (Hamburgo, 2016), ELETTRA (Trieste, 2016), Fuente de Luz Suiza (Villigen, 2017) </li>
+          <li><strong>Reactor</strong>: CEA Centro de Investigaciones Nucleares Saclay (París, 2015), Fuente de
+            neutrones de investigación Heinz Maier-Leibnitz (Munich, 2016), Central nuclear de Beznau (Aargau, 2018)
+          </li>
+          <li><strong>Organización</strong>: Oficina de las Naciones Unidas (Nueva York, 2019), Agencia del Agua
+            Sena-Normandía (París, 2016), Oficina de Planificación Urbana de Suzhou (Jiangsu, 2016), Oficina del Medio
+            Ambiente Ecológico de Zhengzhou (Henan, 2014), Oficina de Protección Ambiental de Kaifeng (Henan, 2014)</li>
         </ul>
       </div>
 
 
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
+      <hr />
       <div class="doc-section" id="skills">
-        <h3>Compétences</h3>
+        <h3>Competencias</h3>
         <ul class="square">
-          <li><strong>Anglais</strong> (courant, C1), <strong>Chinois</strong> (natif, C2), <strong>Allemand</strong>
-            (en cours, B1), <strong>Français</strong> (basique, A2)</strong><br /></li>
+          <li><strong>Inglés</strong> (fluido, C1), <strong>Chinois</strong> (natif, C2), <strong>Allemand</strong> (en
+            progreso, B1), <strong>Français</strong> (básico, A2)</strong><br /></li>
           <li><a href="https://xgraphy.github.io" target="_blank">Photographie</a>, écriture, montage vidéo, randonnée,
             cyclisme, tennis de table, cuisines<br /></li>
         </ul>
       </div>
 
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
+      <hr />
       <div class="doc-section" id="travel">
-        <h3>Voyage</h3>
+        <h3>Viaje</h3>
         <ul class="square">
-          <li><strong>Asie</strong> : Chine (continentale), Taïwan, Russie, Turquie, Thaïlande</li>
-          <li><strong>Europe</strong> : Allemagne (plus de 25 villes), Autriche, Belgique, Bosnie-Herzégovine, Croatie,
-            République tchèque, Danemark, Estonie, Finlande, France, Gibraltar, Hongrie, Islande,
-            Irlande, Italie, Liechtenstein, Luxembourg, Malte, Pays-Bas, Norvège, Portugal, Pologne, Serbie, Slovaquie,
-            Slovénie,
-            Espagne, Suède, Suisse (plus de 30 villes), Royaume-Uni</li>
-          <li><strong>Amérique du Nord</strong> : États-Unis, Canada</li>
-          <li><strong>Afrique</strong> : Grande Canarie (Espagne)</li>
-          <li><strong>Au total</strong> : visité 35 pays/régions sur 197 dans le monde</li>
+          <li><strong>Asia</strong>: China (continental), Taiwán, Rusia, Turquía, Tailandia</li>
+          <li><strong>Europa</strong>: Alemania (más de 25 ciudades), Austria, Bélgica, Bosnia y Herzegovina, Croacia,
+            República Checa, Dinamarca, Estonia, Finlandia, Francia, Gibraltar, Hungría, Islandia,
+            Irlanda, Italia, Liechtenstein, Luxemburgo, Malta, Países Bajos, Noruega, Portugal, Polonia, Serbia,
+            Eslovenia, España, Suecia, Suiza (más de 30 ciudades), Reino Unido</li>
+          <li><strong>América del Norte</strong>: Estados Unidos, Canadá</li>
+          <li><strong>África</strong>: Gran Canaria (España)</li>
+          <li><strong>En total</strong>: visitó 35 de 197 países/regiones en todo el mundo</li>
           <img src="/images/visited_map.gif" style="width:100%;" alt="Example GIF">
         </ul>
       </div>
@@ -1293,13 +1268,13 @@
       <hr class="hidden-mobile">
 
       <div class="doc-section" id="contact">
-        <h3>Contactez-moi</h3>
+        <h3>Contacto</h3>
         <ul class="square">
           <li><strong>Email</strong>: <a href="mailto:h.xu@tum.de" target="_blank" target="_blank"><span
-                class='blue'>h.xu [at] tum.de</span></a><br />N'hésitez pas à me contacter pour toute collaboration ou demande :- )</li>
+                class='blue'>h.xu [at] tum.de</span></a><br />Siéntase libre de contactarme en caso de cualquier colaboración o solicitud :- )</li>
           <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/xuhong/" target="_blank"
               target="_blank"><span class='blue'>linkedin.com/in/xuhong/</span></a><br /></li>
-          <li><strong>ID Google Scholar</strong>: <a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en"
+          <li><strong>Google Académico</strong>: <a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en"
               target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a><br /></li>
 
           <!-- <a href="https://info.flagcounter.com/D897" target="_blank"><img
@@ -1321,17 +1296,17 @@
     </div><!-- Content -->
 
     <footer class="eleven center-column">
-      <!--<img src="images/logoline.png" width="80%" /> -->
+      <!--<img src="images/logoline.png" width="80%" />-->
       <div class="flex-container">
         <div id="date-display"></div>
         <div><a href="//24timezones.com/San-Francisco/time" style="text-decoration: none;color:#f35212" class="clock24"
             id="tz24-1705207058-c1224-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
-            title="Clock - San Francisco" target="_blank" rel="nofollow">Vancouver</a></div>
+            title="Clock-San Francisco" target="_blank" rel="nofollow">Vancouver</a></div>
 
         <div><a href="//24timezones.com/%E7%B4%90%E7%B4%84%E5%B8%82/%E6%97%B6%E9%97%B4"
             style="text-decoration: none;color:#f35212" class="clock24"
             id="tz24-1705206204-c1179-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6InpoIn0="
-            title="時間 紐約市" target="_blank" rel="nofollow">New York</a></div>
+            title="時間 紐約市" target="_blank" rel="nofollow">Nueva York</a></div>
 
         <div><a href="//24timezones.com/London/time" style="text-decoration: none;color:#f35212" class="clock24"
             id="tz24-1705206827-c1136-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
@@ -1339,24 +1314,25 @@
 
         <div><a href="//24timezones.com/Paris/time" style="text-decoration: none;color:#f35212" class="clock24"
             id="tz24-1705206628-c1195-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
-            title="Paris current time" target="_blank" rel="nofollow">Paris</a></div>
+            title="Paris current time" target="_blank" rel="nofollow">París</a></div>
 
         <div><a href="//24timezones.com/Moscow/time" style="text-decoration: none;color:#f35212" class="clock24"
             id="tz24-1705207393-c1166-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
-            title="current time in Moscow" target="_blank" rel="nofollow">Moscou</a></div>
+            title="current time in Moscow" target="_blank" rel="nofollow">Moscú</a></div>
 
         <div><a href="//24timezones.com/Beijing/time" style="text-decoration: none;color:#f35212" class="clock24"
             id="tz24-1705206677-c133-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
-            title="Beijing time now" target="_blank" rel="nofollow">Pékin</a></div>
+            title="Beijing time now" target="_blank" rel="nofollow">Beijing</a></div>
         <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
 
       </div>
       <hr class="large" />
-      <p><strong>Un jeu fini</strong> est joué pour gagner, tandis qu'<strong>un jeu infini</strong> est joué pour
-        continuer le jeu.<br /><small>Droit d'auteur © 2016-
-          <script>const currentYear = new Date().getFullYear(); document.write(currentYear);</script> | Dr. Hóng Xú |
-          Actualisé: 03.2023
-        </small></p>
+      <p><strong>Un juego finito</strong> se juega para ganar, mientras que <strong>un juego infinito</strong> se juega
+        para continuar el juego.<br /><small>Copyright © 2016-
+          <script>const currentYear = new Date().getFullYear(); document.write(currentYear);</script> | Dra. Hong Xú |
+          Actualizado: 03.2023
+          </pequeño>
+      </p>
     </footer>
 
   </div><!-- container -->
@@ -1410,9 +1386,10 @@
     }
   </script>
 
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('date-display').innerHTML = getCurrentDateFormatted('fr-FR');
+      document.getElementById('date-display').innerHTML = getCurrentDateFormatted('es-ES');
     });
 
     function getCurrentDateFormatted(locale) {
@@ -1425,7 +1402,7 @@
 
       let currentDate = new Date().toLocaleDateString(locale, options);
       // Split the string to get the components.
-      let parts = currentDate.split(' '); // In some implementations, the space may need to be changed to a comma.
+      let parts = currentDate.split(','); // In some implementations, the space may need to be changed to a comma.
       let weekday = capitalizeFirstLetter(parts[0]);
       let date = `${parts[1]}`;
 
