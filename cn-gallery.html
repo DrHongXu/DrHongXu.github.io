@@ -57,94 +57,94 @@
   -->
 
 
-   <!-- Magnific Popup CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+  <!-- Magnific Popup CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 
   <style>
+    .button-gallery {
+      display: inline-block;
+      padding: 0.5em 1.2em;
+      border-radius: 3px;
+      background: #ffffff;
+      font-family: sans-serif;
+      font-size: 16px;
+      cursor: pointer;
+      border: 1px solid #7a7a7a;
+      margin: 2px;
+      -webkit-transition: background 0.3s;
+      -moz-transition: background 0.3s;
+      transition: background 0.3s;
+    }
 
-.button-gallery {
-  display: inline-block;
-  padding: 0.5em 1.2em;
-  border-radius: 3px;
-  background: #ffffff;
-  font-family: sans-serif;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid #7a7a7a;
-  margin: 2px;
-  -webkit-transition: background 0.3s;
-  -moz-transition: background 0.3s;
-  transition: background 0.3s;
-}
+    .button-gallery:hover {
+      background-color: rgba(234, 140, 34, 0.458);
+    }
 
-.button-gallery:hover {
-  background-color: rgba(234, 140, 34, 0.458);
-}
+    .button-gallery:active,
+    .button-gallery.is-checked {
+      background-color: rgb(255, 255, 255);
+      outline: none;
+    }
 
-.button-gallery:active,
-.button-gallery.is-checked {
-  background-color: rgb(255, 255, 255);
-  outline: none;
-}
+    .button-group {
+      margin: 5px 0;
+      text-align: center;
+    }
 
-.button-group {
-  margin: 5px 0;
-  text-align: center;
-}
-
-.button-group:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-
-.img-responsive {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+    .button-group:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
 
 
-.grid {
-    width: 100%; /* 设置grid的初始宽度为100% */
-        }
-/* img {
+    .img-responsive {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+
+    .grid {
+      width: 100%;
+      /* 设置grid的初始宽度为100% */
+    }
+
+    /* img {
   vertical-align: middle;
 } */
 
-.grid article {
-  background-color: #FFFFFF;
-  display: block;
-  float: left;
-  margin: 1%;
-  width: 31%;
-}
+    .grid article {
+      background-color: #FFFFFF;
+      display: block;
+      float: left;
+      margin: 1%;
+      width: 31%;
+    }
 
-@media (max-width: 1024px) {
-  .grid article {
-    width: 31.3%;
-  }
-}
+    @media (max-width: 1024px) {
+      .grid article {
+        width: 31.3%;
+      }
+    }
 
-@media (max-width: 767px) {
-  .grid article {
-    width: 48%;
-    margin: 1%;
-  }
+    @media (max-width: 767px) {
+      .grid article {
+        width: 48%;
+        margin: 1%;
+      }
 
-  #grid-container {
-            width: 113%;
-        }
-}
+      #grid-container {
+        width: 113%;
+      }
+    }
 
-@media (max-width: 479px) {
-  .grid article {
-    margin: 2% 0;
-    width: 100%;
-  }
-}
-
+    @media (max-width: 479px) {
+      .grid article {
+        margin: 2% 0;
+        width: 100%;
+      }
+    }
   </style>
 
 
@@ -260,11 +260,11 @@
 
 <body>
   <!-- Top Navigation Menu -->
-<!-- partial:index.partial.html -->
+  <!-- partial:index.partial.html -->
 
 
-   <!-- Return Top Button -->
-<button onclick="topFunction()" id="myBtn" title="Go to top">⇧</button>
+  <!-- Return Top Button -->
+  <button onclick="topFunction()" id="myBtn" title="Go to top">⇧</button>
 
 
   <!-- partial:index.partial.html -->
@@ -277,50 +277,50 @@
     <img class="display-mobile" src="images/banner_mobile_cn3.png" style="margin-top: -10px; max-width: 113%;" />
     <div class="red-dot" alt="Munich" style="position: absolute; top: 20.3%; left: 61.7%; max-width: 113%;"></div>
   </div>
-  
 
- 
- <!-- Container -->
+
+
+  <!-- Container -->
   <div class="container">
 
     <!-- Sidebar -->
     <div class="hidden-mobile" class="three columns sidebar">
-        <nav>
-            <h3 id="logo" style="text-align:center;">
-              <img class="hidden-mobile" src="images/banner_cns6_left.gif" width="155" />
-              <div style="margin-bottom: 15px;"></div>
-              <h3 class="hidden-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text></rt></ruby>
-                <ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby> <small><ruby>博 士<rt>科学 / Dr.</rt>
-                  </ruby></small>
-              </h3>
-              <!-- <h3 class="hidden-mobile" align="left">徐 泓 <small>博 士</small></h3>-->
-    
-              <ul>
-                <span style="display: block; height: 6px;"></span>
-                <li><a href="#"> <span class='blue'>研究员</span> :: <span class='blue'>工程师</span> :: <span
-                      class='blue'>分析师</span></a></li>
-                <p>____</p>
-                <li><a href="cn.html">关于我</a></li>
-                <li><a href="cn-research.html">研究进展</a></li>
-                <li><a href="cn-resume.html">简历</a></li>
-                <li><a href="cn-activities.html"><span style="color: rgb(253, 93, 7);">兴趣爱好 ⏴</span></a></li>
-                <li><a href="#">&nbsp;• 演讲/主持</a></li>
-                <li><a href="#writing">&nbsp;• 写作</a></li>
-                <li><a href="#visiting">&nbsp;• 参访</a></li>
-                <li><a href="#travel">&nbsp;• 旅行</a></li>
-                <li><a href="cn-gallery.html">&nbsp;• 影像</a></li>
-                <p>____</p>
-                <li><a href="#contact"><span class='blue'>联系我</span></a></li>
-                <p>____</p>
-                <!--<li><a href="index.html" target="_self">EN</a> | <a href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();' class="d-inline-block p-3">简</a> /  <a href='javascript:(function(){var s=document.getElementById("tongwenlet_tw");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_tw.js";s.id="tongwenlet_tw";document.body.appendChild(s);})();' class="d-inline-block p-3">繁</a> </br><a href="de.html" target="_self">DE</a> | <a href="fr.html" target="_self">FR</a> </li> -->
-                <p></p>
-                
-                <img src="images/logo.png" width="45" />
-                <br>
-                <span id="greetings" style="color: rgb(253, 93, 7); font-weight: bold;"></span>
-    
-              </ul>
-          </nav>
+      <nav>
+        <h3 id="logo" style="text-align:center;">
+          <img class="hidden-mobile" src="images/banner_cns6_left.gif" width="155" />
+          <div style="margin-bottom: 15px;"></div>
+          <h3 class="hidden-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text></rt></ruby>
+            <ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby> <small><ruby>博 士<rt>科学 / Dr.</rt>
+              </ruby></small>
+          </h3>
+          <!-- <h3 class="hidden-mobile" align="left">徐 泓 <small>博 士</small></h3>-->
+
+          <ul>
+            <span style="display: block; height: 6px;"></span>
+            <li><a href="#"> <span class='blue'>研究员</span> :: <span class='blue'>工程师</span> :: <span
+                  class='blue'>分析师</span></a></li>
+            <p>____</p>
+            <li><a href="cn.html">关于我</a></li>
+            <li><a href="cn-research.html">研究进展</a></li>
+            <li><a href="cn-resume.html">简历</a></li>
+            <li><a href="cn-activities.html"><span style="color: rgb(253, 93, 7);">兴趣爱好 ⏴</span></a></li>
+            <li><a href="#">&nbsp;• 演讲/主持</a></li>
+            <li><a href="#writing">&nbsp;• 写作</a></li>
+            <li><a href="#visiting">&nbsp;• 参访</a></li>
+            <li><a href="#travel">&nbsp;• 旅行</a></li>
+            <li><a href="cn-gallery.html">&nbsp;• 影像</a></li>
+            <p>____</p>
+            <li><a href="#contact"><span class='blue'>联系我</span></a></li>
+            <p>____</p>
+            <!--<li><a href="index.html" target="_self">EN</a> | <a href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();' class="d-inline-block p-3">简</a> /  <a href='javascript:(function(){var s=document.getElementById("tongwenlet_tw");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_tw.js";s.id="tongwenlet_tw";document.body.appendChild(s);})();' class="d-inline-block p-3">繁</a> </br><a href="de.html" target="_self">DE</a> | <a href="fr.html" target="_self">FR</a> </li> -->
+            <p></p>
+
+            <img src="images/logo.png" width="45" />
+            <br>
+            <span id="greetings" style="color: rgb(253, 93, 7); font-weight: bold;"></span>
+
+          </ul>
+      </nav>
 
     </div>
 
@@ -342,7 +342,7 @@
         <div class="orange-dot" alt="Oxford" style="top: 26.4%; left: 46.8%;"></div>
 
         <div class="red-dot" alt="Munich" style="top: 31.3%; left: 51.6%; z-index: 9999;"></div>
-        
+
 
         <div class="tooltip" style="top:50%; left: 65%;">
           <h6><img src="images/flag_de.png" alt="flag"
@@ -418,14 +418,14 @@
 
         <span style="float:right; font-family:verdana">
           <span style="display:inline-block;margin-top:13px;margin-bottom:0px;font-size:small" for="languages">
-            <a
-              href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();'
+            <a href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();'
               class="d-inline-block p-3"><img src="images/flag_cn.png" alt="flag"
-              style="height:23px;display:inline-block;top:7px;position:relative;">&nbsp;简</a> / <a
+                style="height:23px;display:inline-block;top:7px;position:relative;">&nbsp;简</a> / <a
               href='javascript:(function(){var s=document.getElementById("tongwenlet_tw");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_tw.js";s.id="tongwenlet_tw";document.body.appendChild(s);})();'
               class="d-inline-block p-3"><img src="images/flag_hk.png" alt="flag"
-              style="height:23px;display:inline-block;top:7px;position:relative;"> <img src="images/flag_mc.png"
-              alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;"> 繁</a></span>&nbsp;<select id="languages" name="languages"
+                style="height:23px;display:inline-block;top:7px;position:relative;"> <img src="images/flag_mc.png"
+                alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
+              繁</a></span>&nbsp;<select id="languages" name="languages"
             style="width:62px;display:inline-block;color:inherit;margin-bottom:0px;"
             onchange="window.location.href=this.options [this.selectedIndex].value">
             <option value="cn.html" select>中文</option>
@@ -448,58 +448,76 @@
       <div class="topnav">
 
         <a href="cn.html" class="active">
-          
+
           <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text></rt></ruby>
             <ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby> <small><ruby>博 士<rt>科学 / Dr.</rt>
               </ruby></small>
           </h3>
         </a>
-        
+
         <div id="myLinks">
           <ul>
             <div style="background-color: rgb(255, 255, 255);">
-            <hr>
-            <li><img src="images/logo.png" style="float:right" width="45"><strong><a href="cn.html"><small>▸ 关于我 ⇨</small></a></strong><br>
-            </li> 
-            
-            <li><a href="cn-research.html"><small><span style="color: rgb(97, 97, 97);">▸ <strong>研究进展</strong></span></small></a></li>
-            <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#publications" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 出版物</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#patents" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 专利</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#presentations" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 学术会议</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#equity-research" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 行研报告</small></a></li>
-          </div>
-             
-            <li><a href="cn-resume.html"><small style="color: rgb(97, 97, 97);">▸ <strong>简历</strong></small></a></li>
-            <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#education-mobile" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 教育背景</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#academic-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 研究经历</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#industrial-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 产业经验</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#awards" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 荣誉奖励</small></a></li>
-          </div>
-             
-            <li><a href="cn-activities.html"><small style="color: rgb(97, 97, 97);">▸ <strong>兴趣爱好</strong></small></a></li>
-            <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 演讲/主持</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#writing" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 写作</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#visiting" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 参访</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#travel" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#photography" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 摄影</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#sports" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 运动</small></a></li>
-            </div>          
-              
-            <li><a href="#contact"><small style="color: rgb(97, 97, 97);">▸ <strong>联系我</strong></small></a><br></li>
-            <hr>
-          </div>
+              <hr>
+              <li><img src="images/logo.png" style="float:right" width="45"><strong><a href="cn.html"><small>▸ 关于我
+                      ⇨</small></a></strong><br>
+              </li>
+
+              <li><a href="cn-research.html"><small><span style="color: rgb(97, 97, 97);">▸
+                      <strong>研究进展</strong></span></small></a></li>
+              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#publications"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 出版物</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#patents"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 专利</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#presentations"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 学术会议</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#equity-research"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 行研报告</small></a></li>
+              </div>
+
+              <li><a href="cn-resume.html"><small style="color: rgb(97, 97, 97);">▸ <strong>简历</strong></small></a></li>
+              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#education-mobile"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 教育背景</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#academic-experience"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 研究经历</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#industrial-experience"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 产业经验</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#awards"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 荣誉奖励</small></a></li>
+              </div>
+
+              <li><a href="cn-activities.html"><small style="color: rgb(97, 97, 97);">▸
+                    <strong>兴趣爱好</strong></small></a></li>
+              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 演讲/主持</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#writing"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 写作</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#visiting"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 参访</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#travel"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#photography"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 摄影</small></a></li>
+                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#sports"
+                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 运动</small></a></li>
+              </div>
+
+              <li><a href="#contact"><small style="color: rgb(97, 97, 97);">▸ <strong>联系我</strong></small></a><br></li>
+              <hr>
+            </div>
           </ul>
         </div>
 
-        <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()" style="margin-top: 22px; display: inline-block;">
-          <div style="display: flex; align-items: center;">
-            <span style="display: inline-block; height: 20px; line-height: 20px;"><small>导航</small></span>
-            <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
-          </div>
-        </a></strong>
+        <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()"
+            style="margin-top: 22px; display: inline-block;">
+            <div style="display: flex; align-items: center;">
+              <span style="display: inline-block; height: 20px; line-height: 20px;"><small>导航</small></span>
+              <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
+            </div>
+          </a></strong>
 
       </div>
 
@@ -508,23 +526,22 @@
 
         <span style="float:right; font-family:verdana">
 
-         <select id="languages" name="languages"
-                  style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;"
-                  onchange="handleChange(this)">
-              <option value="cn.html" select>🇨🇳 中文(简体)</option>
-              <option value="javascript:runFanTiJavaScript();">🇭🇰 中文(繁体)</option>
-              <option value="jp.html">🇯🇵 日本語</option>
-              <option value="kr.html">🇰🇷 한국어</option>
-              <option value="de.html">🇩🇪 Deutsch</option>
-              <option value="en.html">🇬🇧 English</option>
-              <option value="es.html">🇪🇸 Español</option>
-              <option value="fr.html">🇫🇷 Français</option>
-              <option value="it.html">🇮🇹 Italiano</option>
-              <option value="ru.html">🇷🇺 Русский</option>
-              <option value="ar.html">🇸🇦 اللغة العربية</option>
+          <select id="languages" name="languages"
+            style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;" onchange="handleChange(this)">
+            <option value="cn.html" select>🇨🇳 中文(简体)</option>
+            <option value="javascript:runFanTiJavaScript();">🇭🇰 中文(繁体)</option>
+            <option value="jp.html">🇯🇵 日本語</option>
+            <option value="kr.html">🇰🇷 한국어</option>
+            <option value="de.html">🇩🇪 Deutsch</option>
+            <option value="en.html">🇬🇧 English</option>
+            <option value="es.html">🇪🇸 Español</option>
+            <option value="fr.html">🇫🇷 Français</option>
+            <option value="it.html">🇮🇹 Italiano</option>
+            <option value="ru.html">🇷🇺 Русский</option>
+            <option value="ar.html">🇸🇦 اللغة العربية</option>
           </select>
-      </span>
-        
+        </span>
+
         <script>
           // 获取第二个下拉菜单的高度
           var secondSelectHeight = document.getElementById('languages2').offsetHeight;
@@ -558,140 +575,140 @@
         <button class="button-gallery" data-filter=".mideast">中东</button>
         <button class="button-gallery" data-filter=".un">联合国</button>
         <br><br>
-    </div>
-  
+      </div>
 
-    <hr class="display-mobile" style="width:113%">
-    <hr class="hidden-mobile">
-    
-    <div id="grid-container" class="transitions-enabled fluid masonry js-masonry grid">
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+      <div id="grid-container" class="transitions-enabled fluid masonry js-masonry grid">
         <article class="travel people europe">
-            <a href="images/gallery/1.jpg" class="popup-link" title="🇪🇸 西班牙 · 马略卡岛 · 海角灯塔">
+          <a href="images/gallery/1.jpg" class="popup-link" title="🇪🇸 西班牙 · 马略卡岛 · 海角灯塔">
             <img src="images/gallery/1.jpg" class="img-responsive" />
-            </a>
-            <!-- <figcaption>🇪🇸 西班牙/马略卡岛/海角灯塔</figcaption> -->
+          </a>
+          <!-- <figcaption>🇪🇸 西班牙/马略卡岛/海角灯塔</figcaption> -->
         </article>
         <article class="sport people europe">
-            <a href="images/gallery/2.jpg" class="popup-link" title="🇩🇪 德国 · 慕尼黑 · 啤酒节广场 ">
+          <a href="images/gallery/2.jpg" class="popup-link" title="🇩🇪 德国 · 慕尼黑 · 啤酒节广场 ">
             <img src="images/gallery/2.jpg" class="img-responsive" /></a>
         </article>
         <article class="sport people europe">
-            <a href="images/gallery/3.jpg" class="popup-link" title="🇨🇭 瑞士 · 苏黎世湖 · 环湖70KM骑行 ">
+          <a href="images/gallery/3.jpg" class="popup-link" title="🇨🇭 瑞士 · 苏黎世湖 · 环湖70KM骑行 ">
             <img src="images/gallery/3.jpg" class="img-responsive" /></a>
         </article>
         <article class="meeting people europe">
-            <a href="images/gallery/4.jpg" class="popup-link">
+          <a href="images/gallery/4.jpg" class="popup-link">
             <img src="images/gallery/4.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/5.jpg" class="popup-link">
+          <a href="images/gallery/5.jpg" class="popup-link">
             <img src="images/gallery/5.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/6.jpg" class="popup-link">
+          <a href="images/gallery/6.jpg" class="popup-link">
             <img src="images/gallery/6.jpg" class="img-responsive" /></a>
-        </article>  
-        <article class="travel people europe">
-            <a href="images/gallery/7.jpg" class="popup-link">
-            <img src="images/gallery/7.jpg" class="img-responsive" /></a>
-        </article>  
-        <article class="people europe">
-            <a href="images/gallery/8.jpg" class="popup-link">
-            <img src="images/gallery/8.jpg" class="img-responsive" />   </a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/9.jpg" class="popup-link">
-            <img src="images/gallery/9.jpg" class="img-responsive" />  </a>
+          <a href="images/gallery/7.jpg" class="popup-link">
+            <img src="images/gallery/7.jpg" class="img-responsive" /></a>
+        </article>
+        <article class="people europe">
+          <a href="images/gallery/8.jpg" class="popup-link">
+            <img src="images/gallery/8.jpg" class="img-responsive" /> </a>
+        </article>
+        <article class="travel people europe">
+          <a href="images/gallery/9.jpg" class="popup-link">
+            <img src="images/gallery/9.jpg" class="img-responsive" /> </a>
         </article>
         <article class="meeting people europe">
-            <a href="images/gallery/10.jpg" class="popup-link">
-            <img src="images/gallery/10.jpg" class="img-responsive" />   </a>
+          <a href="images/gallery/10.jpg" class="popup-link">
+            <img src="images/gallery/10.jpg" class="img-responsive" /> </a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/11.jpg" class="popup-link">
+          <a href="images/gallery/11.jpg" class="popup-link">
             <img src="images/gallery/11.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/12.jpg" class="popup-link">
+          <a href="images/gallery/12.jpg" class="popup-link">
             <img src="images/gallery/12.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/13.jpg" class="popup-link">
+          <a href="images/gallery/13.jpg" class="popup-link">
             <img src="images/gallery/13.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/14.jpg" class="popup-link">
+          <a href="images/gallery/14.jpg" class="popup-link">
             <img src="images/gallery/14.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/15.jpg" class="popup-link">
+          <a href="images/gallery/15.jpg" class="popup-link">
             <img src="images/gallery/15.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/16.jpg" class="popup-link">
+          <a href="images/gallery/16.jpg" class="popup-link">
             <img src="images/gallery/16.jpg" class="img-responsive" /></a>
-        </article>  
-        <article class="travel people europe">
-            <a href="images/gallery/17.jpg" class="popup-link">
-            <img src="images/gallery/17.jpg" class="img-responsive" /></a>
-        </article>  
-        <article class="travel people europe">
-            <a href="images/gallery/18.jpg" class="popup-link">
-            <img src="images/gallery/18.jpg" class="img-responsive" />   </a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/19.jpg" class="popup-link">
-            <img src="images/gallery/19.jpg" class="img-responsive" />   </a>
+          <a href="images/gallery/17.jpg" class="popup-link">
+            <img src="images/gallery/17.jpg" class="img-responsive" /></a>
+        </article>
+        <article class="travel people europe">
+          <a href="images/gallery/18.jpg" class="popup-link">
+            <img src="images/gallery/18.jpg" class="img-responsive" /> </a>
+        </article>
+        <article class="travel people europe">
+          <a href="images/gallery/19.jpg" class="popup-link">
+            <img src="images/gallery/19.jpg" class="img-responsive" /> </a>
         </article>
         <article class="graduation people europe">
-            <a href="images/gallery/20.jpg" class="popup-link">
-            <img src="images/gallery/20.jpg" class="img-responsive" /></a>   
+          <a href="images/gallery/20.jpg" class="popup-link">
+            <img src="images/gallery/20.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/21.jpg" class="popup-link">
+          <a href="images/gallery/21.jpg" class="popup-link">
             <img src="images/gallery/21.jpg" class="img-responsive" /></a>
         </article>
         <article class="sport people europe">
-            <a href="images/gallery/22.jpg" class="popup-link">
+          <a href="images/gallery/22.jpg" class="popup-link">
             <img src="images/gallery/22.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people asia">
-            <a href="images/gallery/23.jpg" class="popup-link">
+          <a href="images/gallery/23.jpg" class="popup-link">
             <img src="images/gallery/23.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/24.jpg" class="popup-link">
+          <a href="images/gallery/24.jpg" class="popup-link">
             <img src="images/gallery/24.jpg" class="img-responsive" /></a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/25.jpg" class="popup-link">
+          <a href="images/gallery/25.jpg" class="popup-link">
             <img src="images/gallery/25.jpg" class="img-responsive" /></a>
         </article>
         <article class="meeting people europe">
-            <a href="images/gallery/26.jpg" class="popup-link">
+          <a href="images/gallery/26.jpg" class="popup-link">
             <img src="images/gallery/26.jpg" class="img-responsive" /></a>
-        </article>  
+        </article>
         <article class="travel people europe">
-            <a href="images/gallery/27.jpg" class="popup-link">
+          <a href="images/gallery/27.jpg" class="popup-link">
             <img src="images/gallery/27.jpg" class="img-responsive" /></a>
-        </article>  
+        </article>
         <article class="travel people europe">
-            <a href="images/gallery/28.jpg" class="popup-link">
-            <img src="images/gallery/28.jpg" class="img-responsive" />   </a>
+          <a href="images/gallery/28.jpg" class="popup-link">
+            <img src="images/gallery/28.jpg" class="img-responsive" /> </a>
         </article>
         <article class="meeting people europe">
-            <a href="images/gallery/29.jpg" class="popup-link">
-            <img src="images/gallery/29.jpg" class="img-responsive" />   </a>
+          <a href="images/gallery/29.jpg" class="popup-link">
+            <img src="images/gallery/29.jpg" class="img-responsive" /> </a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/30.jpg" class="popup-link">
-            <img src="images/gallery/30.jpg" class="img-responsive" />   </a>
+          <a href="images/gallery/30.jpg" class="popup-link">
+            <img src="images/gallery/30.jpg" class="img-responsive" /> </a>
         </article>
         <article class="travel people europe">
-            <a href="images/gallery/31.jpg" class="popup-link">
-            <img src="images/gallery/31.jpg" class="img-responsive" />   </a>
+          <a href="images/gallery/31.jpg" class="popup-link">
+            <img src="images/gallery/31.jpg" class="img-responsive" /> </a>
         </article>
-    </div>
+      </div>
 
 
       <hr class="display-mobile" style="width:113%">
@@ -705,18 +722,21 @@
           <li><strong>领英</strong>: <a href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span
                 class='blue'>linkedin.com/in/xuhong/</span></a> (关注者: 1800+)<br></li>
           <li><strong>谷歌学术</strong>: <a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en"
-              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a> (引用数: <span id="citation-count">290+</span>)<br></li>
+              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a> (引用数: <span
+              id="citation-count">300+</span>)<br></li>
           <li><strong>知乎</strong>: <a href="https://www.zhihu.com/people/dr.of.nothing" target="_blank"
               target="_blank"><span class='blue'>zhihu.com/people/dr.of.nothing</span></a> (关注者: 13700+)<br></li>
-          <li><strong>摄影</strong>: <a href="https://photo.h-xu.com/" target="_blank"
-                target="_blank"><span class='blue'>photo.h-xu.com</span></a> (X-graphy)<br></li>
+          <li><strong>摄影</strong>: <a href="https://photo.h-xu.com/" target="_blank" target="_blank"><span
+                class='blue'>photo.h-xu.com</span></a> (X-graphy)<br></li>
 
-                <br>
-                <a href="https://info.flagcounter.com/D897" target="_blank">
-                  <div style="width: fit-content; height: calc(100% * 2 / 3); overflow: hidden; display: inline-block;">
-                      <img src="https://s01.flagcounter.com/count/D897/bg_FFFFFF/txt_404040/border_FFFFFF/columns_8/maxflags_16/viewers_3/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" style="display: block;">
-                  </div>
-              </a>
+          <br>
+          <a href="https://info.flagcounter.com/D897" target="_blank">
+            <div style="width: fit-content; height: calc(100% * 2 / 3); overflow: hidden; display: inline-block;">
+              <img
+                src="https://s01.flagcounter.com/count/D897/bg_FFFFFF/txt_404040/border_FFFFFF/columns_8/maxflags_16/viewers_3/labels_0/pageviews_1/flags_0/percent_0/"
+                alt="Flag Counter" style="display: block;">
+            </div>
+          </a>
 
           <!---<a href="https://www.flagcounter.me/details/enB"><img src="https://www.flagcounter.me/enB/"
               alt="Flag Counter"></a>
@@ -938,26 +958,29 @@
       }
     </script>
 
-<script type="text/javascript" src="/js/block_save_as.js"></script>
+    <script type="text/javascript" src="/js/block_save_as.js"></script>
 
-<script type="text/javascript" src="/js/cn_fanti_translate.js"></script>
+    <script type="text/javascript" src="/js/cn_fanti_translate.js"></script>
 
-<script type="text/javascript" src="/js/cn_holiday_display.js"></script>
+    <script type="text/javascript" src="/js/cn_holiday_display.js"></script>
 
-<script type="text/javascript" src="/js/scholar_fetch.js"></script>
-
-
+    <script type="text/javascript" src="/js/scholar_fetch.js"></script>
 
 
-<!-- partial -->
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script  src="/js/navi-mobile.js"></script>
-<script  src="/js/navi-sidebar.js"></script>
 
-<!-- partial -->
-<!-- <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script> -->
-<script src='https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007714979/custom/page/hack-a-thon-3/masonry.min.min.js'></script>
-<script src='https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007849180/custom/page/hack-a-thon-3/isotope.min.js'></script><script  src="./script.js"></script>
+
+    <!-- partial -->
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="/js/navi-mobile.js"></script>
+    <script src="/js/navi-sidebar.js"></script>
+
+    <!-- partial -->
+    <!-- <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script> -->
+    <script
+      src='https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007714979/custom/page/hack-a-thon-3/masonry.min.min.js'></script>
+    <script
+      src='https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007849180/custom/page/hack-a-thon-3/isotope.min.js'></script>
+    <script src="./script.js"></script>
 
 
     <!-- 保持只加载一个版本的 jQuery -->
@@ -967,66 +990,68 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 
     <!-- Masonry 和 Isotope 库 -->
-    <script src='https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007714979/custom/page/hack-a-thon-3/masonry.min.min.js'></script>
-    <script src='https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007849180/custom/page/hack-a-thon-3/isotope.min.js'></script>
+    <script
+      src='https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007714979/custom/page/hack-a-thon-3/masonry.min.min.js'></script>
+    <script
+      src='https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007849180/custom/page/hack-a-thon-3/isotope.min.js'></script>
 
     <!-- Isotope 初始化脚本 -->
     <script type="text/javascript">
-    $(function() {
+      $(function () {
         var $grid = $('.grid').isotope({
-            itemSelector: 'article'
+          itemSelector: 'article'
         });
 
         // filter buttons
-        $('.filters-button-group').on('click', 'button', function() {
-            var filterValue = $(this).attr('data-filter');
-            $grid.isotope({ filter: filterValue });
+        $('.filters-button-group').on('click', 'button', function () {
+          var filterValue = $(this).attr('data-filter');
+          $grid.isotope({ filter: filterValue });
         });
 
-        $('.button-group').each(function(i, buttonGroup) {
-            var $buttonGroup = $(buttonGroup);
-            $buttonGroup.on('click', 'button', function() {
-                $buttonGroup.find('.is-checked').removeClass('is-checked');
-                $(this).addClass('is-checked');
-            });
+        $('.button-group').each(function (i, buttonGroup) {
+          var $buttonGroup = $(buttonGroup);
+          $buttonGroup.on('click', 'button', function () {
+            $buttonGroup.find('.is-checked').removeClass('is-checked');
+            $(this).addClass('is-checked');
+          });
         });
-    });
+      });
 
-    // debounce function
-    function debounce(fn, threshold) {
+      // debounce function
+      function debounce(fn, threshold) {
         var timeout;
         return function debounced() {
-            if (timeout) {
-                clearTimeout(timeout);
-            }
-            function delayed() {
-                fn();
-                timeout = null;
-            }
-            timeout = setTimeout(delayed, threshold || 100);
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+          function delayed() {
+            fn();
+            timeout = null;
+          }
+          timeout = setTimeout(delayed, threshold || 100);
         }
-    }
+      }
 
-    $(window).bind("load", function() {
+      $(window).bind("load", function () {
         $('#all').click();
-    });
+      });
     </script>
 
     <!-- Magnific Popup 初始化脚本 -->
     <script>
-    $(document).ready(function() {
+      $(document).ready(function () {
         $('.popup-link').magnificPopup({
-            type: 'image',
-            mainClass: 'mfp-fade',
-            removalDelay: 300,
-            gallery: {
-                enabled: true
-            },
-            image: {
-                titleSrc: 'title'
-            }
+          type: 'image',
+          mainClass: 'mfp-fade',
+          removalDelay: 300,
+          gallery: {
+            enabled: true
+          },
+          image: {
+            titleSrc: 'title'
+          }
         });
-    });
+      });
     </script>
 
 

@@ -37,7 +37,7 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
- 
+
   <!-- Favicons
   ================================================== -->
   <link rel="shortcut icon" href="">
@@ -103,50 +103,51 @@
     }
 
 
-/* Sport Container */
+    /* Sport Container */
 
-.three-col-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 90%;
-    max-width: 1200px;
-}
+    .three-col-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 90%;
+      max-width: 1200px;
+    }
 
-.grid-item {
-    text-align: center;
-}
+    .grid-item {
+      text-align: center;
+    }
 
-.grid-image {
-    width: 103%;
-    height: 150px; /*统一图片高度*/
-    object-fit: cover;
-    display: block;
-    border: 0px solid #ccc;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-}
+    .grid-image {
+      width: 103%;
+      height: 150px;
+      /*统一图片高度*/
+      object-fit: cover;
+      display: block;
+      border: 0px solid #ccc;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
 
-.grid-image:hover {
-    transform: scale(1.07);
-}
+    .grid-image:hover {
+      transform: scale(1.07);
+    }
 
-.image-title {
-    margin-top: 8px;
-    font-size: normal;
-    color: #333;
-}
+    .image-title {
+      margin-top: 8px;
+      font-size: normal;
+      color: #333;
+    }
 
     /* Mobile styles - hide .flex-container */
     @media (max-width: 768px) {
       .three-col-grid {
         width: 100%;
       }
+
       .grid-image {
         height: 110px;
       }
     }
-
   </style>
 
 
@@ -332,7 +333,7 @@
             <p>____</p>
             <!--<li><a href="index.html" target="_self">EN</a> | <a href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();' class="d-inline-block p-3">简</a> /  <a href='javascript:(function(){var s=document.getElementById("tongwenlet_tw");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_tw.js";s.id="tongwenlet_tw";document.body.appendChild(s);})();' class="d-inline-block p-3">繁</a> </br><a href="de.html" target="_self">DE</a> | <a href="fr.html" target="_self">FR</a> </li> -->
             <p></p>
-            
+
             <img src="images/logo.png" width="45" />
             <br>
             <span id="greetings" style="color: rgb(253, 93, 7); font-weight: bold;"></span>
@@ -368,14 +369,14 @@
 
         <span style="float:right; font-family:verdana">
           <span style="display:inline-block;margin-top:13px;margin-bottom:0px;font-size:small" for="languages">
-            <a
-              href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();'
+            <a href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();'
               class="d-inline-block p-3"><img src="images/flag_cn.png" alt="flag"
-              style="height:23px;display:inline-block;top:7px;position:relative;">&nbsp;简</a> / <a
+                style="height:23px;display:inline-block;top:7px;position:relative;">&nbsp;简</a> / <a
               href='javascript:(function(){var s=document.getElementById("tongwenlet_tw");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_tw.js";s.id="tongwenlet_tw";document.body.appendChild(s);})();'
               class="d-inline-block p-3"><img src="images/flag_hk.png" alt="flag"
-              style="height:23px;display:inline-block;top:7px;position:relative;"> <img src="images/flag_mc.png"
-              alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;"> 繁</a></span>&nbsp;<select id="languages" name="languages"
+                style="height:23px;display:inline-block;top:7px;position:relative;"> <img src="images/flag_mc.png"
+                alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
+              繁</a></span>&nbsp;<select id="languages" name="languages"
             style="width:62px;display:inline-block;color:inherit;margin-bottom:0px;"
             onchange="window.location.href=this.options [this.selectedIndex].value">
             <option value="cn-activities.html" select>中文</option>
@@ -397,70 +398,86 @@
 
 
       <div class="topnav">
-       
+
 
         <a href="cn.html" class="active">
-          
+
           <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text></rt></ruby>
             <ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby> <small><ruby>博 士<rt>科学 / Dr.</rt>
               </ruby></small>
           </h3>
         </a>
-        
+
         <div id="myLinks">
           <ul>
             <hr>
-            <li><img src="images/logo.png" style="float:right" width="45"><a href="cn.html"><small  style="color: rgb(97, 97, 97);">▸ <strong>关于我</strong></small></a><br>
-            </li> 
-            
-            <li><a href="cn-research.html"><small><span style="color: rgb(97, 97, 97);">▸ <strong>研究进展</strong></span></small></a></li>
+            <li><img src="images/logo.png" style="float:right" width="45"><a href="cn.html"><small
+                  style="color: rgb(97, 97, 97);">▸ <strong>关于我</strong></small></a><br>
+            </li>
+
+            <li><a href="cn-research.html"><small><span style="color: rgb(97, 97, 97);">▸
+                    <strong>研究进展</strong></span></small></a></li>
             <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#publications" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 出版物</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#patents" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 专利</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#presentations" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 学术会议</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#equity-research" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 行研报告</small></a></li>
-          </div>
-             
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#publications"
+                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 出版物</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#patents"
+                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 专利</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#presentations"
+                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 学术会议</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#equity-research"
+                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 行研报告</small></a></li>
+            </div>
+
             <li><a href="cn-resume.html"><small style="color: rgb(97, 97, 97);">▸ <strong>简历</strong></small></a></li>
             <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#education-mobile" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 教育背景</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#academic-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 研究经历</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#industrial-experience" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 产业经验</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#awards" style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 荣誉奖励</small></a></li>
-          </div>
-             
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#education-mobile"
+                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 教育背景</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#academic-experience"
+                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 研究经历</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#industrial-experience"
+                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 产业经验</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#awards"
+                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 荣誉奖励</small></a></li>
+            </div>
+
             <li><strong><a href="cn-activities.html"><small>▸ 兴趣爱好 ⇨</small></a></strong></li>
             <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html">&nbsp;&nbsp;&nbsp;<small>• 演讲/主持</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#writing">&nbsp;&nbsp;&nbsp;<small>• 写作</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#visiting">&nbsp;&nbsp;&nbsp;<small>• 参访</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#travel">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#photography">&nbsp;&nbsp;&nbsp;<small>• 摄影</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#sports">&nbsp;&nbsp;&nbsp;<small>• 运动</small></a></li>
-            </div>          
-              
+              <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html">&nbsp;&nbsp;&nbsp;<small>•
+                    演讲/主持</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a
+                  href="cn-activities.html#writing">&nbsp;&nbsp;&nbsp;<small>• 写作</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a
+                  href="cn-activities.html#visiting">&nbsp;&nbsp;&nbsp;<small>• 参访</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a
+                  href="cn-activities.html#travel">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a
+                  href="cn-activities.html#photography">&nbsp;&nbsp;&nbsp;<small>• 摄影</small></a></li>
+              <li style="width: 50%; box-sizing: border-box;"><a
+                  href="cn-activities.html#sports">&nbsp;&nbsp;&nbsp;<small>• 运动</small></a></li>
+            </div>
+
             <li><a href="#contact"><small style="color: rgb(97, 97, 97);">▸ <strong>联系我</strong></small></a><br></li>
             <hr>
           </ul>
         </div>
 
-      <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()" style="margin-top: 22px; display: inline-block;">
-          <div style="display: flex; align-items: center;">
-            <span style="display: inline-block; height: 20px; line-height: 20px;"><small>导航</small></span>
-            <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
-          </div>
-        </a></strong>
+        <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()"
+            style="margin-top: 22px; display: inline-block;">
+            <div style="display: flex; align-items: center;">
+              <span style="display: inline-block; height: 20px; line-height: 20px;"><small>导航</small></span>
+              <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
+            </div>
+          </a></strong>
 
       </div>
 
       <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
         <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 嗨！你好！ </text>
         <span style="float:right; font-family:verdana">
-        <select id="languages" name="languages"
-        style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;"
-        onchange="handleChange(this)">
-    <option value="cn-activities.html" select>🇨🇳 中文(简体)</option>
-    <option value="javascript:runFanTiJavaScript();">🇭🇰 中文(繁体)</option>
+          <select id="languages" name="languages"
+            style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;" onchange="handleChange(this)">
+            <option value="cn-activities.html" select>🇨🇳 中文(简体)</option>
+            <option value="javascript:runFanTiJavaScript();">🇭🇰 中文(繁体)</option>
             <option value="jp-activities.html">🇯🇵 日本語</option>
             <option value="kr-activities.html">🇰🇷 한국어</option>
             <option value="de-activities.html">🇩🇪 Deutsch</option>
@@ -478,28 +495,28 @@
 
         <h3 class="display-mobile">演讲 & 主持 <br></h3>
         <p align="justify">
-        
+
           <strong>▸ 联合国波恩气候变化大会</strong> 分会场主持人/演讲者《中国能源转型与技术创新》(全球直播)
-        
-
-          <div class="video-container hidden-mobile">
-            <video controls poster="images/Bonn_preview_cn.png">
-              <source src="/images/Bonn_Climate_v1_8MB.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-    
-          <div class="video-container display-mobile" style="width:113%;padding-bottom: 63.25%;">
-            <video controls poster="images/Bonn_preview_cn.png">
-              <source src="/images/Bonn_Climate_v1_8MB.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
 
 
-          <div class="doc-section" id="Other-activities">
+        <div class="video-container hidden-mobile">
+          <video controls poster="images/Bonn_preview_cn.png">
+            <source src="/images/Bonn_Climate_v1_8MB.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="video-container display-mobile" style="width:113%;padding-bottom: 63.25%;">
+          <video controls poster="images/Bonn_preview_cn.png">
+            <source src="/images/Bonn_Climate_v1_8MB.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+
+        <div class="doc-section" id="Other-activities">
           <h4>更多活动:</h4>
-        
+
           <li>
             2022 | <strong>IN3 资本沙龙</strong> 受邀嘉宾: 举足"氢"重, 下重注的“氢能源”到底好在哪里 (第8场, 100+线上参会)<br>
           </li>
@@ -512,7 +529,7 @@
           <li>
             2021 | <strong>Clubhouse</strong> 主持人: 能源危机下的博士视野—聚焦各国新能源政策/技术 (光/风/锂/氢/核）(200+成员)<br>
           </li>
-          </div>
+        </div>
 
         </p>
 
@@ -525,352 +542,372 @@
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
 
-      
+
       <div class="doc-section" id="phd-round-table">
         <h3>博士圆桌会</h3>
 
-      <div class="tabset">
-        <!-- Tab 1 -->
-        <input type="radio" name="tabset" id="tab1" aria-controls="session1" >
-        <label for="tab1">第1期</label>
-        <!-- Tab 2 -->
-        <input type="radio" name="tabset" id="tab2" aria-controls="session2">
-        <label for="tab2">第2期</label>
-        <!-- Tab 3 -->
-        <input type="radio" name="tabset" id="tab3" aria-controls="session3"  checked>
-        <label for="tab3">第3期</label>
-        <!-- Tab 4 -->
-        <input type="radio" name="tabset" id="tab4" aria-controls="session4" >
-        <label for="tab4">第4期</label>
+        <div class="tabset">
+          <!-- Tab 1 -->
+          <input type="radio" name="tabset" id="tab1" aria-controls="session1">
+          <label for="tab1">第1期</label>
+          <!-- Tab 2 -->
+          <input type="radio" name="tabset" id="tab2" aria-controls="session2">
+          <label for="tab2">第2期</label>
+          <!-- Tab 3 -->
+          <input type="radio" name="tabset" id="tab3" aria-controls="session3" checked>
+          <label for="tab3">第3期</label>
+          <!-- Tab 4 -->
+          <input type="radio" name="tabset" id="tab4" aria-controls="session4">
+          <label for="tab4">第4期</label>
           <!-- Tab 5-->
           <!-- <input type="radio" name="tabset" id="tab5" aria-controls="session5" >
           <label for="tab5">第5期</label> -->
-            <!-- Tab 6 -->
-        <!-- <input type="radio" name="tabset" id="tab6" aria-controls="session6" >
+          <!-- Tab 6 -->
+          <!-- <input type="radio" name="tabset" id="tab6" aria-controls="session6" >
         <label for="tab6">第6期</label> -->
           <!-- Tab 7 -->
           <!-- <input type="radio" name="tabset" id="tab7" aria-controls="session7" >
           <label for="tab7">第7期</label> -->
-            <!-- Tab 8 -->
-        <!-- <input type="radio" name="tabset" id="tab8" aria-controls="session8" >
+          <!-- Tab 8 -->
+          <!-- <input type="radio" name="tabset" id="tab8" aria-controls="session8" >
         <label for="tab8">第8期</label> -->
           <!-- Tab 9 -->
           <!-- <input type="radio" name="tabset" id="tab9" aria-controls="session9" >
           <label for="tab9">第9期</label>  -->
-      
-        <div class="tab-panels">
-          <section id="session1" class="tab-panel">
-            <h4><span style="color:#131414">要不要读博？怎么读博？读国外全奖博士是什么体验？</span></h4> 
-            <p>时间：2022年5月15日 北京时间 晚上 7:00 - 8:00 <br>
-               地址：腾讯会议 (<a href="https://meeting.tencent.com/dm/Y1iH9zedITzs" target="_blank">会议链接</a>)<br>
-               提问：Sli.do (<a href="https://app.sli.do/event/pVt1EY9ogPoF5vUxk71XtK" target="_blank">提问链接</a>)</p><img src="images/PhDTable01.jpg" width=45% align="right">
-            
-               <p><span style="color:#102955"><strong>嘉宾: C. Zhou</strong></span> <br>
-              - 洛桑联邦理工大学 (EPFL) 博士生 <br>
-              - 东京大学 本硕 <br>
-              - 光学 & 微纳米技术
-            </p>
-            <p><span style="color:#102955"><strong>嘉宾: Yuanfei Lin</strong></span> <br>
-              - 慕尼黑工大 (TUM) 硕士/博士生 <br>
-              - 同济大学 本科 <br>
-              - 机械 & 计算机 & 自动驾驶
-            </p>
-            <p><span style="color:#102955"><strong>主持人: Dr. Helios Xu </strong></span> <br>   
-              - 苏黎世联邦理工大学 (ETH) 博士 <br>
-              - 慕尼黑大学 & 工大 硕士 <br>
-              - 新能源 & 半导体
-            </p>
-            <p class="hidden-mobile"><br></p>
-            <p class="hidden-mobile"><br></p>
-            <p class="hidden-mobile"><br></p>
-            <p class="hidden-mobile"><br></p>
-          </section>
-      
-          <section id="session2" class="tab-panel">
-            <h4><span style="color:#131414">集成电路/芯片/半导体/前沿: 博士生在线圆桌会</span></h4>
-            <p>时间：2022年5月22日 北京时间 晚上 7:00 - 8:00 <br>
-              地址：腾讯会议 (<a href="https://meeting.tencent.com/dm/UDC2yR3cTDFd" target="_blank">会议链接</a>)<br>
-              提问：Sli.do (<a href="https://app.sli.do/event/71yvBNQ4934Up6TCmXJMzF" target="_blank">提问链接</a>)</p><img src="images/PhDTable02.jpg" width=45% align="right">
 
-            <p><span style="color:#102955"><strong>嘉宾: Dr. Bohan Yang</strong></span> <br>
-              - 比利时鲁汶大学 (KUL) 博士 <br>
-              - 清华大学 博士后 <br>
-              - 密码安全芯片
-            </p>
-            <p><span style="color:#102955"><strong>嘉宾: Jiayang Li</strong></span> <br>
-              - 伦敦大学学院 (UCL) 博士生 <br>
-              - 前安世半导体工程师 <br>
-              - 生物医疗芯片 & 混合信号芯片设计
-            </p>
-            <p><span style="color:#102955"><strong>嘉宾: Henry Wang</strong></span> <br>
-              - 南安普顿大学 博士生 <br>
-              - 帝国理工学院 硕士 <br>
-              - 前AMD高级工程师 <br>
-              - 片上系统 & 片上网络架构研究
-            </p>
-            <p><span style="color:#102955"><strong>主持人: Dr. Helios Xu</strong></span> <br>   
-              - 苏黎世联邦理工大学 (ETH) 博士 <br>
-              - 前英飞凌科技实习生 <br>
-              - 半导体 & 新材料
-            </p>
-          </section>
-      
-          <section id="session3" class="tab-panel">
-            <h4><span style="color:#131414">博士生涯策略管理: 任性 / 韧性 / 人性</span></h4>
-            <p>时间：2023年10月22日 北京时间 晚上 7:00 - 8:00 <br>
-              地址：腾讯会议 <br>
-              提问：Sli.do </p>  <img src="images/PhDTable03.png" width=45% align="right">
+          <div class="tab-panels">
+            <section id="session1" class="tab-panel">
+              <h4><span style="color:#131414">要不要读博？怎么读博？读国外全奖博士是什么体验？</span></h4>
+              <p>时间：2022年5月15日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 (<a href="https://meeting.tencent.com/dm/Y1iH9zedITzs" target="_blank">会议链接</a>)<br>
+                提问：Sli.do (<a href="https://app.sli.do/event/pVt1EY9ogPoF5vUxk71XtK" target="_blank">提问链接</a>)</p><img
+                src="images/PhDTable01.jpg" width=45% align="right">
 
-              <p><span style="color:#102955"><strong>嘉宾: Shiyu Deng</strong></span> <br>   
+              <p><span style="color:#102955"><strong>嘉宾: C. Zhou</strong></span> <br>
+                - 洛桑联邦理工大学 (EPFL) 博士生 <br>
+                - 东京大学 本硕 <br>
+                - 光学 & 微纳米技术
+              </p>
+              <p><span style="color:#102955"><strong>嘉宾: Yuanfei Lin</strong></span> <br>
+                - 慕尼黑工大 (TUM) 硕士/博士生 <br>
+                - 同济大学 本科 <br>
+                - 机械 & 计算机 & 自动驾驶
+              </p>
+              <p><span style="color:#102955"><strong>主持人: Dr. Helios Xu </strong></span> <br>
+                - 苏黎世联邦理工大学 (ETH) 博士 <br>
+                - 慕尼黑大学 & 工大 硕士 <br>
+                - 新能源 & 半导体
+              </p>
+              <p class="hidden-mobile"><br></p>
+              <p class="hidden-mobile"><br></p>
+              <p class="hidden-mobile"><br></p>
+              <p class="hidden-mobile"><br></p>
+            </section>
+
+            <section id="session2" class="tab-panel">
+              <h4><span style="color:#131414">集成电路/芯片/半导体/前沿: 博士生在线圆桌会</span></h4>
+              <p>时间：2022年5月22日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 (<a href="https://meeting.tencent.com/dm/UDC2yR3cTDFd" target="_blank">会议链接</a>)<br>
+                提问：Sli.do (<a href="https://app.sli.do/event/71yvBNQ4934Up6TCmXJMzF" target="_blank">提问链接</a>)</p><img
+                src="images/PhDTable02.jpg" width=45% align="right">
+
+              <p><span style="color:#102955"><strong>嘉宾: Dr. Bohan Yang</strong></span> <br>
+                - 比利时鲁汶大学 (KUL) 博士 <br>
+                - 清华大学 博士后 <br>
+                - 密码安全芯片
+              </p>
+              <p><span style="color:#102955"><strong>嘉宾: Jiayang Li</strong></span> <br>
+                - 伦敦大学学院 (UCL) 博士生 <br>
+                - 前安世半导体工程师 <br>
+                - 生物医疗芯片 & 混合信号芯片设计
+              </p>
+              <p><span style="color:#102955"><strong>嘉宾: Henry Wang</strong></span> <br>
+                - 南安普顿大学 博士生 <br>
+                - 帝国理工学院 硕士 <br>
+                - 前AMD高级工程师 <br>
+                - 片上系统 & 片上网络架构研究
+              </p>
+              <p><span style="color:#102955"><strong>主持人: Dr. Helios Xu</strong></span> <br>
+                - 苏黎世联邦理工大学 (ETH) 博士 <br>
+                - 前英飞凌科技实习生 <br>
+                - 半导体 & 新材料
+              </p>
+            </section>
+
+            <section id="session3" class="tab-panel">
+              <h4><span style="color:#131414">博士生涯策略管理: 任性 / 韧性 / 人性</span></h4>
+              <p>时间：2023年10月22日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 <br>
+                提问：Sli.do </p> <img src="images/PhDTable03.png" width=45% align="right">
+
+              <p><span style="color:#102955"><strong>嘉宾: Shiyu Deng</strong></span> <br>
                 - 剑桥大学 卡文迪许实验室 博士生 <br>
                 - 跨学科交流 重度爱好者
               </p>
 
-              <p><span style="color:#102955"><strong>嘉宾: Dr. Daohe Yuan</strong></span> <br>   
+              <p><span style="color:#102955"><strong>嘉宾: Dr. Daohe Yuan</strong></span> <br>
                 - 牛津大学 化学博士 <br>
                 - 帝国理工学院 本硕
               </p>
 
-              <p><span style="color:#102955"><strong>嘉宾: Lin Xu</strong></span> <br>   
+              <p><span style="color:#102955"><strong>嘉宾: Lin Xu</strong></span> <br>
                 - 香港大学 公共管理博士生 <br>
                 - 前港姐参赛选手 学习粤语中
               </p>
 
-              <p><span style="color:#102955"><strong>嘉宾: Yekai Xu</strong></span> <br>   
+              <p><span style="color:#102955"><strong>嘉宾: Yekai Xu</strong></span> <br>
                 - 东京大学 跨学科信息研究博士生 <br>
-                - 耶鲁大学 Fox Fellow 
+                - 耶鲁大学 Fox Fellow
               </p>
 
-              <p><span style="color:#102955"><strong>主持人: Vivian Long</strong></span> <br>   
-              - 北京大学 法学院 本科 <br>
-              - 外资律所 法律助理
-            </p>
-            <p><span style="color:#102955"><strong>联席主持人: Helios Xu</strong></span> <br>   
-              - 苏黎世联邦理工大学 (ETH) 博士 <br>
-            </p>
-      
-          </section>
-      
-      
-          <section id="session4" class="tab-panel">
-            <h4><span style="color:#131414">法学漫游/国际仲裁：学术体验 & 职业探索</span></h4>
-            <p>时间：2023年11月26日 北京时间 晚上 7:00 - 8:00 <br>
-              地址：腾讯会议 <br>
-              提问：Sli.do </p>   <img src="images/PhDTable04.png" width=45% align="right">
+              <p><span style="color:#102955"><strong>主持人: Vivian Long</strong></span> <br>
+                - 北京大学 法学院 本科 <br>
+                - 外资律所 法律助理
+              </p>
+              <p><span style="color:#102955"><strong>联席主持人: Helios Xu</strong></span> <br>
+                - 苏黎世联邦理工大学 (ETH) 博士 <br>
+              </p>
 
-              <p><span style="color:#102955"><strong>嘉宾: Yuri Zhang</strong></span> <br>   
+            </section>
+
+
+            <section id="session4" class="tab-panel">
+              <h4><span style="color:#131414">法学漫游/国际仲裁：学术体验 & 职业探索</span></h4>
+              <p>时间：2023年11月26日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 <br>
+                提问：Sli.do </p> <img src="images/PhDTable04.png" width=45% align="right">
+
+              <p><span style="color:#102955"><strong>嘉宾: Yuri Zhang</strong></span> <br>
                 - 北京大学 法学院 <br>
                 - 杜克大学 JD法学博士 <br>
                 - 新加坡国际仲裁中心工作经验
               </p>
-              <p><span style="color:#102955"><strong>嘉宾: Violetta Gao</strong></span> <br>   
+              <p><span style="color:#102955"><strong>嘉宾: Violetta Gao</strong></span> <br>
                 - 中国政法大学 硕士 <br>
                 - 己任律师事务所 国际仲裁 <br>
                 - 利兹大学/香港城市大学 交换
               </p>
 
-              <p><span style="color:#102955"><strong>嘉宾: Anthony Chen</strong></span> <br>   
+              <p><span style="color:#102955"><strong>嘉宾: Anthony Chen</strong></span> <br>
                 - 维也纳大学 国际法博士生 <br>
                 - 日内瓦高等国关发展研究院 国际法全奖硕士 <br>
                 - 对外经济贸易大学 国际法硕士
               </p>
 
-              <p><span style="color:#102955"><strong>主持人: Vivian Long</strong></span> <br>   
+              <p><span style="color:#102955"><strong>主持人: Vivian Long</strong></span> <br>
                 - 北京大学 法学院 本科 <br>
                 - 外资律所 法律助理 <br>
                 - 北大法学院法律实务训练营
               </p>
 
-              <p><span style="color:#102955"><strong>联席主持人: Helios Xu</strong></span> <br>   
+              <p><span style="color:#102955"><strong>联席主持人: Helios Xu</strong></span> <br>
                 - 苏黎世联邦理工大学 (ETH) 博士 <br>
               </p>
-      
-          </section>
-      
-      
-          <section id="session5" class="tab-panel">
-            <h4><span style="color:#131414">博士/创新/创业/创投/融资<br>国内外博士生在线圆桌会</span></h4>
-            <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
-              地址：腾讯会议 <br>
-              提问：Sli.do </p>   <img src="images/PhDTable05.jpg" width=45% align="right">
-            <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
-              - 苏黎世联邦理工大学 (ETH) 博士 <br>
-              - 丰田汽车 合作研发 <br>
-              - 新能源车辆
-            </p>
-      
-          </section>
-      
-          <section id="session6" class="tab-panel">
-            <h4><span style="color:#131414">AI/机器学习/计算机视觉/前沿<br>国内外博士生在线圆桌会</span></h4>
-            <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
-              地址：腾讯会议 <br>
-              提问：Sli.do </p>   <img src="images/PhDTable06.jpg" width=45% align="right">
-            <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
-              - 苏黎世联邦理工大学 (ETH) 博士 <br>
-              - 丰田汽车 合作研发 <br>
-              - 新能源车辆
-            </p>
-      
-          </section>
-      
-          <section id="session7" class="tab-panel">
-            <h4><span style="color:#131414">博士生职业发展<br>国内外博士生在线圆桌会</span></h4>
-            <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
-              地址：腾讯会议 <br>
-              提问：Sli.do </p>   <img src="images/PhDTable07.jpg" width=45% align="right">
-            <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
-              - 苏黎世联邦理工大学 (ETH) 博士 <br>
-              - 丰田汽车 合作研发 <br>
-              - 新能源车辆
-            </p>
-      
-          </section>
-      
-      
-          <section id="session8" class="tab-panel">
-            <h4><span style="color:#131414">FinTech/金融科技/前沿<br>国内外博士生在线圆桌会</span></h4>
-            <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
-              地址：腾讯会议 <br>
-              提问：Sli.do </p>   <img src="images/PhDTable08.jpg" width=45% align="right">
-            <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
-              - 苏黎世联邦理工大学 (ETH) 博士 <br>
-              - 丰田汽车 合作研发 <br>
-              - 新能源车辆
-            </p>
-      
-          </section>
-      
-      
-          <section id="session9" class="tab-panel">
-            <h4><span style="color:#131414">生物医药/医疗器械/前沿<br>国内外博士生在线圆桌会</span></h4>
-            <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
-              地址：腾讯会议 <br>
-              提问：Sli.do </p>   <img src="images/PhDTable09.jpg" width=45% align="right">
-            <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>   
-              - 苏黎世联邦理工大学 (ETH) 博士 <br>
-              - 丰田汽车 合作研发 <br>
-              - 新能源车辆
-            </p>
-      
-          </section>
-      
+
+            </section>
+
+
+            <section id="session5" class="tab-panel">
+              <h4><span style="color:#131414">博士/创新/创业/创投/融资<br>国内外博士生在线圆桌会</span></h4>
+              <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 <br>
+                提问：Sli.do </p> <img src="images/PhDTable05.jpg" width=45% align="right">
+              <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>
+                - 苏黎世联邦理工大学 (ETH) 博士 <br>
+                - 丰田汽车 合作研发 <br>
+                - 新能源车辆
+              </p>
+
+            </section>
+
+            <section id="session6" class="tab-panel">
+              <h4><span style="color:#131414">AI/机器学习/计算机视觉/前沿<br>国内外博士生在线圆桌会</span></h4>
+              <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 <br>
+                提问：Sli.do </p> <img src="images/PhDTable06.jpg" width=45% align="right">
+              <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>
+                - 苏黎世联邦理工大学 (ETH) 博士 <br>
+                - 丰田汽车 合作研发 <br>
+                - 新能源车辆
+              </p>
+
+            </section>
+
+            <section id="session7" class="tab-panel">
+              <h4><span style="color:#131414">博士生职业发展<br>国内外博士生在线圆桌会</span></h4>
+              <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 <br>
+                提问：Sli.do </p> <img src="images/PhDTable07.jpg" width=45% align="right">
+              <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>
+                - 苏黎世联邦理工大学 (ETH) 博士 <br>
+                - 丰田汽车 合作研发 <br>
+                - 新能源车辆
+              </p>
+
+            </section>
+
+
+            <section id="session8" class="tab-panel">
+              <h4><span style="color:#131414">FinTech/金融科技/前沿<br>国内外博士生在线圆桌会</span></h4>
+              <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 <br>
+                提问：Sli.do </p> <img src="images/PhDTable08.jpg" width=45% align="right">
+              <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>
+                - 苏黎世联邦理工大学 (ETH) 博士 <br>
+                - 丰田汽车 合作研发 <br>
+                - 新能源车辆
+              </p>
+
+            </section>
+
+
+            <section id="session9" class="tab-panel">
+              <h4><span style="color:#131414">生物医药/医疗器械/前沿<br>国内外博士生在线圆桌会</span></h4>
+              <p>时间：2022年X月XX日 北京时间 晚上 7:00 - 8:00 <br>
+                地址：腾讯会议 <br>
+                提问：Sli.do </p> <img src="images/PhDTable09.jpg" width=45% align="right">
+              <p><span style="color:#102955">主持人: Dr. Helios Xu</span> <br>
+                - 苏黎世联邦理工大学 (ETH) 博士 <br>
+                - 丰田汽车 合作研发 <br>
+                - 新能源车辆
+              </p>
+
+            </section>
+
+          </div>
         </div>
       </div>
-    </div>
 
 
-    <hr class="display-mobile" style="width:113%">
-    <hr class="hidden-mobile">
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
 
-    <div class="doc-section" id="writing">
-      <h3>写作</h3>
-      <ul class="square">
-        <li>
-          2022 | <strong>汇银资本</strong> (公众号转载): 新能源太极图：锂电vs氢能，谁可摘得碳中和王冠  <a href="https://mp.weixin.qq.com/s/d3ittBYgANRRPPvhV20aCw" target="_blank">[链接]➚	</a><br>
-        </li>
-        <li>
-          2022 | <strong>知乎圆桌</strong> (世界新能源汽车大会主办): 新能源三大流派: 换电,充电,氢燃料,到底哪一个会是未来? <a href="https://www.zhihu.com/question/453005871/answer/2476806475" target="_blank">[链接]➚	</a><br>
-        </li>
-        <li>
-          2022 | <strong>博士变形计</strong> (公众号原创): 俄乌冲突：欧洲能源安全的暗流与危机，及中美影响<br>
-        </li>
-        <li>2024 | <strong>留欧十年 ⋅ 博士变形计</strong> (回忆录): Once Upon A PhD: Ten Years in Europe (正在写作中)<br>
-          <br>
-          <div class="row" style="display: flex; flex-direction: row; flex-wrap: wrap;">
-            <div class="four-columns hidden-mobile" style="flex: 1 0 23.33%; padding-right: 0px;">
-              <h4>博士変形計</h4>
-              <p>Once Upon A PhD</br>
-              </br>
-              目录 / Contents </br>
-              </br>
-              序幕: 在人间 / Universe</br>
-              博前: 漫游 / Roam</br>
-              博一: 暮色 / Twilight</br>
-              博二: 危机 / Skyfall</br>
-              博三: 即视 / Déjà-vu</br>
-              博四: 破晓 / Aurora</br>
-              博后: 神往 / Fernweh</br>
-              后记: 换了人间 / Metaverse</br>
-              </br>
-              致谢: Acknowledgement</p>
+      <div class="doc-section" id="writing">
+        <h3>写作</h3>
+        <ul class="square">
+          <li>
+            2022 | <strong>汇银资本</strong> (公众号转载): 新能源太极图：锂电vs氢能，谁可摘得碳中和王冠 <a
+              href="https://mp.weixin.qq.com/s/d3ittBYgANRRPPvhV20aCw" target="_blank">[链接]➚ </a><br>
+          </li>
+          <li>
+            2022 | <strong>知乎圆桌</strong> (世界新能源汽车大会主办): 新能源三大流派: 换电,充电,氢燃料,到底哪一个会是未来? <a
+              href="https://www.zhihu.com/question/453005871/answer/2476806475" target="_blank">[链接]➚ </a><br>
+          </li>
+          <li>
+            2022 | <strong>博士变形计</strong> (公众号原创): 俄乌冲突：欧洲能源安全的暗流与危机，及中美影响<br>
+          </li>
+          <li>2024 | <strong>留欧十年 ⋅ 博士变形计</strong> (回忆录): Once Upon A PhD: Ten Years in Europe (正在写作中)<br>
+            <br>
+            <div class="row" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+              <div class="four-columns hidden-mobile" style="flex: 1 0 23.33%; padding-right: 0px;">
+                <h4>博士変形計</h4>
+                <p>Once Upon A PhD</br>
+                  </br>
+                  目录 / Contents </br>
+                  </br>
+                  序幕: 在人间 / Universe</br>
+                  博前: 漫游 / Roam</br>
+                  博一: 暮色 / Twilight</br>
+                  博二: 危机 / Skyfall</br>
+                  博三: 即视 / Déjà-vu</br>
+                  博四: 破晓 / Aurora</br>
+                  博后: 神往 / Fernweh</br>
+                  后记: 换了人间 / Metaverse</br>
+                  </br>
+                  致谢: Acknowledgement</p>
+              </div>
+
+              <div class="four-columns display-mobile" style="flex: 1 0 45%; padding-right: 0px;">
+                <h5>留欧十年</h5>
+                <h5>博士変形計</h5>
+                <p>
+                  </br>
+                  序幕: 在人间</br>
+                  博前: 漫游</br>
+                  博一: 暮色</br>
+                  博二: 危机</br>
+                  博三: 即视</br>
+                  博四: 破晓</br>
+                  博后: 神往</br>
+                  后记: 换了人间</br>
+                </p>
+              </div>
+
+              <div class="eight-columns  display-mobile" style="flex: 2 0 55%; padding-left: 0px; text-align: left;">
+                <h5>Once Upon A PhD</h5>
+                <h5>Ten Years in Europe</h5>
+                <p>
+                  </br>
+                  Prologue: Universe</br>
+                  Predoc: Roam</br>
+                  Year 1: Twilight</br>
+                  Year 2: Skyfall</br>
+                  Year 3: Déjà-vu</br>
+                  Year 4: Aurora</br>
+                  Postdoc Fernweh</br>
+                  Epilogue: Metaverse</br>
+                </p>
+
+              </div>
+
+              <div class="eight columns" style="flex: 2 0 63.66%; padding-left: 0px; text-align: right;">
+                <h4 style="text-align: right;" class="hidden-mobile">封面/封底</h4>
+                <img src="images/phd_memo_cover.gif" alt="Front Cover"
+                  style="width: 110%; padding-left: 2px; height: auto;" class="hidden-mobile">
+              </div>
+
+              <img src="images/phd_memo_cover.gif" alt="Front Cover"
+                style="width: 100%; padding-left: 0px;padding-right: 0px; height: auto;" class="display-mobile">
             </div>
-
-            <div class="four-columns display-mobile" style="flex: 1 0 45%; padding-right: 0px;">
-              <h5>留欧十年</h5> 
-              <h5>博士変形計</h5>
-              <p>
-              </br>
-              序幕: 在人间</br>
-              博前: 漫游</br>
-              博一: 暮色</br>
-              博二: 危机</br>
-              博三: 即视</br>
-              博四: 破晓</br>
-              博后: 神往</br>
-              后记: 换了人间</br>
-            </p>
-            </div>
-
-            <div class="eight-columns  display-mobile" style="flex: 2 0 55%; padding-left: 0px; text-align: left;">
-              <h5>Once Upon A PhD</h5>
-              <h5>Ten Years in Europe</h5>
-              <p>
-              </br>
-              Prologue: Universe</br>
-              Predoc: Roam</br>
-              Year 1: Twilight</br>
-              Year 2: Skyfall</br>
-              Year 3: Déjà-vu</br>
-              Year 4: Aurora</br>
-              Postdoc Fernweh</br>
-              Epilogue: Metaverse</br>
-            </p>
- 
-            </div>
-
-            <div class="eight columns" style="flex: 2 0 63.66%; padding-left: 0px; text-align: right;">
-              <h4 style="text-align: right;" class="hidden-mobile">封面/封底</h4>
-              <img src="images/phd_memo_cover.gif" alt="Front Cover" style="width: 110%; padding-left: 2px; height: auto;" class="hidden-mobile">
-            </div>
-
-            <img src="images/phd_memo_cover.gif" alt="Front Cover" style="width: 100%; padding-left: 0px;padding-right: 0px; height: auto;" class="display-mobile">
-          </div>
-        </li>
+          </li>
         </ul>
-    </div>
+      </div>
 
-        <hr class="display-mobile" style="width:113%">
-        <hr class="hidden-mobile">
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
 
       <div class="doc-section" id="visiting">
         <h3>参观访问</h3>
-       <ul class="square">
-        <li><strong>国际组织: </strong><br>
-          2024 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>联合国欧洲总部 </strong>  (日内瓦, 瑞士)<br>
-          2023 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>联合国维也纳分部 </strong>  (维也纳, 奥地利)<br>
-          2023 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>联合国波恩分部 </strong>  (波恩, 德国)<br>
-          2019 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>联合国总部 </strong>  (纽约, 美国)<br>
-          <hr>
+        <ul class="square">
+          <li><strong>国际组织: </strong><br>
+            2024 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>联合国欧洲总部 </strong> (日内瓦, 瑞士)<br>
+            2023 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>联合国维也纳分部 </strong> (维也纳,
+            奥地利)<br>
+            2023 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>联合国波恩分部 </strong> (波恩, 德国)<br>
+            2019 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>联合国总部 </strong> (纽约, 美国)<br>
+            <hr>
           <li><strong>政府机构: </strong><br>
-            2016 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>法国塞纳河-诺曼底水务局 </strong>  (巴黎, 法国)<br>
-            2016 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>苏州市城市规划局 </strong>  (江苏, 中国)<br>
-            2014 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>郑州市生态环境局 </strong>  (河南, 中国)<br>
-            2014 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>开封市环境保护局 </strong>  (河南, 中国)<br>
+            2016 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>法国塞纳河-诺曼底水务局 </strong> (巴黎,
+            法国)<br>
+            2016 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>苏州市城市规划局 </strong> (江苏,
+            中国)<br>
+            2014 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>郑州市生态环境局 </strong> (河南,
+            中国)<br>
+            2014 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>开封市环境保护局 </strong> (河南,
+            中国)<br>
             <hr>
-        <li><strong>同步辐射加速器: </strong><br>
-          2023 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>欧洲核子研究中心/CERN </strong>  (日内瓦, 瑞士)<br>
-          2017 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>瑞士光源/SLS </strong>  (菲利根, 瑞士)<br>
-          2016 | <img class="flag-icon" src="./images/wflags/it.png" alt="Italy"> <strong>意大利同步加速器/Elettra </strong>  (的里雅斯特, 意大利)<br>
-          2016 | <img class="flag-icon" src="./images/wflags/eu.png" alt="EU"> <strong>欧盟自由电子激光器/EUXFEL </strong>  (汉堡, 德国)<br>
-          2016 | <img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> <strong>德国电子加速器/DESY </strong>  (汉堡, 德国)<br>
-          2015 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>法国同步辐射加速器/SOLEIL </strong>  (巴黎, 法国)<br>
+          <li><strong>同步辐射加速器: </strong><br>
+            2017 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>瑞士光源/SLS </strong>
+            (菲利根, 瑞士)<br>
+            2016 | <img class="flag-icon" src="./images/wflags/it.png" alt="Italy"> <strong>意大利同步加速器/Elettra </strong>
+            (的里雅斯特, 意大利)<br>
+            2016 | <img class="flag-icon" src="./images/wflags/eu.png" alt="EU"> <strong>欧盟自由电子激光器/EUXFEL </strong> (汉堡,
+            德国)<br>
+            2016 | <img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> <strong>德国电子加速器/DESY </strong>
+            (汉堡, 德国)<br>
+            2015 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>法国同步辐射加速器/SOLEIL </strong>
+            (巴黎, 法国)<br>
             <hr>
-        <li><strong>核能反应堆:  </strong><br>
-        2018 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>瑞士贝茨瑙核电站 </strong>  (阿尔高州, 瑞士)<br>
-        2015 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>法国萨克雷核研究中心 </strong>  (巴黎, 法国)<br>
-        2016 | <img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> <strong>德国海因茨·莱布尼茨中子源研究院 </strong>  (慕尼黑, 德国)<br>
-      </ul>
+          <li><strong>核能反应堆: </strong><br>
+            2023 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>欧洲核子研究中心/CERN
+            </strong> (日内瓦, 瑞士)<br>
+            2018 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> <strong>瑞士贝茨瑙核电站 </strong>
+            (阿尔高州, 瑞士)<br>
+            2015 | <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> <strong>法国萨克雷核研究中心 </strong> (巴黎,
+            法国)<br>
+            2016 | <img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> <strong>德国海因茨·莱布尼茨中子源研究院 </strong>
+            (慕尼黑, 德国)<br>
+        </ul>
 
       </div>
 
@@ -878,7 +915,8 @@
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
       <h3 class="hidden-mobile">影像 <small><small>「<span id="subsection-title">以光之名</span>」</small></small></h3>
-      <h3 class="display-mobile">影像 <small><small>「<span>会议/典礼</span>」</small></small><br><small><small><small>▷ <span id="subsection-title-mobile">会议/典礼</span></small></small></small></h3>
+      <h3 class="display-mobile">影像 <small><small>「<span>会议/典礼</span>」</small></small><br><small><small><small>▷ <span
+                id="subsection-title-mobile">会议/典礼</span></small></small></small></h3>
 
       <!-- <div class="doc-section hidden-mobile" id="photography">
           <div class="gallery-wrap">
@@ -896,248 +934,299 @@
         </div> -->
 
 
-        <div class="doc-section" id="gallery">
+      <div class="doc-section" id="gallery">
 
-          <div class="slideshow-container">
-  
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-                <img class="display-mobile" src="images/formal/1.jpg" alt="Image"  style="width: 100%; height: 60vh; object-fit: cover;">
-                <img class="hidden-mobile" src="images/formal/1.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
-                <div class="text" style="display: none;" id="img-title-1">联合国气候变化大会 🇩🇪 德国波恩</div>
-              </div>
-              
-              <div class="text"></div>
+        <div class="slideshow-container">
+
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/1.jpg" alt="Image"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/1.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
+              <div class="text" style="display: none;" id="img-title-1">联合国气候变化大会 🇩🇪 德国波恩</div>
             </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/2.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/2.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+
+            <div class="text"></div>
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/2.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/2.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text" style="display: none;" id="img-title-2">联合国万国宫 🇨🇭 瑞士日内瓦</div>
-              </div>
             </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/3.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/3.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/3.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/3.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text" style="display: none;" id="img-title-3">联合国工业发展组织 🇦🇹 奥地利维也纳</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/4.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/4.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/4.1.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/4.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-4">ETH博士毕业典礼 🇨🇭 瑞士苏黎世</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/5.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/5.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/5.1.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/5.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-5">圣加仑国际经济论坛 🇨🇭 瑞士圣加仑</div>
             </div>
-            </div>
+          </div>
 
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/6.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/6.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/6.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/6.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-6">联合国气候变化大会 🇺🇳 德国波恩</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/7.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/7.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/7.1.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/7.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-7">欧洲核子中心CERN 🇨🇭 瑞士日内瓦</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/8.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/8.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/8.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/8.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-8">瑞士同步辐射光源 🇨🇭 瑞士菲利根</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/9.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/9.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/9.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/9.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-9">联合国气候变化大会 🇺🇳 COP28 UAE</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/10.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/10.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/10.1.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/10.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-10">国际燃料电池基础研发会议 🇫🇷 法国南特</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/11.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/11.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/11.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/11.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-11">联合国气候变化大会 🇺🇳 德国波恩</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/12.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/12.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/12.1.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/12.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-12">国际电化学学会会议 🇮🇹 意大利博洛尼亚</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/13.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/13.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/13.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/13.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
-              <div class="text" style="display: none;" id="img-title-13">联合国波恩驻地 🇺🇳 德国波恩</div>     
+              <div class="text" style="display: none;" id="img-title-13">联合国波恩驻地 🇺🇳 德国波恩</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/14.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/14.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/14.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/14.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-14">美国电化学学会年会 🇺🇸 美国亚特兰大</div>
             </div>
-            </div>
+          </div>
 
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/15.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/15.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/15.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/15.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-15">国际能源与气候论坛 🇦🇹 奥地利维也纳</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/16.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/16.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/16.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/16.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
-              <div class="text" style="display: none;" id="img-title-16">清华苏世民薛澜院长合影 🇨🇭 瑞士圣加仑</div>   
+              <div class="text" style="display: none;" id="img-title-16">清华苏世民薛澜院长合影 🇨🇭 瑞士圣加仑</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/17.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/17.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/17.1.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/17.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-17">卢森堡商会 🇱🇺 卢森堡</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/18.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/18.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/18.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/18.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-18">ETH博士毕业典礼 🇨🇭 瑞士苏黎世</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/19.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/19.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/19.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/19.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-19">🇪🇺 硕士毕业答辩 🇨🇭 瑞士瑞吉山 </div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/20.1.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/20.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/20.1.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/20.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-20">德国物理学会年会 🇩🇪 德国雷根斯堡</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/21.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/21.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/21.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/21.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-21">联合国欧经委专家小组会议 🇨🇭 瑞士日内瓦</div>
             </div>
-            </div>
+          </div>
 
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/22.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/22.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/22.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/22.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-22">东元绿色科技竞赛 🇨🇳 中国台北</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container"></div>
-              <img class="display-mobile" src="images/formal/23.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/23.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
-              <div class="text"></div>
-              <div class="text" style="display: none;" id="img-title-23">本科毕业典礼 🇨🇳 中国北京</div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/24.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/24.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container"></div>
+            <img class="display-mobile" src="images/formal/23.jpg"
+              style="width: 100%; height: 60vh; object-fit: cover;">
+            <img class="hidden-mobile" src="images/formal/23.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+            <div class="text"></div>
+            <div class="text" style="display: none;" id="img-title-23">本科毕业典礼 🇨🇳 中国北京</div>
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/24.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/24.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-24">APEC青年创业家峰会 🇨🇳 中国北京</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/25.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/25.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/25.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/25.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-25">本科毕业班级合影 🇨🇳 中国北京</div>
             </div>
-            </div>
-            <div class="mySlides fade">
-              <div class="numbertext"></div>
-              <div class="image-container">
-              <img class="display-mobile" src="images/formal/26.jpg" style="width: 100%; height: 60vh; object-fit: cover;">
-              <img class="hidden-mobile" src="images/formal/26.jpg" style="width: 100%; height: 55vh; object-fit: cover;">
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <div class="image-container">
+              <img class="display-mobile" src="images/formal/26.jpg"
+                style="width: 100%; height: 60vh; object-fit: cover;">
+              <img class="hidden-mobile" src="images/formal/26.jpg"
+                style="width: 100%; height: 55vh; object-fit: cover;">
               <div class="text"></div>
               <div class="text" style="display: none;" id="img-title-26">本科毕业典礼 🇨🇳 中国北京 </div>
             </div>
-            </div>
+          </div>
 
 
-            <!-- <div class="mySlides fade">
+          <!-- <div class="mySlides fade">
               <div class="numbertext"></div>
               <div class="image-container">
                 <img class="display-mobile" src="images/gallery/1.jpg" alt="Image"  style="width: 100%; height: 60vh; object-fit: cover;">
@@ -1414,48 +1503,48 @@
               <div class="text" style="display: none;" id="img-title-31">芝加哥 🇺🇸 美国</div>
             </div>
             </div> -->
-    
-            <a class="prev" onclick="plusSlides(-1)">❮</a>
-            <a class="next" onclick="plusSlides(1)">❯</a>
-  
-          </div>
-  
-          <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-            <span class="dot" onclick="currentSlide(5)"></span>
-            <span class="dot" onclick="currentSlide(6)"></span>
-            <span class="dot" onclick="currentSlide(7)"></span>
-            <span class="dot" onclick="currentSlide(8)"></span>
-            <span class="dot" onclick="currentSlide(9)"></span>
-            <span class="dot" onclick="currentSlide(10)"></span>
-            <span class="dot" onclick="currentSlide(11)"></span>
-            <span class="dot" onclick="currentSlide(12)"></span>
-            <span class="dot" onclick="currentSlide(13)"></span>
-            <span class="dot" onclick="currentSlide(14)"></span>
-            <span class="dot" onclick="currentSlide(15)"></span>
-            <span class="dot" onclick="currentSlide(16)"></span>
-            <span class="dot" onclick="currentSlide(17)"></span>
-            <span class="dot" onclick="currentSlide(18)"></span>
-            <span class="dot" onclick="currentSlide(19)"></span>
-            <span class="dot" onclick="currentSlide(20)"></span>
-            <span class="dot" onclick="currentSlide(21)"></span>
-            <span class="dot" onclick="currentSlide(22)"></span>
-            <span class="dot" onclick="currentSlide(23)"></span>
-            <span class="dot" onclick="currentSlide(24)"></span>
-            <span class="dot" onclick="currentSlide(25)"></span>
-            <span class="dot" onclick="currentSlide(26)"></span>
-          </div>
-  
-  
-  
-          <!---<img class="hidden-mobile" src="images/SDG_all.png" style="width:100%" alt="">
-            <img class="display-mobile" src="images/SDG_all.png" style="width:100%" alt="">--->
-  
-  
+
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+
         </div>
+
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+          <span class="dot" onclick="currentSlide(6)"></span>
+          <span class="dot" onclick="currentSlide(7)"></span>
+          <span class="dot" onclick="currentSlide(8)"></span>
+          <span class="dot" onclick="currentSlide(9)"></span>
+          <span class="dot" onclick="currentSlide(10)"></span>
+          <span class="dot" onclick="currentSlide(11)"></span>
+          <span class="dot" onclick="currentSlide(12)"></span>
+          <span class="dot" onclick="currentSlide(13)"></span>
+          <span class="dot" onclick="currentSlide(14)"></span>
+          <span class="dot" onclick="currentSlide(15)"></span>
+          <span class="dot" onclick="currentSlide(16)"></span>
+          <span class="dot" onclick="currentSlide(17)"></span>
+          <span class="dot" onclick="currentSlide(18)"></span>
+          <span class="dot" onclick="currentSlide(19)"></span>
+          <span class="dot" onclick="currentSlide(20)"></span>
+          <span class="dot" onclick="currentSlide(21)"></span>
+          <span class="dot" onclick="currentSlide(22)"></span>
+          <span class="dot" onclick="currentSlide(23)"></span>
+          <span class="dot" onclick="currentSlide(24)"></span>
+          <span class="dot" onclick="currentSlide(25)"></span>
+          <span class="dot" onclick="currentSlide(26)"></span>
+        </div>
+
+
+
+        <!---<img class="hidden-mobile" src="images/SDG_all.png" style="width:100%" alt="">
+            <img class="display-mobile" src="images/SDG_all.png" style="width:100%" alt="">--->
+
+
+      </div>
 
 
 
@@ -1467,14 +1556,15 @@
 
       <div class="doc-section" id="travel">
         <h3>旅行</h3>
-        <ul class="square" >
+        <ul class="square">
           <li><strong>亚洲</strong>：
             <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> 中国大陆 (13+省/市)、
             台湾、
             <img class="flag-icon" src="./images/wflags/ru.png" alt="Russia"> 俄罗斯、
             <img class="flag-icon" src="./images/wflags/tr.png" alt="Turkey"> 土耳其、
             <img class="flag-icon" src="./images/wflags/th.png" alt="Thailand"> 泰国、
-            <img class="flag-icon" src="./images/wflags/ae.png" alt="UAE"> 阿联酋</li>
+            <img class="flag-icon" src="./images/wflags/ae.png" alt="UAE"> 阿联酋
+          </li>
           <li><strong>欧洲</strong>：
             <img class="flag-icon" src="./images/wflags/al.png" alt="Albania"> 阿尔巴尼亚、
             <img class="flag-icon" src="./images/wflags/at.png" alt="Austria"> 奥地利、
@@ -1503,7 +1593,8 @@
             <img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> 西班牙、
             <img class="flag-icon" src="./images/wflags/gr.png" alt="Greece"> 希腊、
             <img class="flag-icon" src="./images/wflags/se.png" alt="Sweden"> 瑞典、
-            <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 瑞士 (30+城市)、<img class="flag-icon" src="./images/wflags/ie.png" alt="Ireland"> 爱尔兰、
+            <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 瑞士 (30+城市)、<img class="flag-icon"
+              src="./images/wflags/ie.png" alt="Ireland"> 爱尔兰、
             <img class="flag-icon" src="./images/wflags/gb-sct.png" alt="Scotland"> 苏格兰、
             <img class="flag-icon" src="./images/wflags/gb-wls.png" alt="Wales"> 威尔士、
             <img class="flag-icon" src="./images/wflags/gb.png" alt="United Kingdom"> 英国、
@@ -1511,10 +1602,12 @@
           </li>
           <li><strong>北美</strong>：
             <img class="flag-icon" src="./images/wflags/ca.png" alt="Canada"> 加拿大、
-            <img class="flag-icon" src="./images/wflags/us.png" alt="United States"> 美国</li>
+            <img class="flag-icon" src="./images/wflags/us.png" alt="United States"> 美国
+          </li>
           <li><strong>非洲</strong>：
-            <img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> 大加那利群岛 (西属)</li>
-          
+            <img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> 大加那利群岛 (西属)
+          </li>
+
           <!-- <li><strong>合计</strong>：到访35个国家/地区 (全球共197个) / 飞行里程累计约24万公里 (绕地球约6圈)</li> -->
           <img src="/images/visited_map.gif" style="width:100%;" alt="Example GIF">
         </ul>
@@ -1532,25 +1625,28 @@
 
       <div class="doc-section" id="sports" style="width:111%">
         <h3>运动</h3>
-        
+
         <ul class="square">
           <li>
             <strong>骑行 (环湖/登山)</strong><br><br>
-            
+
             <div class="three-col-grid">
               <div class="grid-item">
                 <img src="images/sports/3.jpg" alt="Image 1" class="grid-image">
-                <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 环苏黎世湖70km骑行</span></div>
-            </div>
-            <div class="grid-item">
+                <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">
+                    环苏黎世湖70km骑行</span></div>
+              </div>
+              <div class="grid-item">
                 <img src="images/sports/2.jpg" alt="Image 2" class="grid-image">
-                <div class="image-title"><img class="flag-icon" src="./images/wflags/hr.png" alt="Croatia"> 克罗地亚杜城Srđ山 (412m)</div>
-            </div>
-            <div class="grid-item">
+                <div class="image-title"><img class="flag-icon" src="./images/wflags/hr.png" alt="Croatia"> 克罗地亚杜城Srđ山
+                  (412m)</div>
+              </div>
+              <div class="grid-item">
                 <img src="images/sports/4.jpg" alt="Image 3" class="grid-image">
-                <div class="image-title"><img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> 慕尼黑奥林匹克山 (565m)</div>
+                <div class="image-title"><img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> 慕尼黑奥林匹克山
+                  (565m)</div>
+              </div>
             </div>
-          </div>
           </li>
           <hr style="width:90%">
           <li>
@@ -1558,17 +1654,20 @@
             <div class="three-col-grid">
               <div class="grid-item">
                 <img src="images/sports/6.jpg" alt="Image 1" class="grid-image">
-                <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">布雷恩茨山脊线 (2350m) </span></div>
-            </div>
-            <div class="grid-item">
+                <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png"
+                      alt="Switzerland">布雷恩茨山脊线 (2350m) </span></div>
+              </div>
+              <div class="grid-item">
                 <img src="images/sports/7.jpg" alt="Image 2" class="grid-image">
-                <div class="image-title"><img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> 马略卡岛/天涯海角灯塔 (384m)</div>
-            </div>
-            <div class="grid-item">
+                <div class="image-title"><img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> 马略卡岛/天涯海角灯塔
+                  (384m)</div>
+              </div>
+              <div class="grid-item">
                 <img src="images/sports/9.jpg" alt="Image 3" class="grid-image">
-                <div class="image-title"><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 俯瞰阿莱奇冰川 (1905m)</div>
+                <div class="image-title"><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 俯瞰阿莱奇冰川
+                  (1905m)</div>
+              </div>
             </div>
-          </div>
           </li>
           <hr style="width:90%">
           <li>
@@ -1576,23 +1675,26 @@
             <div class="three-col-grid">
               <div class="grid-item">
                 <img src="images/sports/1.jpg" alt="Image 1" class="grid-image">
-                <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">铁力士山冰屋搭建/夜宿 </span></div>
-            </div>
-            <div class="grid-item">
+                <div class="image-title"><span><img class="flag-icon" src="./images/wflags/ch.png"
+                      alt="Switzerland">铁力士山冰屋搭建/夜宿 </span></div>
+              </div>
+              <div class="grid-item">
                 <img src="images/sports/10.jpg" alt="Image 2" class="grid-image">
-                <div class="image-title"><img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> 慕尼黑啤酒节广场/攀岩</div>
-            </div>
-            <div class="grid-item">
+                <div class="image-title"><img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> 慕尼黑啤酒节广场/攀岩
+                </div>
+              </div>
+              <div class="grid-item">
                 <img src="images/sports/11.jpg" alt="Image 3" class="grid-image">
-                <div class="image-title"><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> 瑞吉山/日落/堆雪人</div>
+                <div class="image-title"><img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">
+                  瑞吉山/日落/堆雪人</div>
+              </div>
             </div>
-          </div>
           </li>
         </ul>
 
       </div>
 
-      
+
       <!-- <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
 
@@ -1622,18 +1724,20 @@
           <li><strong>领英</strong>: <a href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span
                 class='blue'>linkedin.com/in/xuhong/</span></a> (关注者: 1800+)<br></li>
           <li><strong>谷歌学术</strong>: <a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en"
-              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a> (引用数: 280+)<br></li>
+              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a> (引用数: 300+)<br></li>
           <li><strong>知乎</strong>: <a href="https://www.zhihu.com/people/dr.of.nothing" target="_blank"
               target="_blank"><span class='blue'>zhihu.com/people/dr.of.nothing</span></a> (关注者: 13500+)<br></li>
-          <li><strong>摄影</strong>: <a href="https://photo.h-xu.com/" target="_blank"
-                target="_blank"><span class='blue'>photo.h-xu.com</span></a> (X-graphy)<br></li>
+          <li><strong>摄影</strong>: <a href="https://photo.h-xu.com/" target="_blank" target="_blank"><span
+                class='blue'>photo.h-xu.com</span></a> (X-graphy)<br></li>
 
-                <br>
-                <a href="https://info.flagcounter.com/D897" target="_blank">
-                  <div style="width: fit-content; height: calc(100% * 2 / 3); overflow: hidden; display: inline-block;">
-                      <img src="https://s01.flagcounter.com/count/D897/bg_FFFFFF/txt_404040/border_FFFFFF/columns_8/maxflags_16/viewers_3/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" style="display: block;">
-                  </div>
-              </a>
+          <br>
+          <a href="https://info.flagcounter.com/D897" target="_blank">
+            <div style="width: fit-content; height: calc(100% * 2 / 3); overflow: hidden; display: inline-block;">
+              <img
+                src="https://s01.flagcounter.com/count/D897/bg_FFFFFF/txt_404040/border_FFFFFF/columns_8/maxflags_16/viewers_3/labels_0/pageviews_1/flags_0/percent_0/"
+                alt="Flag Counter" style="display: block;">
+            </div>
+          </a>
 
           <!---<a href="https://www.flagcounter.me/details/enB"><img src="https://www.flagcounter.me/enB/"
               alt="Flag Counter"></a>
@@ -1760,63 +1864,63 @@
 
     <script>
       //轮播 + 标题更新
-  let slideIndex = 1;
-  showSlides(slideIndex);
+      let slideIndex = 1;
+      showSlides(slideIndex);
 
-  // Auto transition the slides every 3.5 seconds
-  let slideInterval = setInterval(() => {
-    plusSlides(1);
-  }, 3500);
+      // Auto transition the slides every 3.5 seconds
+      let slideInterval = setInterval(() => {
+        plusSlides(1);
+      }, 3500);
 
-  function plusSlides(n) {
-    clearInterval(slideInterval);
-    showSlides(slideIndex += n);
-    slideInterval = setInterval(() => {
-      plusSlides(1);
-    }, 3500);
-  }
+      function plusSlides(n) {
+        clearInterval(slideInterval);
+        showSlides(slideIndex += n);
+        slideInterval = setInterval(() => {
+          plusSlides(1);
+        }, 3500);
+      }
 
-  function currentSlide(n) {
-    clearInterval(slideInterval);
-    showSlides(slideIndex = n);
-    slideInterval = setInterval(() => {
-      plusSlides(1);
-    }, 3500);
-  }
+      function currentSlide(n) {
+        clearInterval(slideInterval);
+        showSlides(slideIndex = n);
+        slideInterval = setInterval(() => {
+          plusSlides(1);
+        }, 3500);
+      }
 
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1; }
-    if (n < 1) { slideIndex = slides.length; }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1; }
+        if (n < 1) { slideIndex = slides.length; }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
 
-    // 更新标题
-    updateSlideTitle(slideIndex);
-  }
+        // 更新标题
+        updateSlideTitle(slideIndex);
+      }
 
-  function updateSlideTitle(index) {
-    let titleElement = document.getElementById('img-title-' + index);
-    let subsectionTitle = document.getElementById('subsection-title');
-    let subsectionTitleMobile = document.getElementById('subsection-title-mobile');
+      function updateSlideTitle(index) {
+        let titleElement = document.getElementById('img-title-' + index);
+        let subsectionTitle = document.getElementById('subsection-title');
+        let subsectionTitleMobile = document.getElementById('subsection-title-mobile');
 
-    if (titleElement) {
-      subsectionTitle.textContent = titleElement.textContent;
-      subsectionTitleMobile.textContent = titleElement.textContent;
+        if (titleElement) {
+          subsectionTitle.textContent = titleElement.textContent;
+          subsectionTitleMobile.textContent = titleElement.textContent;
 
-    } else {
-      subsectionTitle.textContent = '以光之名'; // 处理没有找到标题的情况
-      subsectionTitleMobile.textContent = '以光之名';
-    }
-  } 
+        } else {
+          subsectionTitle.textContent = '以光之名'; // 处理没有找到标题的情况
+          subsectionTitleMobile.textContent = '以光之名';
+        }
+      }
 
 
     </script>
@@ -1879,18 +1983,18 @@
     </script>
 
 
-<script>
+    <script>
 
-</script>
+    </script>
 
 
-<script type="text/javascript" src="/js/block_save_as.js"></script>
+    <script type="text/javascript" src="/js/block_save_as.js"></script>
 
-<script type="text/javascript" src="/js/scholar_fetch.js"></script>
+    <script type="text/javascript" src="/js/scholar_fetch.js"></script>
 
-<script type="text/javascript" src="/js/cn_fanti_translate.js"></script>
+    <script type="text/javascript" src="/js/cn_fanti_translate.js"></script>
 
-<script type="text/javascript" src="/js/cn_holiday_display.js"></script>
+    <script type="text/javascript" src="/js/cn_holiday_display.js"></script>
 
 
 
