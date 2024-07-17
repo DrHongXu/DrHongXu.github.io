@@ -131,6 +131,53 @@
         display: none;
       }
     }
+
+
+    /* Sport Container */
+
+    .three-col-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .grid-item {
+      text-align: center;
+    }
+
+    .grid-image {
+      width: 103%;
+      height: 150px;
+      /*统一图片高度*/
+      object-fit: cover;
+      display: block;
+      border: 0px solid #ccc;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .grid-image:hover {
+      transform: scale(1.07);
+    }
+
+    .image-title {
+      margin-top: 8px;
+      font-size: normal;
+      color: #333;
+    }
+
+    /* Mobile styles - hide .flex-container */
+    @media (max-width: 768px) {
+      .three-col-grid {
+        width: 100%;
+      }
+
+      .grid-image {
+        height: 110px;
+      }
+    }
   </style>
 
   <script type="module">
@@ -295,8 +342,7 @@
       </div>
 
       <p class="hidden-mobile"></p>
-      <h3 class="hidden-mobile">Hey, Welcome! <small><small><small>Friends from <span id="location"></span>
-              :-)</small></small> </small>
+      <h3 class="hidden-mobile">Extracurricular Activties<small><small><small></small></small> </small>
         <span style="float:right;font-family:verdana;">
           <img src="images/flag_us.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
           <img src="images/flag_uk.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
@@ -537,6 +583,103 @@
         </ul>
 
       </div>
+
+
+      <hr class="display-mobile" style="width:113%">
+      <hr class="hidden-mobile">
+
+      <div class="doc-section" id="sports" style="width:111%">
+        <h3>Sports</h3>
+        <ul class="square">
+          <li>
+            <strong>Lake/Mountain Cycling</strong><br><br>
+            <div class="three-col-grid">
+              <div class="grid-item">
+                <img src="images/sports/3.jpg" alt="Image 1" class="grid-image">
+                <div class="image-title">
+                  <span>
+                    <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">
+                    Cycling Around Lake Zurich (70km)
+                  </span>
+                </div>
+              </div>
+              <div class="grid-item">
+                <img src="images/sports/2.jpg" alt="Image 2" class="grid-image">
+                <div class="image-title">
+                  <img class="flag-icon" src="./images/wflags/hr.png" alt="Croatia">
+                  Srđ Mountain in Dubrovnik, Croatia (412m)
+                </div>
+              </div>
+              <div class="grid-item">
+                <img src="images/sports/4.jpg" alt="Image 3" class="grid-image">
+                <div class="image-title">
+                  <img class="flag-icon" src="./images/wflags/de.png" alt="Germany">
+                  Olympic Mountain in Munich (565m)
+                </div>
+              </div>
+            </div>
+          </li>
+          <hr style="width:90%">
+          <li>
+            <strong>Mountain/Island Hiking</strong><br><br>
+            <div class="three-col-grid">
+              <div class="grid-item">
+                <img src="images/sports/6.jpg" alt="Image 1" class="grid-image">
+                <div class="image-title">
+                  <span>
+                    <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">
+                    Brienzerhorn Ridge (2350m)
+                  </span>
+                </div>
+              </div>
+              <div class="grid-item">
+                <img src="images/sports/7.jpg" alt="Image 2" class="grid-image">
+                <div class="image-title">
+                  <img class="flag-icon" src="./images/wflags/es.png" alt="Spain">
+                  Cape Formentor Lighthouse in Mallorca (384m)
+                </div>
+              </div>
+              <div class="grid-item">
+                <img src="images/sports/9.jpg" alt="Image 3" class="grid-image">
+                <div class="image-title">
+                  <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">
+                  Overlooking Aletsch Glacier (1905m)
+                </div>
+              </div>
+            </div>
+          </li>
+          <hr style="width:90%">
+          <li>
+            <strong>Other Sports</strong><br><br>
+            <div class="three-col-grid">
+              <div class="grid-item">
+                <img src="images/sports/1.jpg" alt="Image 1" class="grid-image">
+                <div class="image-title">
+                  <span>
+                    <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">
+                    Building/Sleeping in an Igloo on Mount Titlis
+                  </span>
+                </div>
+              </div>
+              <div class="grid-item">
+                <img src="images/sports/10.jpg" alt="Image 2" class="grid-image">
+                <div class="image-title">
+                  <img class="flag-icon" src="./images/wflags/de.png" alt="Germany">
+                  Climbing at Munich Oktoberfest Grounds
+                </div>
+              </div>
+              <div class="grid-item">
+                <img src="images/sports/11.jpg" alt="Image 3" class="grid-image">
+                <div class="image-title">
+                  <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland">
+                  Sunset/Snowman Building on Mount Rigi
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
 
 
       <hr class="display-mobile" style="width:113%">
