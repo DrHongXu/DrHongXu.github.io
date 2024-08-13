@@ -131,53 +131,6 @@
         display: none;
       }
     }
-
-
-    /* Sport Container */
-
-    .three-col-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      width: 90%;
-      max-width: 1200px;
-    }
-
-    .grid-item {
-      text-align: center;
-    }
-
-    .grid-image {
-      width: 103%;
-      height: 150px;
-      /*统一图片高度*/
-      object-fit: cover;
-      display: block;
-      border: 0px solid #ccc;
-      border-radius: 5px;
-      transition: transform 0.3s ease;
-    }
-
-    .grid-image:hover {
-      transform: scale(1.07);
-    }
-
-    .image-title {
-      margin-top: 8px;
-      font-size: normal;
-      color: #333;
-    }
-
-    /* Mobile styles - hide .flex-container */
-    @media (max-width: 768px) {
-      .three-col-grid {
-        width: 100%;
-      }
-
-      .grid-image {
-        height: 110px;
-      }
-    }
   </style>
 
   <script type="module">
@@ -327,7 +280,7 @@
     <div class="hidden-mobile" class="three columns sidebar">
       <nav>
         <h3 id="logo" style="text-align:center;">
-          <img id="optionalstuff" src="images/banner_cns6_left.gif" width="155" />
+          <img id="optionalstuff" src="images/hong8.png" width="155" />
           <div style="margin-bottom: 18px;"></div>
           <h3 class="hidden-mobile" align="left">Dr. Hong Xü</h3>
 
@@ -336,18 +289,12 @@
             <li><a href="#"> <span class='blue'>Forscher</span> :: <span class='blue'>Ingenieur</span> :: <span
                   class='blue'>Analyst</span></a></li>
             <p>____</p>
-            <li><a href="de.html"><span>Einführen</span></a></li>
+            <li><a href="de.html">Einführen</a></li>
             <li><a href="de-research.html">Forschung</a></li>
             <li><a href="de-resume.html">Lebenslauf</a></li>
-            <li><a href="de-activities.html"><span style="color: rgb(253, 93, 7);">Aktivitäten ⏴</span></a></li>
-            <li><a href="#">&nbsp;• Moderator</a></li>
-            <li><a href="#writing">&nbsp;• Schreiben</a></li>
-            <li><a href="#visiting">&nbsp;• Besuche</a></li>
-            <li><a href="#travel">&nbsp;• Reisen</a></li>
-            <li><a href="#gallery">&nbsp;• Galerie</a></li>
-            <li><a href="#sports">&nbsp;• Sportarten</a></li>
+            <li><a href="de-activities.html">Aktivitäten</a></li>
             <p>____</p>
-            <li><a href="de-contact.html"><span style="color: rgb(253, 93, 7);">Kontakt</span></a></li>
+            <li><a href="de-contact.html"><span style="color: rgb(253, 93, 7);">Kontakt ⏴</span></a></li>
             <p>____</p>
             <p></p>
             <img src="images/logo.png" width="45" />
@@ -364,28 +311,95 @@
       <!--<img class="hidden-mobile" src="images/banner_de2.png" width="800" />-->
 
       <div class="image-wrapper hidden-mobile">
-        <img src="images/banner_de6.gif" width="800" alt="banner Image" />
-        <div class="orange-dot-eth" alt="Munich" style="top: 19.3%; left: 60.6%; z-index: 9999;"></div>
+        <img src="images/banner_de3.gif" width="800" alt="banner Image" />
+
+        <div class="orange-dot" alt="Hamburg" style="top: 23.1%; left: 50.9%;"></div>
+        <div class="orange-dot" alt="Paris" style="top: 29.5%; left: 48.4%;"></div>
+        <div class="orange-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
+        <div class="orange-dot" alt="Rennes" style="top: 32.3%; left: 47.2%;"></div>
+        <div class="orange-dot" alt="Zurich" style="top: 33.5%; left: 50.6%;"></div>
+        <div class="orange-dot" alt="Beijing" style="top: 43.6%; left: 90.2%;"></div>
+        <div class="orange-dot" alt="Anqing" style="top: 54.9%; left: 90.8%;"></div>
+        <div class="orange-dot" alt="DC" style="top: 44.7%; left: 19.05%;"></div>
+        <div class="orange-dot" alt="Oxford" style="top: 26.7%; left: 46.9%;"></div>
+
+        <div class="red-dot" alt="Munich" style="top: 31.3%; left: 51.6%; z-index: 9999;"></div>
+
+
+        <div class="tooltip" style="top:50%; left: 65%;">
+          <h6><img src="images/flag_de.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Hamburg, Deutschland</h6>
+          <p>2015</p>
+        </div>
+        <div class="tooltip" style="top:54%; left:41%;">
+          <h6><img src="images/flag_fr.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Paris, Frankreich</h6>
+          <p>2016</p>
+        </div>
+
+        <div class="tooltip" style="top:60%; left: 70%;">
+          <h6><img src="images/flag_de.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            München, Deutschland</h6>
+          <p>2015-16</p>
+          <p>2021-24</p>
+        </div>
+
+        <div class="tooltip" style="top:58%; left: 39%;">
+          <h6><img src="images/flag_fr.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Rennes, Frankreich</h6>
+          <p>2014-15</p>
+        </div>
+        <div class="tooltip" style="top:64%; left:68%;">
+          <h6><img src="images/flag_ch.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Zürich, Schweiz</h6>
+          <p>2017-21</p>
+          <p>2016-21</p>
+        </div>
+        <div class="tooltip" style="top:60%; left: 80%;">
+          <h6><img src="images/flag_cn.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Peking, China</h6>
+          <p>2009-13</p>
+        </div>
+        <div class="tooltip" style="top:80%; left: 80%;">
+          <h6><img src="images/flag_cn.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Anqing, China</h6>
+          <p>1993–2009</p>
+        </div>
+        <div class="tooltip" style="top:55%; left: 37%;">
+          <h6><img src="images/flag_us.png" alt="Flagge"
+              style="height:20px;display:inline-block;top:6px;position:relative;">
+            Washington, D.C., USA</h6>
+          <p>2019-21</p>
+        </div>
+
       </div>
       <p class="hidden-mobile"></p>
-      <h3 class="hidden-mobile">Freizeitaktivitäten<small><small><small></small></small> </small>
+      <h3 class="hidden-mobile">Servus! Grüezi! <small><small><small> Freunde aus <span id="location">aller Welt</span>
+              :-)</small></small> </small>
         <span style="float:right;font-family:verdana;">
           <img src="images/flag_de.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
           <img src="images/flag_ch.png" alt="flag" style="height:16px;display:inline-block;top:3px;position:relative;">
           <select id="languages" name="languages"
             style="width: 85px; color:inherit;display:inline-block;margin-bottom:0px;"
             onchange="window.location.href=this.options [this.selectedIndex].value">
-            <option value="de-activities.html" select>Deutsch</option>
-            <option value="en-activities.html">English</option>
-            <option value="es-activities.html">Español</option>
-            <option value="fr-activities.html">Français</option>
+            <option value="de.html" select>Deutsch</option>
+            <option value="en.html">English</option>
+            <option value="es.html">Español</option>
+            <option value="fr.html">Français</option>
             <!---
-            <option value="it-activities.html">Italiano</option>
-            <option value="ru-activities.html">Русский</option>
-            <option value="cn-activities.html">中文</option>
-            <option value="jp-activities.html">日本語</option>
-            <option value="kr-activities.html">한국어</option>
-            <option value="ar-activities.html">اللغة العربية</option>
+            <option value="it.html">Italiano</option>
+            <option value="ru.html">Русский</option>
+            <option value="cn.html">中文</option>
+            <option value="jp.html">日本語</option>
+            <option value="kr.html">한국어</option>
+            <option value="ar.html">اللغة العربية</option>
             --->
           </select>
         </span>
@@ -470,275 +484,64 @@
             <select id="languages" name="languages"
               style="width: 100px;color:inherit;display:inline-block;margin-bottom:0px;"
               onchange="window.location.href=this.options [this.selectedIndex].value">
-              <option value="de-activities.html" select>🇩🇪 Deutsch</option>
-              <option value="en-activities.html">🇬🇧 English</option>
-              <option value="es-activities.html">🇪🇸 Español</option>
-              <option value="fr-activities.html">🇫🇷 Français</option>
+              <option value="de.html" select>🇩🇪 Deutsch</option>
+              <option value="en.html">🇬🇧 English</option>
+              <option value="es.html">🇪🇸 Español</option>
+              <option value="fr.html">🇫🇷 Français</option>
               <!---
-              <option value="it-activities.html">🇮🇹 Italiano</option>
-              <option value="ru-activities.html">🇷🇺 Русский</option>
-              <option value="cn-activities.html">🇨🇳 中文</option>
-              <option value="jp-activities.html">🇯🇵 日本語</option>
-              <option value="kr-activities.html">🇰🇷 한국어</option>
-              <option value="ar-activities.html">🇸🇦 اللغة العربية</option>--->
+              <option value="it.html">🇮🇹 Italiano</option>
+              <option value="ru.html">🇷🇺 Русский</option>
+              <option value="cn.html">🇨🇳 中文</option>
+              <option value="jp.html">🇯🇵 日本語</option>
+              <option value="kr.html">🇰🇷 한국어</option>
+              <option value="ar.html">🇸🇦 اللغة العربية</option>--->
             </select>
           </span>
         </span>
 
       </p>
-      <p align="justify">
+      <div>
 
-        <!-- <span class="display-mobile">Grüße, Freunde aus <span id="location2"></span>! </br></br></span> -->
-        Ich bin ein begeisterter Reisender und Fotograf, der gerne Artikel schreibt, öffentliche Reden hält und durch
-        verschiedene Sportarten aktiv bleibt.
-      </p>
+        <p align="justify">
+          <span class="display-mobile">Willkommen, Freunde aus <span id="location2">aller Welt</span>
+            :-)</br></br></span>
 
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
+          Wenn Sie an der Erkundung von Möglichkeiten für Zusammenarbeit, Beratung oder Medieninterviews interessiert
+          sind, folgen Sie mir bitte in den sozialen Medien und kontaktieren Sie mich über das untenstehende Formular.
+          Ich freue mich darauf, mit Ihnen in Kontakt zu treten!
 
-      <div class="doc-section" id="visiting">
-        <h3>Besuche</h3>
         <ul class="square">
-          <li><strong>Internationale Organisationen: </strong><br>
-            2024 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>Vereinte Nationen in Genf
-            </strong> (Genf, Schweiz)<br>
-            2024 | <img class="flag-icon" src="./images/wflags/de.png" alt="UN"> <strong>Internationale Agentur für
-              Erneuerbare Energien</strong> (Bonn, Deutschland)<br>
-            2023 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>Vereinte Nationen in Wien
-            </strong> (Wien, Österreich)<br>
-            2023 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>Vereinte Nationen in Bonn
-            </strong> (Bonn, Deutschland)<br>
-            2019 | <img class="flag-icon" src="./images/wflags/un.png" alt="UN"> <strong>Hauptquartier der Vereinten
-              Nationen </strong> (New York, USA)<br>
-            <hr>
-          <li><strong>Regierungsbehörden: </strong><br>
-            2016 | <img class="flag-icon" src="./images/wflags/fr.png" alt="Frankreich"> <strong>Seine-Normandie
-              Wasserbehörde </strong> (Paris, Frankreich)<br>
-            2016 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>Stadtplanungsamt Suzhou
-            </strong> (Jiangsu, China)<br>
-            2014 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>Ökologisches Umweltamt
-              Zhengzhou </strong> (Henan, China)<br>
-            2014 | <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> <strong>Umweltschutzbehörde Kaifeng
-            </strong> (Henan, China)<br>
-            <hr>
-          <li><strong>Synchrotron-Beschleuniger: </strong><br>
-            2017 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz"> <strong>Schweizer Lichtquelle/SLS
-            </strong> (Villigen, Schweiz)<br>
-            2016 | <img class="flag-icon" src="./images/wflags/it.png" alt="Italien"> <strong>Elettra Sincrotrone
-              Trieste
-            </strong> (Triest, Italien)<br>
-            2016 | <img class="flag-icon" src="./images/wflags/eu.png" alt="EU"> <strong>Europäische
-              Röntgen-Freie-Elektronen-Laser GmbH </strong>
-            (Hamburg, Deutschland)<br>
-            2016 | <img class="flag-icon" src="./images/wflags/de.png" alt="Deutschland"> <strong>Deutsches
-              Elektronen-Synchrotron/DESY </strong> (Hamburg, Deutschland)<br>
-            2015 | <img class="flag-icon" src="./images/wflags/fr.png" alt="Frankreich"> <strong>Synchrotron SOLEIL
-            </strong> (Paris, Frankreich)<br>
-            <hr>
-          <li><strong>Kernreaktoren: </strong><br>
-            2023 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz"> <strong>Europäische Organisation
-              für Kernforschung/CERN </strong> (Genf, Schweiz)<br>
-            2018 | <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz"> <strong>Beznau Kernkraftwerk
-            </strong> (Aargau, Schweiz)<br>
-            2015 | <img class="flag-icon" src="./images/wflags/fr.png" alt="Frankreich"> <strong>Saclay
-              Kernforschungszentrum
-            </strong> (Paris, Frankreich)<br>
-            2016 | <img class="flag-icon" src="./images/wflags/de.png" alt="Deutschland"> <strong>Heinz Maier-Leibnitz
-              Zentrum </strong> (München, Deutschland)<br>
-        </ul>
 
-      </div>
-
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <div class="doc-section" id="travel">
-        <h3>Reisen</h3>
-        <ul class="square">
-          <li><strong>Asien</strong>:
-            <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> Festlandchina (13+ Provinzen) & Taiwan,
-            <img class="flag-icon" src="./images/wflags/ru.png" alt="Russland"> Russland,
-            <img class="flag-icon" src="./images/wflags/tr.png" alt="Türkei"> Türkei,
-            <img class="flag-icon" src="./images/wflags/th.png" alt="Thailand"> Thailand,
-            <img class="flag-icon" src="./images/wflags/ae.png" alt="VAE"> VAE
-          </li>
-          <li><strong>Europa</strong>:
-            <img class="flag-icon" src="./images/wflags/al.png" alt="Albanien"> Albanien,
-            <img class="flag-icon" src="./images/wflags/at.png" alt="Österreich"> Österreich,
-            <img class="flag-icon" src="./images/wflags/be.png" alt="Belgien"> Belgien,
-            <img class="flag-icon" src="./images/wflags/ba.png" alt="Bosnien und Herzegowina"> Bosnien und Herzegowina,
-            <img class="flag-icon" src="./images/wflags/hr.png" alt="Kroatien"> Kroatien,
-            <img class="flag-icon" src="./images/wflags/cz.png" alt="Tschechien"> Tschechien,
-            <img class="flag-icon" src="./images/wflags/dk.png" alt="Dänemark"> Dänemark,
-            <img class="flag-icon" src="./images/wflags/ee.png" alt="Estland"> Estland,
-            <img class="flag-icon" src="./images/wflags/fr.png" alt="Frankreich"> Frankreich (5+ Städte),
-            <img class="flag-icon" src="./images/wflags/fi.png" alt="Finnland"> Finnland,
-            <img class="flag-icon" src="./images/wflags/de.png" alt="Deutschland"> Deutschland (25+ Städte),
-            <img class="flag-icon" src="./images/wflags/hu.png" alt="Ungarn"> Ungarn,
-            <img class="flag-icon" src="./images/wflags/is.png" alt="Island"> Island,
-            <img class="flag-icon" src="./images/wflags/it.png" alt="Italien"> Italien,
-            <img class="flag-icon" src="./images/wflags/li.png" alt="Liechtenstein"> Liechtenstein,
-            <img class="flag-icon" src="./images/wflags/lu.png" alt="Luxemburg"> Luxemburg,
-            <img class="flag-icon" src="./images/wflags/mt.png" alt="Malta"> Malta,
-            <img class="flag-icon" src="./images/wflags/nl.png" alt="Niederlande"> Niederlande,
-            <img class="flag-icon" src="./images/wflags/no.png" alt="Norwegen"> Norwegen,
-            <img class="flag-icon" src="./images/wflags/pt.png" alt="Portugal"> Portugal,
-            <img class="flag-icon" src="./images/wflags/pl.png" alt="Polen"> Polen,
-            <img class="flag-icon" src="./images/wflags/rs.png" alt="Serbien"> Serbien,
-            <img class="flag-icon" src="./images/wflags/sk.png" alt="Slowakei"> Slowakei,
-            <img class="flag-icon" src="./images/wflags/si.png" alt="Slowenien"> Slowenien,
-            <img class="flag-icon" src="./images/wflags/es.png" alt="Spanien"> Spanien,
-            <img class="flag-icon" src="./images/wflags/gr.png" alt="Griechenland"> Griechenland,
-            <img class="flag-icon" src="./images/wflags/se.png" alt="Schweden"> Schweden,
-            <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz"> Schweiz (30+ Städte),
-            <img class="flag-icon" src="./images/wflags/ie.png" alt="Irland"> Irland,
-            <img class="flag-icon" src="./images/wflags/gb-sct.png" alt="Schottland"> Schottland,
-            <img class="flag-icon" src="./images/wflags/gb-wls.png" alt="Wales"> Wales,
-            <img class="flag-icon" src="./images/wflags/gb-eng.png" alt="Vereinigtes Königreich"> England,
-            <img class="flag-icon" src="./images/wflags/gi.png" alt="Gibraltar"> Gibraltar
-          </li>
-          <li><strong>Nordamerika</strong>:
-            <img class="flag-icon" src="./images/wflags/ca.png" alt="Kanada"> Kanada (BC, ON),
-            <img class="flag-icon" src="./images/wflags/us.png" alt="Vereinigte Staaten"> Vereinigte Staaten (NY, IL,
-            NJ, GA, DC)
-          </li>
-          <li><strong>Afrika</strong>:
-            <img class="flag-icon" src="./images/wflags/es.png" alt="Spanien"> Kanarische Inseln (Spanien)
-          </li>
-          <img src="/images/visited_map.gif" style="width:100%;" alt="Beispiel GIF">
-        </ul>
-
-      </div>
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <div class="doc-section" id="sports" style="width:111%">
-        <h3>Sportarten</h3>
-        <ul class="square">
-          <li>
-            <strong>Seen-/Berg-Radtouren</strong><br><br>
-            <div class="three-col-grid">
-              <div class="grid-item">
-                <img src="images/sports/3.jpg" alt="Bild 1" class="grid-image">
-                <div class="image-title">
-                  <span>
-                    <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz">
-                    Radtour um den Zürichsee (70 km)
-                  </span>
-                </div>
-              </div>
-              <div class="grid-item">
-                <img src="images/sports/2.jpg" alt="Bild 2" class="grid-image">
-                <div class="image-title">
-                  <img class="flag-icon" src="./images/wflags/hr.png" alt="Kroatien">
-                  Srđ-Berg in Dubrovnik, Kroatien (412 m)
-                </div>
-              </div>
-              <div class="grid-item">
-                <img src="images/sports/4.jpg" alt="Bild 3" class="grid-image">
-                <div class="image-title">
-                  <img class="flag-icon" src="./images/wflags/de.png" alt="Deutschland">
-                  Olympiaberg München (565 m)
-                </div>
-              </div>
-            </div>
-          </li>
-          <hr style="width:90%">
-          <li>
-            <strong>Berg-/Inselwanderungen</strong><br><br>
-            <div class="three-col-grid">
-              <div class="grid-item">
-                <img src="images/sports/6.jpg" alt="Bild 1" class="grid-image">
-                <div class="image-title">
-                  <span>
-                    <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz">
-                    Brienzerhorn Grat (2350 m)
-                  </span>
-                </div>
-              </div>
-              <div class="grid-item">
-                <img src="images/sports/7.jpg" alt="Bild 2" class="grid-image">
-                <div class="image-title">
-                  <img class="flag-icon" src="./images/wflags/es.png" alt="Spanien">
-                  Leuchtturm von Formentor auf Mallorca (384 m)
-                </div>
-              </div>
-              <div class="grid-item">
-                <img src="images/sports/9.jpg" alt="Bild 3" class="grid-image">
-                <div class="image-title">
-                  <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz">
-                  Ausblick auf den Aletschgletscher (1905 m)
-                </div>
-              </div>
-            </div>
-          </li>
-          <hr style="width:90%">
-          <li>
-            <strong>Andere Sportarten</strong><br><br>
-            <div class="three-col-grid">
-              <div class="grid-item">
-                <img src="images/sports/1.jpg" alt="Bild 1" class="grid-image">
-                <div class="image-title">
-                  <span>
-                    <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz">
-                    Bau/Übernachtung in einem Iglu auf dem Titlis
-                  </span>
-                </div>
-              </div>
-              <div class="grid-item">
-                <img src="images/sports/10.jpg" alt="Bild 2" class="grid-image">
-                <div class="image-title">
-                  <img class="flag-icon" src="./images/wflags/de.png" alt="Deutschland">
-                  Klettern auf dem Münchner Oktoberfestgelände
-                </div>
-              </div>
-              <div class="grid-item">
-                <img src="images/sports/11.jpg" alt="Bild 3" class="grid-image">
-                <div class="image-title">
-                  <img class="flag-icon" src="./images/wflags/ch.png" alt="Schweiz">
-                  Sonnenuntergang/Snowman-Bau auf dem Rigi
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-
-
-      <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <div class="doc-section" id="contact">
-        <h3>Kontakt</h3>
-        <ul class="square">
           <li><strong>Email</strong>: <a href="mailto:h.xu@tum.de" target="_blank" target="_blank"><span
-                class='blue'>h.xu [at] tum.de</span></a> (Für Zusammenarbeit, Beratung oder Interviews, kontaktieren Sie
-            mich bitte!)<br /></li>
-          <li><strong>Online-Meeting</strong>: <a href="https://calendly.com/heliosxu/45min" target="_blank"><span
-                class='blue'>calendly.com/heliosxu/45min</span></a> (1-zu-1-Meeting, bitte im Voraus buchen)</li>
+                class='blue'>h.xu
+                [at] tum.de</span></a> (bitte [at] durch @ ersetzen )</li>
+          <!-- <li><strong>Online Meeting</strong>: <a href="https://calendly.com/heliosxu/45min" target="_blank" target="_blank"><span
+              class='blue'>calendly.com/heliosxu/45min</span></a> (1-on-1 meeting, please book appointment in advance)</li> -->
           <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/xuhong/" target="_blank"
-              target="_blank"><span class='blue'>linkedin.com/in/xuhong/</span></a><br /></li>
+              target="_blank"><span class='blue'>linkedin.com/in/xuhong/</span></a> (Follower: 1800+)<br></li>
           <li><strong>Google-Scholar ID</strong>: <a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en"
-              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a><br /></li>
-
-          <a href="https://www.flagcounter.me/details/eVG"><img src="https://www.flagcounter.me/eVG/"
-              alt="Flag Counter"></a> <!--  https://www.flagcounter.me/regenerate/eVG HSNFBsABe 德语 -->
-          <!-- <br>
-          <a href="https://info.flagcounter.com/D897" target="_blank"><img
-              src="https://s01.flagcounter.com/count/D897/bg_FFFFFF/txt_404040/border_FFFFFF/columns_8/maxflags_16/viewers_3/labels_0/pageviews_1/flags_0/percent_0/"
-              border="0"></a> -->
-        </ul>
+              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a> (Zitate: <span
+              id="citation-count">300+</span>)<br></li>
+          <!-- <li><strong>Zhihu</strong>: <a href="https://www.zhihu.com/people/dr.of.nothing" target="_blank"
+            target="_blank"><span class='blue'>zhihu.com/people/dr.of.nothing</span></a> (Followers: 13700+)<br></li> -->
 
         </ul>
+        </p>
+
+        <hr class="display-mobile" style="width:113%">
+        <hr class="hidden-mobile">
+
+        <iframe class="hidden-mobile" width="700px" height="2600px"
+          src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAMAoNQBUQzdNQ0ZJSEFLMlpaRVNIQUg5WVdKRVFHMy4u&embed=true&lang=de-DE"
+          frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:190vh"
+          allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+
+        <iframe class="display-mobile" style="width:113%" width="900px" height="1800px"
+          src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAMAoNQBUQzdNQ0ZJSEFLMlpaRVNIQUg5WVdKRVFHMy4u&embed=true&lang=de-DE"
+          frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:270vh"
+          allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+
       </div>
-
-
-
-      <br>
-
 
     </div><!-- Content -->
 
