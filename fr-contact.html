@@ -136,6 +136,7 @@
 
 
   <!---法语冠词特别版，请勿copy-->
+  <!---法语冠词特别版，请勿copy-->
   <script type="module">
     async function fetchCountries() {
       const response = await fetch('/js/countries.json');
@@ -154,9 +155,31 @@
     }
 
     function addFrenchArticle(countryName) {
+      // 特别规则处理
+      const articles = {
+        'la': 'de la',
+        'le': 'du',
+        'les': 'des'
+      };
+
+      // 匹配冠词
+      const words = countryName.split(' ');
+      const article = words[0].toLowerCase();
+
+      if (articles[article]) {
+        return `${articles[article]} ${words.slice(1).join(' ')}`;
+      }
+
+      // 如果没有冠词，返回默认的 "de"
       const firstLetter = countryName.charAt(0).toLowerCase();
-      const isVowel = 'aeiou'.indexOf(firstLetter) !== -1;
-      return isVowel ? `d'${countryName}` : `de ${countryName}`;
+      const isVowel = 'aeioué'.indexOf(firstLetter) !== -1;
+
+      // 元音开头的国家名
+      if (isVowel) {
+        return `d'${countryName}`;
+      } else {
+        return `de ${countryName}`;
+      }
     }
 
     async function displayCountryName() {
