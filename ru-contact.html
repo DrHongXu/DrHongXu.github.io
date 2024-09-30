@@ -126,7 +126,28 @@
     }
   </style>
 
+  <!---俄语名词属格特别版，请勿copy-->
   <script type="module">
+    const endings = {
+      'ия': 'ии',
+      'а': 'ы',
+      'я': 'и',
+      'й': 'я',
+      'ь': 'и',
+      'е': 'я',
+      'о': 'а',
+      '': 'а'
+    };
+
+    function applyGenitiveEnding(countryName) {
+      for (const [ending, genitiveEnding] of Object.entries(endings)) {
+        if (countryName.endsWith(ending)) {
+          return countryName.slice(0, -ending.length) + genitiveEnding;
+        }
+      }
+      return countryName;
+    }
+
     async function fetchCountries() {
       const response = await fetch('/js/countries.json');
       const countries = await response.json();
@@ -137,7 +158,8 @@
       const country = countries.find(country => country.abbr === code);
 
       if (country) {
-        return country[language] || country.english;
+        const countryName = country[language] || country.english;
+        return applyGenitiveEnding(countryName);
       } else {
         return 'Земля';
       }
@@ -158,6 +180,8 @@
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
   </script>
+
+
   <!-- block save as
       ================================================== -->
   <script type="text/javascript">
