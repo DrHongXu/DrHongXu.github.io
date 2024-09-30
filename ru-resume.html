@@ -187,6 +187,7 @@
   </script>
 
   <script src="js/language.js"></script>
+  <script src="js/update_info.js"></script>
 
   <nav class="display-mobile">
 
@@ -254,8 +255,6 @@
 <body>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">⇧</button>
-
-  <!-- Top Navigation Menu -->
 
   <!-- Top Navigation Menu -->
 
@@ -528,7 +527,7 @@
       <div class="doc-section" id="academic-services">
         <h3>Академические обязанности</h3>
         <ul class="square">
-          <li><strong>Рецензент (более 40 статей): </strong><br>
+          <li><strong>Рецензент (более <span class="no_of_reviews"></span> статей): </strong><br>
             - <strong>Журнал по энергетическому преобразованию и управлению</strong> (Energy Conversion & Management,
             Импа́кт-фа́ктор: 11.2, 2021)<br>
             - <strong>Журнал Прикладная энергия</strong> (Applied Energy, ИФ: 11.4, 2022)<br>
@@ -777,9 +776,12 @@
                 class='blue'>calendly.com/heliosxu/45min</span></a> (встреча один на один, пожалуйста, бронируйте
             заранее)</li>
           <li><strong>ЛинкедИн</strong>: <a href="https://www.linkedin.com/in/xuhong/" target="_blank"
-              target="_blank"><span class='blue'>linkedin.com/in/xuhong/</span></a><br /></li>
+              target="_blank"><span class='blue'>linkedin.com/in/xuhong/</span></a> (Подписчики: <span
+              class="linkedin_followers"></span> человек)<br /></li>
           <li><strong>Google Scholar ID</strong>: <a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en"
-              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a><br /></li>
+              target="_blank" target="_blank"><span class='blue'>UNchM2kAAAAJ&hl</span></a> (Цитаты: <span
+              class="google_scholar_citation"></span> раз)<br></li>
+
           <a href="https://www.flagcounter.me/details/eVM"><img src="https://www.flagcounter.me/eVM/"
               alt="Flag Counter"></a> <!--https://www.flagcounter.me/regenerate/eVM 9q1xINQda 俄语-->
 
@@ -838,9 +840,8 @@
       <p><strong>Конечная игра</strong> проводится для <strong>выигрыша</strong>, а <strong>бесконечная игра</strong>
         используется для <strong>продолжения</strong> игры. <br /><small>Авторское право © 2016 -
           <script>const currentYear = new Date().getFullYear(); document.write(currentYear);</script> | Доктор Хун Сюй |
-          Обновлено: 08.2024
+          Обновлено: <span class="web_update_month"></span>. <span class="web_update_year"></span> г.
         </small>
-
       </p>
     </footer>
 
@@ -1002,6 +1003,7 @@
       };
     };
   </script>
+  <script type="text/javascript" src="update_info_script.js"></script>
 
   <!-- End Document
 ================================================== -->
