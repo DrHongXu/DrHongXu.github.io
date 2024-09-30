@@ -925,14 +925,14 @@
         "abbr": "HK",
         "chinese": "香港",
         "code": "852",
-        "english": "Hong Kong SAR China",
+        "english": "Hong Kong",
         "spell": "zhongguoxianggangtebiexingzhengqu",
         "state": "亚洲",
         "french": "Hong Kong",
         "italian": "Hong Kong",
         "spanish": "Hong Kong",
         "japanese": "香港",
-        "russian": "Гонконг SAR Китай",
+        "russian": "Гонконг",
         "germen": "Hong Kong"
     },
     {
@@ -1312,14 +1312,14 @@
         "abbr": "MO",
         "chinese": "澳门",
         "code": "853",
-        "english": "Macao SAR China",
+        "english": "Macao",
         "spell": "zhongguoaomentebiexingzhengqu",
         "state": "亚洲",
         "french": "Macao",
         "italian": "Macao",
         "spanish": "Macao",
         "japanese": "マカオ",
-        "russian": "Макао SAR Китай",
+        "russian": "Макао",
         "germen": "Macao"
     },
     {
