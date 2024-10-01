@@ -715,6 +715,36 @@ span.blue {
   }
 }
 
+
+/* 针对 iPhone 5 和 iPhone SE 的媒体查询 */
+@media (max-width: 320px) {
+
+  /* 优化超小屏幕显示 */
+  .container {
+    padding: 0 10px;
+    /* 增加左右内边距，避免内容太贴边 */
+  }
+
+  .content {
+    font-size: 14px;
+    /* 减小字体大小以适应屏幕 */
+  }
+}
+
+/* 针对宽度小于 768px 的设备 (包括大部分手机) */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+
+  img.responsive-image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
 #myBtn {
   display: none;
   position: fixed;
