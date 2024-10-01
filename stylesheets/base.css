@@ -680,9 +680,21 @@ span.blue {
 }
 
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .hidden-mobile {
     display: none;
+  }
+
+  /* 手机端全屏宽度和居中对齐 */
+  .display-mobile img {
+    width: 100%;
+    /* 图片宽度与设备宽度一致 */
+    height: auto;
+    /* 保持高度自动调整 */
+    display: block;
+    /* 将图片作为块级元素 */
+    margin: 0 auto;
+    /* 水平居中 */
   }
 }
 
