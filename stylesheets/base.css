@@ -680,27 +680,38 @@ span.blue {
 }
 
 
+/* 默认情况下，移动设备隐藏网页内容 */
 @media (max-width: 768px) {
   .hidden-mobile {
     display: none;
   }
 
-  /* 手机端全屏宽度和居中对齐 */
-  .display-mobile img {
-    width: 113%;
-    /* 图片宽度与设备宽度一致 */
-    height: auto;
-    /* 保持高度自动调整 */
+  .display-mobile {
     display: block;
-    /* 将图片作为块级元素 */
-    margin: 0 auto;
-    /* 水平居中 */
   }
 }
 
-@media (min-width: 768px) {
+/* 针对 iPad Mini 特定宽度（768px）进行优化：显示网页端，隐藏移动端 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hidden-mobile {
+    display: block;
+    /* 显示网页端内容 */
+  }
+
   .display-mobile {
     display: none;
+    /* 隐藏移动端内容 */
+  }
+}
+
+/* 正常桌面宽度时，隐藏移动内容 */
+@media (min-width: 1024px) {
+  .display-mobile {
+    display: none;
+  }
+
+  .hidden-mobile {
+    display: block;
   }
 }
 
