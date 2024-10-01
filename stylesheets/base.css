@@ -687,7 +687,7 @@ span.blue {
 
   /* 手机端全屏宽度和居中对齐 */
   .display-mobile img {
-    width: 100%;
+    width: 113%;
     /* 图片宽度与设备宽度一致 */
     height: auto;
     /* 保持高度自动调整 */
