@@ -202,7 +202,6 @@
   <script type='text/javascript' id='clustrmaps'
     src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=600&t=tt&d=mRcRGOHfI5m_4z362zL1K5jsQpgs-UcWLE04KRcma18&co=60a9db&ct=ffffff&cmo=303aea&cmn=fc8823'></script>
 
-
   <div id="extracted-content"></div>
 
   <script>
@@ -246,9 +245,12 @@
 
       var shortLang = userLang.substring(0, 2);
 
-      // Check if the language is supported and redirect
+      // Check if the language is supported, if not default to English
       if (languageMap[shortLang]) {
         window.location.href = languageMap[shortLang];
+      } else {
+        // Default to English if language is not supported
+        window.location.href = 'en.html';
       }
     });
   </script>
