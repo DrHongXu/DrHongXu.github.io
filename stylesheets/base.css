@@ -169,6 +169,8 @@ body {
   -webkit-font-smoothing: antialiased;
   /* Fix for webkit rendering */
   -webkit-text-size-adjust: 100%;
+    overflow-x: hidden; /* 禁止水平滚动 */
+
 }
 
 
