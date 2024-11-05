@@ -8,7 +8,7 @@ const data = {
     "age": 31,
     "year_of_experience": 8,
     "no_of_papers": 15,
-    "google_scholar_citation": 320,
+    "google_scholar_citation": 330,
     "h_index": 9,
     "no_of_reviews": 55,
     "no_of_patents": 3,
