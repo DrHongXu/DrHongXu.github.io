@@ -3,7 +3,7 @@
 const data = {
     "age": new Date().getFullYear() - 1993 ,
     "web_update_year": 2025,
-    "web_update_month": "08",  // 两位数，01-09
+    "web_update_month": "09",  // 两位数，01-09
     "web_update_day": 1,
     "born_year": 1993,
     "year_of_experience": 8,
