@@ -135,7 +135,7 @@
 
   <script type="module">
     async function fetchCountries() {
-      const response = await fetch('/js/countries.json');
+      const response = await fetch('./js/countries.json');
       const countries = await response.json();
       return countries;
     }
@@ -146,19 +146,52 @@
       if (country) {
         return country[language] || country.english;
       } else {
-        return 'mondo';
+        return 'the World';
       }
     }
 
     async function displayCountryName() {
-      const countries = await fetchCountries();
-      const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
-      const data = await response.json();
-      const countryCode = data.country;
-      const language = 'english'; // 更改为您想要显示的语言
-      const countryName = getCountryNameByCode(countries, countryCode, language);
-      document.getElementById("location").textContent = countryName;
-      document.getElementById("location2").textContent = countryName;
+      try {
+        console.log('Starting location detection...');
+        const countries = await fetchCountries();
+        console.log('Countries loaded:', countries.length);
+        
+        const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
+        const data = await response.json();
+        console.log('IP info data:', data);
+        
+        const countryCode = data.country.toLowerCase();
+        console.log('Country code:', countryCode);
+        
+        const language = 'english';
+        const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
+        console.log('Country name:', countryName);
+        
+        const locationElement = document.getElementById("location");
+        const location2Element = document.getElementById("location2");
+        
+        if (locationElement) {
+          locationElement.textContent = countryName;
+          console.log('Updated location element');
+        } else {
+          console.log('Location element not found');
+        }
+        
+        if (location2Element) {
+          location2Element.textContent = countryName;
+          console.log('Updated location2 element');
+        } else {
+          console.log('Location2 element not found');
+        }
+        
+        if (document.getElementById("country-flag")) {
+          document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
+          document.getElementById("country-flag").alt = countryName;
+        }
+      } catch (error) {
+        console.log('Error fetching location:', error);
+        // 如果获取失败，保持默认值 "the World"
+      }
     }
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
@@ -201,7 +234,7 @@
         </a>
       </div>
       <div>
-        <a class='slide' href='#contact'>
+        <a class='slide' href='en-contact.html'>
           <span class='element'>C</span>
           <span class='name'>Contact</span>
         </a>
@@ -224,7 +257,36 @@
           <span class='name'>Scholar</span>
         </a>
       </div>
-
+      <div>
+        <a class='slide' href='#'>
+          <span class='element'>Wb&nbsp;&nbsp;</span>
+          <span class='name'>Weibo</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href='#'>
+          <span class='element'>Wx&nbsp;&nbsp;</span>
+          <span class='name'>Wechat</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href='#'>
+          <span class='element'>Dy&nbsp;&nbsp;</span>
+          <span class='name'>Tiktok</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href='#'>
+          <span class='element'>Xh&nbsp;&nbsp;</span>
+          <span class='name'>XiaoHS</span>
+        </a>
+      </div>
+      <div>
+        <a class='slide' href='#'>
+          <span class='element'>Bi&nbsp;&nbsp;</span>
+          <span class='name'>Bilibili</span>
+        </a>
+      </div>
 
     </div>
   </nav>
@@ -243,7 +305,13 @@
   ================================================== -->
 
   <!-- Delete everything in this .container and get started on your own site! -->
-  <img class="display-mobile" src="images/banner_mobile_en3.png" width="800" style="margin-top: -10px;" />
+  <!-- Delete everything in this .container and get started on your own site! -->
+  <div class="display-mobile" style="position: relative">
+    <img class="display-mobile" src="images/banner_mobile_en3.gif"
+      style="margin-top: -10px; width: 113%; max-width: 113%;" />
+    <div class="red-dot" alt="Munich" style="position: absolute; top: 20.3%; left: 61.7%; max-width: 113%;"></div>
+  </div>
+
 
   <div class="container">
 
@@ -251,7 +319,7 @@
     <div class="hidden-mobile" class="three columns sidebar">
       <nav>
         <h3 id="logo" style="text-align:center;">
-          <img id="optionalstuff" src="images/hong8.png" width="155" />
+          <img id="optionalstuff" src="images/banner_cns3_left.gif" width="155" />
           <div style="margin-bottom: 17px;"></div>
           <h3 class="hidden-mobile" align="left">Dr. Hong Xu</h3>
 
@@ -270,9 +338,9 @@
             <!--<li><a href="#project">Projects</a></li>-->
             <!--<li><a href="#activities">Activities</a></li>  -->
             <li><a href="#publications">Publications</a></li>
-            <!--<li><a href="#patents">Patents</a></li>  -->
-            <!--<li><a href="#presentations">Conferences</a></li>-->
-            <li><a href="#awards">Awards</a></li>
+            <!-- <li><a href="#patents">Patents</a></li>  -->
+            <li><a href="#presentations">Conferences</a></li>
+            <!-- <li><a href="#awards">Awards</a></li> -->
             <!--<li><a href="#training">Training</a></li>-->
             <!--<li><a href="#fund">Funding</a></li>-->
             <!--<li><a href="#skills">Skills</a></li>-->
@@ -308,7 +376,7 @@
       <!--<img class="hidden-mobile" src="images/banner_en2.png" width="800" />-->
 
       <div class="image-wrapper hidden-mobile">
-        <img src="images/banner_en3.png" width="800" alt="banner Image" />
+        <img src="images/banner_en3.gif" width="800" alt="banner Image" />
         <div class="orange-dot" alt="Hamburg" style="top: 23.1%; left: 50.9%;"></div>
         <div class="orange-dot" alt="Paris" style="top: 29.5%; left: 48.4%;"></div>
         <div class="orange-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
@@ -324,56 +392,56 @@
           <h6><img src="images/flag_de.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
             Hamburg, Germany</h6>
-          <p>2015</p>
+          <p></p>
         </div>
         <div class="tooltip" style="top:54%; left:41%;">
           <h6><img src="images/flag_fr.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
             Paris, France</h6>
-          <p>2015</p>
+          <p></p>
         </div>
         <div class="tooltip" style="top:60%; left: 70%;">
           <h6><img src="images/flag_de.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
             Munich, Germany</h6>
-          <p>2015-16</p>
-          <p>2021-23</p>
+          <p></p>
+
         </div>
         <div class="tooltip" style="top:58%; left: 39%;">
           <h6><img src="images/flag_fr.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
             Rennes, France</h6>
-          <p>2014-15</p>
+          <p></p>
         </div>
         <div class="tooltip" style="top:64%; left:68%;">
           <h6><img src="images/flag_ch.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
             Zurich, Switzerland</h6>
-          <p>2017-21</p>
-          <p>2016-21</p>
+          <p>2</p>
+
         </div>
         <div class="tooltip" style="top:60%; left: 80%;">
           <h6><img src="images/flag_cn.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
             Beijing, China</h6>
-          <p>2009-13</p>
+          <p></p>
         </div>
         <div class="tooltip" style="top:80%; left: 80%;">
           <h6><img src="images/flag_cn.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
             Anqing, China</h6>
-          <p>1993–2009</p>
+          <p></p>
         </div>
         <div class="tooltip" style="top:55%; left: 37%;">
           <h6><img src="images/flag_us.png" alt="Flagge"
               style="height:20px;display:inline-block;top:6px;position:relative;">
             Washington DC, USA</h6>
-          <p>2019-21</p>
+          <p></p>
         </div>
       </div>
 
       <p class="hidden-mobile"></p>
-      <h3 class="hidden-mobile">Hey, Welcome! <small><small><small>Friends from <span id="location"></span>
+      <h3 class="hidden-mobile">Hey, Welcome! <small><small><small>Friends from <span id="location">the World</span>
               :-)</small></small> </small>
         <span style="float:right;font-family:verdana;">
           <img src="images/flag_us.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
@@ -382,11 +450,9 @@
             style="width: 85px; color:inherit;display:inline-block;margin-bottom:0px;"
             onchange="window.location.href=this.options [this.selectedIndex].value">
             <option value="en.html" select>English</option>
-            <option value="de.html">Deutsch</option>
+       <!---       <option value="de.html">Deutsch</option>
             <option value="es.html">Español</option>
             <option value="fr.html">Français</option>
-            <!---
-           
             <option value="it.html">Italiano</option>
             <option value="ru.html">Русский</option>
             <option value="cn.html">中文</option>
@@ -459,11 +525,9 @@
               style="width: 100px;color:inherit;display:inline-block;margin-bottom:0px;"
               onchange="window.location.href=this.options [this.selectedIndex].value">
               <option value="en.html" select>🇬🇧 English</option>
-              <option value="de.html">🇩🇪 Deutsch</option>
+               <!--- <option value="de.html">🇩🇪 Deutsch</option>
               <option value="es.html">🇪🇸 Español</option>
               <option value="fr.html">🇫🇷 Français</option>
-              <!---
-              
               <option value="it.html">🇮🇹 Italiano</option>
               <option value="ru.html">🇷🇺 Русский</option>
               <option value="cn.html">🇨🇳 中文</option>
@@ -476,43 +540,23 @@
         </span>
       </p>
 
-      <!-- <p align="justify">
-        <span class="display-mobile">Welcome friends from <span id="location2"></span> :-)</br></br></span>
-        Dr. Hong Xu is a passionate <strong>Researcher</strong> and <strong>Engineer</strong> specializing in Renewable Energy and e-Power Systems, dedicated to achieving <strong>carbon neutrality</strong> in the <strong>energy and transportation</strong> sectors.
-
-        Currently, Dr. Hong Xu serves as a specialist engineer in the German industrial sector in the field of <strong>new energy power systems</strong>, dedicated to achieving <strong>carbon neutrality</strong> in the <strong>energy and transportation</strong> sectors. He chaired a session on "Chinese Energy Transition and Technological Innovation" at the <strong>United Nations Climate Change Conference in Bonn</strong> and participated in meetings of the <strong>United Nations Economic Commission for Europe's expert group on transport and climate</strong>. During his academic career, he collaborated with multinational corporations and Sino-European academic institutions to publish <strong>more than 15 papers</strong> and was cited <strong>over 280 times</strong>, earning <strong>3 patents</strong>. He also serves as a <strong>reviewer</strong> for 7 high-impact journals in the energy and transportation fields and as an <strong>academic reviewer</strong> for the <strong>St. Gallen International Economic Forum</strong>. He has received invitations and travel awards from the American Chemical Society, Intel Edge AI Scholarship, Erasmus+ Scholarship, and the "Challenge Cup" Entrepreneurship National Bronze Award in China, among others.
-      </p>
-      
-      <p align="justify">
-        In early 2021, he obtained his <strong><a href="https://ethz.ch/en.html" target="_blank">Ph.D. degree</a></strong> from <strong><a href="https://electrochemistry.ethz.ch/people/person-detail.html?persid=177926" target="_blank">ETH Zurich</a></strong>, under the supervision of Professor <strong>Thomas Schmidt</strong> at the Swiss Competence Center for Energy Research. His academic research during his undergraduate, master's, and doctoral studies focused on the fields of <strong>carbon neutrality/new energy</strong>. He has worked/interned at international institutions such as <strong><a href="https://psi.ch" target="_blank">Paul Scherrer Institute, Switzerland</a></strong>, <strong><a href="https://oxfordenergy.org" target="_blank">Oxford Institute for Energy Studies, UK</a></strong>, <strong><a href="https://tum.de" target="_blank">Technical University of Munich, Germany</a></strong>, <strong><a href="https://ecoledesponts.fr/en" target="_blank">École des Ponts ParisTech, France</a></strong>, <strong><a href="https://xfel.eu" target="_blank">European XFEL, EU</a></strong>, and collaborated deeply with multinational companies such as <strong>Toyota Motor Corporation, Japan</strong>, <strong>Infineon Technologies AG, Germany</strong>, <strong>Continental AG, Germany</strong>, etc. Additionally, he was admitted to a full scholarship for remote learning at the <strong><a href="https://quantic.edu/mba" target="_blank">Quantic School of Business</a></strong> in the United States and awarded an <strong>MBA</strong> degree, studied "Green Transformation" business management courses at the <strong><a href="https://www.jbs.cam.ac.uk/" target="_blank">Cambridge Judge Business School</a></strong> as a Santander Bank Scholar, and conducted in-depth stock/industry research reports at a leading securities institute (A-share & US stocks) and engaged in venture capital practice in the new energy sector in a dual-currency fund (seed round➔Series A).
-      </p> -->
-      
 
       <p align="justify">
 
-        <span class="display-mobile">Greetings, friends from <span id="location2"></span>! </br></br></span>
-        Dr. Hong Xu is a passionate Green Tech <strong>Researcher</strong>, e-Power <strong>Engineer</strong>,
-        and <strong>Analyst</strong> specializing in Energy Economics and Policy. He chaired a parallel session at the
-        <strong><a href="" target="_blank">United Nations Climate Change Conference</a></strong></strong>, and
-        contributed his expertise as an <strong>Academic Jury</strong> at the <strong><a href="https://symposium.org/"
-            target="_blank">St. Gallen Symposium</a></strong>. He is serving as Peer Reviewer for
-        several high impact journals across <strong>Energy, Transport</strong>, and <strong>Sustainability</strong>
-        sectors. As an interdisciplinary scholar, Dr. Xu's efforts were rewarded with Santander Bank Scholarship, ECS
-        Travel Grant, Intel Edge AI Scholarship, Erasmus Scholarship, Chinese patent grants, and etc.
-      </p>
-
-      <p align="justify">
-        He received his PhD in <strong>Renewable Energy</strong> from <strong><a href="https://ethz.ch/en.html"
-            target="_blank">ETH Zurich</a></strong> and Masters' Degree in Materials Science from the <strong><a
-            href="https://tum.de" target="_blank">Technical University of Munich</a></strong>, in collaboration with the
-        <strong><a href="https://psi.ch" target="_blank">Paul Scherrer Institute</a></strong> in Switzerland and the
-        <strong><a href="https://xfel.eu" target="_blank">European XFEL</a></strong> in Germany. His passion for
-        impactful research in energy and transport fields, has led to extensive R&D collaborations with industry leaders
-        such as <strong>Toyota</strong> and <strong>Infineon</strong>. Beyond his research endeavors, he pursued an
-        <strong>MBA</strong> at the <strong><a href="https://quantic.edu/mba" target="_blank">Quantic School of
-            Business</a></strong> and received grant-based Executive Education at the <strong><a
-            href="https://www.jbs.cam.ac.uk/" target="_blank">Cambridge Judge Business School</a></strong>, encompassing
-        practical experience at dual-currency venture capital firm and top securities company in China.
+    
+        Energy powers human civilization, and energy materials tackle the challenges of <strong>energy security</strong> and <strong>climate change</strong>, catalyzing the radical AI-driven industrial revolution. At the interplay of <strong>Innovation</strong>–<strong>Integration</strong>-<strong>Intelligence</strong>, Dr. Hong Xu is dedicated to advance critical materials for e-power systems and smart grid applications, including
+        solar cells, lithium-ion batteries, electrolyzers, and hydrogen fuel cells.
+         By reforming functional materials and device architectures, his work enhances energy <strong>efficiency</strong>, materials <strong>durability</strong>, and the lab-to-market <strong>scalability</strong> of sustainable energy systems. His efforts have been rewarded with
+         <strong><span class="no_of_papers"></span></strong> publications, <strong><span class="no_of_patents"></span></strong> Chinese patents granted, and
+         <strong><span class="no_of_patents_in_review"></span></strong> EU patents filed, in collaboration with global institutions. Notably, his systematic work in X-ray tomography for fuel cell studies achieved <strong>cutting-edge</strong> temporal (0.1 s) and spatial (0.4 μm) resolution worldwide, leveraging joint efforts with <strong><a href="https://global.toyota/en/" target="_blank">Toyota Central R&D Labs</a></strong> for imaging system and materials validation, and <strong><a href="https://www.cwi.nl/" target="_blank">CWI Amsterdam</a></strong> for deep learning algorithm optimization. This milestone was highlighted by the <strong><a href="https://psi.ch" target="_blank">Paul Scherrer Institute</a></strong> and presented at ECS in Atlanta as invited talk with travel grant. 
+      <br><br> 
+         A scholar by heart, he earned his PhD in <strong>Renewable Energy</strong> from 
+         <strong><a href="https://ethz.ch/en.html" target="_blank">ETH Zurich</a></strong>, fully funded by the SNSF. Prior to that, he obtained dual MSc degrees in
+         <strong>Materials Science</strong> and  <strong>Physics</strong>, jointly awarded by the <strong><a href="https://tum.de" target="_blank">Technical University of Munich</a></strong> and the <strong><a href="https://univ-rennes.fr" target="_blank">University of Rennes</a></strong>, supported by an Erasmus Scholarship. 
+         In pursuit of impactful scientific and policy research, he gained practical experience both in academia at the 
+         <!-- <strong><a href="https://oxfordenergy.org" target="_blank">Oxford Institute for Energy Studies</a></strong>,  -->
+         <strong><a href="https://xfel.eu" target="_blank">European XFEL</a></strong> and 
+         <strong><a href="https://ecoledesponts.fr/" target="_blank">Polytechnic  Institute of Paris</a></strong>, and in industry at <strong>Toyota</strong>, <strong>Infineon</strong>, and <strong>Freudenberg</strong>. His academic journey began at <strong><a href="https://en.bjtu.edu.cn/" target="_blank">Beijing Transport University</a></strong>, where he studied Materials Chemistry with an innovation scholarship, and trained at the Institute for Process Engineering of the <strong><a href="http://english.ipe.cas.cn/" target="_blank">Chinese Academy of Sciences</a></strong>.
       </p>
 
       <p style="text-align:left;">
@@ -715,8 +759,8 @@
           <li>2014-2016 | <strong>MSc, Materials & Physics </strong><br />
             <strong><a href="https://www.tum.de/en/" target="_blank">Technical University of Munich</a></strong>, Germany<br />
             <!--<strong><a href="https://www.lmu.de/en/" target="_blank">Ludwig Maximilian University of Munich</a></strong>, Germany<br /></p>-->
-            <!--<strong><a href="https://www.univ-rennes1.fr/" target="_blank">University of Rennes I</a></strong>, France
-            <br /></p>-->
+            <strong><a href="https://www.univ-rennes1.fr/" target="_blank">University of Rennes</a></strong>, France
+            <br /></p>
             <!--[<a href="https://unknown/files/Master_Thesis_LMU_TUM-Xu_Hong.pdf" target="_blank">Thesis</a>]-->
 
           <li>2009-2013 | <strong>BSc, Materials Chemistry</strong><br />
@@ -745,7 +789,7 @@
         <h3>Research Interests</h3>
         <ul class="square">
           <li><strong>Renewable Energy</strong>, Hydrogen, Fuel Cells, Eletrolyser, PV, Batteries<br />
-          <li><strong>Energy Economy</strong>, Energy Policy, ESG Investing, Digital Sustainability<br />
+          <li><strong>Energy Economy</strong>, Energy Policy, Critical Minerals, Digital Sustainability<br />
           <li><strong>Functional Materials</strong>, Semiconductors, Polymers, Metal Oxides<br />
           <!--<li><strong>Computational Imaging</strong>, X-ray Techniques, Computer Vision <br />
           <li><strong>Equity Research</strong>, Big Data Analysis, Business Analytics<br />-->
@@ -762,25 +806,27 @@
         <h3>Academic Services</h3>
         <ul class="square">
           <li><strong>Peer Reviewer: </strong> <br />
-            - <strong>Energy Conversion and Management</strong> (Impact Factor=11.2, 2021)<br />
-            - <strong>Applied Energy</strong> (IF=11.4, 2022)<br />
-            - <strong>Journal of Power Sources</strong> (IF=9.13, 2022)<br />
-            - <strong>Energy Strategy Reviews</strong> (IF=8.3, 2023)<br />
-            - <strong>International Journal of Hydrogen Energy</strong> (IF=7.14, 2021) <br />
-            - <strong>Energy for Sustainable Development</strong> (IF=5.76, 2021) <br />
-            - <strong>International Journal of Heat and Mass Transfer</strong> (IF=5.58, 2022) <br />
-            - <strong>Green Technologies and Sustainability</strong> (New Journal, 2022) <br />
-            - <strong>Green Energy and Intelligent Transportation</strong> (New Journal, 2022) <br />
+            - <strong>Energy Conversion and Management</strong> (Impact Factor: 11.2, 2021)<br>
+            - <strong>Applied Energy</strong> (IF: 11.4, 2022)<br>
+            - <strong>Journal of Power Sources</strong> (IF: 9.13, 2022)<br>
+            - <strong>Renewable Energy</strong> (IF: 9.0, 2023)<br>
+            - <strong>Energy Strategy Reviews</strong> (IF: 8.3, 2023)<br>
+            - <strong>International Journal of Hydrogen Energy</strong> (IF: 7.14, 2021)<br>
+            - <strong>Transport Policy</strong> (IF: 6.8, 2022)<br>
+            - <strong>Energy for Sustainable Development</strong> (IF: 5.76, 2021)<br>
+            - <strong>International Journal of Heat and Mass Transfer</strong> (IF: 5.58, 2022)<br>
+            - <strong>Green Technology and Sustainability</strong> (New Journal, 2022)<br>
+            - <strong>Green Energy and Intelligent Transportation</strong> (New Journal, 2022)<br>
             <hr>
-          <li><strong>Int. Organization/Thinktank</strong>: <br />
+          <!-- <li><strong>Int. Organization/Thinktank</strong>: <br /> -->
             <!---- Visiting Research Fellow, <strong>Oxford Institute of Energy Studies</strong> (Energy Economics and Policy, 2023, UK)
             <br />--->
             <!----- Youth Delegate, <strong>United Nations Bonn Climate Change Conference</strong> (Climate and Energy, 2023, DE)
             <br/>--->
             <!------ Co-founder, <strong>Digital Sustainability Association</strong> (ESG and SDGs, 2023, CH)
             <br />--->
-            - Academic Jury, <strong>St. Gallen Symposium</strong> (Swiss Think-tank, Economics and Policy, 2023, CH)
-            <br />
+            <!-- - Academic Jury, <strong>St. Gallen Symposium</strong> (Swiss Think-tank, Economics and Policy, 2023, CH) -->
+            <!-- <br /> -->
           <li><strong>Academic Society</strong>: <br />
             - Member, <strong>The Association of German Engineers</strong> (2023, DE)<br />
             - Invited Paper/Grant Receiver, <strong>The Electrochemical Society</strong> (2019, USA) <br />
@@ -818,8 +864,8 @@
             <hr>
 
           <li><strong>Student Tutoring: </strong><br />
-            - <strong>TUM Alumni Mentoring Program, Mentor</strong> (TUM Alumni Mentoring Program | 2021-present)<br />
-            - <strong>Paul Scherrer Institute, Internship Tutor</strong> (Cristina Crețu, TU Delft Master | 2018-2019)<br />
+            - <strong>TUM Mentoring Program</strong>, Mentor (2021-present)<br />
+            - <strong>Paul Scherrer Institute</strong>, Intern Tutor (2018-2019)<br />
             <!---
         - Member of <strong>International Association of Energy Economics</strong> (IAEE, 2023)
         -->
@@ -856,7 +902,7 @@
             Use of distribution of relaxation times analysis as an in-situ diagnostic tool for water management in PEM fuel cells applications [J] <br/>
             2024 | <em><strong>J. Power Sources</strong></em> [<a
               href="https://www.sciencedirect.com/science/article/abs/pii/S0378775324001307" target="_blank">PDF</a>] <text
-              style="color:rgb(0, 103, 159)">[Freudenberg]</text> <text style="color:red">[New!]</text>
+              style="color:rgb(0, 103, 159)">[Freudenberg]</text>
           </li>
           <li>
             <strong>H. Xu*</strong> [PSI], M. Bührer, F. Marone, Prof. T. J. Schmidt, F. N. Büchi, J. Eller<br />
@@ -1074,6 +1120,147 @@
       </div>
 -->
 
+<hr class="display-mobile" style="width:113%">
+<hr class="hidden-mobile">
+
+<div class="doc-section" id="presentations">
+  <h3>Conferences<small><small></small></small></h3>
+  <!-- <ul class="square">
+    <li><strong>Energy & Climate / Low-Carbon Transport / Policy & Economics:</strong><br>
+  </ul>
+
+  <ol>
+    <li>
+      <strong>H. Xu</strong>, Sixtieth session of the Subsidiary Body for Scientific and Technological Advice<br>
+      2024 | <em>UN Bonn Climate Change Conference</em>, Bonn, Germany. <strong>[Attendee]</strong> [<a
+        href="https://unfccc.int/sb58" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, First session of the UNECE Informal Task Force on E-mobility<br>
+      2024 | <em>UNECE - Inland Transport & Sustainable Energy Division</em>, Geneva, Switzerland.
+      <strong>[Member]</strong> [<a href="" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, IRENA-IEW Workshop: Innovative insights on long-term energy transitions<br>
+      2024 | <em>International Renewable Energy Agency</em>, Bonn, Germany. <strong>[Paper Accepted]</strong> [<a
+        href="" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, Creating the environment for a hydrogen economy: policies and regulations<br>
+      2024 | <em>Oxford Institute for Energy Studies, St. Catherine's College</em>, Oxfordshire, UK.
+      <strong>[Speaker]</strong> [<a href="" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, Confronting Scarcity: Towards a Time of Protracted Scarcity<br>
+      2024 | <em>53rd St. Gallen Symposium</em>, St. Gallen, Switzerland. <strong>[Academic Reviewer]</strong> [<a
+        href="https://symposium.org/" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, Interdependencies between energy and transport in the context of climate
+      adaptation<br>
+      2024 | <em>UNECE Expert Group Meeting on Climate Change Impacts and Adaptation in Inland Transport</em>,
+      Geneva, Switzerland. <strong>[Speaker]</strong> [<a href="" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, Chinese Energy Transition and Technology Innovation (Sub-session)<br>
+      2023 | <em>UN Bonn Climate Change Conference</em>, Bonn, Germany. <strong>[Moderator/Speaker]</strong> [<a
+        href="https://unfccc.int/sb58" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, Global Tech Conference: Where Business Innovation Makes a Difference<br>
+      2023 | <em>ICT Spring Conference</em>, Luxembourg. <strong>[Attendee]</strong> [<a
+        href="https://www.ictspring.com/" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, A New Generational Contract: Redefining What We Owe Each Other<br>
+      2023 | <em>52nd St. Gallen Symposium</em>, St. Gallen, Switzerland. <strong>[Academic Reviewer]</strong> [<a
+        href="https://symposium.org/" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, Innovation & Entrepreneurship: The Effect of Public Science on Corporate R&D<br>
+      2023 | <em>Max Planck Institute for Innovation and Competition</em>, Munich, Germany.
+      <strong>[Attendee]</strong> [<a href="" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong>, Transforming Transportation 2022: Climate-centered Mobility for a Sustainable
+      Recovery<br>
+      2022 | <em>Transforming Transportation Forum</em>, Online, USA. <strong>[Attendee]</strong> [<a
+        href="https://www.transformingtransportation.org/" target="_blank">Link</a>]
+    </li>
+  </ol> -->
+
+  <ul class="square">
+    <!-- <hr> -->
+    <li><strong>Electrochemistry / Physics / Materials Science:</strong><br>
+  </ul>
+
+  <ol>
+    <li>
+      <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller<br>
+      Influence of Pore Size Distribution on Operando GDL Liquid Saturation.<br>
+      2019 | <em>236th Meeting of The Electrochemical Society (ECS)</em>, Atlanta, USA. <strong>[Speaker]</strong>
+      [<a href="http://ma.ecsdl.org/content/MA2019-02/32/1409.short" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller<br>
+      Advancements in 10Hz operando X-ray Tomographic Imaging of Water in GDLs of PEFC.<br>
+      2018 | <em>8th International Conference on Fundamentals & Development of Fuel Cells (FDFC)</em>, Nantes,
+      France. <strong>[Speaker]</strong> [<a href="https://fdfc2019.sciencesconf.org/" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller<br>
+      Studies of Water Distribution in the Gas Diffusion Layer of PEFCs using X-ray Tomographic Microscopy<br>
+      2018 | <em>69th Annual Meeting of the International Society of Electrochemistry (ISE)</em>, Bologna, Italy.
+      <strong>[Poster]</strong> [<a href="https://www.ise-online.org/ise-conferences/past_ISE-meetings.php"
+        target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F N. Büchi, J. Eller<br>
+      Water Distribution in the Gas Diffusion Layer of PEFCs: X-ray Tomographic Microscopy Studies<br>
+      2018 | <em>15th Symposium on Fuel Cell Modelling and Experimental Validation (ModVal)</em>, Aarau,
+      Switzerland. <strong>[Best Poster Award]</strong> [<a href="https://indico.psi.ch/event/5151/"
+        target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller<br>
+      Quantification of Feature Detectability for Subsecond X-ray Tomographic Microscopy of PEFC.<br>
+      2017 | <em>6th European PEFC and Electrolyser Forum (EFCF)</em>, Lucerne, Switzerland.
+      <strong>[Speaker]</strong> [<a
+        href="https://past.efcf.com/fileadmin/EFCF-Pict-Logo/EFCF_2017/Download/6th_PEFC-Electrol-Forum_2017_4-7July-FinAnnounc-Progr_s.pdf"
+        target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong> [PSI], M. Bührer, F. Marone, T. J. Schmidt, F. N. Büchi, J. Eller<br>
+      Contrast-to-Noise Ratio Evaluation for X-ray Computed Tomographic Imaging of Water in Polymer Electrolyte
+      Fuel Cells<br>
+      2017 | <em>14th Symposium on Fuel Cell Modelling and Experimental Validation (ModVal)</em>, Karlsruhe,
+      Germany. <strong>[Poster]</strong> [<a href="https://www.modval14.kit.edu/" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong> [TUM], E. Metwalli, P. Müller-Buschbaum<br>
+      Nanoparticles Embedded Thermoresponsive Diblock Copolymers for Magnetic Sensor Application.<br>
+      2016 | <em>Annual Meeting of the EU Erasmus MaMaSELF Project</em>, Rigi Mountain, Switzerland.
+      <strong>[Speaker]</strong> [<a href="https://www.mamaself.eu/status-meeting" target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong> [TUM], E. Metwalli, P. Müller-Buschbaum<br>
+      Magnetic properties and structure of thermoresponsive polystyrene-block-poly(N-isopropylacrylamide)/iron
+      oxide nanocomposite thin films.<br>
+      2016 | <em>80th Annual Meeting of the German Physical Society & DPG Spring Meeting (DPG)</em>, Regensburg,
+      Germany. <strong>[Poster]</strong> [<a
+        href="https://www.dpg-physik.de/aktivitaeten-und-programme/tagungen/fruehjahrstagungen"
+        target="_blank">Link</a>]
+    </li>
+    <li>
+      <strong>H. Xu</strong> [BJTU], Prof. H. Zhang, R. Wu<br>
+      Mesoporous SnO2 Microspheres: Synthesis, Characterization, and Application in Enhanced Dye-sensitized Solar
+      Cells and Lithium Batteries.<br>
+      2013 | <em>Tsinghua University Energy Particles Frontier Seminar</em>, Beijing, China.
+      <strong>[Poster]</strong> [<a href="https://www.tsinghua.edu.cn/info/1175/20925.htm"
+        target="_blank">Link</a>]
+    </li>
+  </ol>
+</div>
 
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
@@ -1439,19 +1626,60 @@
         <h3>Travel History</h3>
 
         <ul class="square">
-          <li><strong>Asia</strong>: China (Mainland), Taiwan, Thailand, Turkey, Russia</li>
-          <li><strong>Europe</strong>: Austria, Belgium, Bosnia and Herzegovina, Croatia,
-            Czech Republic, Denmark, England, Estonia, Finland, France, Germany (25+ cities), Gibraltar, Hungary, Iceland, Ireland, Italy,
-            Liechtenstein, Luxembourg, Malta, Netherlands, Norway, Portugal, Poland, Scotland, Serbia, Slovakia, Slovenia, Spain,
-            Sweden,
-            Switzerland (30+ cities)</li>
-          <li><strong>North America</strong>: United States, Canada</li>
-          <li><strong>Africa</strong>: Gran Canaria (Spain)</li>
+          <li><strong>Asia</strong>:
+            <img class="flag-icon" src="./images/wflags/cn.png" alt="China"> Mainland China (13+ provinces), Hong Kong, Taiwan,
+            <img class="flag-icon" src="./images/wflags/ru.png" alt="Russia"> Russia,
+            <img class="flag-icon" src="./images/wflags/tr.png" alt="Turkey"> Turkey,
+            <img class="flag-icon" src="./images/wflags/th.png" alt="Thailand"> Thailand,
+            <img class="flag-icon" src="./images/wflags/ae.png" alt="UAE"> UAE
+          </li>
+          <li><strong>Europe</strong>:
+            <img class="flag-icon" src="./images/wflags/al.png" alt="Albania"> Albania,
+            <img class="flag-icon" src="./images/wflags/at.png" alt="Austria"> Austria,
+            <img class="flag-icon" src="./images/wflags/be.png" alt="Belgium"> Belgium,
+            <img class="flag-icon" src="./images/wflags/ba.png" alt="Bosnia and Herzegovina"> Bosnia and Herzegovina,
+            <img class="flag-icon" src="./images/wflags/bg.png" alt="Bulgaria"> Bulgaria,
+            <img class="flag-icon" src="./images/wflags/hr.png" alt="Croatia"> Croatia,
+            <img class="flag-icon" src="./images/wflags/cz.png" alt="Czech Republic"> Czech Republic,
+            <img class="flag-icon" src="./images/wflags/dk.png" alt="Denmark"> Denmark,
+            <img class="flag-icon" src="./images/wflags/ee.png" alt="Estonia"> Estonia,
+            <img class="flag-icon" src="./images/wflags/gb-eng.png" alt="United Kingdom"> England,
+            <img class="flag-icon" src="./images/wflags/fr.png" alt="France"> France (5+ cities),
+            <img class="flag-icon" src="./images/wflags/fi.png" alt="Finland"> Finland,
+            <img class="flag-icon" src="./images/wflags/de.png" alt="Germany"> Germany (25+ cities),
+            <img class="flag-icon" src="./images/wflags/gi.png" alt="Gibraltar"> Gibraltar
+            <img class="flag-icon" src="./images/wflags/gr.png" alt="Greece"> Greece,
+            <img class="flag-icon" src="./images/wflags/hu.png" alt="Hungary"> Hungary,
+            <img class="flag-icon" src="./images/wflags/is.png" alt="Iceland"> Iceland,
+            <img class="flag-icon" src="./images/wflags/it.png" alt="Italy"> Italy,
+            <img class="flag-icon" src="./images/wflags/ie.png" alt="Ireland"> Ireland,
+            <img class="flag-icon" src="./images/wflags/li.png" alt="Liechtenstein"> Liechtenstein,
+            <img class="flag-icon" src="./images/wflags/lu.png" alt="Luxembourg"> Luxembourg,
+            <img class="flag-icon" src="./images/wflags/mt.png" alt="Malta"> Malta,
+            <img class="flag-icon" src="./images/wflags/nl.png" alt="Netherlands"> Netherlands,
+            <img class="flag-icon" src="./images/wflags/no.png" alt="Norway"> Norway,
+            <img class="flag-icon" src="./images/wflags/pt.png" alt="Portugal"> Portugal,
+            <img class="flag-icon" src="./images/wflags/pl.png" alt="Poland"> Poland,
+            <img class="flag-icon" src="./images/wflags/rs.png" alt="Serbia"> Serbia,
+            <img class="flag-icon" src="./images/wflags/sk.png" alt="Slovakia"> Slovakia,
+            <img class="flag-icon" src="./images/wflags/si.png" alt="Slovenia"> Slovenia,
+            <img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> Spain,
+            <img class="flag-icon" src="./images/wflags/gb-sct.png" alt="Scotland"> Scotland,
+            <img class="flag-icon" src="./images/wflags/se.png" alt="Sweden"> Sweden,
+            <img class="flag-icon" src="./images/wflags/ch.png" alt="Switzerland"> Switzerland (30+ cities),
+            <img class="flag-icon" src="./images/wflags/gb-wls.png" alt="Wales"> Wales,
+
+
+          </li>
+          <li><strong>North America</strong>:
+            <img class="flag-icon" src="./images/wflags/ca.png" alt="Canada"> Canada (BC, ON),
+            <img class="flag-icon" src="./images/wflags/us.png" alt="United States"> United States (NY, IL, NJ, GA, DC)
+          </li>
+          <li><strong>Africa</strong>:
+            <img class="flag-icon" src="./images/wflags/es.png" alt="Spain"> Canary Islands (Spain)
+          </li>
           <img src="/images/visited_map.gif" style="width:100%;" alt="Example GIF">
         </ul>
-
-        <!-- <div style="max-width:540px; text-align: center;margin:0px auto 0px auto;font-size:10px;"><div style="position:relative;padding: 0 0 67% 0;height:0;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="//www.fla-shop.com/visited-countries/embed/?st=AT%2CBA%2CBE%2CCA%2CCH%2CCN%2CCY%2CCZ%2CDE%2CDK%2CEE%2CES%2CFI%2CFR%2CGB%2CGI%2CGR%2CHK%2CHR%2CHU%2CIE%2CIS%2CIT%2CLI%2CLU%2CMC%2CMO%2CMT%2CNL%2CNO%2CPL%2CPT%2CRS%2CRU%2CSE%2CSI%2CSK%2CSM%2CTH%2CTW%2CUS%2CVA&vc=f9761f&uc=b3c3ca&hc=0977ec&bc=ffffff&ss=on" frameborder="0" scrolling="no"></iframe></div><a href="https://www.fla-shop.com/visited-countries/"></a></div> -->
-
 
       </div>
 
@@ -1547,6 +1775,9 @@
 
   </div><!-- container -->
 
+
+
+  <!-- js partial -->
 
 
   <!-- js partial -->
@@ -1703,47 +1934,47 @@
     }
   </script>
 
-<script>
-  let slideIndex = 1;
-  showSlides(slideIndex);
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-  // Auto transition the slides every 1.5 seconds
-  let slideInterval = setInterval(() => {
-    plusSlides(1);
-  }, 3500);
-
-  function plusSlides(n) {
-    clearInterval(slideInterval);
-    showSlides(slideIndex += n);
-    slideInterval = setInterval(() => {
+    // Auto transition the slides every 1.5 seconds
+    let slideInterval = setInterval(() => {
       plusSlides(1);
     }, 3500);
-  }
 
-  function currentSlide(n) {
-    clearInterval(slideInterval);
-    showSlides(slideIndex = n);
-    slideInterval = setInterval(() => {
-      plusSlides(1);
-    }, 3500);
-  }
+    function plusSlides(n) {
+      clearInterval(slideInterval);
+      showSlides(slideIndex += n);
+      slideInterval = setInterval(() => {
+        plusSlides(1);
+      }, 3500);
+    }
 
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1; }
-    if (n < 1) { slideIndex = slides.length; }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+    function currentSlide(n) {
+      clearInterval(slideInterval);
+      showSlides(slideIndex = n);
+      slideInterval = setInterval(() => {
+        plusSlides(1);
+      }, 3500);
     }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1; }
+      if (n < 1) { slideIndex = slides.length; }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
     }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }
-</script>
+  </script>
 
   <script type="text/javascript">
     window.onload = function () {
@@ -1785,6 +2016,7 @@
       };
     };
   </script>
+  <script type="text/javascript" src="update_info_script.js"></script>
 
   <!-- End Document
 ================================================== -->
