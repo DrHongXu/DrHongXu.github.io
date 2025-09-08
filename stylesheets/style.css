@@ -662,3 +662,47 @@ ul ul ul li {
       height: 110px;
     }
   }
+
+/***针对IPAD优化**/
+  .banner-text-top {
+    position: absolute;
+    top: 20%;
+    left: 3.5%;
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    line-height: 1.2;
+    color: white;
+  }
+  
+  .banner-text-bottom {
+    position: absolute;
+    bottom: 22%;
+    left: 3.5%;
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    line-height: 1.2;
+    color: white;
+  }
+  
+  .banner-text-small {
+    position: absolute;
+    bottom: 7%;
+    left: 3.5%;
+    font-family: 'Georgia', serif;
+    font-size: 10px;
+    color: white;
+  }
+
+
+  /* iPad 屏幕优化 */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .banner-text-top,
+  .banner-text-bottom {
+    font-size: 18px;   /* 根据实际效果调节 */
+    line-height: 1.2;
+  }
+  
+  .banner-text-small {
+    font-size: 7px;
+  }
+}
