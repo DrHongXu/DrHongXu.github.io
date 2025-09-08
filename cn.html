@@ -8,44 +8,41 @@
 
 <head>
 
-  <!-- Basic Page Needs
+    <!-- Basic Page Needs
   ================================================== -->
-  <meta charset="utf-8">
-  <title>徐泓 | 博士 | 新能源 </title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <title>徐泓 | 博士 | 新能源 </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <!-- Mobile Specific Metas
+    <!-- Mobile Specific Metas
   ================================================== -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- CSS
+    <!-- CSS
   ================================================== -->
-  <link rel="stylesheet" href="stylesheets/base.css">
-  <link rel="stylesheet" href="stylesheets/skeleton.css">
-  <link rel="stylesheet" href="stylesheets/layout.css">
-  <link rel="stylesheet" href="stylesheets/style.css">
-  <link rel="stylesheet" href="stylesheets/navi5.css">
-  <link rel="stylesheet" href="stylesheets/navi6.css">
-  <link rel="stylesheet" href="stylesheets/navi7.css">
-  <link rel="stylesheet" href="stylesheets/footer.css">
-  <link rel="stylesheet" href="stylesheets/type.css">
-  <link rel="stylesheet" href="stylesheets/slider.css">
-  <link rel="stylesheet" href="stylesheets/navi-mobile.css">
-  <link rel="stylesheet" href="stylesheets/navi-sidebar.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script">
-  <!--[if lt IE 9]>
+    <link rel="stylesheet" href="stylesheets/base.css">
+    <link rel="stylesheet" href="stylesheets/skeleton.css">
+    <link rel="stylesheet" href="stylesheets/layout.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/navi5.css">
+    <link rel="stylesheet" href="stylesheets/navi6.css">
+    <link rel="stylesheet" href="stylesheets/navi7.css">
+    <link rel="stylesheet" href="stylesheets/footer.css">
+    <link rel="stylesheet" href="stylesheets/type.css">
+    <link rel="stylesheet" href="stylesheets/slider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-  <!-- Favicons
+    <!-- Favicons
   ================================================== -->
-  <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="">
 
-  <!-- Google Analytics Tracking Code
+    <!-- Google Analytics Tracking Code
   ================================================== -->
-  <!-- 
+    <!-- 
    <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -57,480 +54,536 @@
   -->
 
 
-  <style>
-    @font-face {
-      font-family: 'Twemoji Country Flags';
-      unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E0063, U+E0065, U+E0067, U+E006C, U+E006E, U+E0073-E0074, U+E0077, U+E007F;
-      src: url('https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1/dist/TwemojiCountryFlags.woff2') format('woff2');
-    }
+    <style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            /* This value is for a 16:9 aspect ratio. Adjust as needed for your video */
+            overflow: hidden;
+        }
 
-    .win {
-      font-family: "Twemoji Country Flags", var(--user-defined-font), sans-serif;
-    }
-  </style>
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-  <style>
-    .image-container {
-      position: relative;
-      display: inline-block;
-    }
+        .red-dot {
+            position: absolute;
+            top: 23.1%;
+            left: 50.9%;
+            width: 5px;
+            /* 减小红点尺寸 */
+            height: 5px;
+            /* 减小红点尺寸 */
+            background-color: rgb(255, 77, 0);
+            border-radius: 50%;
+            animation: ripple 2s infinite ease-out;
+            /* 更新动画时序函数 */
+        }
 
-    .image-container img {
-      width: 800px;
-    }
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 94, 0, 0.765),
+                    0 0 0 10px rgba(255, 0, 0, 0),
+                    0 0 0 20px rgba(255, 0, 0, 0);
+            }
 
-    .image-caption {
-      position: absolute;
-      bottom: 10px;
-      left: 16px;
-      background-color: rgba(0, 0, 0, 0);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-  </style>
+            100% {
+                box-shadow: 0 0 0 5px rgba(255, 0, 0, 0),
+                    0 0 0 15px rgba(255, 102, 0, 0.306),
+                    0 0 0 25px rgba(255, 0, 0, 0.1);
+            }
+        }
 
 
 
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            /* 或者可以使用 flex-start 来左对齐 */
+            align-items: center;
+            width: 100%;
+            flex-wrap: nowrap;
+            /* 防止元素换行 */
+            padding: 0;
+            /* 移除内边距 */
+            margin: 0;
+            /* 移除外边距 */
+            list-style: none;
+            /* 如果是列表项，移除列表样式 */
+        }
 
-  <nav class="display-mobile">
+        .flex-container>div,
+        .flex-container>a {
+            margin: 0;
+            /* 移除外边距 */
+            padding: 0;
+            /* 移除内边距 */
+            white-space: nowrap;
+            /* 防止内容换行 */
+        }
 
-    <div class='nav-container'>
+        /* Mobile styles - hide .flex-container */
+        @media (max-width: 768px) {
+            .flex-container {
+                display: none;
+            }
+        }
+    </style>
 
-      <div>
 
-        <a class='slide' href='cn.html'>
-          <span class='element'>H&nbsp;&nbsp;&nbsp;</span>
-          <span class='name'>徐泓</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='mailto:h.xu@tum.de'>
-          <span class='element'>Em&nbsp;&nbsp;</span>
-          <span class='name'>邮件</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href="https://www.linkedin.com/in/xuhong/" target="_blank">
-          <span class='element'>In&nbsp;&nbsp;</span>
-          <span class='name'>领英</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='https://www.zhihu.com/people/dr.of.nothing'>
-          <span class='element'>Zh&nbsp;&nbsp;</span>
-          <span class='name'>知乎</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='#'>
-          <span class='element'>Tw&nbsp;&nbsp;</span>
-          <span class='name'>推特</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank">
-          <span class='element'>Sc&nbsp;&nbsp;</span>
-          <span class='name'>学者</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href="#" target="_blank">
-          <span class='element'>Gt&nbsp;&nbsp;</span>
-          <span class='name'>GITHUB</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href="#" target="_blank">
-          <span class='element'>Is&nbsp;&nbsp;</span>
-          <span class='name'>INSTA</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href="https://photo.h-xu.com" target="_blank">
-          <span class='element'>Ph&nbsp;&nbsp;</span>
-          <span class='name'>摄影</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='#'>
-          <span class='element'>Wb&nbsp;&nbsp;</span>
-          <span class='name'>微博</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='#'>
-          <span class='element'>Wx&nbsp;&nbsp;</span>
-          <span class='name'>微信</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='#'>
-          <span class='element'>Dy&nbsp;&nbsp;</span>
-          <span class='name'>抖音</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='#'>
-          <span class='element'>Xh&nbsp;&nbsp;</span>
-          <span class='name'>小红书</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='#'>
-          <span class='element'>BL&nbsp;&nbsp;</span>
-          <span class='name'>哔哩</span>
-        </a>
-      </div>
-    </div>
-  </nav>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <!-- block save as
+      ================================================== -->
+    <script type="text/javascript">
+        window.onload = function () {
+            document.onkeydown = function () {
+                var e = window.event || arguments[0];
+                //屏蔽F12
+                if (e.keyCode == 123) {
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    return false;
+                    //屏蔽Ctrl+Shift+I
+                } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
 
-  <!-- 引入 pinyin.js 库 -->
-  <!-- <script src="/js/pinyin.js"></script> -->
+                    return false;
+                    //屏蔽Shift+F10
+                } else if ((e.shiftKey) && (e.keyCode == 121)) {
 
-  <script type="module">
-    async function fetchCountries() {
-      const response = await fetch('/js/countries.json');
-      const countries = await response.json();
-      return countries;
-    }
+                    return false;
+                }
+            };
+            //屏蔽右键单击
+            document.oncontextmenu = function () {
 
-    function getCountryNameByCode(countries, code, language = 'english') {
-      const country = countries.find(country => country.abbr === code);
+                return false;
+            }
+        }
+    </script>
 
-      if (country) {
-        return country[language] || country.english;
-      } else {
-        return '地球';
-      }
-    }
 
-    async function displayCountryInfo() {
-      const countries = await fetchCountries();
-      const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
-      const data = await response.json();
-      const countryCode = data.country.toLowerCase();
-      const language = 'chinese'; // 更改为您想要显示的语言
-      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
+    <nav class="display-mobile">
 
-      document.getElementById("location").textContent = countryName;
-      document.getElementById("location2").textContent = countryName;
-      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
-      document.getElementById("country-flag").alt = countryName;
-    }
+        <div class='nav-container'>
 
-    document.addEventListener('DOMContentLoaded', displayCountryInfo);
-  </script>
+            <div>
 
-  <script type="text/javascript" src="/js/block_save_as.js"></script>
+                <a class='slide' href='cn.html'>
+                    <span class='element'>H&nbsp;&nbsp;&nbsp;</span>
+                    <span class='name'>徐泓</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href='mailto:h.xu@tum.de'>
+                    <span class='element'>Em&nbsp;&nbsp;</span>
+                    <span class='name'>邮件</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href="https://www.linkedin.com/in/xuhong/" target="_blank">
+                    <span class='element'>In&nbsp;&nbsp;</span>
+                    <span class='name'>领英</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href='https://www.zhihu.com/people/dr.of.nothing'>
+                    <span class='element'>Zh&nbsp;&nbsp;</span>
+                    <span class='name'>知乎</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href='#'>
+                    <span class='element'>Tw&nbsp;&nbsp;</span>
+                    <span class='name'>推特</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank">
+                    <span class='element'>Sc&nbsp;&nbsp;</span>
+                    <span class='name'>学者</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href="#" target="_blank">
+                    <span class='element'>Gt&nbsp;&nbsp;</span>
+                    <span class='name'>GITHUB</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href="#" target="_blank">
+                    <span class='element'>Is&nbsp;&nbsp;</span>
+                    <span class='name'>INSTA</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href="https://photo.h-xu.com" target="_blank">
+                    <span class='element'>Ph&nbsp;&nbsp;</span>
+                    <span class='name'>摄影</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href='#'>
+                    <span class='element'>Wb&nbsp;&nbsp;</span>
+                    <span class='name'>微博</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href='#'>
+                    <span class='element'>Wx&nbsp;&nbsp;</span>
+                    <span class='name'>微信</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href='#'>
+                    <span class='element'>Dy&nbsp;&nbsp;</span>
+                    <span class='name'>抖音</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href='#'>
+                    <span class='element'>Xh&nbsp;&nbsp;</span>
+                    <span class='name'>小红书</span>
+                </a>
+            </div>
+            <div>
+                <a class='slide' href='#'>
+                    <span class='element'>BL&nbsp;&nbsp;</span>
+                    <span class='name'>哔哩</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="module">
+        async function fetchCountries() {
+            const response = await fetch('/js/countries.json');
+            const countries = await response.json();
+            return countries;
+        }
+
+        function getCountryNameByCode(countries, code, language = 'english') {
+            const country = countries.find(country => country.abbr === code);
+
+            if (country) {
+                return country[language] || country.english;
+            } else {
+                return '地球';
+            }
+        }
+
+        async function displayCountryName() {
+            const countries = await fetchCountries();
+            const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
+            const data = await response.json();
+            const countryCode = data.country;
+            const language = 'chinese'; // 更改为您想要显示的语言
+            const countryName = getCountryNameByCode(countries, countryCode, language);
+            document.getElementById("location").textContent = countryName;
+            document.getElementById("location2").textContent = countryName;
+        }
+
+        document.addEventListener('DOMContentLoaded', displayCountryName);
+    </script>
 
 </head>
 
-
 <body>
-  <!-- Top Navigation Menu -->
-  <!-- partial:index.partial.html -->
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">⇧</button>
+
+    <!-- Top Navigation Menu -->
 
 
-  <!-- Return Top Button -->
-  <button onclick="topFunction()" id="myBtn" title="Go to top">⇧</button>
+    <!-- partial:index.partial.html -->
 
-
-  <!-- partial:index.partial.html -->
-
-  <!-- Primary Page Layout class="image sharpen-ipad-mini"
+    <!-- Primary Page Layout
   ================================================== -->
 
   <!-- Delete everything in this .container and get started on your own site! -->
   <div class="display-mobile" style="position: relative">
-    <img class="display-mobile" src="images/banner_mobile_cn3.gif"
-      style="margin-top: -10px; width: 113%; max-width: 113%;" />
-    <div class="red-dot" alt="Munich" style="position: absolute; top: 20.3%; left: 61.7%;"></div>
+    <img class="display-mobile" id="mobileBanner" src="images/banner_mobile_cn3.gif" 
+    data-simplified="images/banner_mobile_cn3.gif" 
+    data-traditional="images/banner_mobile_zh3.gif" width="800"
+      style="margin-top: -10px; width: 113%; max-width: 113%;">
+    <div class="red-dot" alt="Munich" style="position: absolute; top: 24.3%; left: 61.7%; max-width: 113%;"></div>
   </div>
 
 
 
-  <!-- Container -->
-  <div class="container">
+    <div class="container">
 
-    <!-- Sidebar -->
-    <div class="hidden-mobile" class="three columns sidebar">
-      <nav>
-        <h3 id="logo" style="text-align:center;">
-          <img class="hidden-mobile" src="images/banner_cns3_left.gif" width="155" />
-          <div style="margin-bottom: 15px;"></div>
-          <h3 class="hidden-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text></rt></ruby>
-            <ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby> <small><ruby>博 士<rt>科学 / Dr.</rt>
-              </ruby></small>
-          </h3>
+        <!-- Sidebar -->
+        <div class="hidden-mobile" class="three columns sidebar">
+            <nav>
+                <h3 id="logo" style="text-align:center;">
+                    <img class="hidden-mobile" src="images/banner_cns3_left.gif" width="155" />
+                    <div style="margin-bottom: 15px;"></div>
+                    <h3 id="nameBlock" class="hidden-mobile" align="left"
+                    data-simplified='<ruby>徐<rt><text style="letter-spacing: 0px;">Xú</text></rt></ruby> <ruby>泓 <rt><text style="letter-spacing: 0px;">Hóng</text></rt></ruby> <small><ruby>博士<rt>科学 / Dr.</rt></ruby></small>'
+                    data-traditional='<ruby>徐<rt><text style="letter-spacing: 0px;">Ceòi</text></rt></ruby> <ruby>泓 <rt><text style="letter-spacing: 0px;">Wàng</text></rt></ruby> <small><ruby>博士<rt>科學 / Dr.</rt></ruby></small>'>
+                    </h3>
+                    <!-- <h3 class="hidden-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text>
+                            </rt></ruby>&nbsp;<ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby>
+                        <small><ruby>博 士<rt>科学 /
+                                    Dr.</rt>
+                            </ruby></small>
+                    </h3> -->
 
-          <ul>
-            <span style="display: block; height: 6px;"></span>
-            <li><a href="#"> <span class='blue'>研究员</span> :: <span class='blue'>工程师</span> :: <span
-                  class='blue'>分析师</span></a></li>
-            <p>____</p>
-            <li><a href="cn.html"><span style="color: rgb(253, 93, 7);">关于我 ⏴</span></a></li>
-            <li><a href="cn-research.html">研究进展</a></li>
-            <li><a href="cn-resume.html">简历</a></li>
-            <li><a href="cn-activities.html">兴趣爱好</a></li>
-            <li><a href="cn-contact.html">联系我</a></li>
-            <p>____</p>
-            <li><a href="https://www.linkedin.com/in/xuhong/" target="_blank" target="_blank"><span
-                  class='blue'>领英</span></a></li>
-            <li><a href="https://scholar.google.com/citations?user=UNchM2kAAAAJ&hl=en" target="_blank"
-                target="_blank"><span class='blue'>谷歌学术</span></a></li>
-            <li><a href="mailto:h.xu@tum.de" target="_blank" target="_blank"><span class='blue'>h.xu [at]
-                  tum.de</span></a></li>
-            <p>____</p>
-            <!-- <li><a href="cn.html" target="_blank" ><span
-              class='blue'>A</span></a> / <a href="https://life.h-xu.com" target="_blank" >B</a></li>
-            <p>____</p> -->
-            <p></p>
-            <img src="images/logo.png" width="45" />
-            <br>
-            <span id="greetings" style="color: rgb(253, 93, 7); font-weight: bold;"></span>
+                    <ul>
+                        <span style="display: block; height: 6px;"></span>
+                        <li><a href="#"> <span class='blue'>研究员</span> :: <span class='blue'>工程师</span> :: <span
+                                    class='blue'>分析师</span></a></li>
+                        <p>____</p>
+                        <li><a href="cn.html" style="color: rgb(253, 93, 7);">关于我 ⏴</a></li>
+                        <li><a href="cn-research.html"><span >研究进展</span></a></li>
+                        <li><a href="cn-resume.html">简历</a></li>
+                        <li><a href="cn-activities.html">兴趣爱好</a></li>
+                        <p>____</p>
+                        <li><a href="cn-contact.html"><span class='blue'>联系我</span></a></li>
+                        <p>____</p>
+                        <p></p>
+                        <img src="images/logo.png" width="45" />
+                        <br>
+                        <span id="greetings" style="color: rgb(253, 93, 7); font-weight: bold;"></span>
 
+                    </ul>
+            </nav>
 
-          </ul>
-      </nav>
-
-    </div>
-
-    <!-- Content -->
-    <div class="twelve columns offset-by-four content">
-
-      <!--<img class="hidden-mobile" src="images/banner_cns2.png" width="800" />-->
-
-      <div class="image-wrapper hidden-mobile ">
-        <div class="image-container">
-          <img src="images/banner_cns3-min2.gif" alt="banner Image">
-          <div class="image-caption"></div>
         </div>
 
-        <div class="orange-dot" alt="Hamburg" style="top: 23.1%; left: 50.9%;"></div>
-        <div class="orange-dot" alt="Paris" style="top: 29.5%; left: 48.4%;"></div>
-        <div class="orange-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
-        <div class="orange-dot" alt="Rennes" style="top: 32.3%; left: 47.2%;"></div>
-        <div class="orange-dot" alt="Zurich" style="top: 33.5%; left: 50.6%;"></div>
-        <div class="orange-dot" alt="Beijing" style="top: 43.6%; left: 90.2%;"></div>
-        <div class="orange-dot" alt="Anqing" style="top: 54.9%; left: 90.8%;"></div>
-        <div class="orange-dot" alt="DC" style="top: 44.7%; left: 19.05%;"></div>
-        <div class="orange-dot" alt="Oxford" style="top: 26.4%; left: 46.8%;"></div>
-
-        <div class="red-dot" alt="Munich" style="top: 31.3%; left: 51.6%; z-index: 9999;"></div>
+        <!-- Content -->
+        <div class="twelve columns offset-by-four content">
 
 
-        <div class="tooltip" style="top:50%; left: 65%;">
-          <h6><img src="images/flag_de.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            德国 汉堡</h6>
-          <p>2015</p>
-        </div>
-        <div class="tooltip" style="top:54%; left: 41%;">
-          <h6><img src="images/flag_fr.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            法国 巴黎</h6>
-          <p>2016</p>
-        </div>
 
-        <div class="tooltip" style="top:60%; left: 70%;">
-          <h6><img src="images/flag_de.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            德国 慕尼黑</h6>
-          <p>2015-16</p>
-          <p>2021-24</p>
-        </div>
-        <div class="tooltip" style="top:58%; left: 39%;">
-          <h6><img src="images/flag_fr.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            法国 雷恩</h6>
-          <p>2014-15</p>
-        </div>
-        <div class="tooltip" style="top:64%; left: 68%;">
-          <h6><img src="images/flag_ch.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            瑞士 苏黎世</h6>
-          <p>2016-21</p>
-        </div>
-        <div class="tooltip" style="top:60%; left: 80%;">
-          <h6><img src="images/flag_cn.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            中国 北京</h6>
-          <p>2009-13</p>
-        </div>
-        <div class="tooltip" style="top:80%; left: 80%;">
-          <h6><img src="images/flag_cn.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            中国 安徽</h6>
-          <p>1993-2009</p>
-        </div>
-        <div class="tooltip" style="top:55%; left: 35%;">
-          <h6><img src="images/flag_us.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            美国 华盛顿特区</h6>
-          <p>2019-21</p>
-        </div>
-        <div class="tooltip" style="top:55%; left: 40%;">
-          <h6><img src="images/flag_uk.png" alt="flag"
-              style="height:20px;display:inline-block;top:6px;position:relative;">
-            英国 牛津</h6>
-          <p>2023</p>
-        </div>
+            <div class="image-wrapper hidden-mobile ">
+                <img id="pcBanner" src="images/banner_cns3-min2.gif" 
+                data-simplified="images/banner_cns3-min2.gif" 
+                data-traditional="images/banner_zh3-min2.gif" width="800" alt="banner Image" />
+
+                <div class="orange-dot" alt="Hamburg" style="top: 23.1%; left: 50.9%;"></div>
+                <div class="orange-dot" alt="Paris" style="top: 29.5%; left: 48.4%;"></div>
+                <div class="orange-dot" alt="Munich" style="top: 31.3%; left: 51.6%;"></div>
+                <div class="orange-dot" alt="Rennes" style="top: 32.3%; left: 47.2%;"></div>
+                <div class="orange-dot" alt="Zurich" style="top: 33.5%; left: 50.6%;"></div>
+                <div class="orange-dot" alt="Beijing" style="top: 43.6%; left: 90.2%;"></div>
+                <div class="orange-dot" alt="Anqing" style="top: 54.9%; left: 90.8%;"></div>
+                <div class="orange-dot" alt="DC" style="top: 44.7%; left: 19.05%;"></div>
+                <div class="orange-dot" alt="Oxford" style="top: 26.4%; left: 46.8%;"></div>
+                <div class="orange-dot" alt="Frankfurt" style="top: 27%; left: 50.7%;"></div>
+
+                <div class="red-dot" alt="Munich" style="top: 31.3%; left: 51.6%; z-index: 9999;"></div>
 
 
-      </div>
 
 
-      <p class="hidden-mobile" style="margin: 0; padding: 0; height: 8px;"></p>
-      <!--<h3 class="hidden-mobile"><ruby>简<rt><text style="color:rgb(255, 255, 255)">かん</text></rt></ruby> <ruby>介<rt><text style="color:rgb(255, 255, 255)">かい</text> </rt></ruby>-->
-      <h3 class="hidden-mobile">
-        <span><ruby>嗨，你好!<rt><text style="color:rgb(255, 255, 255)">Hi，Nǐ Hǎo！</text></rt></ruby> <ruby>
-            <rt><text style="color:rgb(255, 255, 255)"></text></rt>
-          </ruby> <small><small><small>欢迎来自<span id="location">地球</span>的朋友 :-）</small></small></small>
+                <div class="tooltip" style="top:50%; left: 65%;">
+                    <h6><img src="images/flag_de.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        德国 汉堡</h6>
+                </div>
+                <div class="tooltip" style="top:54%; left: 41%;">
+                    <h6><img src="images/flag_fr.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        法国 巴黎</h6>
+                </div>
 
-        </span>
+                <div class="tooltip" style="top:60%; left: 70%;">
+                    <h6><img src="images/flag_de.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        德国 慕尼黑</h6>
 
-        <span style="float:right; font-family:verdana">
-          <span style="display:inline-block;margin-top:13px;margin-bottom:0px;font-size:small" for="languages">
-            <a href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();'
-              class="d-inline-block p-3"><img src="images/flag_cn.png" alt="flag"
-                style="height:23px;display:inline-block;top:7px;position:relative;">&nbsp;简</a> / <a
-              href='javascript:(function(){var s=document.getElementById("tongwenlet_tw");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_tw.js";s.id="tongwenlet_tw";document.body.appendChild(s);})();'
-              class="d-inline-block p-3"><img src="images/flag_hk.png" alt="flag"
-                style="height:23px;display:inline-block;top:7px;position:relative;"> <img src="images/flag_mc.png"
-                alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
-              繁</a></span>&nbsp;<select id="languages" name="languages"
-            style="width:62px;display:inline-block;color:inherit;margin-bottom:0px;"
-            onchange="window.location.href=this.options [this.selectedIndex].value">
-            <option value="cn.html" select>中文</option>
-            <option value="jp.html">日本語</option>
-            <option value="kr.html">한국어</option>
-            <option value="de.html">Deutsch</option>
-            <option value="en.html">English</option>
-            <option value="es.html">Español</option>
-            <option value="fr.html">Français</option>
-            <option value="it.html">Italiano</option>
-            <option value="ru.html">Русский</option>
-            <option value="ar.html">اللغة العربية</option>
-          </select>
-        </span>
+                </div>
+                <div class="tooltip" style="top:58%; left: 39%;">
+                    <h6><img src="images/flag_fr.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        法国 雷恩</h6>
+                </div>
+                <div class="tooltip" style="top:64%; left: 68%;">
+                    <h6><img src="images/flag_ch.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        瑞士 苏黎世</h6>
 
-      </h3>
-      <p class="hidden-mobile"></p>
-      <p class="display-mobile"></p>
+                </div>
+                <div class="tooltip" style="top:60%; left: 80%;">
+                    <h6><img src="images/flag_cn.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        中国 北京</h6>
+                </div>
+                <div class="tooltip" style="top:80%; left: 80%;">
+                    <h6><img src="images/flag_cn.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        中国 安徽</h6>
+                </div>
+                <div class="tooltip" style="top:55%; left: 35%;">
+                    <h6><img src="images/flag_us.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        美国 华盛顿特区</h6>
+                </div>
+                <div class="tooltip" style="top:55%; left: 40%;">
+                    <h6><img src="images/flag_uk.png" alt="flag"
+                            style="height:20px;display:inline-block;top:6px;position:relative;">
+                        英国 牛津</h6>
+                </div>
 
-      <div class="topnav">
+                <div class="tooltip" style="top:35%; left: 68%;">
+                  <h6><img src="images/flag_de.png" alt="flag"
+                          style="height:20px;display:inline-block;top:6px;position:relative;">
+                      德国 法兰克福</h6>
+              </div>          
 
-        <a href="cn.html" class="active">
 
-          <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text></rt></ruby>
-            <ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby> <small><ruby>博 士<rt>科学 / Dr.</rt>
-              </ruby></small>
-          </h3>
-        </a>
-
-        <div id="myLinks">
-          <ul>
-            <div style="background-color: rgb(255, 255, 255);">
-              <hr>
-              <li><img src="images/logo.png" style="float:right" width="45"><strong><a href="cn.html"><small>▸ 关于我
-                      ★</small></a></strong><br>
-              </li>
-
-              <li><a href="cn-research.html"><small><span style="color: rgb(97, 97, 97);">▸
-                      <strong>研究进展</strong></span></small></a></li>
-              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#publications"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 出版物</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#patents"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 专利</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#presentations"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 学术会议</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#equity-research"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 行研报告</small></a></li>
-              </div>
-
-              <li><a href="cn-resume.html"><small style="color: rgb(97, 97, 97);">▸ <strong>简历</strong></small></a></li>
-              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#education-mobile"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 教育背景</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#academic-experience"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 研究经历</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#industrial-experience"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 产业经验</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#awards"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 荣誉奖励</small></a></li>
-              </div>
-
-              <li><a href="cn-activities.html"><small style="color: rgb(97, 97, 97);">▸
-                    <strong>兴趣爱好</strong></small></a></li>
-              <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 演讲/主持</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#writing"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 写作</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#visiting"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 参访</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#travel"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#photography"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 摄影</small></a></li>
-                <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#sports"
-                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 运动</small></a></li>
-              </div>
-
-              <li><a href="cn-contact.html"><small style="color: rgb(97, 97, 97);">▸
-                    <strong>联系我</strong></small></a><br></li>
-              <hr>
             </div>
-          </ul>
-        </div>
 
-        <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()"
-            style="margin-top: 22px; display: inline-block;">
-            <div style="display: flex; align-items: center;">
-              <span style="display: inline-block; height: 20px; line-height: 20px;"><small>导航</small></span>
-              <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
+
+
+            <p class="hidden-mobile" style="margin: -4px 0 0 0; padding: 0; height: 0px;"></p>
+
+            <p class="hidden-mobile"></p>
+            <!--<h3 class="hidden-mobile"><ruby>简<rt><text style="color:rgb(255, 255, 255)">かん</text></rt></ruby> <ruby>介<rt><text style="color:rgb(255, 255, 255)">かい</text> </rt></ruby>-->
+            <h3 class="hidden-mobile">
+                <span><ruby>研究进展<rt><text style="color:rgb(255, 255, 255)">Research Progress</text></rt></ruby> <ruby>
+                        <rt><text style="color:rgb(255, 255, 255)"></text></rt>
+                    </ruby> <small><small><small> 「科学无国界」</small></small></small>
+
+                </span>
+
+                <span style="float:right; font-family:verdana">
+                    <span style="display:inline-block;margin-top:13px;margin-bottom:0px;font-size:small" for="languages">
+                      <a href="#" onclick="setSimplified()" class="d-inline-block p-3"><img src="images/flag_cn.png" alt="flag"
+                          style="height:23px;display:inline-block;top:7px;position:relative;">&nbsp;简</a> / <a href="#" onclick="setTraditional()" class="d-inline-block p-3"><img src="images/flag_hk.png" alt="flag"
+                          style="height:23px;display:inline-block;top:7px;position:relative;"> <img src="images/flag_mc.png"
+                          alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
+                        繁</a></span>&nbsp;<select id="languages" name="languages"
+                      style="width:62px;display:inline-block;color:inherit;margin-bottom:0px;"
+                      onchange="window.location.href=this.options [this.selectedIndex].value">
+                      <option value="cn.html" select>中文</option>
+                      <option value="jp.html">日本語</option>
+                      <option value="kr.html">한국어</option>
+                      <option value="de.html">Deutsch</option>
+                      <option value="en.html">English</option>
+                      <option value="es.html">Español</option>
+                      <option value="fr.html">Français</option>
+                      <option value="it.html">Italiano</option>
+                      <option value="ru.html">Русский</option>
+                      <option value="ar.html">اللغة العربية</option>
+                    </select>
+                  </span>
+
+            </h3>
+            <p class="hidden-mobile"></p>
+            <p class="display-mobile"></p>
+
+
+            <div class="topnav">
+
+
+                <a href="cn-research.html" class="active">
+
+                  <h3 id="nameBlock" class="display-mobile" align="left"
+                  data-simplified='<ruby>徐<rt><text style="letter-spacing: 0px;">Xú</text></rt></ruby> <ruby>泓<rt><text style="letter-spacing: 0px;">Hóng</text></rt></ruby> <small><ruby>博士<rt>科学 / Dr.</rt></ruby></small>'
+                  data-traditional='<ruby>徐<rt><text style="letter-spacing: 0px;">chèuih</text></rt></ruby> <ruby>泓<rt><text style="letter-spacing: 0px;">wàhng</text></rt></ruby> <small><ruby>博士<rt>科學 / Dr.</rt></ruby></small>'>
+                  </h3>
+                </a>
+
+                <div id="myLinks">
+                    <ul>
+                        <hr>
+                        <li><img src="images/logo.png" style="float:right" width="45"><a href="cn.html"><small
+                                    style="color: rgb(253, 93, 7);">▸ <strong style="color: rgb(253, 93, 7);">关于我 ★</strong></small></a><br>
+                        </li>
+
+                        <li><a href="cn-research.html"><small><span style="color: rgb(97, 97, 97);">▸
+                          <strong>研究进展</strong></span></small></a></li>
+                        <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                          <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#publications"
+                              style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 出版物</small></a></li>
+                          <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#patents"
+                              style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 专利</small></a></li>
+                          <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#presentations"
+                              style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 学术会议</small></a></li>
+                          <li style="width: 50%; box-sizing: border-box;"><a href="cn-research.html#equity-research"
+                              style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 行研报告</small></a></li>
+                        </div>
+
+                        <li><a href="cn-resume.html"><small style="color: rgb(97, 97, 97);">▸
+                                    <strong>简历</strong></small></a></li>
+                        <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#education-mobile"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 教育背景</small></a></li>
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#academic-experience"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 研究经历</small></a></li>
+                            <li style="width: 50%; box-sizing: border-box;"><a
+                                    href="cn-resume.html#industrial-experience"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 产业经验</small></a></li>
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-resume.html#awards"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 荣誉奖励</small></a></li>
+                        </div>
+
+                        <li><a href="cn-activities.html"><small style="color: rgb(97, 97, 97);">▸
+                                    <strong>兴趣爱好</strong></small></a></li>
+                        <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 演讲/主持</small></a></li>
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#writing"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 写作</small></a></li>
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#visiting"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 参访</small></a></li>
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#travel"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#photography"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 摄影</small></a></li>
+                            <li style="width: 50%; box-sizing: border-box;"><a href="cn-activities.html#sports"
+                                    style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 运动</small></a></li>
+                        </div>
+
+                        <li><a href="cn-contact.html"><small style="color: rgb(97, 97, 97);">▸
+                                    <strong>联系我</strong></small></a><br></li>
+                        <hr>
+                    </ul>
+                </div>
+
+                <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()"
+                        style="margin-top: 22px; display: inline-block;">
+                        <div style="display: flex; align-items: center;">
+                            <span
+                                style="display: inline-block; height: 20px; line-height: 20px;"><small>导航</small></span>
+                            <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
+                        </div>
+                    </a></strong>
+
             </div>
-          </a></strong>
 
-      </div>
+            <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
+                <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 嗨！你好！ </text>
+                <span style="float:right; font-family:verdana">
+                    <select id="languages" name="languages"
+                    style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;" onchange="handleLanguageChange(this)">
+                    <option value="simplified" select>🇨🇳 中文(简体)</option>
+                    <option value="traditional">🇭🇰 中文(繁体)</option>
+                    <option value="jp.html">🇯🇵 日本語</option>
+                    <option value="kr.html">🇰🇷 한국어</option>
+                    <option value="de.html">🇩🇪 Deutsch</option>
+                    <option value="en.html">🇬🇧 English</option>
+                    <option value="es.html">🇪🇸 Español</option>
+                    <option value="fr.html">🇫🇷 Français</option>
+                    <option value="it.html">🇮🇹 Italiano</option>
+                    <option value="ru.html">🇷🇺 Русский</option>
+                    <option value="ar.html">🇸🇦 اللغة العربية</option>
+                  </select>
+                </span>
+            </p>
+            <div>
 
-      <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
-        <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 嗨！你好！ </text>
-
-        <span style="float:right; font-family:verdana">
-
-          <select id="languages" name="languages"
-            style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;" onchange="handleChange(this)">
-            <option value="cn.html" select>🇨🇳 中文(简体)</option>
-            <option value="javascript:runFanTiJavaScript();">🇭🇰 中文(繁体)</option>
-            <option value="jp.html">🇯🇵 日本語</option>
-            <option value="kr.html">🇰🇷 한국어</option>
-            <option value="de.html">🇩🇪 Deutsch</option>
-            <option value="en.html">🇬🇧 English</option>
-            <option value="es.html">🇪🇸 Español</option>
-            <option value="fr.html">🇫🇷 Français</option>
-            <option value="it.html">🇮🇹 Italiano</option>
-            <option value="ru.html">🇷🇺 Русский</option>
-            <option value="ar.html">🇸🇦 اللغة العربية</option>
-          </select>
-        </span>
-
-        <script>
-          // 获取第二个下拉菜单的高度
-          var secondSelectHeight = document.getElementById('languages2').offsetHeight;
-          // 将第二个下拉菜单的高度应用到第一个下拉菜单的样式中
-          document.getElementById('languages1').style.height = secondSelectHeight + 'px';
-        </script>
-
-      </p>
-      <div>
 
         <p align="justify">
           <span class="display-mobile">欢迎来自<span id="location2">地球</span>的朋友 :-）</br></br></span>
@@ -987,8 +1040,7 @@
 
     <script type="text/javascript" src="/js/cn_holiday_display.js"></script>
 
-    <script type="text/javascript" src="/js/scholar_fetch.js"></script>
-
+    <!-- <script type="text/javascript" src="/js/scholar_fetch.js"></script> -->
 
 
 

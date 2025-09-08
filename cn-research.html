@@ -451,31 +451,26 @@
                 </span>
 
                 <span style="float:right; font-family:verdana">
-                    <span style="display:inline-block;margin-top:13px;margin-bottom:0px;font-size:small"
-                        for="languages">
-                        <a href='javascript:(function(){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);})();'
-                            class="d-inline-block p-3"><img src="images/flag_cn.png" alt="flag"
-                                style="height:23px;display:inline-block;top:7px;position:relative;">&nbsp;简</a> / <a
-                            href='javascript:(function(){var s=document.getElementById("tongwenlet_tw");if(s!=null){document.body.removeChild(s);}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_tw.js";s.id="tongwenlet_tw";document.body.appendChild(s);})();'
-                            class="d-inline-block p-3"><img src="images/flag_hk.png" alt="flag"
-                                style="height:23px;display:inline-block;top:7px;position:relative;"> <img
-                                src="images/flag_mc.png" alt="flag"
-                                style="height:23px;display:inline-block;top:7px;position:relative;">
-                            繁</a></span>&nbsp;<select id="languages" name="languages"
-                        style="width:62px;display:inline-block;color:inherit;margin-bottom:0px;"
-                        onchange="window.location.href=this.options [this.selectedIndex].value">
-                        <option value="cn-research.html" select>中文</option>
-                        <option value="jp-research.html">日本語</option>
-                        <option value="kr-research.html">한국어</option>
-                        <option value="de-research.html">Deutsch</option>
-                        <option value="en-research.html">English</option>
-                        <option value="es-research.html">Español</option>
-                        <option value="fr-research.html">Français</option>
-                        <option value="it-research.html">Italiano</option>
-                        <option value="ru-research.html">Русский</option>
-                        <option value="ar-research.html">اللغة العربية</option>
+                    <span style="display:inline-block;margin-top:13px;margin-bottom:0px;font-size:small" for="languages">
+                      <a href="#" onclick="setSimplified()" class="d-inline-block p-3"><img src="images/flag_cn.png" alt="flag"
+                          style="height:23px;display:inline-block;top:7px;position:relative;">&nbsp;简</a> / <a href="#" onclick="setTraditional()" class="d-inline-block p-3"><img src="images/flag_hk.png" alt="flag"
+                          style="height:23px;display:inline-block;top:7px;position:relative;"> <img src="images/flag_mc.png"
+                          alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
+                        繁</a></span>&nbsp;<select id="languages" name="languages"
+                      style="width:62px;display:inline-block;color:inherit;margin-bottom:0px;"
+                      onchange="window.location.href=this.options [this.selectedIndex].value">
+                      <option value="cn.html" select>中文</option>
+                      <option value="jp.html">日本語</option>
+                      <option value="kr.html">한국어</option>
+                      <option value="de.html">Deutsch</option>
+                      <option value="en.html">English</option>
+                      <option value="es.html">Español</option>
+                      <option value="fr.html">Français</option>
+                      <option value="it.html">Italiano</option>
+                      <option value="ru.html">Русский</option>
+                      <option value="ar.html">اللغة العربية</option>
                     </select>
-                </span>
+                  </span>
 
             </h3>
             <p class="hidden-mobile"></p>
@@ -569,20 +564,19 @@
                 <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 研究进展 </text>
                 <span style="float:right; font-family:verdana">
                     <select id="languages" name="languages"
-                        style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;"
-                        onchange="handleChange(this)">
-                        <option value="cn-research.html" select>🇨🇳 中文(简体)</option>
-                        <option value="javascript:runFanTiJavaScript();">🇭🇰 中文(繁体)</option>
-                        <option value="jp-research.html">🇯🇵 日本語</option>
-                        <option value="kr-research.html">🇰🇷 한국어</option>
-                        <option value="de-research.html">🇩🇪 Deutsch</option>
-                        <option value="en-research.html">🇬🇧 English</option>
-                        <option value="es-research.html">🇪🇸 Español</option>
-                        <option value="fr-research.html">🇫🇷 Français</option>
-                        <option value="it-research.html">🇮🇹 Italiano</option>
-                        <option value="ru-research.html">🇷🇺 Русский</option>
-                        <option value="ar-research.html">🇸🇦 اللغة العربية</option>
-                    </select>
+                    style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;" onchange="handleLanguageChange(this)">
+                    <option value="simplified" select>🇨🇳 中文(简体)</option>
+                    <option value="traditional">🇭🇰 中文(繁体)</option>
+                    <option value="jp.html">🇯🇵 日本語</option>
+                    <option value="kr.html">🇰🇷 한국어</option>
+                    <option value="de.html">🇩🇪 Deutsch</option>
+                    <option value="en.html">🇬🇧 English</option>
+                    <option value="es.html">🇪🇸 Español</option>
+                    <option value="fr.html">🇫🇷 Français</option>
+                    <option value="it.html">🇮🇹 Italiano</option>
+                    <option value="ru.html">🇷🇺 Русский</option>
+                    <option value="ar.html">🇸🇦 اللغة العربية</option>
+                  </select>
                 </span>
             </p>
             <div>
