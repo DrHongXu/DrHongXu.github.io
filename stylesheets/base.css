@@ -797,3 +797,13 @@ span.blue {
   padding: 0 0px;
   box-sizing: border-box;
 }
+
+html, body {
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+
+body {
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
