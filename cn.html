@@ -340,6 +340,14 @@
             flagImg.alt = content;
           }
     
+        // HK/TW 初始化 localStorage 为繁体
+        if (countryCode === "HK" || countryCode === "TW") {
+          if (!localStorage.getItem("langMode")) {
+            localStorage.setItem("langMode", "traditional");
+          }
+          switchLanguage("traditional"); // 调用你的切换逻辑
+        }
+
         } catch (err) {
           console.error("无法获取 IP 信息，使用默认内容:", err);
           const geoSpans = document.querySelectorAll(".geo-location");
@@ -353,6 +361,8 @@
       }
     
       document.addEventListener('DOMContentLoaded', displayGeoLocation);
+        // ----------------------------------------
+
     </script>
 
 </head>
