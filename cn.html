@@ -267,7 +267,6 @@
 
 
     <script type="module">
-      // 中国省份英文名 → 中文名映射
       const cnProvincesMap = {
         "Beijing": "北京",
         "Shanghai": "上海",
@@ -309,6 +308,11 @@
         return response.json();
       }
     
+      async function fetchCityMap() {
+        const response = await fetch('/js/city_name.json');
+        return response.json();
+      }
+    
       function getCountryNameByCode(countries, code, language = 'chinese') {
         const country = countries.find(c => c.abbr === code);
         return country ? (country[language] || country.chinese) : '地球';
@@ -317,18 +321,40 @@
       async function displayGeoLocation() {
         try {
           const countries = await fetchCountries();
+          const cityArray = await fetchCityMap();
           const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
           const data = await response.json();
     
           const countryCode = data.country || "";
           const regionEnglish = data.region || "";
+          const cityEnglish = data.city || "";
+    
+
+          // 调试信息
+          console.log("调试信息 → cityEnglish:", cityEnglish, "regionEnglish:", regionEnglish, "countryCode:", countryCode);
+
+
+          // 遍历 cityArray 查找匹配
+          let content = null;
+          for (const cityObj of cityArray) {
+            if (cityObj[cityEnglish]) {
+              content = cityObj[cityEnglish]['ZH-CN'];
+              break;
+            }
+          }
+    
+          // 城市名没有匹配，再判断省份（针对中国）
+          if (!content && countryCode === "CN") {
+            content = cnProvincesMap[regionEnglish] || "中国";
+          }
+    
+          // 如果都没有匹配，再用国家名
+          if (!content) {
+            content = getCountryNameByCode(countries, countryCode, 'chinese');
+          }
     
           // 更新 geo-location 内容
           const geoSpans = document.querySelectorAll(".geo-location");
-          let content = countryCode === "CN"
-            ? (cnProvincesMap[regionEnglish] || "中国")
-            : getCountryNameByCode(countries, countryCode, 'chinese');
-    
           geoSpans.forEach(span => {
             span.textContent = content;
           });
@@ -340,14 +366,14 @@
             flagImg.alt = content;
           }
     
-        // HK/TW 初始化 localStorage 为繁体
-        if (countryCode === "HK" || countryCode === "TW") {
-          if (!localStorage.getItem("langMode")) {
-            localStorage.setItem("langMode", "traditional");
+          // HK/TW 初始化 localStorage 为繁体
+          if (countryCode === "HK" || countryCode === "TW") {
+            if (!localStorage.getItem("langMode")) {
+              localStorage.setItem("langMode", "traditional");
+            }
+            switchLanguage("traditional"); // 调用你的切换逻辑
           }
-          switchLanguage("traditional"); // 调用你的切换逻辑
-        }
-
+    
         } catch (err) {
           console.error("无法获取 IP 信息，使用默认内容:", err);
           const geoSpans = document.querySelectorAll(".geo-location");
@@ -361,8 +387,6 @@
       }
     
       document.addEventListener('DOMContentLoaded', displayGeoLocation);
-        // ----------------------------------------
-
     </script>
 
 </head>
@@ -528,12 +552,14 @@
             <div class="topnav">
 
 
-                <a href="cn-research.html" class="active">
+                <a href="cn.html" class="active">
 
-                  <h3 id="nameBlock" class="display-mobile" align="left"
-                  data-simplified='<ruby>徐<rt><text style="letter-spacing: 0px;">Xú</text></rt></ruby> <ruby>泓<rt><text style="letter-spacing: 0px;">Hóng</text></rt></ruby> <small><ruby>博士<rt>科学 / Dr.</rt></ruby></small>'
-                  data-traditional='<ruby>徐<rt><text style="letter-spacing: 0px;">chèuih</text></rt></ruby> <ruby>泓<rt><text style="letter-spacing: 0px;">wàhng</text></rt></ruby> <small><ruby>博士<rt>科學 / Dr.</rt></ruby></small>'>
-                  </h3>
+                  <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text>
+                  </rt></ruby>&nbsp;<ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby>
+              <small><ruby>博 士<rt>科学 /
+                          Dr.</rt>
+                  </ruby></small>
+                   </h3>
                 </a>
 
                 <div id="myLinks">
@@ -636,7 +662,7 @@
               href="https://unece.org/"
               target="_blank">联合国欧洲经济委员会</a></strong>关于<strong>交通与气候专家组</strong>会议以及<strong>氢能工作小组</strong>会议讨论，积极倡导联合国可持续发展目标
           (SDGs) 第7项 (清洁能源), 第9项 (产业创新), 以及第13项 (气候行动)。同时他还担任10余本能源与交通领域高引期刊的<strong>审稿人</strong>,
-          瑞士<strong>圣加仑国际论坛</strong>的<strong>学术评审</strong>。曾获得奥地利<strong>萨尔茨堡国际研讨会</strong>旅行奖、<strong>美国电化学学会论文邀请</strong>及旅行奖、欧盟伊拉斯谟奖学金、“挑战杯”创业全国铜奖等。
+          瑞士<strong>圣加仑国际论坛</strong>的<strong>学术评审</strong>。曾获得奥地利<strong>萨尔茨堡国际研讨会</strong>旅行奖、<strong>美国电化学学会论文邀请</strong>及旅行奖、欧盟伊拉斯谟奖学金、「挑战杯」创业全国铜奖等。
         </p>
 
         <p align="justify">
