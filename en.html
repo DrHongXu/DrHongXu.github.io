@@ -1009,6 +1009,31 @@
       };
     };
   </script>
+
+  <script>
+    function supportsEmojiFlag() {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = canvas.height = 20;
+    
+      ctx.textBaseline = "top";
+      ctx.font = "16px sans-serif";
+      ctx.fillText("🇨🇳", 0, 0);
+    
+      const data = ctx.getImageData(0, 0, 20, 20).data;
+      return Array.from(data).some(v => v !== 0);
+    }
+    
+    if (!supportsEmojiFlag()) {
+      document.querySelectorAll("#languages option").forEach(opt => {
+        // 去掉所有国旗 emoji，只保留文字
+        opt.textContent = opt.textContent.replace(/[\uD83C][\uDFF3-\uDFFF][\uFE0F]?/g, "")
+                                         .replace(/[\uD83C][\uDDE6-\uDDFF]{2}/g, "")
+                                         .trim();
+      });
+    }
+    </script>
+    
   <script type="text/javascript" src="update_info_script.js"></script>
 
   <!-- End Document
