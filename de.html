@@ -202,6 +202,66 @@
     document.addEventListener('DOMContentLoaded', displayCountryName);
   </script>
 
+
+<script type="module">
+  const germanStateGreetings = {
+    "Baden-Württemberg": "Grüß Gott!",
+    "Bavaria": "Servus!",
+    "Berlin": "Juten Tach!",
+    "Brandenburg": "Willkommen!",
+    "Bremen": "Moin Moin!",
+    "Hamburg": "Moin Moin!",
+    "Hesse": "Ei Gude!",
+    "Lower Saxony": "Moin Moin!",
+    "Mecklenburg-Vorpommern": "Moin Moin!",
+    "North Rhine-Westphalia": "Willkommen!",
+    "Rhineland-Palatinate": "Gunn Tach!",
+    "Saarland": "Gemoje!",
+    "Saxony": "Tagchen!",
+    "Saxony-Anhalt": "Tagchen!",
+    "Schleswig-Holstein": "Moin Moin!",
+    "Thuringia": "Willkommen!"
+  };
+
+  const otherGermanCountryGreetings = {
+    "CH": "Grüezi!",       
+    "AT": "Grüß Gott!",    
+    "LI": "Grüß Gott!",    
+    "LU": "Moien!",         
+    "IT": "Grüß Gott!",   
+    "NL": "Hoi!",        
+    "BE": "Dag!"         
+  };
+
+  async function setGreeting() {
+    const defaultGreeting = "Willkommen!";
+    try {
+      const response = await fetch("https://ipinfo.io/json?token=228a7bb192c4fc");
+      const data = await response.json();
+      const countryCode = data.country;
+      const regionName = (data.region || "").normalize();
+
+      let greeting = defaultGreeting;
+
+      if (countryCode === "DE") {
+        greeting = germanStateGreetings[regionName] || defaultGreeting;
+      } else if (otherGermanCountryGreetings[countryCode]) {
+        greeting = otherGermanCountryGreetings[countryCode];
+      }
+
+      const spans = document.querySelectorAll(".greeting");
+      spans.forEach(span => span.textContent = greeting + " ");
+    } catch (err) {
+      console.error("无法获取 IP 信息，使用默认问候语:", err);
+      const spans = document.querySelectorAll(".greeting");
+      spans.forEach(span => span.textContent = defaultGreeting + " ");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", setGreeting);
+</script>
+
+
   <!-- block save as
       ================================================== -->
   <script type="text/javascript">
@@ -441,7 +501,7 @@
 
       </div>
       <p class="hidden-mobile"></p>
-      <h3 class="hidden-mobile">Servus! Grüezi! <small><small><small> Freunde aus <span id="location">aller Welt</span>
+      <h3 class="hidden-mobile"><span class="greeting">Willkommen!</span><small><small><small> Freunde aus <span id="location">aller Welt</span>
               :-)</small></small> </small>
         <span style="float:right;font-family:verdana;">
           <!-- 德国旗帜 -->
@@ -550,7 +610,7 @@
       </div>
 
       <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
-        <text style="color:rgb(237, 118, 7);font-size:15px">➔ Servus! Grüezi!</text>
+        <text style="color:rgb(237, 118, 7);font-size:15px">➔ <span id="greeting"><span class="greeting">Hallo! Willkommen!</span></span></text>
         <span style="float:right;">
           <span style="float:right;font-family:verdana">
             <select id="languages" name="languages"
@@ -981,6 +1041,7 @@
       };
     };
   </script>
+
   <script type="text/javascript" src="update_info_script.js"></script>
 
   <!-- End Document
