@@ -171,6 +171,8 @@
       const countryName = getCountryNameByCode(countries, countryCode, language);
       document.getElementById("location").textContent = countryName;
       document.getElementById("location2").textContent = countryName;
+      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
+      document.getElementById("country-flag").alt = countryName;
     }
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
@@ -365,7 +367,7 @@
 
         <div style="position:absolute;top:20%;left:3.5%;font-family:'Georgia',serif;font-size:24px;line-height:1.2;color:white;">هناك نوعان من<br>الألعاب في العالم</div>
         <div style="position:absolute;bottom:22%;left:3.5%;font-family:'Georgia',serif;font-size:24px;line-height:1.2;color:white;">محدودة و<br>غير محدودة</div>
-        <div style="position:absolute;bottom:7%;left:3.5%;font-family:'Georgia',serif;font-size:14px;color:white;">♾️
+        <div style="position:absolute;bottom:7%;left:3.5%;font-family:'Georgia',serif;font-size:14px;color:white;"><img style="position:absolute;height:14px" id="country-flag" src="./images/wflags/un.png">♾️
         </div>
         <div style="position:absolute;bottom:7%;right:3.5%;font-family:'Georgia',serif;font-size:14px;color:rgb(198,198,198);"></div>
         

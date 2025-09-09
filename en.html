@@ -131,40 +131,123 @@
         display: none;
       }
     }
+
+
+
+    .headline {
+      position: absolute;
+      font-family: 'Georgia', serif;
+      font-size: 24px;
+      line-height: 1.2;
+      color: white;
+    }
+
+    .top-text {
+      top: 20%;
+      left: 3.5%;
+    }
+
+    .bottom-text {
+      bottom: 22%;
+      left: 3.5%;
+    }
+
+    .quote {
+      position: absolute;
+      bottom: 7%;
+      left: 3.5%;
+      font-family: 'Georgia', serif;
+      font-size: 14px;
+      color: white;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 7%;
+      right: 3.5%;
+      font-family: 'Georgia', serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: rgb(198,198,198);
+    }
+
+    .orange-bar {
+      position: absolute;
+      top: 50%;
+      left: 3.5%;
+      transform: translateY(-50%);
+      width: 210px;
+      height: 3px;
+      background-color: orange;
+      opacity: 1;
+      border-radius: 0;
+    }
+
+    .city-label {
+      position: absolute;
+      font-family: 'Microsoft YaHei', sans-serif;
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: bold;
+      color: orange;
+    }
+
+    .flag {
+      height: 20px;
+      display: inline-block;
+      position: relative;
+      top: 6px;
+    }
+
   </style>
 
-  <script type="module">
-    async function fetchCountries() {
-      const response = await fetch('/js/countries.json');
-      const countries = await response.json();
-      return countries;
-    }
+<script type="module">
+  async function fetchCountries() {
+    const response = await fetch('/js/countries.json');
+    const countries = await response.json();
+    return countries;
+  }
 
-    function getCountryNameByCode(countries, code, language = 'english') {
-      const country = countries.find(country => country.abbr === code);
+  function getCountryNameByCode(countries, code, language = 'english') {
+    const country = countries.find(c => c.abbr.toLowerCase() === code.toLowerCase());
+    return country ? (country[language] || country.english) : 'Mondo';
+  }
 
-      if (country) {
-        return country[language] || country.english;
-      } else {
-        return 'mondo';
-      }
-    }
+  async function displayCountryName() {
+    const countries = await fetchCountries();
 
-    async function displayCountryName() {
-      const countries = await fetchCountries();
+    try {
       const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
       const data = await response.json();
       const countryCode = data.country.toLowerCase();
-      const language = 'english'; // 更改为您想要显示的语言
-      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
+      const language = 'english'; // 可修改为其它语言
+      const countryName = getCountryNameByCode(countries, countryCode, language);
+
       document.getElementById("location2").textContent = countryName;
       document.getElementById("location").textContent = countryName;
-      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
-      document.getElementById("country-flag").alt = countryName;
-    }
 
-    document.addEventListener('DOMContentLoaded', displayCountryName);
-  </script>
+      const flagImg = document.getElementById("country-flag");
+      flagImg.src = `./images/wflags/${countryCode}.png`;
+      flagImg.alt = countryName;
+
+      // 如果图片加载失败，使用联合国旗帜
+      flagImg.onerror = () => {
+        flagImg.src = './images/wflags/un.png';
+        flagImg.alt = 'United Nations';
+      };
+
+    } catch (err) {
+      console.error('无法获取地理位置或国家信息', err);
+      const flagImg = document.getElementById("country-flag");
+      flagImg.src = './images/wflags/un.png';
+      flagImg.alt = 'United Nations';
+      document.getElementById("location2").textContent = 'Unknown';
+      document.getElementById("location").textContent = 'Unknown';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', displayCountryName);
+</script>
 
   <script src="js/language.js"></script>
 
@@ -322,20 +405,19 @@
     <!-- Content -->
     <div class="twelve columns offset-by-four content">
 
-
       <!--<img class="hidden-mobile" src="images/banner_en2.png" width="800" />-->
 
       <div class="image-wrapper hidden-mobile">
         <img src="images/banner_cns3.gif" width="800" alt="banner Image" />
-      
-        <div style="position:absolute;top:20%;left:3.5%;font-family:'Georgia',serif;font-size:24px;line-height:1.2;color:white;">There’re Two Kinds of<br>Games in the World</div>
-        <div style="position:absolute;bottom:22%;left:3.5%;font-family:'Georgia',serif;font-size:24px;line-height:1.2;color:white;">Finite and<br>Infinite</div>
-        <div style="position:absolute;bottom:7%;left:3.5%;font-family:'Georgia',serif;font-size:14px;color:white;">♾️
+        
+        <div class="banner-text" style="position:absolute;top:20%;left:3.5%;font-family:'Georgia',serif;font-size:24px;line-height:1.2;color:white;">There’re Two Kinds of<br> <span class="banner-bar-length">Games in the World</span></div>
+        <div class="banner-text-2" style="position:absolute;bottom:22%;left:3.5%;font-family:'Georgia',serif;font-size:24px;line-height:1.2;color:white;">Finite and<br>Infinite</div>
+        <div style="position:absolute;bottom:7%;left:3.5%;font-family:'Georgia',serif;font-size:14px;color:white;"><img style="position:absolute;height:14px" id="country-flag" src="./images/wflags/un.png"> ♾️
         </div>
         <div style="position:absolute;bottom:7%;right:3.5%;font-family:'Georgia',serif;font-size:14px;color:rgb(198,198,198);"></div>
       
         <!-- Orange bar -->
-        <div style="position:absolute;top:50%;left:3.5%;transform:translateY(-50%);width:210px;height:3px;background-color:orange;opacity:1;border-radius:0;"></div>
+        <div class="orange-bar" style="position:absolute;top:50%;left:3.5%;transform:translateY(-50%);width:210px;height:3px;background-color:orange;opacity:1;border-radius:0;"></div>
       
         <div style="position:absolute;top:16.7%;left:51.2%;font-family:'Microsoft YaHei',sans-serif;font-size:10px;line-height:1.2;font-weight:bold;color:orange;">Hamburg</div>
         <div class="tooltip" style="top:30%;left:75%;"><h6><img src="images/flag_de.png" alt="flag" style="height:20px;display:inline-block;top:6px;position:relative;"> Germany: Hamburg has no hamburgers, but delicious fried fish</h6></div>
@@ -376,6 +458,7 @@
         <div style="position:absolute;top:30.8%;left:52.9%;font-family:'Microsoft YaHei',sans-serif;font-size:10px;line-height:1.2;font-weight:bold;color:orange;">Munich</div>
         <div class="tooltip" style="top:60%;left:70%;"><h6><img src="images/flag_de.png" alt="flag" style="height:20px;display:inline-block;top:6px;position:relative;"> Germany: Munich, gateway to the Southern Alps</h6></div>
         <div class="orange-dot red-dot" alt="Munich" style="top:31.3%;left:51.6%;z-index:9999;"></div>
+        <p class="hidden-mobile" style="margin: 0px 0 0 0; padding: 0; height: 6px;"></p>
 
       </div>
 
@@ -521,8 +604,7 @@
 
 
         <p style="text-align:left;">
-          PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> <img id="country-flag"
-            class="flag-icon" src="" alt=""> ?
+          PEK (NǐHǎo)-> CDG (Bonjour)-> HAM (MoinMoin)-> MUC (Servus)-> ZRH (Grüezi)-> ?
           </span>
         </p>
 
@@ -1010,7 +1092,20 @@
     };
   </script>
 
+<script>
 
+window.addEventListener("load", () => {
+  const secondLine = document.querySelector(".banner-bar-length");
+  const orangeBar = document.querySelector(".orange-bar");
+
+  // 获取第二行文字的像素宽度
+  const width = secondLine.offsetWidth;
+
+  // 设置橙条的宽度
+  orangeBar.style.width = width + "px";
+});
+
+</script>
 
   <script type="text/javascript" src="update_info_script.js"></script>
 

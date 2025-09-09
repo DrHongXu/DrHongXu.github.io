@@ -26,3 +26,5 @@ function successLocation(position) {
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
 }
+
+
