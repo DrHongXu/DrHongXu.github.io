@@ -83,20 +83,6 @@
       /* 更新动画时序函数 */
     }
 
-    .orange-dot-eth {
-      position: absolute;
-      top: 23.1%;
-      left: 50.9%;
-      width: 5px;
-      /* 减小红点尺寸 */
-      height: 5px;
-      /* 减小红点尺寸 */
-      background-color: rgba(255, 140, 0, 0.994);
-      border-radius: 50%;
-      animation: ripple 2s infinite ease-out;
-      /* 更新动画时序函数 */
-    }
-
     @keyframes ripple {
       0% {
         box-shadow: 0 0 0 0 rgba(255, 128, 0, 0.765),
@@ -317,8 +303,8 @@
   <div class="display-mobile" style="position: relative">
     <img class="display-mobile" src="images/banner_mobile_jp5.gif"
       style="margin-top: -10px; width: 113%; max-width: 113%;" />
-    <div class="red-dot" alt="Munich" style="position: absolute; top: 26.3%; left: 59%; max-width: 113%;"></div>
   </div>
+
   <div class="container">
 
     <!-- Sidebar -->
@@ -327,8 +313,8 @@
         <h3 id="logo" style="text-align:center;">
           <img class="hidden-mobile" src="images/banner_cns5_left.gif" width="155" />
           <div style="margin-bottom: 15px;"></div>
-          <h3 class="hidden-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -4px;">シュイ</text></rt></ruby>
-            <ruby>泓<rt><text style="letter-spacing: -4px;">ホーン</text></rt></ruby> <small><ruby>博 士<rt>エネルギー</rt>
+          <h3 class="hidden-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -4px;">しゅい</text></rt></ruby>
+            <ruby>泓<rt><text style="letter-spacing: -4px;">ほーん</text></rt></ruby> <small><ruby>博 士<rt>エネルギー</rt>
               </ruby></small>
           </h3>
           <!--<h3 class="hidden-mobile" align="left">徐 泓 <small>博 士</small></h3> -->
@@ -363,53 +349,52 @@
       <!--<img class="hidden-mobile" src="images/banner_jp2.png" width="800" />-->
 
       <div class="image-wrapper hidden-mobile">
-        <div class="image-wrapper hidden-mobile ">
-          <img src="images/banner_cns5.gif" style="width: 100%; margin-bottom: 5px;" alt="banner Image" />
-          <div class="orange-dot-eth" alt="Munich" style="top: 12.3%; left: 52.2%; z-index: 9999;"></div>
-          <div style="position: absolute; top: 20%; left: 3.5%; 
-          font-family:'Times New Roman', 'Noto Serif SC','Songti SC', 'STSong', SimSun, serif;
-          font-size: 24px; line-height: 1.2; font-weight: bold; color: white;">
-  知識の円を<br>
-  拡大するとき
-  
-          </div>
-  
-          <div style="position: absolute; bottom: 22%; left: 3.5%; 
-                  font-family:'Times New Roman', 'Noto Serif SC','Songti SC', 'STSong', SimSun, serif;
-                  font-size: 24px; line-height: 1.2; font-weight: bold; color: white;">
+        <img src="images/banner_cns5.gif" width="800" alt="banner Image" />
+        <div class="orange-dot-eth" alt="Munich" style="top: 12.3%; left: 52.2%; z-index: 9999;"></div>
+        <div style="position: absolute; top: 20%; left: 3.5%; 
+        font-family:'Times New Roman', 'Noto Serif SC','Songti SC', 'STSong', SimSun, serif;
+        font-size: 24px; line-height: 1.2; font-weight: bold; color: white;">
+知識の円を<br>
+拡大するとき
+
+        </div>
+
+        <div style="position: absolute; bottom: 22%; left: 3.5%; 
+                font-family:'Times New Roman', 'Noto Serif SC','Songti SC', 'STSong', SimSun, serif;
+                font-size: 24px; line-height: 1.2; font-weight: bold; color: white;">
 円周の暗さも<br>
 共に増す
 
-          </div>
-  
-          <div style="position: absolute; bottom: 7%; left: 3.5%; 
-                  font-family:'Times New Roman', 'Noto Serif SC','Songti SC', 'STSong', SimSun, serif;
-                  font-size: 14px; font-weight: bold; color: white;">
-         —— アインシュタイン (ETH卒業生)
-          </div>
-  
-          <div style="position: absolute; bottom: 7%; right: 3.5%; 
-                  font-family:'Times New Roman', 'Noto Serif SC','Songti SC', 'STSong', SimSun, serif;
-                  font-size: 14px; font-weight: bold; color: rgb(198, 198, 198);">
-          </div>
-  
-          <!-- 橙色长条 bar -->
-          <div style="
-            position: absolute; 
-            top: 49%;        /* 垂直居中 */
-            left: 3.5%;       /* 偏左 */
-            transform: translateY(-50%); /* 保证真正居中 */
-            width: 140px;    /* 长条的长度 */
-            height: 3px;    /* 长条的高度 */
-            background-color: orange;
-            opacity: 1;    /* 半透明，可以根据需求调整 */
-            border-radius: 0px;  /* 圆角效果，可选 */
-          ">
-          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 7%; left: 3.5%; 
+                font-family:'Times New Roman', 'Noto Serif SC','Songti SC', 'STSong', SimSun, serif;
+                font-size: 14px; font-weight: bold; color: white;">
+       —— アインシュタイン (ETH卒業生)
+        </div>
+
+        <div style="position: absolute; bottom: 7%; right: 3.5%; 
+                font-family:'Times New Roman', 'Noto Serif SC','Songti SC', 'STSong', SimSun, serif;
+                font-size: 14px; font-weight: bold; color: rgb(198, 198, 198);">
+        </div>
+
+        <!-- 橙色长条 bar -->
+        <div style="
+          position: absolute; 
+          top: 49%;        /* 垂直居中 */
+          left: 3.5%;       /* 偏左 */
+          transform: translateY(-50%); /* 保证真正居中 */
+          width: 140px;    /* 长条的长度 */
+          height: 3px;    /* 长条的高度 */
+          background-color: orange;
+          opacity: 1;    /* 半透明，可以根据需求调整 */
+          border-radius: 0px;  /* 圆角效果，可选 */
+        ">
+        </div>
+
       </div>
 
-      <p class="hidden-mobile" style="margin: -5px 0 0 0; padding: 0; height: 0px;"></p>
-
+      <p class="hidden-mobile" style="margin: -7px 0 0 0; padding: 0; height: 3px;"></p>
 
       <p class="hidden-mobile"></p>
       <h3 class="hidden-mobile">
@@ -442,8 +427,8 @@
 
       <div class="topnav">
         <a href="jp-resume.html" class="active">
-          <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -4px;">シュイ</text></rt></ruby>
-            <ruby>泓<rt><text style="letter-spacing: -4px;">ホーン</text></rt></ruby> <small><ruby>博士<rt>エネルギー</rt>
+          <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -4px;">しゅい</text></rt></ruby>
+            <ruby>泓<rt><text style="letter-spacing: -4px;">ほーん</text></rt></ruby> <small><ruby>博士<rt>エネルギー</rt>
               </ruby></small>
           </h3>
         </a>
@@ -451,51 +436,50 @@
           <ul>
             <hr>
             <li><img src="images/logo.png" style="float:right" width="45"><strong><a href="jp.html"><small
-                    style="color: rgb(97, 97, 97);">▸ 紹介
-                  </small></a></strong><br>
+                    style="color: rgb(40, 40, 40);">▸ 紹介 </small></a></strong><br>
             </li>
 
-            <li><a href="jp-research.html"><small><span style="color: rgb(97, 97, 97);">▸
-                    <strong>研究進捗</strong></span></small></a></li>
-            <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-research.html#publications"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 出版物</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-research.html#patents"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 特許</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-research.html#presentations"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 会議</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-research.html#equity-research"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 証券研究</small></a></li>
-            </div>
+            <li><a href="jp-resume.html"><small><span style="color: rgb(97, 97, 97);">▸
+              <strong>研究進捗</strong></span></small></a></li>
+      <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-research.html#publications"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 出版物</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-research.html#patents"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 特許</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-research.html#presentations"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 会議</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-research.html#equity-research"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 証券研究</small></a></li>
+      </div>
 
-            <li><a href="jp-resume.html"><strong><small style="color: rgb(253, 93, 7);">▸ 履歴 ★</strong></small></a></li>
-            <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-resume.html#education-mobile"
-                  style="color: rgb(253, 93, 7);">&nbsp;&nbsp;&nbsp;<small>• 学歴</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-resume.html#academic-experience"
-                  style="color: rgb(253, 93, 7);">&nbsp;&nbsp;&nbsp;<small>• 学術経験</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-resume.html#industrial-experience"
-                  style="color: rgb(253, 93, 7);">&nbsp;&nbsp;&nbsp;<small>• 産業経験</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-resume.html#awards"
-                  style="color: rgb(253, 93, 7);">&nbsp;&nbsp;&nbsp;<small>• 受賞</small></a></li>
-            </div>
+      <li><a href="jp-resume.html"><strong><small style="color: rgb(253, 93, 7);">▸ 履歴 ★</strong></small></a></li>
+      <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-resume.html#education-mobile"
+            style="color: rgb(253, 93, 7);">&nbsp;&nbsp;&nbsp;<small>• 学歴</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-resume.html#academic-experience"
+            style="color: rgb(253, 93, 7);">&nbsp;&nbsp;&nbsp;<small>• 学術経験</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-resume.html#industrial-experience"
+            style="color: rgb(253, 93, 7);">&nbsp;&nbsp;&nbsp;<small>• 産業経験</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-resume.html#awards"
+            style="color: rgb(253, 93, 7);">&nbsp;&nbsp;&nbsp;<small>• 受賞</small></a></li>
+      </div>
 
-            <li><a href="jp-activities.html"><small style="color: rgb(97, 97, 97);">▸ <strong>趣味</strong></small></a>
-            </li>
-            <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 講演者</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#writing"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 執筆</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#visiting"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 訪問</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#travel"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#photography"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 撮影</small></a></li>
-              <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#sports"
-                  style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• スポーツ</small></a></li>
-            </div>
+      <li><a href="jp-activities.html"><small style="color: rgb(97, 97, 97);">▸ <strong>趣味</strong></small></a>
+      </li>
+      <div class="two-column-list" style="display: flex; flex-wrap: wrap;">
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 講演者</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#writing"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 執筆</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#visiting"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 訪問</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#travel"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 旅行</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#photography"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• 撮影</small></a></li>
+        <li style="width: 50%; box-sizing: border-box;"><a href="jp-activities.html#sports"
+            style="color: rgb(97, 97, 97);">&nbsp;&nbsp;&nbsp;<small>• スポーツ</small></a></li>
+      </div>
 
             <li><a href="jp-contact.html"><small style="color: rgb(97, 97, 97);">▸
                   <strong>私に連絡して</strong></small></a><br></li>
@@ -532,6 +516,7 @@
           </select>
         </span>
       </p>
+
       <div>
         <p class="hidden-mobile" align="justify">
           「<strong>先駆–革新–創効</strong>」の理念に基づき、徐泓博士は<strong>エネルギーと交通</strong>分野における<strong>効率向上</strong>と<strong>インテリジェント接続</strong>に尽力し、産業のグリーントランスフォーメーションを推進し、<strong>カーボンニュートラル</strong>の実現を目指している。
@@ -568,42 +553,6 @@
         </ul>
 
       </div>
-      <!-- <hr class="display-mobile" style="width:113%">
-      <hr class="hidden-mobile">
-
-      <div class="doc-section" id="academic-experience">
-
-        <h3 style="display:inline-block">研究経歴</h3>
-
-        <ul class="square">
-
-          <li>2023-2023 | <strong>訪問学者, エネルギー経済と政策</strong>
-            <div style="float: right"></div><br>
-            <strong><a href="https://oxfordenergy.org" target="_blank">英 · オックスフォードエネルギー研究所</a></strong> (智庫/Fellow)<br>
-          </li>
-
-          <li>2016-2021 | <strong>博士研究員, 水素エネルギー & 燃料電池</strong>
-            <div style="float: right"></div><br>
-            <strong><a href="https://psi.ch/en" target="_blank">瑞 · ポール・シェラー研究所</a></strong> (ETH連合体)<br>
-          </li>
-
-          <li>2015-2016 | <strong>研究助手, 半導体 & センサー</strong>
-            <div style="float: right"></div><br>
-            <strong><a href="http://tum.de" target="_blank">独 · ミュンヘン工科大学</a></strong> (物理学科)<br>
-          </li>
-
-          <li>2015-2015 | <strong>インターンシップ, 水環境と汚染モデリング</strong>
-            <div style="float: right"></div><br>
-            <strong><a href="http://enpc.fr" target="_blank">仏 · 国立道路橋大学</a></strong> (パリTech)<br>
-          </li>
-
-          <li>2015-2015 | <strong>インターンシップ, 材料イメージングとダイナミクス</strong>
-            <div style="float: right"></div><br>
-            <strong><a href="http://xfel.eu" target="_blank">独 · 欧州X線自由電子レーザー</a></strong> (ドイツハンブルク)<br>
-          </li>
-
-        </ul>
-      </div> -->
 
       <hr class="display-mobile" style="width:113%">
       <hr class="hidden-mobile">
@@ -848,18 +797,13 @@
               " />
                 </a>
 
-          <!--https://www.flagcounter.me/regenerate/eVK  FQ776NhJ1 日语-->
-          <!-- <br /><a href="https://info.flagcounter.com/D897" target="_blank"><img
-              src="https://s01.flagcounter.com/count/D897/bg_FFFFFF/txt_404040/border_FFFFFF/columns_8/maxflags_16/viewers_3/labels_0/pageviews_1/flags_0/percent_0/"
-              border="0"></a> -->
-          <!-- <a href="https://www.flagcounter.me/details/enB"><img src="https://www.flagcounter.me/enB/"
-                  alt="Flag Counter"></a> -Pass: AHlUufteU -->
         </ul>
 
         </ul>
       </div>
 
       <br>
+
     </div><!-- Content -->
 
     <footer class="eleven center-column">
