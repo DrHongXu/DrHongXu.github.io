@@ -565,17 +565,17 @@
     },
     {
         "abbr": "CZ",
-        "chinese": "捷克共和国",
+        "chinese": "捷克",
         "code": "420",
-        "english": "Czech Republic",
+        "english": "Czechia",
         "spell": "jiekegongheguo",
         "state": "欧洲",
-        "french": "République tchèque",
-        "italian": "Repubblica Ceca",
-        "spanish": "República Checa",
+        "french": "Tchéquie",
+        "italian": "Cechia",
+        "spanish": "Chequia",
         "japanese": "チェコ",
         "russian": "Чехия",
-        "germen": "Tschechische Republik"
+        "germen": "Tschechien"
     },
     {
         "abbr": "DK",
