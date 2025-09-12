@@ -133,38 +133,7 @@
     }
   </style>
 
-  <script type="module">
-    async function fetchCountries() {
-      const response = await fetch('/js/countries.json');
-      const countries = await response.json();
-      return countries;
-    }
-
-    function getCountryNameByCode(countries, code, language = 'english') {
-      const country = countries.find(country => country.abbr === code);
-
-      if (country) {
-        return country[language] || country.english;
-      } else {
-        return 'der Welt';
-      }
-    }
-
-    async function displayCountryName() {
-      const countries = await fetchCountries();
-      const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
-      const data = await response.json();
-      const countryCode = data.country.toLowerCase();
-      const language = 'germen'; // 更改为您想要显示的语言
-      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
-      document.getElementById("location2").textContent = countryName;
-      document.getElementById("location").textContent = countryName;
-      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
-      document.getElementById("country-flag").alt = countryName;
-    }
-
-    document.addEventListener('DOMContentLoaded', displayCountryName);
-  </script>
+<script src="js/language_de.js"></script>
 
   <!-- block save as
       ================================================== -->
@@ -395,10 +364,8 @@
       <h3 class="hidden-mobile">Forschungsfortschritt<small><small><small> 「Wissenschaft ohne Grenzen」</small></small>
         </small>
         <span style="float:right;font-family:verdana;">
-          <img src="images/flag_de.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
-          <img src="images/flag_ch.png" alt="flag" style="height:16px;display:inline-block;top:3px;position:relative;">
-          <img src="images/flag_au.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
-
+          <img src="./images/wflags_svg/de.svg" alt="flag"
+          style="height:15px; width:24px; display:inline-block; position:relative; top:3px; object-fit: cover;"><img id="language-flag" style="height:15px; width:24px; display:inline-block; position:relative; top:3px; object-fit: cover;left: 5px;" alt="flag">
           <select id="languages" name="languages"
             style="width: 85px; color:inherit;display:inline-block;margin-bottom:0px;"
             onchange="window.location.href=this.options [this.selectedIndex].value">

@@ -3,3 +3,6 @@ $('select').on('change', function(){
     $('.mobile a span').text(langVal);
 
 });
+
+
+

@@ -135,67 +135,7 @@
 
 
   <!---意大利语冠词特别版，请勿copy-->
-  <script type="module">
-    async function fetchCountries() {
-      const response = await fetch('/js/countries.json');
-      const countries = await response.json();
-      return countries;
-    }
-
-    function getCountryNameByCode(countries, code, language = 'english') {
-      const country = countries.find(country => country.abbr === code);
-
-      if (country) {
-        return country[language] || country.english;
-      } else {
-        return 'mondo';
-      }
-    }
-
-    function addItalianArticle(countryName) {
-      // 冠词规则，针对不同的词性和复数形式
-      const articles = {
-        'il': 'del',
-        'lo': 'dello',
-        'l\'': 'dell\'',
-        'i': 'dei',
-        'gli': 'degli',
-        'la': 'della',
-        'le': 'delle'
-      };
-
-      // 将首个单词转换为小写以匹配冠词，并排除可能的标点
-      const words = countryName.split(/\s+/); // 匹配空格分隔
-      const article = words[0].toLowerCase().replace(/[^\w]/g, ''); // 去除非字母字符
-
-      // 优先判断是否有冠词
-      if (articles[article]) {
-        return `${articles[article]} ${words.slice(1).join(' ')}`;
-      }
-
-      // 如果没有冠词，默认使用 "di"
-      return `di ${countryName}`;
-    }
-
-    async function displayCountryName() {
-      const countries = await fetchCountries();
-      const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
-      const data = await response.json();
-      const countryCode = data.country.toLowerCase();
-      const language = 'italian'; // 使用意大利语
-
-      const countryName = getCountryNameByCode(countries, countryCode.toUpperCase(), language);
-      const formattedCountryName = addItalianArticle(countryName);
-
-      document.getElementById("location").textContent = formattedCountryName;
-      document.getElementById("location2").textContent = formattedCountryName;
-
-      document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
-      document.getElementById("country-flag").alt = countryName;
-    }
-
-    document.addEventListener('DOMContentLoaded', displayCountryName);
-  </script>
+  <script src="js/language_it.js"></script>
 
 
 
@@ -443,9 +383,9 @@
                 mondo</span>
               :-)</small></small> </small>
         <span style="float:right;font-family:verdana">
-          <img src="images/flag_it.png" alt="flag" style="height:23px;display:inline-block;top:7px;position:relative;">
-          <img src="images/flag_ch.png" alt="flag" style="height:16px;display:inline-block;top:3px;position:relative;">
-          <select id="languages" name="languages"
+          <img src="./images/wflags_svg/it.svg" alt="flag"
+          style="height:15px; width:24px; display:inline-block; position:relative; top:3px; object-fit: cover;"><img id="language-flag" style="height:15px; width:24px; display:inline-block; position:relative; top:3px; object-fit: cover;left: 5px;" alt="flag">
+               <select id="languages" name="languages"
             style="width: 85px; color:inherit;display:inline-block;margin-bottom:0px;"
             onchange="window.location.href=this.options [this.selectedIndex].value">
             <option value="it.html" select>Italiano</option>
