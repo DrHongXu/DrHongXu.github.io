@@ -84,7 +84,7 @@ async function displayCountryName() {
         } catch (err) {
             console.error('延迟获取 IPInfo 失败', err);
         }
-    }, 10); // 1 分钟延迟 (60000) (10秒延迟是10000)
+    }, 600000); // 1 分钟延迟 (60000) (10秒延迟是10000)
 }
 
 document.addEventListener('DOMContentLoaded', displayCountryName);
