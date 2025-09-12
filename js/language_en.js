@@ -25,13 +25,17 @@ async function updateDisplay(countryCode, countries) {
     if (locationEl) locationEl.textContent = countryName;
     if (location2El) location2El.textContent = countryName;
 
+    // --- 国旗处理，避免闪现 ---
     if (flagImg) {
-        flagImg.src = `./images/wflags/${countryCode}.png`;
-        flagImg.alt = countryName;
+        flagImg.style.display = 'none'; // 默认隐藏
+        flagImg.onload = () => { flagImg.style.display = 'inline-block'; };
         flagImg.onerror = () => {
+            flagImg.style.display = 'none';
             flagImg.src = './images/wflags/un.png';
             flagImg.alt = 'United Nations';
         };
+        flagImg.src = `./images/wflags/${countryCode}.png`;
+        flagImg.alt = countryName;
     }
 
     const languageCountryFlagMap = {
@@ -47,13 +51,13 @@ async function updateDisplay(countryCode, countries) {
     };
 
     if (languageFlag) {
+        languageFlag.style.display = 'none'; // 默认隐藏
+        languageFlag.onload = () => { languageFlag.style.display = 'inline-block'; };
+        languageFlag.onerror = () => { languageFlag.style.display = 'none'; };
+
         if (languageCountryFlagMap[countryCode]) {
             languageFlag.src = `./images/wflags_svg/${countryCode}.svg`;
             languageFlag.alt = countryName + ' flag';
-            languageFlag.style.display = 'inline-block';
-            languageFlag.onerror = () => {
-                languageFlag.style.display = 'none';
-            };
         } else {
             languageFlag.style.display = 'none';
         }
@@ -69,7 +73,7 @@ async function displayCountryName() {
         await updateDisplay(cachedCode, countries);
     }
 
-    // 2. 延迟 10 秒后重新获取最新 IP
+    // 2. 延迟 1 分钟后重新获取最新 IP（避免频繁请求）
     setTimeout(async () => {
         try {
             const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
@@ -77,14 +81,13 @@ async function displayCountryName() {
             const newCode = (data.country || '').toLowerCase();
 
             if (!cachedCode || newCode !== cachedCode) {
-                // 更新显示和缓存
                 await updateDisplay(newCode, countries);
                 localStorage.setItem('countryCode', newCode);
             }
         } catch (err) {
             console.error('延迟获取 IPInfo 失败', err);
         }
-    }, 600000); // 1 分钟延迟 (60000) (10秒延迟是10000)
+    }, 10000); // 1 分钟延迟
 }
 
 document.addEventListener('DOMContentLoaded', displayCountryName);
