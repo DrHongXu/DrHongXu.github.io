@@ -14,7 +14,7 @@ function getCountryNameByCode(countries, code, language = 'english') {
     return country ? (country[language] || country.english) : 'Unknown';
 }
 
-async function updateDisplay(countryCode, countries) {
+async function updateDisplay(countryCode, countries, regionName = '', cityName = '') {
     const locationEl = document.getElementById("location");
     const location2El = document.getElementById("location2");
     const flagImg = document.getElementById("country-flag");
@@ -22,12 +22,18 @@ async function updateDisplay(countryCode, countries) {
 
     const countryName = getCountryNameByCode(countries, countryCode);
 
-    if (locationEl) locationEl.textContent = countryName;
-    if (location2El) location2El.textContent = countryName;
+    // 只显示 Region + Country
+    //const fullLocation = regionName ? `${regionName}, ${countryName}` : countryName;
+    //const fullLocation = `${regionName}`;
+    //const fullLocation = `${cityName}`;
+    const fullLocation = `${countryName}`;
 
-    // --- 国旗处理，避免闪现 ---
+    if (locationEl) locationEl.textContent = fullLocation;
+    if (location2El) location2El.textContent = fullLocation;
+
+    // --- 国旗处理 ---
     if (flagImg) {
-        flagImg.style.display = 'none'; // 默认隐藏
+        flagImg.style.display = 'none';
         flagImg.onload = () => { flagImg.style.display = 'inline-block'; };
         flagImg.onerror = () => {
             flagImg.style.display = 'none';
@@ -51,7 +57,7 @@ async function updateDisplay(countryCode, countries) {
     };
 
     if (languageFlag) {
-        languageFlag.style.display = 'none'; // 默认隐藏
+        languageFlag.style.display = 'none';
         languageFlag.onload = () => { languageFlag.style.display = 'inline-block'; };
         languageFlag.onerror = () => { languageFlag.style.display = 'none'; };
 
@@ -67,27 +73,29 @@ async function updateDisplay(countryCode, countries) {
 async function displayCountryName() {
     const countries = await fetchCountries();
 
-    // 1. 先显示缓存的 countryCode（如果有）
-    let cachedCode = localStorage.getItem('countryCode');
-    if (cachedCode) {
-        await updateDisplay(cachedCode, countries);
+    try {
+        const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
+        const data = await response.json();
+
+        const newCode = (data.country || '').toLowerCase();
+        const regionName = data.region || '';
+        const cityName = data.city || '';
+
+        await updateDisplay(newCode, countries, regionName,cityName);
+        localStorage.setItem('countryCode', newCode);
+
+    } catch (err) {
+        console.error('获取 IPInfo 失败，使用缓存或默认值', err);
+
+        // 如果失败，用缓存国家码（只显示国家名）
+        const cachedCode = localStorage.getItem('countryCode');
+        if (cachedCode) {
+            await updateDisplay(cachedCode, countries);
+        }
     }
 
-    // 2. 延迟 1 分钟后重新获取最新 IP（避免频繁请求）
-    setTimeout(async () => {
-        try {
-            const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
-            const data = await response.json();
-            const newCode = (data.country || '').toLowerCase();
-
-            if (!cachedCode || newCode !== cachedCode) {
-                await updateDisplay(newCode, countries);
-                localStorage.setItem('countryCode', newCode);
-            }
-        } catch (err) {
-            console.error('延迟获取 IPInfo 失败', err);
-        }
-    }, 10000); // 1 分钟延迟
+    // 延迟每分钟刷新一次
+    setTimeout(displayCountryName, 10000);
 }
 
 document.addEventListener('DOMContentLoaded', displayCountryName);
