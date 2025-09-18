@@ -57,14 +57,24 @@ async function updateDisplay(countryCode, countries, regionName = '', cityName =
     };
 
     if (languageFlag) {
-        languageFlag.style.display = 'none';
-        languageFlag.onload = () => { languageFlag.style.display = 'inline-block'; };
-        languageFlag.onerror = () => { languageFlag.style.display = 'none'; };
-
+        // 默认显示占位旗帜，避免 broken image
+        languageFlag.src = './images/wflags_svg/un.svg';
+        languageFlag.alt = '';
+        languageFlag.style.display = 'inline-block';
+    
         if (languageCountryFlagMap[countryCode]) {
-            languageFlag.src = `./images/wflags_svg/${countryCode}.svg`;
-            languageFlag.alt = countryName + ' flag';
+            // 创建临时 Image 预加载真实国旗
+            const realFlag = new Image();
+            realFlag.onload = () => {
+                languageFlag.src = realFlag.src; // 加载完成后替换
+                languageFlag.alt = countryName + ' flag';
+            };
+            realFlag.onerror = () => {
+                languageFlag.style.display = 'none'; // 加载失败隐藏
+            };
+            realFlag.src = `./images/wflags_svg/${countryCode}.svg`;
         } else {
+            // 没有对应国旗，隐藏
             languageFlag.style.display = 'none';
         }
     }
