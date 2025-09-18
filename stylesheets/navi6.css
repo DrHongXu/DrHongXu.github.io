@@ -116,7 +116,7 @@ a {
   /* 蓝 */
   nav div.nav-container > div:nth-of-type(7n+6) .slide, 
   nav div.nav-container > div:nth-of-type(7n+6) a {
-    border-color: #3a79f8;
+    border-color: #3a47f8;
   }
   nav div.nav-container > div:nth-of-type(7n+6) .slide:hover, 
   nav div.nav-container > div:nth-of-type(7n+6) a:hover {
@@ -134,7 +134,7 @@ a {
   /* 紫 */
   nav div.nav-container > div:nth-of-type(7n+7) .slide, 
   nav div.nav-container > div:nth-of-type(7n+7) a {
-    border-color: #be2dd7;
+    border-color: #bc15ef;
   }
   nav div.nav-container > div:nth-of-type(7n+7) .slide:hover, 
   nav div.nav-container > div:nth-of-type(7n+7) a:hover {
@@ -380,26 +380,11 @@ a {
     }
   }
   
-
-  /* 以红色系 (7n+1) 为例，其它类推 */
-nav div.nav-container > div:nth-of-type(7n+1) .slide.menu-active {
-  color: #B8000E; /* 和 hover 一致 */
-}
-nav div.nav-container > div:nth-of-type(7n+2) .slide.menu-active {
-  color: #FF7A00;
-}
-nav div.nav-container > div:nth-of-type(7n+3) .slide.menu-active {
-  color: #fbd500;
-}
-nav div.nav-container > div:nth-of-type(7n+4) .slide.menu-active {
-  color: #1da64a;
-}
-nav div.nav-container > div:nth-of-type(7n+5) .slide.menu-active {
-  color: #00c4de;
-}
-nav div.nav-container > div:nth-of-type(7n+6) .slide.menu-active {
-  color: #3a79f8;
-}
-nav div.nav-container > div:nth-of-type(7n+7) .slide.menu-active {
-  color: #be2dd7;
-}
+  /* 这里假设 7 个按钮颜色是赤橙黄绿青蓝紫，可以继续沿用 nth-of-type(7n+x) 规则 */
+nav div.nav-container > div:nth-of-type(7n+1) .slide.nav-visited { color: #B8000E;  }
+nav div.nav-container > div:nth-of-type(7n+2) .slide.nav-visited { color: #ff6f00; }
+nav div.nav-container > div:nth-of-type(7n+3) .slide.nav-visited { color: #fbc000;  }
+nav div.nav-container > div:nth-of-type(7n+4) .slide.nav-visited { color: #1da64a;  }
+nav div.nav-container > div:nth-of-type(7n+5) .slide.nav-visited { color: #00c4de;  }
+nav div.nav-container > div:nth-of-type(7n+6) .slide.nav-visited { color: #3a47f8;  }
+nav div.nav-container > div:nth-of-type(7n+7) .slide.nav-visited { color: #bc15ef;  }

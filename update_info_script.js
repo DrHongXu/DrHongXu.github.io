@@ -43,16 +43,38 @@ updateContent();
 
 
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll("nav .slide");
-
-    navLinks.forEach(link => {
-      link.addEventListener("click", function (e) {
-        // 先清除所有 slide 的 active 状态
-        navLinks.forEach(l => l.classList.remove("menu-active"));
-
-        // 给当前点击的 slide 加上 active
-        this.classList.add("menu-active");
+//2) JS：使用 localStorage 记忆并排他高亮
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = Array.from(document.querySelectorAll('nav div.nav-container > div > .slide'));
+    const STORAGE_KEY = 'navColorHref';
+  
+    // 辅助函数：清除所有 nav-visited
+    function clearVisited() {
+      slides.forEach(slide => slide.classList.remove('nav-visited'));
+    }
+  
+    // 辅助函数：根据 href 找到匹配的 slide 并加上 nav-visited
+    function applyVisited(href) {
+      if (!href) return;
+      // 只匹配完整 href（相对路径 + hash）
+      const matched = slides.find(slide => slide.getAttribute('href') === href);
+      if (matched) matched.classList.add('nav-visited');
+    }
+  
+    // 读取 localStorage 并应用
+    const savedHref = localStorage.getItem(STORAGE_KEY);
+    if (savedHref) applyVisited(savedHref);
+  
+    // 给每个 slide 绑定点击事件
+    slides.forEach(slide => {
+      slide.addEventListener('click', function (ev) {
+        const href = slide.getAttribute('href');
+        if (!href || href === '#') return; // logo等无效链接不处理
+        // 清除旧状态
+        clearVisited();
+        // 新状态写入
+        slide.classList.add('nav-visited');
+        localStorage.setItem(STORAGE_KEY, href);
       });
     });
   });
