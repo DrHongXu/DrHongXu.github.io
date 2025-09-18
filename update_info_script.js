@@ -40,3 +40,19 @@ function updateContent() {
 
 // 调用更新函数
 updateContent();
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll("nav .slide");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", function (e) {
+        // 先清除所有 slide 的 active 状态
+        navLinks.forEach(l => l.classList.remove("menu-active"));
+
+        // 给当前点击的 slide 加上 active
+        this.classList.add("menu-active");
+      });
+    });
+  });

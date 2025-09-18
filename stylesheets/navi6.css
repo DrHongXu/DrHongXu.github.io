@@ -23,65 +23,130 @@ a {
   nav div.nav-container > div {
     display: table-cell;
   }
-  nav div.nav-container > div:nth-of-type(5n+1) .slide, nav div.nav-container > div:nth-of-type(5n+1) a {
-    border-color: #8cc63f;
+  /* 赤 */
+  nav div.nav-container > div:nth-of-type(7n+1) .slide, 
+  nav div.nav-container > div:nth-of-type(7n+1) a {
+    border-color: #E60012; /* 主色：赤 */
   }
-  nav div.nav-container > div:nth-of-type(5n+1) .slide:hover, nav div.nav-container > div:nth-of-type(5n+1) a:hover {
-    color: #567b24;
+  nav div.nav-container > div:nth-of-type(7n+1) .slide:hover, 
+  nav div.nav-container > div:nth-of-type(7n+1) a:hover {
+    color: #B8000E; /* 深赤 */
   }
-  nav div.nav-container > div:nth-of-type(5n+1) .slide ~ .child-menu, nav div.nav-container > div:nth-of-type(5n+1) a ~ .child-menu {
-    background-color: #a4d266;
+  nav div.nav-container > div:nth-of-type(7n+1) .slide ~ .child-menu, 
+  nav div.nav-container > div:nth-of-type(7n+1) a ~ .child-menu {
+    background-color: #FFCDD2; /* 淡赤 */
   }
-  nav div.nav-container > div:nth-of-type(5n+1) input:checked ~ label, nav div.nav-container > div:nth-of-type(5n+1) .slide.active ~ label {
-    color: #8cc63f;
+  nav div.nav-container > div:nth-of-type(7n+1) input:checked ~ label, 
+  nav div.nav-container > div:nth-of-type(7n+1) .slide.active ~ label {
+    color: #FF5252; /* 亮赤 */
   }
-  nav div.nav-container > div:nth-of-type(5n+2) .slide, nav div.nav-container > div:nth-of-type(5n+2) a {
-    border-color: #ef3724;
+
+  /* 橙 */
+  nav div.nav-container > div:nth-of-type(7n+2) .slide, 
+  nav div.nav-container > div:nth-of-type(7n+2) a {
+    border-color: #FF7A00;
   }
-  nav div.nav-container > div:nth-of-type(5n+2) .slide:hover, nav div.nav-container > div:nth-of-type(5n+2) a:hover {
-    color: #a11a0c;
+  nav div.nav-container > div:nth-of-type(7n+2) .slide:hover, 
+  nav div.nav-container > div:nth-of-type(7n+2) a:hover {
+    color: #FF7A00;
   }
-  nav div.nav-container > div:nth-of-type(5n+2) .slide ~ .child-menu, nav div.nav-container > div:nth-of-type(5n+2) a ~ .child-menu {
-    background-color: #f26254;
+  nav div.nav-container > div:nth-of-type(7n+2) .slide ~ .child-menu, 
+  nav div.nav-container > div:nth-of-type(7n+2) a ~ .child-menu {
+    background-color: #FFE0B2;
   }
-  nav div.nav-container > div:nth-of-type(5n+2) input:checked ~ label, nav div.nav-container > div:nth-of-type(5n+2) .slide.active ~ label {
-    color: #ef3724;
+  nav div.nav-container > div:nth-of-type(7n+2) input:checked ~ label, 
+  nav div.nav-container > div:nth-of-type(7n+2) .slide.active ~ label {
+    color: #FF9800;
   }
-  nav div.nav-container > div:nth-of-type(5n+3) .slide, nav div.nav-container > div:nth-of-type(5n+3) a {
-    border-color: #ffa61a;
+
+  /* 黄 */
+  nav div.nav-container > div:nth-of-type(7n+3) .slide, 
+  nav div.nav-container > div:nth-of-type(7n+3) a {
+    border-color: #FFD700;
   }
-  nav div.nav-container > div:nth-of-type(5n+3) .slide:hover, nav div.nav-container > div:nth-of-type(5n+3) a:hover {
-    color: #b36d00;
+  nav div.nav-container > div:nth-of-type(7n+3) .slide:hover, 
+  nav div.nav-container > div:nth-of-type(7n+3) a:hover {
+    color: #fbd500;
   }
-  nav div.nav-container > div:nth-of-type(5n+3) .slide ~ .child-menu, nav div.nav-container > div:nth-of-type(5n+3) a ~ .child-menu {
-    background-color: #ffba4d;
+  nav div.nav-container > div:nth-of-type(7n+3) .slide ~ .child-menu, 
+  nav div.nav-container > div:nth-of-type(7n+3) a ~ .child-menu {
+    background-color: #FFF9C4;
   }
-  nav div.nav-container > div:nth-of-type(5n+3) input:checked ~ label, nav div.nav-container > div:nth-of-type(5n+3) .slide.active ~ label {
-    color: #ffa61a;
+  nav div.nav-container > div:nth-of-type(7n+3) input:checked ~ label, 
+  nav div.nav-container > div:nth-of-type(7n+3) .slide.active ~ label {
+    color: #FFEB3B;
   }
-  nav div.nav-container > div:nth-of-type(5n+4) .slide, nav div.nav-container > div:nth-of-type(5n+4) a {
-    border-color: #1ab1ff;
+
+  /* 绿 */
+  nav div.nav-container > div:nth-of-type(7n+4) .slide, 
+  nav div.nav-container > div:nth-of-type(7n+4) a {
+    border-color: #1da64a;
   }
-  nav div.nav-container > div:nth-of-type(5n+4) .slide:hover, nav div.nav-container > div:nth-of-type(5n+4) a:hover {
-    color: #0076b3;
+  nav div.nav-container > div:nth-of-type(7n+4) .slide:hover, 
+  nav div.nav-container > div:nth-of-type(7n+4) a:hover {
+    color: #1da64a;
   }
-  nav div.nav-container > div:nth-of-type(5n+4) .slide ~ .child-menu, nav div.nav-container > div:nth-of-type(5n+4) a ~ .child-menu {
-    background-color: #4dc2ff;
+  nav div.nav-container > div:nth-of-type(7n+4) .slide ~ .child-menu, 
+  nav div.nav-container > div:nth-of-type(7n+4) a ~ .child-menu {
+    background-color: #C8E6C9;
   }
-  nav div.nav-container > div:nth-of-type(5n+4) input:checked ~ label, nav div.nav-container > div:nth-of-type(5n+4) .slide.active ~ label {
-    color: #1ab1ff;
+  nav div.nav-container > div:nth-of-type(7n+4) input:checked ~ label, 
+  nav div.nav-container > div:nth-of-type(7n+4) .slide.active ~ label {
+    color: #4CAF50;
   }
-  nav div.nav-container > div:nth-of-type(5n+5) .slide, nav div.nav-container > div:nth-of-type(5n+5) a {
-    border-color: #FC1DCF;
+
+  /* 青 */
+  nav div.nav-container > div:nth-of-type(7n+5) .slide, 
+  nav div.nav-container > div:nth-of-type(7n+5) a {
+    border-color: #00c4de;
   }
-  nav div.nav-container > div:nth-of-type(5n+5) .slide:hover, nav div.nav-container > div:nth-of-type(5n+5) a:hover {
-    color: #b1028d;
+  nav div.nav-container > div:nth-of-type(7n+5) .slide:hover, 
+  nav div.nav-container > div:nth-of-type(7n+5) a:hover {
+    color: #00c4de;
   }
-  nav div.nav-container > div:nth-of-type(5n+5) .slide ~ .child-menu, nav div.nav-container > div:nth-of-type(5n+5) a ~ .child-menu {
-    background-color: #fd4fda;
+  nav div.nav-container > div:nth-of-type(7n+5) .slide ~ .child-menu, 
+  nav div.nav-container > div:nth-of-type(7n+5) a ~ .child-menu {
+    background-color: #B2EBF2;
   }
-  nav div.nav-container > div:nth-of-type(5n+5) input:checked ~ label, nav div.nav-container > div:nth-of-type(5n+5) .slide.active ~ label {
-    color: #FC1DCF;
+  nav div.nav-container > div:nth-of-type(7n+5) input:checked ~ label, 
+  nav div.nav-container > div:nth-of-type(7n+5) .slide.active ~ label {
+    color: #26C6DA;
+  }
+
+  /* 蓝 */
+  nav div.nav-container > div:nth-of-type(7n+6) .slide, 
+  nav div.nav-container > div:nth-of-type(7n+6) a {
+    border-color: #3a79f8;
+  }
+  nav div.nav-container > div:nth-of-type(7n+6) .slide:hover, 
+  nav div.nav-container > div:nth-of-type(7n+6) a:hover {
+    color: #3a79f8;
+  }
+  nav div.nav-container > div:nth-of-type(7n+6) .slide ~ .child-menu, 
+  nav div.nav-container > div:nth-of-type(7n+6) a ~ .child-menu {
+    background-color: #BBDEFB;
+  }
+  nav div.nav-container > div:nth-of-type(7n+6) input:checked ~ label, 
+  nav div.nav-container > div:nth-of-type(7n+6) .slide.active ~ label {
+    color: #2196F3;
+  }
+
+  /* 紫 */
+  nav div.nav-container > div:nth-of-type(7n+7) .slide, 
+  nav div.nav-container > div:nth-of-type(7n+7) a {
+    border-color: #be2dd7;
+  }
+  nav div.nav-container > div:nth-of-type(7n+7) .slide:hover, 
+  nav div.nav-container > div:nth-of-type(7n+7) a:hover {
+    color: #be2dd7;
+  }
+  nav div.nav-container > div:nth-of-type(7n+7) .slide ~ .child-menu, 
+  nav div.nav-container > div:nth-of-type(7n+7) a ~ .child-menu {
+    background-color: #E1BEE7;
+  }
+  nav div.nav-container > div:nth-of-type(7n+7) input:checked ~ label, 
+  nav div.nav-container > div:nth-of-type(7n+7) .slide.active ~ label {
+    color: #BA68C8;
   }
   nav a, nav label {
     -moz-transition-property: color;
@@ -315,3 +380,26 @@ a {
     }
   }
   
+
+  /* 以红色系 (7n+1) 为例，其它类推 */
+nav div.nav-container > div:nth-of-type(7n+1) .slide.menu-active {
+  color: #B8000E; /* 和 hover 一致 */
+}
+nav div.nav-container > div:nth-of-type(7n+2) .slide.menu-active {
+  color: #FF7A00;
+}
+nav div.nav-container > div:nth-of-type(7n+3) .slide.menu-active {
+  color: #fbd500;
+}
+nav div.nav-container > div:nth-of-type(7n+4) .slide.menu-active {
+  color: #1da64a;
+}
+nav div.nav-container > div:nth-of-type(7n+5) .slide.menu-active {
+  color: #00c4de;
+}
+nav div.nav-container > div:nth-of-type(7n+6) .slide.menu-active {
+  color: #3a79f8;
+}
+nav div.nav-container > div:nth-of-type(7n+7) .slide.menu-active {
+  color: #be2dd7;
+}

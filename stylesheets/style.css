@@ -663,3 +663,15 @@ ul ul ul li {
     }
   }
 
+
+  nav.display-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    margin: 0;
+    z-index: 999;
+    background: #ffffff; /* 或你原本的背景色 */
+    box-shadow: 0 4px 26px rgba(0,0,0,0.25), 0 1.5px 4px rgba(0,0,0,0.28);
+      }
