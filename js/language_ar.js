@@ -36,30 +36,30 @@ async function fetchCountries() {
 
     // 阿拉伯语主要国家筛选表
     const languageCountryFlagMap = {
-        'ae': 'flag-ae', // 阿联酋
-        'eg': 'flag-eg', // 埃及
-        'ma': 'flag-ma', // 摩洛哥
-        'dz': 'flag-dz', // 阿尔及利亚
-        'tn': 'flag-tn', // 突尼斯
-        'iq': 'flag-iq', // 伊拉克
-        'jo': 'flag-jo', // 约旦
-        'kw': 'flag-kw', // 科威特
-        'om': 'flag-om', // 阿曼
-        'qa': 'flag-qa', // 卡塔尔
-        'lb': 'flag-lb', // 黎巴嫩
-        'sy': 'flag-sy', // 叙利亚
-        'ye': 'flag-ye', // 也门
-        'bh': 'flag-bh', // 巴林
-        'sd': 'flag-sd'  // 苏丹
+      'ae': 'flag-ae', // 阿联酋
+      'eg': 'flag-eg', // 埃及
+      'ma': 'flag-ma', // 摩洛哥
+      'dz': 'flag-dz', // 阿尔及利亚
+      'tn': 'flag-tn', // 突尼斯
+      'iq': 'flag-iq', // 伊拉克
+      'jo': 'flag-jo', // 约旦
+      'kw': 'flag-kw', // 科威特
+      'om': 'flag-om', // 阿曼
+      'qa': 'flag-qa', // 卡塔尔
+      'lb': 'flag-lb', // 黎巴嫩
+      'sy': 'flag-sy', // 叙利亚
+      'ye': 'flag-ye', // 也门
+      'bh': 'flag-bh', // 巴林
+      'sd': 'flag-sd'  // 苏丹
     };
 
     if (languageFlag) {
-      let flagToShow = countryCode.toLowerCase();
-      if (!languageCountryFlagMap[flagToShow]) {
-        // 不在筛选表里，显示沙特阿拉伯
-        flagToShow = 'sa';
-      }
+    let flagToShow = countryCode.toLowerCase();
 
+    // 不在筛选表里，直接隐藏
+    if (!languageCountryFlagMap[flagToShow]) {
+      languageFlag.style.display = 'none';
+    } else {
       languageFlag.src = `./images/wflags_svg/${flagToShow}.svg`;
       languageFlag.alt = getCountryNameByCode(countries, flagToShow, 'ar') + ' flag';
       languageFlag.style.display = 'inline-block';
@@ -70,7 +70,7 @@ async function fetchCountries() {
       languageFlag.style.top = '3px';
       languageFlag.onerror = () => { languageFlag.style.display = 'none'; };
     }
-  }
+    }}
 
   async function displayCountryName() {
     const countries = await fetchCountries();
