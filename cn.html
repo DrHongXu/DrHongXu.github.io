@@ -399,8 +399,22 @@
         console.log("=== End Debug ===");
       }
       
-      // 使用js/cn_fanti_translate.js中定义的setSimplified和setTraditional函数
-      // 这里不再重复定义，避免函数覆盖
+      // 重写setSimplified和setTraditional函数，确保国旗立即更新
+      function setSimplified() {
+        localStorage.setItem("langMode", "simplified");
+        updateFlagIcon(); // 立即更新国旗
+        updateCountryFlag(); // 立即更新国家国旗
+        // 关闭菜单
+        menu.classList.add("hidden");
+      }
+      
+      function setTraditional() {
+        localStorage.setItem("langMode", "traditional");
+        updateFlagIcon(); // 立即更新国旗
+        updateCountryFlag(); // 立即更新国家国旗
+        // 关闭菜单
+        menu.classList.add("hidden");
+      }
       
       // 页面加载时更新国旗
       updateFlagIcon();
