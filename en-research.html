@@ -291,6 +291,8 @@
         document.addEventListener("click", () => {
           menu.classList.add("hidden");
         });
+        
+        document.addEventListener('DOMContentLoaded', displayCountryName);
         </script>
 
       <!-- 保持原有样式，只按内容宽度比例分配 -->
@@ -1737,6 +1739,11 @@
       let i;
       let slides = document.getElementsByClassName("mySlides");
       let dots = document.getElementsByClassName("dot");
+      
+      // 检查元素是否存在
+      if (!slides || slides.length === 0) return;
+      if (!dots || dots.length === 0) return;
+      
       if (n > slides.length) { slideIndex = 1; }
       if (n < 1) { slideIndex = slides.length; }
       for (i = 0; i < slides.length; i++) {
@@ -1745,8 +1752,12 @@
       for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
       }
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].className += " active";
+      if (slides[slideIndex - 1]) {
+        slides[slideIndex - 1].style.display = "block";
+      }
+      if (dots[slideIndex - 1]) {
+        dots[slideIndex - 1].className += " active";
+      }
     }
   </script>
 
