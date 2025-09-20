@@ -404,6 +404,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
+    <script src="js/language_cn.js"></script>
+
+
 </head>
 
 <body>
@@ -686,10 +689,12 @@
           <strong><a href="//24timezones.com/Zurich/time" style="text-decoration: none" class="clock24"
               id="tz24-1658714807-c1268-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
               title="timezone - Zurich" target="_blank" rel="nofollow">德国时间</a></strong>
+          <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
           <span style="float:right;">
             <strong><a href="//24timezones.com/Beijing/time" style="text-decoration: none" class="clock24"
                 id="tz24-1658714942-c133-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
                 title="Time - Beijing" target="_blank" rel="nofollow">中国时间</a></strong>
+            <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
           </span>
         </p>
 
@@ -697,10 +702,12 @@
           <strong><a href="//24timezones.com/Zurich/time" style="text-decoration: none" class="clock24"
               id="tz24-1658678414-c1268-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMSIsInNob3d0aW1lem9uZSI6IjAiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9"
               title="World Clock :: Zurich" target="_blank" rel="nofollow">德国时间 [CET] </a></strong>
+          <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
           <span style="float:right;">
             <strong><a href="//24timezones.com/Beijing/time" style="text-decoration: none" class="clock24"
                 id="tz24-1658678453-c133-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMSIsInNob3d0aW1lem9uZSI6IjAiLCJ0eXBlIjoiZCIsImxhbmciOiJlbiJ9"
                 title="actual time Beijing" target="_blank" rel="nofollow">中国时间 [CST] </a></strong>
+            <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
           </span>
         </p>
       </div>
@@ -912,6 +919,7 @@
           <div><a href="//24timezones.com/Beijing/time" style="text-decoration: none;color:#f35212" class="clock24"
               id="tz24-1705206677-c133-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
               title="Beijing time now" target="_blank" rel="nofollow">北京</a></div>
+          <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
 
         </div>
 
@@ -1026,6 +1034,34 @@
       }
     </script>
 
+    <script>
+      function loadScript(scriptUrl, scriptId) {
+        var existingScript = document.getElementById(scriptId);
+        if (existingScript != null) {
+          document.body.removeChild(existingScript);
+        }
+
+        var script = document.createElement("script");
+        script.language = "javascript";
+        script.type = "text/javascript";
+        script.src = scriptUrl;
+        script.id = scriptId;
+
+        document.body.appendChild(script);
+      }
+
+      function loadAppropriateScript() {
+        var userLang = navigator.language || navigator.userLanguage;
+
+        if (["zh-TW", "zh-HK", "zh-MO"].includes(userLang)) {
+          loadScript("https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_tw.js", "tongwenlet_tw");
+        } else if (userLang === "zh-CN") {
+          loadScript("https://rawgit.com/skofkyo/userChromeJS/master/UserScriptLoader/bookmarklet_cn.js", "tongwenlet_cn");
+        }
+      }
+
+      window.onload = loadAppropriateScript;
+    </script>
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -1070,6 +1106,7 @@
 
 
     <!-- partial -->
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="/js/navi-mobile.js"></script>
     <script src="/js/navi-sidebar.js"></script>
     <script type="text/javascript" src="update_info_script.js"></script>
