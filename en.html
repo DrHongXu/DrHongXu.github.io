@@ -268,11 +268,11 @@
             <a href="es-resume.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
             <a href="fr-resume.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
             <a href="it-resume.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
-            <a href="ru-resume.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
+            <!-- <a href="ru-resume.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
             <a href="cn-resume.html"><img src="./images/wflags_svg/cn.svg" class="flag-icon"> 中文</a>
             <a href="jp-resume.html"><img src="./images/wflags_svg/jp.svg" class="flag-icon"> 日本語</a>
             <a href="kr-resume.html"><img src="./images/wflags_svg/kr.svg" class="flag-icon"> 한국어</a>
-            <a href="ar-resume.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a>
+            <a href="ar-resume.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a> -->
           </div>
 
           <!-- 可选国旗图标 -->
@@ -624,27 +624,23 @@
         <strong><a href="javascript:void(0);" class="icon" onclick="myFunction()"
             style="margin-top: 9px; display: inline-block;">
             <div style="display: flex; align-items: center;">
-              <span style="display: inline-block; height: 15px; line-height: 15px;"><small>MENU</small></span>
+              <span style="display: inline-block; height: 15px; line-height: 15px;"><small></small></span>
               <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
             </div>
           </a></strong>
       </div>
 
-
-
-
       
       <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
-        <text style="color:rgb(237, 118, 7);font-size:15px">➔ Hey, Welcome! </text>
+        <text style="color:rgb(237, 118, 7);font-size:15px">➔ Welcome friends from <span id="location2">the World</span>! <img style="float:right;height:14px;margin-top:2px;" id="country-flag-local-storage" src="./images/wflags/un.png"></text>
           <span style="float:right;">
-           <span id="date-display-2"></span>
+           <!-- <span id="date-display-2"></span> -->
           </span>
       </p>
 
       <p align="justify">
-        <span class="display-mobile">Greetings, friends from <span id="location2">the World</span>! <br><br></span>
 
-        Energy powers human civilization, and energy materials tackle the challenges of <strong>energy security</strong> and <strong>climate change</strong>, catalyzing the radical AI-driven industrial revolution. At the interplay of <strong>Innovation</strong>–<strong>Integration</strong>-<strong>Intelligence</strong>, Dr. Hong Xu is dedicated to advance critical materials for e-power systems and smart grid applications, including
+         Energy powers human civilization, and energy materials tackle the challenges of <strong>energy security</strong> and <strong>climate change</strong>, catalyzing the radical AI-driven industrial revolution. At the interplay of <strong>Innovation</strong>–<strong>Integration</strong>-<strong>Intelligence</strong>, Dr. Hong Xu is dedicated to advance critical materials for e-power systems and smart grid applications, including
         solar cells, lithium-ion batteries, electrolyzers, and hydrogen fuel cells.
          By reforming functional materials and device architectures, his work enhances energy <strong>efficiency</strong>, materials <strong>durability</strong>, and the lab-to-market <strong>scalability</strong> of sustainable energy systems. His efforts have been rewarded with
          <strong><span class="no_of_papers"></span></strong> publications and <strong><span class="no_of_patents_sum"></span></strong> patents (granted/filed) addressing green transition, in collaboration with global institutions. Notably, his systematic work in X-ray tomography for fuel cell studies achieved <strong>cutting-edge</strong> temporal (0.1 s) and spatial (0.4 μm) resolution worldwide, leveraging joint efforts with <strong><a href="https://global.toyota/en/" target="_blank">Toyota Central R&D Labs</a></strong> for critical materials research, and <strong><a href="https://psi.ch/sls/tomcat/" target="_blank">Swiss Light Source</a></strong> for 4D imaging development. This milestone was highlighted by the <strong><a href="https://psi.ch" target="_blank">Paul Scherrer Institute</a></strong> and presented at ECS in Atlanta as invited talk with travel grant. 
@@ -1048,7 +1044,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (dateEl1) dateEl1.innerHTML = formattedDate;
     if (dateEl2) dateEl2.innerHTML = formattedDate;
+    
+    // 根据缓存的countryCode显示国旗
+    updateFlagFromCache();
 });
+
+function updateFlagFromCache() {
+    const cachedCode = localStorage.getItem('countryCode');
+    const flagImg = document.getElementById('country-flag-local-storage');
+    
+    if (cachedCode && flagImg) {
+        flagImg.src = `./images/wflags/${cachedCode}.png`;
+        flagImg.alt = `Flag of ${cachedCode.toUpperCase()}`;
+        
+        // 如果图片加载失败，显示默认的UN旗帜
+        flagImg.onerror = function() {
+            this.src = './images/wflags/un.png';
+            this.alt = 'United Nations';
+        };
+    }
+}
 
 function getCurrentDateFormatted(locale) {
     const options = {
