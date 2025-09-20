@@ -636,25 +636,9 @@
       
       <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
         <text style="color:rgb(237, 118, 7);font-size:15px">➔ Hey, Welcome! </text>
-        <span style="float:right;">
-          <span style="float:right;font-family:verdana">
-            <select id="languages" name="languages"
-              style="width: 100px;color:inherit;display:inline-block;margin-bottom:0px;"
-              onchange="window.location.href=this.options [this.selectedIndex].value">
-              <option value="en.html" select>🇬🇧 English</option>
-              <option value="de.html">🇩🇪 Deutsch</option>
-              <option value="es.html">🇪🇸 Español</option>
-              <option value="fr.html">🇫🇷 Français</option>
-              <option value="it.html">🇮🇹 Italiano</option>
-              <!-- <option value="ru.html">🇷🇺 Русский</option>
-              <option value="cn.html">🇨🇳 中文</option>
-              <option value="jp.html">🇯🇵 日本語</option>
-              <option value="kr.html">🇰🇷 한국어</option>
-              <option value="ar.html">🇸🇦 اللغة العربية</option> -->
-              
-            </select>
+          <span style="float:right;">
+           <span id="date-display-2"></span>
           </span>
-        </span>
       </p>
 
       <p align="justify">
@@ -1055,30 +1039,32 @@
   </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('date-display').innerHTML = getCurrentDateFormatted('en-US');
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    // 获取两个元素
+    const dateEl1 = document.getElementById('date-display');
+    const dateEl2 = document.getElementById('date-display-2');
 
-    function getCurrentDateFormatted(locale) {
-      const options = {
+    const formattedDate = getCurrentDateFormatted('en-US');
+
+    if (dateEl1) dateEl1.innerHTML = formattedDate;
+    if (dateEl2) dateEl2.innerHTML = formattedDate;
+});
+
+function getCurrentDateFormatted(locale) {
+    const options = {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit',
         weekday: 'short'
-      };
+    };
 
-      const currentDate = new Date().toLocaleDateString(locale, options);
-      // Split the result by comma and trim any white spaces
-      const parts = currentDate.split(',');
-      const weekday = parts[0].trim();
-      const date = parts[1].trim();
+    const currentDate = new Date().toLocaleDateString(locale, options);
+    const parts = currentDate.split(',');
+    const weekday = parts[0].trim();
+    const date = parts[1].trim();
 
-      // The regular expression and match method are not needed anymore.
-      // Replace slashes with hyphens if needed and format as "MM-DD-YYYY"
-      const formattedDate = date.replace(/\//g, '/');
-
-      return `<span style="color:#f35212;">${weekday}</span> - ${formattedDate}`;
-    }
+    return `<span style="color:#f35212;">${weekday}</span> - ${date}`;
+}
   </script>
 
   <script>
