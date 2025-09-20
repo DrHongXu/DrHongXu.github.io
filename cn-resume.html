@@ -344,28 +344,7 @@
     }
     </style>
     
-    <script>
-    const button = document.getElementById("language-button");
-    const flagButton = document.getElementById("flag-button-lange");
-    const menu = document.getElementById("language-menu");
-    
-    // 为En文字添加点击事件
-    button.addEventListener("click", (event) => {
-      event.stopPropagation(); // 阻止事件冒泡
-      menu.classList.toggle("hidden");
-    });
-    
-    // 为国旗图标添加点击事件
-    flagButton.addEventListener("click", (event) => {
-      event.stopPropagation(); // 阻止事件冒泡
-      menu.classList.toggle("hidden");
-    });
-    
-    // 点击页面其他地方收起菜单
-    document.addEventListener("click", () => {
-      menu.classList.add("hidden");
-    });
-    </script>
+
 
     <!-- Home -->
     <div>
@@ -1273,7 +1252,6 @@
     <script type="text/javascript" src="/js/scholar_fetch.js"></script>
 
 
-    <script type="text/javascript" src="/js/cn_fanti_translate.js"></script>
 
     <script type="text/javascript" src="/js/cn_holiday_display.js"></script>
     <script type="text/javascript" src="update_info_script.js"></script>
