@@ -256,22 +256,24 @@
         <span id="language-button" class='element' style="cursor:pointer;">Zh<span style="color:transparent;">▾&nbsp;&nbsp;</span></span>
         <!-- 下拉菜单 -->
         <div id="language-menu" class="language-menu hidden">
-          <a href="cn-resume.html"><img src="./images/wflags_svg/cn.svg" class="flag-icon"> 中文</a>
-          <a href="jp-resume.html"><img src="./images/wflags_svg/jp.svg" class="flag-icon"> 日本語</a>
-          <a href="kr-resume.html"><img src="./images/wflags_svg/kr.svg" class="flag-icon"> 한국어</a>
-          <a href="en-resume.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
-          <a href="de-resume.html"><img src="./images/wflags_svg/de.svg" class="flag-icon"> Deutsch</a>
-          <a href="es-resume.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
-          <a href="fr-resume.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
-          <a href="it-resume.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
-          <a href="ru-resume.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
-          <a href="ar-resume.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a>
+          <a href="#" onclick="setSimplified()" ><img src="./images/wflags_svg/cn.svg" class="flag-icon"> 中文(简体)</a>
+          <a href="#" onclick="setTraditional()"><img src="./images/wflags_svg/hk.svg" class="flag-icon"> 中文(繁体)</a>
+          <a href="jp.html"><img src="./images/wflags_svg/jp.svg" class="flag-icon"> 日本語</a>
+          <a href="kr.html"><img src="./images/wflags_svg/kr.svg" class="flag-icon"> 한국어</a>
+          <a href="en.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
+          <a href="de.html"><img src="./images/wflags_svg/de.svg" class="flag-icon"> Deutsch</a>
+          <a href="es.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
+          <a href="fr.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
+          <a href="it.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
+          <a href="ru.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
+          <a href="ar.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a>
         </div>
 
         <!-- 可选国旗图标 -->
         <span class='name'>
-          <img id="flag-button" src="./images/wflags_svg/cn.svg" style="width:23px !important; height:20px !important; position:relative; top:-8px; left:11px; cursor:pointer; object-fit:fill;">
+          <img id="flag-button-lange" src="./images/wflags_svg/cn.svg" style="width:23px !important; height:20px !important; position:relative; top:-8px; left:11px; cursor:pointer; object-fit:fill;">
         </span>
+
     </div>
 
     <style>
@@ -337,8 +339,98 @@
       
       <script>
       const button = document.getElementById("language-button");
-      const flagButton = document.getElementById("flag-button");
+      const flagButton = document.getElementById("flag-button-lange");
       const menu = document.getElementById("language-menu");
+      
+      // 根据languageMode动态切换国旗
+      function updateFlagIcon() {
+        const langMode = localStorage.getItem("langMode");
+        console.log("Current langMode:", langMode);
+        console.log("flagButton element:", flagButton);
+        
+        if (langMode === "traditional") {
+          console.log("Setting flag to hk.svg");
+          flagButton.src = "./images/wflags_svg/hk.svg";
+        } else {
+          console.log("Setting flag to cn.svg");
+          flagButton.src = "./images/wflags_svg/cn.svg";
+        }
+      }
+      
+      // 根据countryCode动态显示国旗
+      function updateCountryFlag() {
+        const cachedCode = localStorage.getItem('countryCode');
+        const countryFlagImg = document.getElementById('country-flag-local-storage');
+        
+        console.log("=== Country Flag Debug ===");
+        console.log("countryCode from localStorage:", cachedCode);
+        console.log("countryFlagImg element:", countryFlagImg);
+        console.log("All localStorage keys:", Object.keys(localStorage));
+        
+        // 检查是否有其他相关的localStorage项
+        const countryCodeCache = localStorage.getItem('countryCodeCache');
+        console.log("countryCodeCache:", countryCodeCache);
+        
+        if (cachedCode && countryFlagImg) {
+          // 确保countryCode是小写的，因为图片文件名是小写
+          const lowerCode = cachedCode.toLowerCase();
+          const flagPath = `./images/wflags/${lowerCode}.png`;
+          
+          console.log("Setting flag to:", flagPath);
+          
+          countryFlagImg.src = flagPath;
+          countryFlagImg.alt = `Flag of ${cachedCode.toUpperCase()}`;
+          
+          // 如果图片加载失败，显示默认的UN旗帜
+          countryFlagImg.onerror = function() {
+            console.log("Flag image failed to load:", flagPath);
+            this.src = './images/wflags/un.png';
+            this.alt = 'United Nations';
+          };
+          
+          countryFlagImg.onload = function() {
+            console.log("Flag image loaded successfully:", flagPath);
+          };
+        } else {
+          console.log("Missing countryCode or countryFlagImg element");
+          if (!cachedCode) console.log("No countryCode in localStorage");
+          if (!countryFlagImg) console.log("No country-flag-local-storage element found");
+        }
+        console.log("=== End Debug ===");
+      }
+      
+      // 使用js/cn_fanti_translate.js中定义的setSimplified和setTraditional函数
+      // 这里不再重复定义，避免函数覆盖
+      
+      // 页面加载时更新国旗
+      updateFlagIcon();
+      
+      // 确保DOM完全加载后再更新国旗
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateCountryFlag);
+      } else {
+        updateCountryFlag();
+      }
+      
+      // 监听languageMode变化
+      window.addEventListener('storage', function(e) {
+        if (e.key === 'langMode') {
+          updateFlagIcon();
+        } else if (e.key === 'countryCode') {
+          updateCountryFlag();
+        }
+      });
+      
+      // 监听localStorage变化（同页面内）
+      const originalSetItem = localStorage.setItem;
+      localStorage.setItem = function(key, value) {
+        originalSetItem.apply(this, arguments);
+        if (key === 'langMode') {
+          updateFlagIcon();
+        } else if (key === 'countryCode') {
+          updateCountryFlag();
+        }
+      };
       
       // 为En文字添加点击事件
       button.addEventListener("click", (event) => {
@@ -654,7 +746,7 @@
                         style="margin-top: 22px; display: inline-block;">
                         <div style="display: flex; align-items: center;">
                             <span
-                                style="display: inline-block; height: 20px; line-height: 20px;"><small>导航</small></span>
+                                style="display: inline-block; height: 20px; line-height: 20px;"><small></small></span>
                             <i class="fa fa-bars" style="margin-left: 5px; display: inline-block; height: 20px;"></i>
                             
                         </div>
@@ -664,31 +756,17 @@
             </div>
 
             <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
-                <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 嗨！你好！ </text>
-                <span style="float:right; font-family:verdana">
-                    <select id="languages" name="languages"
-                    style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;" onchange="handleLanguageChange(this)">
-                    <option value="simplified" select>🇨🇳 中文(简体)</option>
-                    <option value="traditional">🇭🇰 中文(繁体)</option>
-                    <option value="jp.html">🇯🇵 日本語</option>
-                    <option value="kr.html">🇰🇷 한국어</option>
-                    <option value="de.html">🇩🇪 Deutsch</option>
-                    <option value="en.html">🇬🇧 English</option>
-                    <option value="es.html">🇪🇸 Español</option>
-                    <option value="fr.html">🇫🇷 Français</option>
-                    <option value="it.html">🇮🇹 Italiano</option>
-                    <option value="ru.html">🇷🇺 Русский</option>
-                    <option value="ar.html">🇸🇦 اللغة العربية</option>
-                  </select>
-                  
-                </span>
+                <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 你好! 欢迎来自<span class="geo-location">地球</span>的朋友 :-）<img style="float:right;height:14px;margin-top:4px;" id="country-flag-local-storage" src="./images/wflags/un.png"></text>
+                
+
+
             </p>
 
             <div>
 
 
         <p align="justify">
-         <span class="display-mobile">欢迎来自<span class="geo-location">地球</span>的朋友 :-）</br></br></span>
+         <span class="display-mobile"></span>
 
          从钻木取火到电动汽车，能源定义文明进步的基石。秉承“<strong>创先-创新–创效</strong>”的理念，徐泓博士致力于<strong>能源与交通</strong>领域<strong>效能提升</strong>与<strong>碳中和</strong>，科研涵盖太阳能电池、锂电池、电解槽以及氢燃料电池。攻读学位期间与跨国企业及中欧学术机构合作发表<strong>论文<span class="no_of_papers"></span>余篇</strong> (被引<span class="google_scholar_citation"></span>余次), 申请<strong><span class="no_of_patents_sum"></span>项专利</strong> (3项已授权)。依托<strong><a href="https://psi.ch" target="_blank">瑞士光源</a></strong>和<strong><a href="https://www.tytlabs.co.jp/" target="_blank">丰田中央研究院</a></strong>合作开发的用于燃料电池健康诊断超快 (0.1秒) 高分辨 (0.4微米) X射线CT技术成果，获得瑞士联邦<strong><a href="https://psi.ch"
           target="_blank">保罗谢尔研究院</a></strong>科研亮点推荐，并受<strong>美国电化学学会</strong>论文邀请和资助赴亚特兰大作会议报告。此外，他曾在<strong><a href="https://unfccc.int/" target="_blank">联合国波恩气候变化大会</a></strong>主持“<strong>中国能源转型</strong>与技术创新”主题分会，并多次参与<strong><a href="https://unece.org/" target="_blank">联合国欧洲经济委员会</a></strong><strong>交通与气候专家组</strong>会议以及<strong>氢能工作小组</strong>会议讨论。同时他还担任10余本能源与交通领域高引期刊的<strong>审稿人</strong>, 曾出任瑞士<strong><a href="https://symposium.org/" target="_blank">圣加仑国际经济论坛</a></strong>学术评审、<strong><a href="https://tum.de" target="_blank">德国慕尼黑工业大学</a></strong>校友导师、<strong><a href="https://oxfordenergy.org" target="_blank">英国牛津能源研究所</a></strong>访问研究员，以及<strong><a href="https://salzburgglobal.org" target="_blank">奥地利萨尔茨堡国际</a></strong>学者。

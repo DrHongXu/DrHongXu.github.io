@@ -590,11 +590,11 @@
                 <a href="cn-research.html" class="active">
 
                     <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text>
-                            </rt></ruby>
-                        <ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby> <small><ruby>博 士<rt>科学 /
-                                    Dr.</rt>
-                            </ruby></small>
-                    </h3>
+                    </rt></ruby>&nbsp;<ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby>
+                <small><ruby>博 士<rt>科学 /
+                            Dr.</rt>
+                    </ruby></small>
+                     </h3>
                 </a>
 
                 <div id="myLinks">
@@ -669,22 +669,19 @@
 
             <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
                 <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 研究进展 </text>
-                <span style="float:right; font-family:verdana">
-                    <select id="languages" name="languages"
-                    style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;" onchange="handleLanguageChange(this)">
-                    <option value="simplified" select>🇨🇳 中文(简体)</option>
-                    <option value="traditional">🇭🇰 中文(繁体)</option>
-                    <option value="jp.html">🇯🇵 日本語</option>
-                    <option value="kr.html">🇰🇷 한국어</option>
-                    <option value="de.html">🇩🇪 Deutsch</option>
-                    <option value="en.html">🇬🇧 English</option>
-                    <option value="es.html">🇪🇸 Español</option>
-                    <option value="fr.html">🇫🇷 Français</option>
-                    <option value="it.html">🇮🇹 Italiano</option>
-                    <option value="ru.html">🇷🇺 Русский</option>
-                    <option value="ar.html">🇸🇦 اللغة العربية</option>
-                  </select>
-                </span>
+                <span style="float:right;">
+                    <span style="float:right;font-family:verdana">
+                      <select id="content-select" name="content-select"
+                        style="width: 80px;color:inherit;display:inline-block;margin-bottom:0px;"
+                        onchange="window.location.href=this.options [this.selectedIndex].value">
+                        <option value="cn-research.html#publications" select>学术论文</option>
+                        <option value="cn-research.html#patents">中欧专利</option>
+                        <option value="cn-research.html#presentations">学术会议</option>
+                        <option value="cn-research.html#equity-research">行研报告</option>
+                      </select>
+                    </span>
+                  </span>
+
             </p>
             <div>
                 <hr class="display-mobile" style="width:113%">

@@ -59,6 +59,7 @@ const cnProvincesMap = {
       }
     }
   
+
     // 简繁旗
     const simplifiedFlag = document.getElementById("simplifed-language-flag");
     const traditionalFlag = document.getElementById("traditional-language-flag");

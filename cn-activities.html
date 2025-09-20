@@ -275,6 +275,7 @@
       <span class='name'>
         <img id="flag-button" src="./images/wflags_svg/cn.svg" style="width:23px !important; height:20px !important; position:relative; top:-8px; left:11px; cursor:pointer; object-fit:fill;">
       </span>
+      
   </div>
 
   <style>
@@ -584,10 +585,12 @@
 
         <a href="cn-activities.html" class="active">
 
-          <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text></rt></ruby>
-            <ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby> <small><ruby>博 士<rt>科学 / Dr.</rt>
-              </ruby></small>
-          </h3>
+          <h3 class="display-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text>
+          </rt></ruby>&nbsp;<ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby>
+      <small><ruby>博 士<rt>科学 /
+                  Dr.</rt>
+          </ruby></small>
+           </h3>
         </a>
 
         <div id="myLinks">
@@ -659,21 +662,18 @@
 
       <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
         <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 兴趣爱好 </text>
-        <span style="float:right; font-family:verdana">
-          <select id="languages" name="languages"
-            style="width:110px;display:inline-block;color:inherit;margin-bottom:0px;" onchange="handleLanguageChange(this)">
-            <option value="simplified" select>🇨🇳 中文(简体)</option>
-            <option value="traditional">🇭🇰 中文(繁体)</option>
-            <option value="jp.html">🇯🇵 日本語</option>
-            <option value="kr.html">🇰🇷 한국어</option>
-            <option value="de.html">🇩🇪 Deutsch</option>
-            <option value="en.html">🇬🇧 English</option>
-            <option value="es.html">🇪🇸 Español</option>
-            <option value="fr.html">🇫🇷 Français</option>
-            <option value="it.html">🇮🇹 Italiano</option>
-            <option value="ru.html">🇷🇺 Русский</option>
-            <option value="ar.html">🇸🇦 اللغة العربية</option>
-          </select>
+        <span style="float:right;">
+          <span style="float:right;font-family:verdana">
+            <select id="content-select" name="content-select"
+              style="width: 60px;color:inherit;display:inline-block;margin-bottom:0px;"
+              onchange="window.location.href=this.options [this.selectedIndex].value">
+              <option value="cn-activities.html" select>演讲</option>
+              <option value="cn-activities.html#writing" select>写作</option>
+              <option value="cn-activities.html#visiting" select>参访</option>
+              <option value="cn-activities.html#travel">旅行</option>
+              <option value="cn-activities.html#sports">运动</option>
+            </select>
+          </span>
         </span>
       </p>
       <div>

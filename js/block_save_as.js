@@ -68,3 +68,24 @@ window.onload = function () {
   });
 }
 
+const select = document.getElementById('content-select');
+const offset = 80; // 向下偏移 80px
+
+select.addEventListener('change', function() {
+  const url = this.value;
+  const [page, hash] = url.split('#');
+
+  const currentPage = window.location.pathname.split('/').pop();
+
+  if (hash && page === currentPage) {
+    // 当前页面跳转锚点
+    const el = document.getElementById(hash);
+    if (el) {
+      const topPos = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: topPos, behavior: 'smooth' });
+    }
+  } else {
+    // 跨页面跳转或没有 hash
+    window.location.href = url;
+  }
+});
