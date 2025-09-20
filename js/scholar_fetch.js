@@ -33,11 +33,15 @@ function extractCitationCount(metaContent) {
 
 async function displayCitationCount() {
     const metaContent = await fetchScholarMeta();
-    if (metaContent) {
-        const citationCount = extractCitationCount(metaContent);
-        document.getElementById('citation-count').textContent = citationCount;
-    } else {
-        document.getElementById('citation-count').textContent = 'N/A';
+    const citationElement = document.getElementById('citation-count');
+    
+    if (citationElement) {
+        if (metaContent) {
+            const citationCount = extractCitationCount(metaContent);
+            citationElement.textContent = citationCount;
+        } else {
+            citationElement.textContent = 'N/A';
+        }
     }
 }
 

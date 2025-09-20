@@ -34,6 +34,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -158,7 +161,7 @@
   <!-- block save as
       ================================================== -->
   <script type="text/javascript">
-    window.onload = function () {
+    document.addEventListener('DOMContentLoaded', function () {
       document.onkeydown = function () {
         var e = window.event || arguments[0];
         //屏蔽F12
@@ -180,7 +183,7 @@
 
         return false;
       }
-    }
+    });
   </script>
 
 <nav class="display-mobile">
@@ -274,7 +277,7 @@
 
       <!-- 可选国旗图标 -->
       <span class='name'>
-        <img id="flag-button" id="country-flag-local-storage" src="./images/wflags_svg/cn.svg" style="width:23px !important; height:20px !important; position:relative; top:-8px; left:11px; cursor:pointer; object-fit:fill;">
+        <img id="flag-button" id="flag-button-lange" src="./images/wflags_svg/cn.svg" style="width:23px !important; height:20px !important; position:relative; top:-8px; left:11px; cursor:pointer; object-fit:fill;">
       </span>
 
     </a>
@@ -419,10 +422,6 @@
 <div class="display-mobile" style="height: 60px;"></div> 
 <!-- 60px 替换为你的导航实际高度 -->
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script type="module">
     async function fetchCountries() {
@@ -1236,7 +1235,7 @@
         }
       }
 
-      window.onload = loadAppropriateScript;
+      document.addEventListener('DOMContentLoaded', loadAppropriateScript);
     </script>
 
 
@@ -1279,46 +1278,6 @@
     <script type="text/javascript" src="/js/cn_holiday_display.js"></script>
     <script type="text/javascript" src="update_info_script.js"></script>
 
-    <script type="text/javascript">
-      window.onload = function () {
-        // Block certain keyboard shortcuts
-        document.onkeydown = function (e) {
-          e = e || window.event;
-
-          // Block F12
-          if (e.keyCode == 123) {
-            return false;
-          }
-          // Block Ctrl+Shift+I
-          else if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-            return false;
-          }
-          // Block Shift+F10
-          else if (e.shiftKey && e.keyCode == 121) {
-            return false;
-          }
-          // Block Ctrl+S (Save As)
-          else if (e.ctrlKey && e.keyCode == 83) {
-            e.preventDefault();
-            return false;
-          }
-          // Block Ctrl+C (Copy)
-          else if (e.ctrlKey && e.keyCode == 67) {
-            return false;
-          }
-        };
-
-        // Block right-click context menu
-        document.oncontextmenu = function () {
-          return false;
-        };
-
-        // Block text selection (Copy action)
-        document.onselectstart = function () {
-          return false;
-        };
-      };
-    </script>
     <!-- End Document
 ================================================== -->
 </body>

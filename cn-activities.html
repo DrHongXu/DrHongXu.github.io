@@ -274,7 +274,7 @@
 
       <!-- 可选国旗图标 -->
       <span class='name'>
-        <img id="flag-button" id="country-flag-local-storage" src="./images/wflags_svg/cn.svg" style="width:23px !important; height:20px !important; position:relative; top:-8px; left:11px; cursor:pointer; object-fit:fill;">
+        <img id="flag-button-lange" src="./images/wflags_svg/cn.svg" style="width:23px !important; height:20px !important; position:relative; top:-8px; left:11px; cursor:pointer; object-fit:fill;">
       </span>
     </a>
   </div>
@@ -342,7 +342,7 @@
     
     <script>
     const button = document.getElementById("language-button");
-    const flagButton = document.getElementById("flag-button");
+    const flagButton = document.getElementById("flag-button-lange");
     const menu = document.getElementById("language-menu");
     
     // 为En文字添加点击事件
@@ -555,14 +555,8 @@
         <span style="float:right; font-family:verdana">
           <span style="display:inline-block;margin-top:13px;margin-bottom:0px;font-size:small" for="languages">
             <a href="#" onclick="setSimplified()" class="d-inline-block p-3"><img src="./images/wflags_svg/cn.svg" alt="flag"
-              style="height:15px; width:24px; display:inline-block; position:relative; top:3px; object-fit: cover;"><img id="simplifed-language-flag"
-              style="height:15px; width:24px; display:none; position:relative; top:3px; object-fit: cover; margin-left:5px; margin-right:0px;"
-              alt="flag">&nbsp;简</a> / <a href="#" onclick="setTraditional()" class="d-inline-block p-3"><img src="./images/wflags_svg/hk.svg" alt="flag"
-              style="height:15px; width:24px; display:inline-block; position:relative; top:3px; object-fit: cover;"><img id="traditional-add-language-flag"
-              style="height:15px; width:24px; display:none; position:relative; top:3px; object-fit:cover; margin-left:5px;"
-              alt="flag"><img id="traditional-language-flag"
-              style="height:15px; width:24px; display:none; position:relative; top:3px; object-fit: cover;left: 5px;"
-              alt="flag">
+              style="height:15px; width:24px; display:inline-block; position:relative; top:3px; object-fit: cover;">&nbsp;简</a> / <a href="#" onclick="setTraditional()" class="d-inline-block p-3"><img src="./images/wflags_svg/hk.svg" alt="flag"
+              style="height:15px; width:24px; display:inline-block; position:relative; top:3px; object-fit: cover;">
               &nbsp;繁</a></span>&nbsp;<select id="languages" name="languages"
               style="width: 57px;display:inline-block;color:inherit;margin-bottom:0px;"
               onchange="window.location.href=this.options [this.selectedIndex].value">

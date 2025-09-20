@@ -69,7 +69,7 @@ if (typeof cnProvincesMap === 'undefined') {
       cachedCode = localStorage.getItem('countryCode');
     }
     
-    if (cachedCode && countryFlagImg && cachedCode.trim() !== '') {
+    if (cachedCode && countryFlagImg && cachedCode.trim() !== '' && cachedCode.length > 1) {
       const lowerCode = cachedCode.toLowerCase();
       const flagPath = `./images/wflags/${lowerCode}.png`;
       

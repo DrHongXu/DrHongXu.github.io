@@ -5,9 +5,11 @@ var menuToggle = document.querySelector('[data-js="menu-toggle"]');
 //   menuToggle.click();
 // }, 2000);
 
-// Clear the interval on any click
+// Clear the interval on any click (if it exists)
 document.body.addEventListener('click', function () {
-   clearInterval(interval);
+   if (typeof interval !== 'undefined') {
+       clearInterval(interval);
+   }
 });
 
 if (menuToggle) {
