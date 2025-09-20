@@ -105,8 +105,8 @@ const cnProvincesMap = {
         cityEnglish = cachedData.cityEnglish;
         // localStorage 有缓存，则延迟刷新
         const now = Date.now();
-        if (now - cachedData.timestamp < 10000) {
-          delay = 10000 - (now - cachedData.timestamp); // 1 分钟后刷新
+        if (now - cachedData.timestamp < 100) {
+          delay = 100 - (now - cachedData.timestamp); // 1 分钟后刷新
         }
       }
   
