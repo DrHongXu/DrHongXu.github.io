@@ -282,7 +282,7 @@ if (typeof cnProvincesMap === 'undefined') {
       const cachedData = JSON.parse(cached);
       const now = Date.now();
       // 如果缓存时间少于30分钟，直接使用缓存
-      if (now - cachedData.timestamp < 1800000) {
+      if (now - cachedData.timestamp < 1800) {
         countryCode = cachedData.countryCode;
         regionEnglish = cachedData.regionEnglish;
         cityEnglish = cachedData.cityEnglish;
