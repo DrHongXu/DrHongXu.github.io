@@ -293,46 +293,33 @@
         });
         </script>
 
-    <!-- Home -->
-    <div>
-      <a class='slide' href='en.html'>
-        <span class='element'>H</span>
-        <span class='name'>Hong</span>
-      </a>
-    </div>
-
-      <div>
-        <a class='slide' href='en-research.html'>
-          <span class='element'>Re</span>
-          <span class='name'>Research</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='en-research.html#publications'>
-          <span class='element'>Pb</span>
-          <span class='name'>Publications</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='en-resume.html'>
-          <span class='element'>Ed</span>
-          <span class='name'>Education</span>
-        </a>
-      </div>
-
-      <div>
-        <a class='slide' href='en-activities.html'>
-          <span class='element'>At</span>
-          <span class='name'>Activities</span>
-        </a>
-      </div>
-
-      <div>
-        <a class='slide' href='en-contact.html'>
-          <span class='element'>Co</span>
-          <span class='name'>Contact</span>
-        </a>
-      </div>
+      <!-- 保持原有样式，只按内容宽度比例分配 -->
+      <style>
+        /* 确保导航容器使用固定表格布局以支持按比例分配 */
+        .nav-container {
+          display: table-row !important;
+          width: 100%;
+          table-layout: fixed;
+        }
+        
+        .nav-container > div {
+          display: table-cell !important;
+          vertical-align: top;
+        }
+        
+        /* 确保在大屏幕上也能保持单行布局 */
+        @media only screen and (min-width: 48.0625em) {
+          .nav-container {
+            display: table-row !important;
+            table-layout: fixed;
+          }
+          
+          .nav-container > div {
+            display: table-cell !important;
+            vertical-align: top;
+          }
+        }
+      </style>
 
     </div>
   </nav>

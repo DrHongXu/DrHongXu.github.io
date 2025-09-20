@@ -208,16 +208,16 @@
 
           <!-- 下拉菜单 -->
           <div id="language-menu" class="language-menu hidden">
-            <a href="en.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
-            <a href="de.html"><img src="./images/wflags_svg/de.svg" class="flag-icon"> Deutsch</a>
-            <a href="es.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
-            <a href="fr.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
-            <a href="it.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
-            <!-- <a href="ru.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
-            <a href="cn.html"><img src="./images/wflags_svg/cn.svg" class="flag-icon"> 中文</a>
-            <a href="jp.html"><img src="./images/wflags_svg/jp.svg" class="flag-icon"> 日本語</a>
-            <a href="kr.html"><img src="./images/wflags_svg/kr.svg" class="flag-icon"> 한국어</a>
-            <a href="ar.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a> -->
+            <a href="en-resume.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
+            <a href="de-resume.html"><img src="./images/wflags_svg/de.svg" class="flag-icon"> Deutsch</a>
+            <a href="es-resume.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
+            <a href="fr-resume.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
+            <a href="it-resume.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
+            <!-- <a href="ru-resume.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
+            <a href="cn-resume.html"><img src="./images/wflags_svg/cn.svg" class="flag-icon"> 中文</a>
+            <a href="jp-resume.html"><img src="./images/wflags_svg/jp.svg" class="flag-icon"> 日本語</a>
+            <a href="kr-resume.html"><img src="./images/wflags_svg/kr.svg" class="flag-icon"> 한국어</a>
+            <a href="ar-resume.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a> -->
           </div>
 
           <!-- 可选国旗图标 -->
@@ -286,69 +286,33 @@
         }
         </style>
         
-        <script>
-        const button = document.getElementById("language-button");
-        const flagButton = document.getElementById("flag-button");
-        const menu = document.getElementById("language-menu");
-        
-        // 为En文字添加点击事件
-        button.addEventListener("click", (event) => {
-          event.stopPropagation(); // 阻止事件冒泡
-          menu.classList.toggle("hidden");
-        });
-        
-        // 为国旗图标添加点击事件
-        flagButton.addEventListener("click", (event) => {
-          event.stopPropagation(); // 阻止事件冒泡
-          menu.classList.toggle("hidden");
-        });
-        
-        // 点击页面其他地方收起菜单
-        document.addEventListener("click", () => {
-          menu.classList.add("hidden");
-        });
-        </script>
-        
-    <!-- Home -->
-    <div>
-      <a class='slide' href='en.html'>
-        <span class='element'>H</span>
-        <span class='name'>Hong</span>
-      </a>
-    </div>
-
-      <div>
-        <a class='slide' href='en-research.html'>
-          <span class='element'>Re</span>
-          <span class='name'>Research</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='en-research.html#publications'>
-          <span class='element'>Pb</span>
-          <span class='name'>Publications</span>
-        </a>
-      </div>
-      <div>
-        <a class='slide' href='en-resume.html'>
-          <span class='element'>Ed</span>
-          <span class='name'>Education</span>
-        </a>
-      </div>
-
-      <div>
-        <a class='slide' href='en-activities.html'>
-          <span class='element'>At</span>
-          <span class='name'>Activities</span>
-        </a>
-      </div>
-
-      <div>
-        <a class='slide' href='en-contact.html'>
-          <span class='element'>Co</span>
-          <span class='name'>Contact</span>
-        </a>
-      </div>
+         <!-- 保持原有样式，只按内容宽度比例分配 -->
+         <style>
+          /* 确保导航容器使用固定表格布局以支持按比例分配 */
+          .nav-container {
+            display: table-row !important;
+            width: 100%;
+            table-layout: fixed;
+          }
+          
+          .nav-container > div {
+            display: table-cell !important;
+            vertical-align: top;
+          }
+          
+          /* 确保在大屏幕上也能保持单行布局 */
+          @media only screen and (min-width: 48.0625em) {
+            .nav-container {
+              display: table-row !important;
+              table-layout: fixed;
+            }
+            
+            .nav-container > div {
+              display: table-cell !important;
+              vertical-align: top;
+            }
+          }
+        </style>
 
     </div>
   </nav>

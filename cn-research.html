@@ -248,15 +248,15 @@
         <div id="language-menu" class="language-menu hidden">
             <a href="#" onclick="setSimplified()" ><img src="./images/wflags_svg/cn.svg" class="flag-icon"> 中文(简体)</a>
             <a href="#" onclick="setTraditional()"><img src="./images/wflags_svg/hk.svg" class="flag-icon"> 中文(繁体)</a>
-          <a href="jp-resume.html"><img src="./images/wflags_svg/jp.svg" class="flag-icon"> 日本語</a>
-          <a href="kr-resume.html"><img src="./images/wflags_svg/kr.svg" class="flag-icon"> 한국어</a>
-          <a href="en-resume.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
-          <a href="de-resume.html"><img src="./images/wflags_svg/de.svg" class="flag-icon"> Deutsch</a>
-          <a href="es-resume.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
-          <a href="fr-resume.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
-          <a href="it-resume.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
-          <a href="ru-resume.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
-          <a href="ar-resume.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a>
+          <a href="jp-research.html"><img src="./images/wflags_svg/jp.svg" class="flag-icon"> 日本語</a>
+          <a href="kr-research.html"><img src="./images/wflags_svg/kr.svg" class="flag-icon"> 한국어</a>
+          <a href="en-research.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
+          <a href="de-research.html"><img src="./images/wflags_svg/de.svg" class="flag-icon"> Deutsch</a>
+          <a href="es-research.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
+          <a href="fr-research.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
+          <a href="it-research.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
+          <a href="ru-research.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
+          <a href="ar-research.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a>
         </div>
 
         <!-- 可选国旗图标 -->
@@ -268,118 +268,97 @@
     </div>
 
     <style>
-      .language-dropdown {
-        position: relative;
-        display: inline-block;
-      }
-      
-      /* 下拉菜单靠右对齐 */
-      .language-menu {
-        position: absolute;
-        top: 60px;
-        right: 0; /* 靠右 */
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 1px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        min-width: 110px;
-        display: flex;
-        flex-direction: column;
-        padding: 2px 0;
-        z-index: 100;
-        /* 覆盖继承的slide样式 */
-        border-top: none !important;
-        padding-top: 2px !important;
-        /* 重置所有可能影响边框的样式 */
-        border-width: 1px !important;
-        border-style: solid !important;
-        border-color: #ddd !important;
-      }
-      
-      .language-menu a {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 4px 12px;
-        text-decoration: none;
-        color: #333;
-        transition: background 0.2s;
-        /* 确保没有继承的边框 */
-        /* border: none !important;
-        border-top: none !important;
-        border-bottom: none !important; */
-      }
-      
-      .language-menu a:hover {
-        background: #f2f2f2;
-      }
-      
-      .flag-icon {
-        width: 18px;
-        height: 12px;
-        object-fit: fill;
-        object-position: center;
-        display: inline-block;
-        vertical-align: middle;
-      }
-      
-      .hidden {
-        display: none;
-      }
-      </style>
-      
-   
-    <!-- Home -->
-    <div>
-        <a class='slide' href='cn.html'>
-          <span class='element'>H</span>
-          <span class='name'>Hong<br>泓</span>
-        </a>
-      </div>
-
-    <!-- Research -->
-    <div>
-      <a class='slide' href='cn-research.html'>
-        <span class='element'>Re</span>
-        <span class='name'>Research<br>研究</span>
-      </a>
+        .language-dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        /* 下拉菜单靠右对齐 */
+        .language-menu {
+          position: absolute;
+          top: 60px;
+          right: 0; /* 靠右 */
+          background: white;
+          border: 1px solid #ddd;
+          border-radius: 1px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          min-width: 110px;
+          display: flex;
+          flex-direction: column;
+          padding: 2px 0;
+          z-index: 100;
+          /* 覆盖继承的slide样式 */
+          border-top: none !important;
+          padding-top: 2px !important;
+          /* 重置所有可能影响边框的样式 */
+          border-width: 1px !important;
+          border-style: solid !important;
+          border-color: #ddd !important;
+        }
+        
+        .language-menu a {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 4px 12px;
+          text-decoration: none;
+          color: #333;
+          transition: background 0.2s;
+          /* 确保没有继承的边框 */
+          /* border: none !important;
+          border-top: none !important;
+          border-bottom: none !important; */
+        }
+        
+        .language-menu a:hover {
+          background: #f2f2f2;
+        }
+        
+        .flag-icon {
+          width: 18px;
+          height: 12px;
+          object-fit: fill;
+          object-position: center;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        
+        .hidden {
+          display: none;
+        }
+        </style>
+        
+        <!-- 保持原有样式，只按内容宽度比例分配 -->
+        <style>
+          /* 确保导航容器使用固定表格布局以支持按比例分配 */
+          .nav-container {
+            display: table-row !important;
+            width: 100%;
+            table-layout: fixed;
+          }
+          
+          .nav-container > div {
+            display: table-cell !important;
+            vertical-align: top;
+          }
+          
+          /* 确保在大屏幕上也能保持单行布局 */
+          @media only screen and (min-width: 48.0625em) {
+            .nav-container {
+              display: table-row !important;
+              table-layout: fixed;
+            }
+            
+            .nav-container > div {
+              display: table-cell !important;
+              vertical-align: top;
+            }
+          }
+        </style>
+  
     </div>
+  </nav>
 
-    <!-- Publications -->
-    <div>
-      <a class='slide' href='cn-research.html#publications'>
-        <span class='element'>Pb</span>
-        <span class='name'>Publications<br>出版物</span>
-      </a>
-    </div>
-
-    <!-- Education -->
-    <div>
-      <a class='slide' href='cn-resume.html'>
-        <span class='element'>Ed</span>
-        <span class='name'>Education<br>教育背景</span>
-      </a>
-    </div>
-
-    <!-- Activities -->
-    <div>
-      <a class='slide' href='cn-activities.html'>
-        <span class='element'>At</span>
-        <span class='name'>Activities<br>活动</span>
-      </a>
-    </div>
-
-    <!-- Contact -->
-    <div>
-      <a class='slide' href='cn-contact.html'>
-        <span class='element'>Co</span>
-        <span class='name'>Contact<br>联系我</span>
-      </a>
-    </div>
-
-
-  </div>
-</nav>
 <div class="display-mobile" style="height: 60px;"></div> 
 <!-- 60px 替换为你的导航实际高度 -->
 
