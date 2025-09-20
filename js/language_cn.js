@@ -89,11 +89,13 @@ function updateCountryFlag() {
     
     // 如果图片加载失败，显示默认的UN旗帜
     countryFlagImg.onerror = function() {
+      console.log(`Failed to load flag: ${flagPath}, using default UN flag`);
       this.src = './images/wflags/un.png';
       this.alt = 'United Nations';
     };
   } else if (countryFlagImg) {
     // 如果没有国家代码，显示默认旗帜
+    console.log(`No valid country code found (${cachedCode}), using default UN flag`);
     countryFlagImg.src = './images/wflags/un.png';
     countryFlagImg.alt = 'United Nations';
   }
@@ -101,17 +103,17 @@ function updateCountryFlag() {
 
 // 更新语言显示和国旗（用于cn-research.html等页面）
 function updateLanguageDisplay(mode) {
-  const button = document.getElementById("language-button");
+  const languageButton = document.getElementById("language-button");
   const flagButton = document.getElementById("flag-button");
   const flagButtonLange = document.getElementById("flag-button-lange");
 
-  if (button) {
+  if (languageButton) {
     if (mode === "traditional") {
       // 繁体中文
-      button.innerHTML = 'Hk<span style="color:transparent;">▾</span>';
+      languageButton.innerHTML = 'Hk<span style="color:transparent;">▾</span>';
     } else {
       // 简体中文
-      button.innerHTML = 'Zh<span style="color:transparent;">▾</span>';
+      languageButton.innerHTML = 'Zh<span style="color:transparent;">▾</span>';
     }
   }
 
@@ -274,9 +276,9 @@ function updateDisplayImmediate(countryCode, regionEnglish, cityEnglish) {
   });
 
   // 初始化DOM元素引用
-  button = document.getElementById("language-button");
-  flagButton = document.getElementById("flag-button-lange");
-  menu = document.getElementById("language-menu");
+  if (!button) button = document.getElementById("language-button");
+  if (!flagButton) flagButton = document.getElementById("flag-button-lange");
+  if (!menu) menu = document.getElementById("language-menu");
   
   // 页面加载时更新国旗
   updateFlagIcon();
@@ -349,9 +351,9 @@ function updateDisplay(countryCode, regionEnglish, cityEnglish, countries, cityA
   });
 
   // 初始化DOM元素引用
-  button = document.getElementById("language-button");
-  flagButton = document.getElementById("flag-button-lange");
-  menu = document.getElementById("language-menu");
+  if (!button) button = document.getElementById("language-button");
+  if (!flagButton) flagButton = document.getElementById("flag-button-lange");
+  if (!menu) menu = document.getElementById("language-menu");
   
   // 页面加载时更新国旗
   updateFlagIcon();
