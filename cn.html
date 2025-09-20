@@ -338,130 +338,8 @@
       </style>
       
       <script>
-      const button = document.getElementById("language-button");
-      const flagButton = document.getElementById("flag-button-lange");
-      const menu = document.getElementById("language-menu");
-      
-      // 根据languageMode动态切换国旗
-      function updateFlagIcon() {
-        const langMode = localStorage.getItem("langMode");
-        console.log("Current langMode:", langMode);
-        console.log("flagButton element:", flagButton);
-        
-        if (langMode === "traditional") {
-          console.log("Setting flag to hk.svg");
-          flagButton.src = "./images/wflags_svg/hk.svg";
-        } else {
-          console.log("Setting flag to cn.svg");
-          flagButton.src = "./images/wflags_svg/cn.svg";
-        }
-      }
-      
-      // 根据countryCode动态显示国旗
-      function updateCountryFlag() {
-        const cachedCode = localStorage.getItem('countryCode');
-        const countryFlagImg = document.getElementById('country-flag-local-storage');
-        
-        console.log("=== Country Flag Debug ===");
-        console.log("countryCode from localStorage:", cachedCode);
-        console.log("countryFlagImg element:", countryFlagImg);
-        console.log("All localStorage keys:", Object.keys(localStorage));
-        
-        // 检查是否有其他相关的localStorage项
-        const countryCodeCache = localStorage.getItem('countryCodeCache');
-        console.log("countryCodeCache:", countryCodeCache);
-        
-        if (cachedCode && countryFlagImg) {
-          // 确保countryCode是小写的，因为图片文件名是小写
-          const lowerCode = cachedCode.toLowerCase();
-          const flagPath = `./images/wflags/${lowerCode}.png`;
-          
-          console.log("Setting flag to:", flagPath);
-          
-          countryFlagImg.src = flagPath;
-          countryFlagImg.alt = `Flag of ${cachedCode.toUpperCase()}`;
-          
-          // 如果图片加载失败，显示默认的UN旗帜
-          countryFlagImg.onerror = function() {
-            console.log("Flag image failed to load:", flagPath);
-            this.src = './images/wflags/un.png';
-            this.alt = 'United Nations';
-          };
-          
-          countryFlagImg.onload = function() {
-            console.log("Flag image loaded successfully:", flagPath);
-          };
-        } else {
-          console.log("Missing countryCode or countryFlagImg element");
-          if (!cachedCode) console.log("No countryCode in localStorage");
-          if (!countryFlagImg) console.log("No country-flag-local-storage element found");
-        }
-        console.log("=== End Debug ===");
-      }
-      
-      // 重写setSimplified和setTraditional函数，确保国旗立即更新
-      function setSimplified() {
-        localStorage.setItem("langMode", "simplified");
-        updateFlagIcon(); // 立即更新国旗
-        updateCountryFlag(); // 立即更新国家国旗
-        // 关闭菜单
-        menu.classList.add("hidden");
-      }
-      
-      function setTraditional() {
-        localStorage.setItem("langMode", "traditional");
-        updateFlagIcon(); // 立即更新国旗
-        updateCountryFlag(); // 立即更新国家国旗
-        // 关闭菜单
-        menu.classList.add("hidden");
-      }
-      
-      // 页面加载时更新国旗
-      updateFlagIcon();
-      
-      // 确保DOM完全加载后再更新国旗
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', updateCountryFlag);
-      } else {
-        updateCountryFlag();
-      }
-      
-      // 监听languageMode变化
-      window.addEventListener('storage', function(e) {
-        if (e.key === 'langMode') {
-          updateFlagIcon();
-        } else if (e.key === 'countryCode') {
-          updateCountryFlag();
-        }
-      });
-      
-      // 监听localStorage变化（同页面内）
-      const originalSetItem = localStorage.setItem;
-      localStorage.setItem = function(key, value) {
-        originalSetItem.apply(this, arguments);
-        if (key === 'langMode') {
-          updateFlagIcon();
-        } else if (key === 'countryCode') {
-          updateCountryFlag();
-        }
-      };
-      
-      // 为En文字添加点击事件
-      button.addEventListener("click", (event) => {
-        event.stopPropagation(); // 阻止事件冒泡
-        menu.classList.toggle("hidden");
-      });
-      
-      // 为国旗图标添加点击事件
-      flagButton.addEventListener("click", (event) => {
-        event.stopPropagation(); // 阻止事件冒泡
-        menu.classList.toggle("hidden");
-      });
-      
-      // 点击页面其他地方收起菜单
-      document.addEventListener("click", () => {
-        menu.classList.add("hidden");
-      });
+
+   
       </script>
 
     <!-- Home -->
@@ -780,8 +658,6 @@
             <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
                 <text style="color:rgb(237, 118, 7);font-size:15px;">➔ 你好! 欢迎来自<span class="geo-location">地球</span>的朋友 :-）<img style="float:right;height:14px;margin-top:4px;" id="country-flag-local-storage" src="./images/wflags/un.png"></text>
                 
-
-
             </p>
 
             <div>
