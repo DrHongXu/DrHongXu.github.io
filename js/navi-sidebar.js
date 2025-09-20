@@ -10,14 +10,18 @@ document.body.addEventListener('click', function () {
    clearInterval(interval);
 });
 
-menuToggle.addEventListener('click', function () {
-  document.body.classList.toggle('panel-open');
-  menuToggle.classList.toggle('open');
-});
+if (menuToggle) {
+  menuToggle.addEventListener('click', function () {
+    document.body.classList.toggle('panel-open');
+    menuToggle.classList.toggle('open');
+  });
+}
 
 var closePanel = document.querySelector('[data-js="hidden-panel-close"]');
 
-closePanel.addEventListener('click', function () {
-  document.body.classList.remove('panel-open');
-  menuToggle.classList.remove('open');
-});
+if (closePanel) {
+  closePanel.addEventListener('click', function () {
+    document.body.classList.remove('panel-open');
+    menuToggle.classList.remove('open');
+  });
+}

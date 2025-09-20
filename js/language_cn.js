@@ -1,4 +1,6 @@
-const cnProvincesMap = {
+// 检查是否已经声明过，避免重复声明
+if (typeof cnProvincesMap === 'undefined') {
+  var cnProvincesMap = {
     "Beijing": "北京", "Shanghai": "上海", "Tianjin": "天津", "Chongqing": "重庆",
     "Guangdong": "广东", "Zhejiang": "浙江", "Jiangsu": "江苏", "Shandong": "山东",
     "Sichuan": "四川", "Hubei": "湖北", "Hunan": "湖南", "Henan": "河南",
@@ -8,6 +10,7 @@ const cnProvincesMap = {
     "Guangxi": "广西", "Inner Mongolia": "内蒙古", "Tibet": "西藏", "Ningxia": "宁夏",
     "Xinjiang": "新疆", "Guizhou": "贵州", "Yunnan": "云南", "Taiwan": "台湾"
   };
+}
   
   async function fetchCountries() {
     const response = await fetch('/js/countries.json');
@@ -24,6 +27,144 @@ const cnProvincesMap = {
     return country ? (country[language] || country.chinese) : '地球';
   }
   
+  // 全局变量和函数定义
+  let button, flagButton, menu;
+  let listenersAdded = false; // 标记是否已添加监听器
+  let geoLocationLoaded = false; // 标记是否已加载地理定位
+  
+  // 根据languageMode动态切换国旗
+  function updateFlagIcon() {
+    const langMode = localStorage.getItem("langMode");
+    
+    // 如果flagButton未定义，尝试重新获取
+    if (!flagButton) {
+      flagButton = document.getElementById("flag-button-lange");
+    }
+    
+    if (flagButton) {
+      if (langMode === "traditional") {
+        flagButton.src = "./images/wflags_svg/hk.svg";
+      } else {
+        flagButton.src = "./images/wflags_svg/cn.svg";
+      }
+    }
+  }
+
+  // 根据countryCode动态显示国旗
+  function updateCountryFlag() {
+    const countryFlagImg = document.getElementById('country-flag-local-storage');
+    
+    // 优先从countryCodeCache获取，如果没有则从countryCode获取
+    let cachedCode = null;
+    const countryCodeCache = localStorage.getItem('countryCodeCache');
+    
+    if (countryCodeCache) {
+      try {
+        const cacheData = JSON.parse(countryCodeCache);
+        cachedCode = cacheData.countryCode;
+      } catch (e) {
+        cachedCode = localStorage.getItem('countryCode');
+      }
+    } else {
+      cachedCode = localStorage.getItem('countryCode');
+    }
+    
+    if (cachedCode && countryFlagImg && cachedCode.trim() !== '') {
+      const lowerCode = cachedCode.toLowerCase();
+      const flagPath = `./images/wflags/${lowerCode}.png`;
+      
+      countryFlagImg.src = flagPath;
+      countryFlagImg.alt = `Flag of ${cachedCode.toUpperCase()}`;
+      
+      // 如果图片加载失败，显示默认的UN旗帜
+      countryFlagImg.onerror = function() {
+        this.src = './images/wflags/un.png';
+        this.alt = 'United Nations';
+      };
+    } else if (countryFlagImg) {
+      // 如果没有国家代码，显示默认旗帜
+      countryFlagImg.src = './images/wflags/un.png';
+      countryFlagImg.alt = 'United Nations';
+    }
+  }
+  
+  // 重写setSimplified和setTraditional函数，确保国旗立即更新
+  // 使用window对象确保全局覆盖
+  window.setSimplified = function() {
+    localStorage.setItem("langMode", "simplified");
+    updateFlagIcon(); // 立即更新国旗
+    updateCountryFlag(); // 立即更新国家国旗
+    // 关闭菜单
+    if (menu) menu.classList.add("hidden");
+  };
+  
+  window.setTraditional = function() {
+    localStorage.setItem("langMode", "traditional");
+    updateFlagIcon(); // 立即更新国旗
+    updateCountryFlag(); // 立即更新国家国旗
+    // 关闭菜单
+    if (menu) menu.classList.add("hidden");
+  };
+
+  // 立即更新显示，不进行网络请求
+  function updateDisplayImmediate(countryCode, regionEnglish, cityEnglish) {
+    // 更新 geo-location
+    document.querySelectorAll(".geo-location").forEach(span => {
+      span.textContent = countryCode || "地球";
+    });
+
+    // 初始化DOM元素引用
+    button = document.getElementById("language-button");
+    flagButton = document.getElementById("flag-button-lange");
+    menu = document.getElementById("language-menu");
+    
+    // 页面加载时更新国旗
+    updateFlagIcon();
+    
+    // 确保DOM完全加载后再更新国旗
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateCountryFlag);
+    } else {
+      updateCountryFlag();
+    }
+    
+    // 为En文字添加点击事件（避免重复添加）
+    if (button && !listenersAdded) {
+      button.addEventListener("click", (event) => {
+        event.stopPropagation(); // 阻止事件冒泡
+        menu.classList.toggle("hidden");
+      });
+    }
+    
+    // 为国旗图标添加点击事件（避免重复添加）
+    if (flagButton && !listenersAdded) {
+      flagButton.addEventListener("click", (event) => {
+        event.stopPropagation(); // 阻止事件冒泡
+        menu.classList.toggle("hidden");
+      });
+    }
+    
+    // 点击页面其他地方收起菜单（避免重复添加）
+    if (!listenersAdded) {
+      document.addEventListener("click", () => {
+        if (menu) menu.classList.add("hidden");
+      });
+      listenersAdded = true;
+    }
+
+    // 更新国旗
+    const flagImg = document.querySelector(".country-flag");
+    if (flagImg) {
+      if (countryCode === "TW") {
+        flagImg.style.display = "none"; // TW 不显示
+      } else {
+        flagImg.style.display = "inline-block";
+        flagImg.src = `./images/wflags/${countryCode.toLowerCase()}.png`;
+        flagImg.alt = countryCode;
+      }
+    }
+  }
+
   function updateDisplay(countryCode, regionEnglish, cityEnglish, countries, cityArray) {
     // 计算城市/省/国家显示
     let content = null;
@@ -33,148 +174,58 @@ const cnProvincesMap = {
         break;
       }
     }
-  
+
     if (!content && countryCode === "CN") {
       content = cnProvincesMap[regionEnglish] || "中国";
     }
-  
+
     if (!content) {
       content = getCountryNameByCode(countries, countryCode, 'chinese');
     }
-  
+
     // 更新 geo-location
     document.querySelectorAll(".geo-location").forEach(span => {
       span.textContent = content;
     });
-  
-    const button = document.getElementById("language-button");
-    const flagButton = document.getElementById("flag-button-lange");
-    const menu = document.getElementById("language-menu");
-    
-    // 根据languageMode动态切换国旗
-    function updateFlagIcon() {
-      const langMode = localStorage.getItem("langMode");
-      console.log("Current langMode:", langMode);
-      console.log("flagButton element:", flagButton);
-      
-      if (langMode === "traditional") {
-        console.log("Setting flag to hk.svg");
-        flagButton.src = "./images/wflags_svg/hk.svg";
-      } else {
-        console.log("Setting flag to cn.svg");
-        flagButton.src = "./images/wflags_svg/cn.svg";
-      }
-    }
 
-   
-      // 根据countryCode动态显示国旗
-      function updateCountryFlag() {
-        const cachedCode = localStorage.getItem('countryCode');
-        const countryFlagImg = document.getElementById('country-flag-local-storage');
-        
-        console.log("=== Country Flag Debug ===");
-        console.log("countryCode from localStorage:", cachedCode);
-        console.log("countryFlagImg element:", countryFlagImg);
-        console.log("All localStorage keys:", Object.keys(localStorage));
-        
-        // 检查是否有其他相关的localStorage项
-        const countryCodeCache = localStorage.getItem('countryCodeCache');
-        console.log("countryCodeCache:", countryCodeCache);
-        
-        if (cachedCode && countryFlagImg) {
-          // 确保countryCode是小写的，因为图片文件名是小写
-          const lowerCode = cachedCode.toLowerCase();
-          const flagPath = `./images/wflags/${lowerCode}.png`;
-          
-          console.log("Setting flag to:", flagPath);
-          
-          countryFlagImg.src = flagPath;
-          countryFlagImg.alt = `Flag of ${cachedCode.toUpperCase()}`;
-          
-          // 如果图片加载失败，显示默认的UN旗帜
-          countryFlagImg.onerror = function() {
-            console.log("Flag image failed to load:", flagPath);
-            this.src = './images/wflags/un.png';
-            this.alt = 'United Nations';
-          };
-          
-          countryFlagImg.onload = function() {
-            console.log("Flag image loaded successfully:", flagPath);
-          };
-        } else {
-          console.log("Missing countryCode or countryFlagImg element");
-          if (!cachedCode) console.log("No countryCode in localStorage");
-          if (!countryFlagImg) console.log("No country-flag-local-storage element found");
-        }
-        console.log("=== End Debug ===");
-      }
-      
-      // 重写setSimplified和setTraditional函数，确保国旗立即更新
-      // 使用window对象确保全局覆盖
-      window.setSimplified = function() {
-        console.log("Custom setSimplified called");
-        localStorage.setItem("langMode", "simplified");
-        updateFlagIcon(); // 立即更新国旗
-        updateCountryFlag(); // 立即更新国家国旗
-        // 关闭菜单
-        menu.classList.add("hidden");
-      };
-      
-      window.setTraditional = function() {
-        console.log("Custom setTraditional called");
-        localStorage.setItem("langMode", "traditional");
-        updateFlagIcon(); // 立即更新国旗
-        updateCountryFlag(); // 立即更新国家国旗
-        // 关闭菜单
-        menu.classList.add("hidden");
-      };
-      
-      // 页面加载时更新国旗
-      updateFlagIcon();
-      
-      // 确保DOM完全加载后再更新国旗
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', updateCountryFlag);
-      } else {
-        updateCountryFlag();
-      }
-      
-      // 监听languageMode变化
-      window.addEventListener('storage', function(e) {
-        if (e.key === 'langMode') {
-          updateFlagIcon();
-        } else if (e.key === 'countryCode') {
-          updateCountryFlag();
-        }
-      });
-      
-      // 监听localStorage变化（同页面内）
-      const originalSetItem = localStorage.setItem;
-      localStorage.setItem = function(key, value) {
-        originalSetItem.apply(this, arguments);
-        if (key === 'langMode') {
-          updateFlagIcon();
-        } else if (key === 'countryCode') {
-          updateCountryFlag();
-        }
-      };
-      
-      // 为En文字添加点击事件
+    // 初始化DOM元素引用
+    button = document.getElementById("language-button");
+    flagButton = document.getElementById("flag-button-lange");
+    menu = document.getElementById("language-menu");
+    
+    // 页面加载时更新国旗
+    updateFlagIcon();
+    
+    // 确保DOM完全加载后再更新国旗
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateCountryFlag);
+    } else {
+      updateCountryFlag();
+    }
+    
+    // 为En文字添加点击事件（避免重复添加）
+    if (button && !listenersAdded) {
       button.addEventListener("click", (event) => {
         event.stopPropagation(); // 阻止事件冒泡
         menu.classList.toggle("hidden");
       });
-      
-      // 为国旗图标添加点击事件
+    }
+    
+    // 为国旗图标添加点击事件（避免重复添加）
+    if (flagButton && !listenersAdded) {
       flagButton.addEventListener("click", (event) => {
         event.stopPropagation(); // 阻止事件冒泡
         menu.classList.toggle("hidden");
       });
-      
-      // 点击页面其他地方收起菜单
+    }
+    
+    // 点击页面其他地方收起菜单（避免重复添加）
+    if (!listenersAdded) {
       document.addEventListener("click", () => {
-        menu.classList.add("hidden");
+        if (menu) menu.classList.add("hidden");
       });
+      listenersAdded = true;
+    }
 
     // 更新国旗
     const flagImg = document.querySelector(".country-flag");
@@ -219,31 +270,48 @@ const cnProvincesMap = {
   }
   
   async function displayGeoLocation() {
-    try {
-      const countries = await fetchCountries();
-      const cityArray = await fetchCityMap();
-  
-      let cached = localStorage.getItem('countryCodeCache');
-      let countryCode = "", regionEnglish = "", cityEnglish = "";
-      let delay = 0;
-  
-      if (cached) {
-        const cachedData = JSON.parse(cached);
+    // 如果已经加载过，直接返回
+    if (geoLocationLoaded) return;
+    geoLocationLoaded = true;
+    
+    // 检查缓存，如果有有效的缓存就直接使用
+    let cached = localStorage.getItem('countryCodeCache');
+    let countryCode = "", regionEnglish = "", cityEnglish = "";
+    
+    if (cached) {
+      const cachedData = JSON.parse(cached);
+      const now = Date.now();
+      // 如果缓存时间少于30分钟，直接使用缓存
+      if (now - cachedData.timestamp < 1800000) {
         countryCode = cachedData.countryCode;
         regionEnglish = cachedData.regionEnglish;
         cityEnglish = cachedData.cityEnglish;
-        // localStorage 有缓存，则延迟刷新
-        const now = Date.now();
-        if (now - cachedData.timestamp < 100) {
-          delay = 100 - (now - cachedData.timestamp); // 1 分钟后刷新
-        }
+        
+        // 立即更新显示，不等待网络请求
+        updateDisplayImmediate(countryCode, regionEnglish, cityEnglish);
+        
+        // 异步加载数据，不阻塞页面
+        setTimeout(() => {
+          Promise.all([fetchCountries(), fetchCityMap()]).then(([countries, cityArray]) => {
+            updateDisplay(countryCode, regionEnglish, cityEnglish, countries, cityArray);
+          }).catch(() => {
+            // 静默处理错误
+          });
+        }, 100);
+        return;
       }
-  
-      // 立即显示缓存内容
-      updateDisplay(countryCode, regionEnglish, cityEnglish, countries, cityArray);
-  
-      // 延迟刷新 IPInfo
-      setTimeout(async () => {
+    }
+    
+    // 显示默认内容，不进行任何网络请求
+    updateDisplayImmediate("", "", "");
+    
+    // 异步加载所有数据，不阻塞页面
+    setTimeout(async () => {
+      try {
+        const countries = await fetchCountries();
+        const cityArray = await fetchCityMap();
+        
+        // 异步刷新 IPInfo
         try {
           const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
           const data = await response.json();
@@ -252,26 +320,47 @@ const cnProvincesMap = {
           const newRegion = data.region || "";
           const newCity = data.city || "";
   
-          if (newCountryCode !== countryCode || newRegion !== regionEnglish || newCity !== cityEnglish) {
-            countryCode = newCountryCode;
-            regionEnglish = newRegion;
-            cityEnglish = newCity;
-            localStorage.setItem('countryCodeCache', JSON.stringify({
-              countryCode, regionEnglish, cityEnglish, timestamp: Date.now()
-            }));
-            updateDisplay(countryCode, regionEnglish, cityEnglish, countries, cityArray);
-          }
+          localStorage.setItem('countryCodeCache', JSON.stringify({
+            countryCode: newCountryCode, 
+            regionEnglish: newRegion, 
+            cityEnglish: newCity, 
+            timestamp: Date.now()
+          }));
+          
+          updateDisplay(newCountryCode, newRegion, newCity, countries, cityArray);
         } catch (err) {
-          console.error('刷新 IPInfo 失败', err);
+          // 静默处理错误
         }
-      }, delay);
-  
-    } catch (err) {
-      console.error("无法获取 IP 信息:", err);
-      document.querySelectorAll(".geo-location").forEach(span => span.textContent = "地球");
-      const flagImg = document.querySelector(".country-flag");
-      if(flagImg) { flagImg.src = "./images/wflags/un.png"; flagImg.alt = "地球"; }
-    }
+      } catch (err) {
+        // 静默处理错误
+      }
+    }, 1000);
   }
   
+  // 监听languageMode变化（避免重复添加）
+  if (!window.storageListenerAdded) {
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'langMode') {
+        updateFlagIcon();
+      } else if (e.key === 'countryCode') {
+        updateCountryFlag();
+      }
+    });
+    window.storageListenerAdded = true;
+  }
+  
+  // 监听localStorage变化（同页面内）
+  if (!localStorage.interceptorAdded) {
+    const originalSetItem = localStorage.setItem;
+    localStorage.setItem = function(key, value) {
+      originalSetItem.apply(this, arguments);
+      if (key === 'langMode') {
+        updateFlagIcon();
+      } else if (key === 'countryCode') {
+        updateCountryFlag();
+      }
+    };
+    localStorage.interceptorAdded = true;
+  }
+
   document.addEventListener('DOMContentLoaded', displayGeoLocation);
