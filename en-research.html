@@ -147,7 +147,7 @@
         </a>
       </div>
       <div>
-        <a class='slide' href='en.html'>
+        <a class='slide' href='en.html' 、">
           <span class='element'>H</span>
           <span class='name'>Home</span>
         </a>
@@ -158,12 +158,12 @@
           <span class='name'>Research</span>
         </a>
       </div>
-      <div>
+      <!-- <div>
         <a class='slide' href='en-research.html#publications'>
           <span class='element'>Pb</span>
           <span class='name'>Publications</span>
         </a>
-      </div>
+      </div> -->
       <div>
         <a class='slide' href='en-resume.html'>
           <span class='element'>Ed</span>
@@ -186,11 +186,115 @@
       </div>
 
       <div>
-        <a class='slide' href='en.html' 、">
-          <span class='element'>H</span>
-          <span class='name'>Home</span>
-        </a>
+        <a class='slide'>
+          <!-- 点击文字展开菜单 -->
+          <span id="language-button" class='element' style="cursor:pointer;">En<span style="color:transparent;">▾</span></span>
+
+          <!-- 下拉菜单 -->
+          <div id="language-menu" class="language-menu hidden">
+            <a href="en-research.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
+            <a href="de-research.html"><img src="./images/wflags_svg/de.svg" class="flag-icon"> Deutsch</a>
+            <a href="es-research.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
+            <a href="fr-research.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
+            <a href="it-research.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
+            <a href="ru-research.html"><img src="./images/wflags_svg/ru.svg" class="flag-icon"> Русский</a>
+            <a href="cn-research.html"><img src="./images/wflags_svg/cn.svg" class="flag-icon"> 中文</a>
+            <a href="jp-research.html"><img src="./images/wflags_svg/jp.svg" class="flag-icon"> 日本語</a>
+            <a href="kr-research.html"><img src="./images/wflags_svg/kr.svg" class="flag-icon"> 한국어</a>
+            <a href="ar-research.html"><img src="./images/wflags_svg/Arab_League.svg" class="flag-icon"> العربية</a>
+          </div>
+
+          <!-- 可选国旗图标 -->
+          <span class='name'>
+            <img id="flag-button" src="./images/flag_uk.png" style="width:23px !important; height:20px !important; position:relative; top:-11px; left:11px; cursor:pointer; object-fit:fill;">
+          </span>
       </div>
+
+      <style>
+        .language-dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        /* 下拉菜单靠右对齐 */
+        .language-menu {
+          position: absolute;
+          top: 60px;
+          right: 0; /* 靠右 */
+          background: white;
+          border: 1px solid #ddd;
+          border-radius: 1px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          min-width: 110px;
+          display: flex;
+          flex-direction: column;
+          padding: 2px 0;
+          z-index: 100;
+          /* 覆盖继承的slide样式 */
+          border-top: none !important;
+          padding-top: 2px !important;
+          /* 重置所有可能影响边框的样式 */
+          border-width: 1px !important;
+          border-style: solid !important;
+          border-color: #ddd !important;
+        }
+        
+        .language-menu a {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 4px 12px;
+          text-decoration: none;
+          color: #333;
+          transition: background 0.2s;
+          /* 确保没有继承的边框 */
+          /* border: none !important;
+          border-top: none !important;
+          border-bottom: none !important; */
+        }
+        
+        .language-menu a:hover {
+          background: #f2f2f2;
+        }
+        
+        .flag-icon {
+          width: 18px;
+          height: 12px;
+          object-fit: fill;
+          object-position: center;
+          display: block;
+        }
+        
+        .hidden {
+          display: none;
+        }
+        </style>
+        
+        <script>
+        const button = document.getElementById("language-button");
+        const flagButton = document.getElementById("flag-button");
+        const menu = document.getElementById("language-menu");
+        
+        // 为En文字添加点击事件
+        button.addEventListener("click", (event) => {
+          event.stopPropagation(); // 阻止事件冒泡
+          menu.classList.toggle("hidden");
+        });
+        
+        // 为国旗图标添加点击事件
+        flagButton.addEventListener("click", (event) => {
+          event.stopPropagation(); // 阻止事件冒泡
+          menu.classList.toggle("hidden");
+        });
+        
+        // 点击页面其他地方收起菜单
+        document.addEventListener("click", () => {
+          menu.classList.add("hidden");
+        });
+        </script>
+
+
+
       <div>
         <a class='slide' href='en-research.html'>
           <span class='element'>Re</span>
