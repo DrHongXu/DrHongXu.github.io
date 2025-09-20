@@ -221,8 +221,8 @@
 
         <!-- 下拉菜单 -->
         <div id="language-menu" class="language-menu hidden">
-          <a href="en-resume.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
           <a href="de-resume.html"><img src="./images/wflags_svg/de.svg" class="flag-icon"> Deutsch</a>
+          <a href="en-resume.html"><img src="./images/flag_uk.png" style="height:17px" class="flag-icon"> English</a>
           <a href="es-resume.html"><img src="./images/wflags_svg/es.svg" class="flag-icon"> Español</a>
           <a href="fr-resume.html"><img src="./images/wflags_svg/fr.svg" class="flag-icon"> Français</a>
           <a href="it-resume.html"><img src="./images/wflags_svg/it.svg" class="flag-icon"> Italiano</a>
@@ -325,15 +325,34 @@
         document.addEventListener('DOMContentLoaded', displayCountryName);
 
       </script>
+    <style>
+      /* 确保导航容器使用固定表格布局以支持按比例分配 */
+      .nav-container {
+        display: table-row !important;
+        width: 100%;
+        table-layout: fixed;
+      }
+      
+      .nav-container > div {
+        display: table-cell !important;
+        vertical-align: top;
+      }
+      
+      /* 确保在大屏幕上也能保持单行布局 */
+      @media only screen and (min-width: 48.0625em) {
+        .nav-container {
+          display: table-row !important;
+          table-layout: fixed;
+        }
+        
+        .nav-container > div {
+          display: table-cell !important;
+          vertical-align: top;
+        }
+      }
+    </style>
 
 
- <!-- 占位符 -->
- <div>
-  <a class='slide' href='#'>
-    <span class='element'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span class='name'></span>
-  </a>
-</div>
 
   </div>
 </nav>
