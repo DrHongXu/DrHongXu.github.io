@@ -5,9 +5,32 @@
 
 class DeviceOptimizer {
     constructor() {
+        // 检测是否为localhost环境
+        this.isLocalhost = this.detectLocalhost();
+        
+        // 如果是localhost，则不激活设备优化器
+        if (this.isLocalhost) {
+            console.log('Localhost detected, DeviceOptimizer disabled for development');
+            return;
+        }
+        
         this.deviceType = this.detectDeviceType();
         this.isInitialized = false;
         this.forceRefresh = this.detectForceRefresh();
+    }
+    
+    /**
+     * 检测是否为localhost环境
+     */
+    detectLocalhost() {
+        const hostname = window.location.hostname;
+        return hostname === 'localhost' || 
+               hostname === '127.0.0.1' || 
+               hostname === '0.0.0.0' ||
+               hostname.startsWith('192.168.') ||
+               hostname.startsWith('10.') ||
+               hostname.endsWith('.local') ||
+               hostname.includes('localhost');
     }
 
     /**
@@ -61,6 +84,12 @@ class DeviceOptimizer {
      * 初始化优化器
      */
     init() {
+        // 如果是localhost，不执行任何优化
+        if (this.isLocalhost) {
+            console.log('DeviceOptimizer skipped on localhost');
+            return;
+        }
+        
         if (this.isInitialized) return;
         
         // 如果是强制刷新，清理缓存
@@ -290,10 +319,14 @@ window.addEventListener('beforeunload', function() {
 // 页面加载完成后立即初始化
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        window.deviceOptimizer.init();
+        if (window.deviceOptimizer && !window.deviceOptimizer.isLocalhost) {
+            window.deviceOptimizer.init();
+        }
     });
 } else {
-    window.deviceOptimizer.init();
+    if (window.deviceOptimizer && !window.deviceOptimizer.isLocalhost) {
+        window.deviceOptimizer.init();
+    }
 }
 
 // 导出供其他脚本使用
