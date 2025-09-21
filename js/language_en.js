@@ -370,10 +370,23 @@ function measureAndDistributeNavWidths() {
       });
       
       // 开始监听DOM变化
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
+      if (document.body) {
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      } else {
+        // 如果document.body还不存在，等待它出现
+        const waitForBody = setInterval(() => {
+          if (document.body) {
+            observer.observe(document.body, {
+              childList: true,
+              subtree: true
+            });
+            clearInterval(waitForBody);
+          }
+        }, 10);
+      }
       
       // 如果DOM已经存在，立即应用
       const navItems = document.querySelectorAll('.nav-container > div');

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Optimized Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- 基础样式 -->
+    <link rel="stylesheet" href="stylesheets/base.css">
+    
+    <!-- 设备优化器 - 必须在其他脚本之前加载 -->
+    <script src="js/device-optimizer.js"></script>
+</head>
+<body>
+    <!-- 移动端导航 -->
+    <nav class="display-mobile" data-mobile-only="true">
+        <div class="mobile-nav">
+            <h3>Mobile Navigation</h3>
+            <!-- 移动端导航内容 -->
+        </div>
+    </nav>
+
+    <!-- 桌面端侧边栏 -->
+    <div class="hidden-mobile" data-desktop-only="true">
+        <div class="sidebar">
+            <h3>Desktop Sidebar</h3>
+            <!-- 桌面端侧边栏内容 -->
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="content">
+        <!-- 移动端横幅 -->
+        <div class="display-mobile" data-mobile-only="true">
+            <img class="display-mobile" 
+                 src="images/banner_mobile.jpg" 
+                 data-mobile-src="images/banner_mobile.jpg"
+                 data-desktop-src="images/banner_desktop.jpg"
+                 alt="Mobile Banner">
+        </div>
+
+        <!-- 桌面端横幅 -->
+        <div class="hidden-mobile" data-desktop-only="true">
+            <img class="hidden-mobile" 
+                 src="images/banner_desktop.jpg" 
+                 data-mobile-src="images/banner_mobile.jpg"
+                 data-desktop-src="images/banner_desktop.jpg"
+                 alt="Desktop Banner">
+        </div>
+
+        <!-- 响应式内容 -->
+        <div class="responsive-content">
+            <h1>Main Content</h1>
+            <p>This content is optimized for both mobile and desktop.</p>
+        </div>
+
+        <!-- 移动端特定功能 -->
+        <div class="display-mobile" data-mobile-only="true">
+            <button class="mobile-action">Mobile Action</button>
+        </div>
+
+        <!-- 桌面端特定功能 -->
+        <div class="hidden-mobile" data-desktop-only="true">
+            <div class="desktop-widget">
+                <h3>Desktop Widget</h3>
+                <p>This widget only loads on desktop devices.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 其他脚本 -->
+    <script src="js/language_cn.js"></script>
+    <script src="js/other-scripts.js"></script>
+
+    <script>
+        // 页面特定的优化逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            // 确保设备优化器已初始化
+            if (window.deviceOptimizer) {
+                console.log('Device optimizer is ready:', window.deviceOptimizer.getDeviceInfo());
+                
+                // 可以在这里添加页面特定的优化逻辑
+                optimizePageSpecificContent();
+            }
+        });
+
+        function optimizePageSpecificContent() {
+            const deviceType = window.deviceOptimizer.deviceType;
+            
+            // 根据设备类型加载不同的内容
+            if (deviceType === 'mobile') {
+                loadMobileSpecificFeatures();
+            } else {
+                loadDesktopSpecificFeatures();
+            }
+        }
+
+        function loadMobileSpecificFeatures() {
+            // 移动端特定功能
+            console.log('Loading mobile-specific features...');
+        }
+
+        function loadDesktopSpecificFeatures() {
+            // 桌面端特定功能
+            console.log('Loading desktop-specific features...');
+        }
+    </script>
+</body>
+</html>
