@@ -30,6 +30,10 @@
   <link rel="stylesheet" href="stylesheets/type.css">
   <link rel="stylesheet" href="stylesheets/slider.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- 设备优化器 - 优先加载 -->
+  <!-- <script src="js/device-optimizer.js"></script> -->
+  
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -213,10 +217,19 @@
 
   <script src="js/language.js"></script>
 
-  <div class='nav-container'>
+<nav class="display-mobile">
+  <style>        
+    nav .slide .name {
+    font-size: 0.7em; /* 根据需要调整 */
+    text-align: left; /* 居中显示 */
+    display: block;
+  }
+
+  </style>
+<div class='nav-container'>
     <!-- Logo -->
     <div>
-      <a class='slide' href='#'>
+      <a class='slide' href='ru.html'>
         <span class='element'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span class='name'><a href="ru.html"><img src="./images/logo.png" style="width:30px; position:relative; top:-30px; left:6px;"></a></span>
       </a>
@@ -264,7 +277,7 @@
     </div>
 
     <div>
-      <a class='slide'>
+      <a class='slide' href='#'>
         <!-- 点击文字展开菜单 -->
         <span id="language-button" class='element' style="cursor:pointer;">Ru<span style="color:transparent;">▾</span></span>
         <!-- 下拉菜单 -->
@@ -283,7 +296,7 @@
   
         <!-- 可选国旗图标 -->
         <span class='name'>
-          <img id="flag-button-lange" src="./images/wflags_svg/ru.svg" style="width:23px !important; height:15px !important; position:relative; top:-10px; left:11px; cursor:pointer; object-fit:fill;">
+          <img id="flag-button" src="./images/wflags_svg/ru.svg" style="width:23px !important; height:15px !important; position:relative; top:-10px; left:11px; cursor:pointer; object-fit:fill;">
         </span>  
         </a>
     </div>
@@ -402,9 +415,9 @@
             vertical-align: top;
           }
         }
-      </style>
+        </style>
 
-  </div>
+    </div>
 </nav>
   
   <div class="display-mobile" style="height: 60px;"></div>

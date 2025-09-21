@@ -30,6 +30,10 @@
   <link rel="stylesheet" href="stylesheets/type.css">
   <link rel="stylesheet" href="stylesheets/slider.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- 设备优化器 - 优先加载 -->
+  <!-- <script src="js/device-optimizer.js"></script> -->
+  
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -189,7 +193,16 @@
 
   <script src="js/language.js"></script>
 
-  <div class='nav-container'>
+<nav class="display-mobile">
+  <style>        
+    nav .slide .name {
+    font-size: 0.7em; /* 根据需要调整 */
+    text-align: left; /* 居中显示 */
+    display: block;
+  }
+
+  </style>
+<div class='nav-container'>
     <!-- Logo -->
     <div>
       <a class='slide' href='#'>
@@ -378,9 +391,9 @@
             vertical-align: top;
           }
         }
-      </style>
+        </style>
 
-  </div>
+    </div>
 </nav>
   
   <div class="display-mobile" style="height: 60px;"></div>
