@@ -75,6 +75,14 @@ class DeviceOptimizer {
      */
     fallbackDeviceDetection() {
         const width = window.innerWidth;
+        const userAgent = navigator.userAgent.toLowerCase();
+        
+        // iPad特殊处理：iPad设备加载桌面端内容
+        if (userAgent.includes('ipad') || 
+            (userAgent.includes('macintosh') && 'ontouchend' in document)) {
+            return 'desktop'; // iPad作为桌面端处理
+        }
+        
         if (width <= 768) return 'mobile';
         if (width <= 1024) return 'tablet';
         return 'desktop';
@@ -117,7 +125,11 @@ class DeviceOptimizer {
      * 隐藏不需要的元素
      */
     hideUnnecessaryElements() {
-        const elementsToHide = this.deviceType === 'mobile' 
+        // iPad特殊处理：iPad加载桌面端内容，包括hidden-mobile元素
+        const isIPad = this.isIPadDevice();
+        const shouldHideMobileElements = this.deviceType === 'mobile' && !isIPad;
+        
+        const elementsToHide = shouldHideMobileElements
             ? document.querySelectorAll('.hidden-mobile') 
             : document.querySelectorAll('.display-mobile');
 
@@ -129,6 +141,25 @@ class DeviceOptimizer {
             // 标记为已优化
             element.setAttribute('data-optimized', 'true');
         });
+        
+        // 如果是iPad，确保hidden-mobile元素可见
+        if (isIPad) {
+            const hiddenMobileElements = document.querySelectorAll('.hidden-mobile');
+            hiddenMobileElements.forEach(element => {
+                element.style.display = '';
+                element.style.visibility = 'visible';
+                element.removeAttribute('data-optimized');
+            });
+        }
+    }
+    
+    /**
+     * 检测是否为iPad设备
+     */
+    isIPadDevice() {
+        const userAgent = navigator.userAgent.toLowerCase();
+        return userAgent.includes('ipad') || 
+               (userAgent.includes('macintosh') && 'ontouchend' in document);
     }
 
     /**
@@ -159,6 +190,12 @@ class DeviceOptimizer {
     shouldLoadImage(img) {
         const hasMobileClass = img.classList.contains('display-mobile');
         const hasDesktopClass = img.classList.contains('hidden-mobile');
+        const isIPad = this.isIPadDevice();
+        
+        // iPad特殊处理：iPad加载桌面端图片
+        if (isIPad) {
+            return hasDesktopClass && !hasMobileClass;
+        }
         
         if (this.deviceType === 'mobile') {
             return hasMobileClass && !hasDesktopClass;
@@ -171,6 +208,13 @@ class DeviceOptimizer {
      * 获取正确的图片源
      */
     getCorrectImageSrc(img) {
+        const isIPad = this.isIPadDevice();
+        
+        // iPad特殊处理：iPad使用桌面端图片源
+        if (isIPad) {
+            return img.getAttribute('data-desktop-src') || img.src;
+        }
+        
         if (this.deviceType === 'mobile') {
             return img.getAttribute('data-mobile-src') || img.src;
         } else {
@@ -182,8 +226,10 @@ class DeviceOptimizer {
      * 优化脚本加载
      */
     optimizeScriptLoading() {
-        // 对于移动设备，可以延迟加载某些非关键脚本
-        if (this.deviceType === 'mobile') {
+        const isIPad = this.isIPadDevice();
+        
+        // 对于移动设备（非iPad），可以延迟加载某些非关键脚本
+        if (this.deviceType === 'mobile' && !isIPad) {
             this.deferNonCriticalScripts();
         }
     }
@@ -218,7 +264,9 @@ class DeviceOptimizer {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        const content = this.deviceType === 'mobile' ? mobileContent : desktopContent;
+        const isIPad = this.isIPadDevice();
+        // iPad特殊处理：iPad加载桌面端内容
+        const content = (this.deviceType === 'mobile' && !isIPad) ? mobileContent : desktopContent;
         container.innerHTML = content;
     }
 
@@ -285,7 +333,8 @@ class DeviceOptimizer {
             width: window.innerWidth,
             height: window.innerHeight,
             userAgent: navigator.userAgent,
-            forceRefresh: this.forceRefresh
+            forceRefresh: this.forceRefresh,
+            isIPad: this.isIPadDevice()
         };
     }
 }

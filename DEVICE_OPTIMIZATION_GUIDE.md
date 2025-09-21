@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 1. 优先使用`index.html`中缓存的设备信息
 2. 备用方案：基于屏幕宽度检测设备类型
 3. 设备类型：`mobile` (≤768px), `tablet` (768-1024px), `desktop` (≥1024px)
+4. **iPad特殊处理**: iPad设备加载桌面端内容，包括`hidden-mobile`元素
 
 ### 强制刷新检测
 1. **Ctrl+R / Cmd+R**: 检测键盘组合键
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
 ### 性能提升
 - **移动端**: 减少50-70%的DOM元素
 - **桌面端**: 减少30-50%的移动端资源
+- **iPad**: 加载桌面端内容，包括`hidden-mobile`元素
 - **加载时间**: 提升20-40%的页面加载速度
 - **带宽节省**: 减少40-60%的不必要资源下载
 
@@ -113,9 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="hidden-mobile" data-desktop-only="true">
     <h3>桌面端标题</h3>
-    <p>桌面端内容</p>
+    <p>桌面端内容（iPad也会显示）</p>
 </div>
 ```
+
+**注意**: iPad设备会加载桌面端内容，包括`hidden-mobile`元素，确保iPad用户获得完整的桌面端体验。
 
 ### 3. 脚本优化
 ```javascript
@@ -185,6 +189,7 @@ console.log('Force refresh mode:', window.deviceOptimizer.forceRefresh);
 2. **可访问性**: 保持内容的可访问性，不因设备优化而影响用户体验
 3. **测试**: 在不同设备和浏览器上充分测试
 4. **回退方案**: 确保在JavaScript禁用时页面仍能正常显示
+5. **iPad兼容性**: iPad设备会加载桌面端内容，包括`hidden-mobile`元素，确保iPad用户体验
 
 ## 更新日志
 
@@ -192,3 +197,5 @@ console.log('Force refresh mode:', window.deviceOptimizer.forceRefresh);
 - **v1.1**: 添加图片优化和脚本延迟加载
 - **v1.2**: 集成设备信息缓存，提升检测准确性
 - **v1.3**: 添加强制刷新功能，支持Ctrl+R重新加载缓存
+- **v1.4**: 添加localhost检测，开发环境自动禁用优化器
+- **v1.5**: iPad设备特殊处理，加载桌面端内容包括`hidden-mobile`元素
