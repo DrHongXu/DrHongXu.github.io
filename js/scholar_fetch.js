@@ -12,16 +12,23 @@ async function fetchScholarMeta() {
     try {
         const response = await fetch(proxyUrl + encodeURIComponent(scholarUrl));
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error(`Network response was not ok: ${response.status}`);
         }
         const data = await response.json();
+        if (!data || !data.contents) {
+            throw new Error('Invalid response data');
+        }
         const parser = new DOMParser();
         const doc = parser.parseFromString(data.contents, 'text/html');
-        const metaContent = doc.querySelector('meta[name="description"]').getAttribute('content');
+        const metaElement = doc.querySelector('meta[name="description"]');
+        if (!metaElement) {
+            throw new Error('Meta description not found');
+        }
+        const metaContent = metaElement.getAttribute('content');
         cache[scholarUrl] = metaContent;
         return metaContent;
     } catch (error) {
-        console.error('Error fetching the HTML:', error);
+        console.warn('Scholar fetch failed (non-critical):', error.message);
         return null;
     }
 }

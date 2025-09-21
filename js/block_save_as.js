@@ -71,7 +71,8 @@ window.onload = function () {
 const select = document.getElementById('content-select');
 const offset = 80; // 向下偏移 80px
 
-select.addEventListener('change', function() {
+if (select) {
+  select.addEventListener('change', function() {
   const url = this.value;
   const [page, hash] = url.split('#');
 
@@ -88,7 +89,8 @@ select.addEventListener('change', function() {
     // 跨页面跳转或没有 hash
     window.location.href = url;
   }
-});
+  });
+}
 
 
 

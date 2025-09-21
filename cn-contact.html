@@ -380,11 +380,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
   <!-- 引入 pinyin.js 库 -->
   <!-- <script src="/js/pinyin.js"></script> -->
-
 
   <script type="text/javascript" src="/js/block_save_as.js"></script>
 
@@ -644,12 +641,7 @@
           </span>
         </span>
 
-        <script>
-          // 获取第二个下拉菜单的高度
-          var secondSelectHeight = document.getElementById('languages2').offsetHeight;
-          // 将第二个下拉菜单的高度应用到第一个下拉菜单的样式中
-          document.getElementById('languages1').style.height = secondSelectHeight + 'px';
-        </script>
+        <!-- 移除了不存在的 languages1 和 languages2 元素相关代码 -->
 
       </p>
       <div>
@@ -744,7 +736,7 @@
           <div><a href="//24timezones.com/Beijing/time" style="text-decoration: none;color:#f35212" class="clock24"
               id="tz24-1705206677-c133-eyJob3VydHlwZSI6IjI0Iiwic2hvd2RhdGUiOiIwIiwic2hvd3NlY29uZHMiOiIxIiwic2hvd3RpbWV6b25lIjoiMCIsInR5cGUiOiJkIiwibGFuZyI6ImVuIn0="
               title="Beijing time now" target="_blank" rel="nofollow">北京</a></div>
-          <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+          <script type="text/javascript" src="//w.24timezones.com/l.js" async onerror="console.warn('24timezones script failed to load (non-critical)')"></script>
 
         </div>
 
@@ -817,47 +809,7 @@
     </script>
 
 
-    <script>
-      let slideIndex = 1;
-      showSlides(slideIndex);
-
-      // Auto transition the slides every 1.5 seconds
-      let slideInterval = setInterval(() => {
-        plusSlides(1);
-      }, 3500);
-
-      function plusSlides(n) {
-        clearInterval(slideInterval);
-        showSlides(slideIndex += n);
-        slideInterval = setInterval(() => {
-          plusSlides(1);
-        }, 3500);
-      }
-
-      function currentSlide(n) {
-        clearInterval(slideInterval);
-        showSlides(slideIndex = n);
-        slideInterval = setInterval(() => {
-          plusSlides(1);
-        }, 3500);
-      }
-
-      function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) { slideIndex = 1; }
-        if (n < 1) { slideIndex = slides.length; }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-      }
-    </script>
+    
 
     <script>
       function loadScript(scriptUrl, scriptId) {
@@ -935,6 +887,20 @@
     <script src="/js/navi-mobile.js"></script>
     <script src="/js/navi-sidebar.js"></script>
     <script type="text/javascript" src="update_info_script.js"></script>
+    
+    <!-- 抑制 Service Worker 相关警告 -->
+    <script>
+      // 抑制 Service Worker 导航预加载警告
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('unhandledrejection', function(event) {
+          if (event.reason && event.reason.message && 
+              event.reason.message.includes('preloadResponse')) {
+            event.preventDefault();
+            console.warn('Service Worker preload warning suppressed (non-critical)');
+          }
+        });
+      }
+    </script>
 
     <script type="text/javascript">
       window.onload = function () {
