@@ -14,105 +14,165 @@
   ================================================== -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- CSS
-  ================================================== -->
-  <!-- <link rel="stylesheet" href="stylesheets/base.css">
-  <link rel="stylesheet" href="stylesheets/skeleton.css">
-  <link rel="stylesheet" href="stylesheets/layout.css">
-  <link rel="stylesheet" href="stylesheets/style.css">
-  <link rel="stylesheet" href="stylesheets/navi5.css">
-  <link rel="stylesheet" href="stylesheets/navi6.css">
-  <link rel="stylesheet" href="stylesheets/type.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
 
   <!-- Favicons
   ================================================== -->
   <link rel="shortcut icon" href="">
 
-  <!-- Google Analytics Tracking Code
-  ================================================== -->
-  <!-- 
-   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-8161570-5', '');
-    ga('send', 'pageview');
-  </script>
-  -->
-
-
-  <!-- <script type="module">
-    async function fetchCountries() {
-      const response = await fetch('/js/countries.json');
-      const countries = await response.json();
-      return countries;
-    }
-
-    function getCountryNameByCode(countries, code, language = 'english') {
-      const country = countries.find(country => country.abbr === code);
-
-      if (country) {
-        return country[language] || country.english;
-      } else {
-        return 'mondo';
-      }
-    }
-
-    async function displayCountryName() {
-      const countries = await fetchCountries();
-      const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
-      const data = await response.json();
-      const countryCode = data.country;
-      const language = 'english'; // 更改为您想要显示的语言
-      const countryName = getCountryNameByCode(countries, countryCode, language);
-      document.getElementById("location").textContent = countryName;
-      document.getElementById("location2").textContent = countryName;
-    }
-
-    document.addEventListener('DOMContentLoaded', displayCountryName);
-  </script> -->
 
 </head>
 
 <body>
 
-  <script async type='text/javascript' id='clustrmaps'
-    src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=600&t=tt&d=mRcRGOHfI5m_4z362zL1K5jsQpgs-UcWLE04KRcma18&co=60a9db&ct=ffffff&cmo=303aea&cmn=fc8823'></script>
-
-  <!-- <div id="extracted-content"></div> -->
-
-  <!-- <script>
-    // Function to load and extract content from another HTML file
-    function extractContent() {
-      // Replace 'source.html' with the path to the HTML file you want to extract content from
-      fetch('en.html')
-        .then(response => response.text())
-        .then(data => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(data, 'text/html');
-          const bodyContent = doc.querySelector('body').innerHTML;
-          document.getElementById('extracted-content').innerHTML = bodyContent;
-        })
-        .catch(error => {
-          console.error('Error loading the source HTML:', error);
-        });
-    }
-
-    // Call the extractContent function when the page loads
-    window.addEventListener('load', extractContent);
-  </script> -->
-
 
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var userLang = navigator.language || navigator.userLanguage;
-      var languageMap = {
+    // 设备信息收集和缓存功能
+    function collectDeviceInfo() {
+      const deviceInfo = {
+        timestamp: Date.now(),
+        // 1. 浏览器宽度和设备类型
+        screen: {
+          width: window.screen.width,
+          height: window.screen.height,
+          availWidth: window.screen.availWidth,
+          availHeight: window.screen.availHeight,
+          colorDepth: window.screen.colorDepth,
+          pixelDepth: window.screen.pixelDepth
+        },
+        viewport: {
+          width: window.innerWidth,
+          height: window.innerHeight
+        },
+        deviceType: getDeviceType(),
+        
+        // 2. 浏览器和操作系统信息
+        browser: {
+          userAgent: navigator.userAgent,
+          platform: navigator.platform,
+          language: navigator.language,
+          languages: navigator.languages,
+          cookieEnabled: navigator.cookieEnabled,
+          onLine: navigator.onLine,
+          hardwareConcurrency: navigator.hardwareConcurrency || 'unknown',
+          maxTouchPoints: navigator.maxTouchPoints || 0
+        },
+        
+        // 3. 用户语言信息
+        language: {
+          primary: navigator.language,
+          all: navigator.languages,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          timezoneOffset: new Date().getTimezoneOffset()
+        },
+        
+        // 4. 网络和连接信息
+        connection: {
+          effectiveType: navigator.connection?.effectiveType || 'unknown',
+          downlink: navigator.connection?.downlink || 'unknown',
+          rtt: navigator.connection?.rtt || 'unknown',
+          saveData: navigator.connection?.saveData || false
+        },
+        
+        // 5. 其他重要信息
+        performance: {
+          memory: performance.memory ? {
+            usedJSHeapSize: performance.memory.usedJSHeapSize,
+            totalJSHeapSize: performance.memory.totalJSHeapSize,
+            jsHeapSizeLimit: performance.memory.jsHeapSizeLimit
+          } : null,
+          timing: performance.timing ? {
+            loadTime: performance.timing.loadEventEnd - performance.timing.navigationStart,
+            domReady: performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart
+          } : null
+        },
+        
+        // 6. 地理位置信息（异步获取）
+        geoLocation: null
+      };
+      
+      return deviceInfo;
+    }
+    
+    // 判断设备类型
+    function getDeviceType() {
+      const width = window.innerWidth;
+      const userAgent = navigator.userAgent.toLowerCase();
+      
+      if (/mobile|android|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+        return 'mobile';
+      } else if (/tablet|ipad|playbook|silk/i.test(userAgent)) {
+        return 'tablet';
+      } else if (width <= 768) {
+        return 'mobile';
+      } else if (width <= 1024) {
+        return 'tablet';
+      } else {
+        return 'desktop';
+      }
+    }
+    
+    // 获取地理位置信息
+    async function getGeoLocationInfo() {
+      try {
+        const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return {
+          ip: data.ip,
+          city: data.city,
+          region: data.region,
+          country: data.country,
+          countryCode: data.country,
+          timezone: data.timezone,
+          org: data.org,
+          postal: data.postal,
+          loc: data.loc
+        };
+      } catch (error) {
+        console.warn('Failed to fetch geo location info:', error.message);
+        return null;
+      }
+    }
+    
+    // 缓存设备信息
+    function cacheDeviceInfo(deviceInfo) {
+      try {
+        // 存储到 localStorage
+        localStorage.setItem('deviceInfo', JSON.stringify(deviceInfo));
+        
+        // 存储到 sessionStorage（会话期间有效）
+        sessionStorage.setItem('deviceInfo', JSON.stringify(deviceInfo));
+        
+        // 存储关键信息到单独的键值对，便于快速访问
+        localStorage.setItem('deviceType', deviceInfo.deviceType);
+        localStorage.setItem('userLanguage', deviceInfo.language.primary);
+        localStorage.setItem('screenWidth', deviceInfo.viewport.width.toString());
+        localStorage.setItem('countryCode', deviceInfo.geoLocation?.countryCode || 'unknown');
+        
+        console.log('Device info cached successfully:', deviceInfo);
+      } catch (error) {
+        console.error('Failed to cache device info:', error);
+      }
+    }
+    
+    // 主函数
+    async function initializePage() {
+      // 收集设备信息
+      const deviceInfo = collectDeviceInfo();
+      
+      // 异步获取地理位置信息
+      deviceInfo.geoLocation = await getGeoLocationInfo();
+      
+      // 缓存信息
+      cacheDeviceInfo(deviceInfo);
+      
+      // 语言重定向逻辑
+      const userLang = navigator.language || navigator.userLanguage;
+      const languageMap = {
         'ar': 'ar.html',
         'en': 'en.html',
         'de': 'de.html',
@@ -125,7 +185,7 @@
         'ko': 'kr.html'
       };
 
-      var shortLang = userLang.substring(0, 2);
+      const shortLang = userLang.substring(0, 2);
 
       // Check if the language is supported, if not default to English
       if (languageMap[shortLang]) {
@@ -134,7 +194,10 @@
         // Default to English if language is not supported
         window.location.href = 'en.html';
       }
-    });
+    }
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', initializePage);
   </script>
 
 

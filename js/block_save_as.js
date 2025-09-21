@@ -1,72 +1,72 @@
-// block save as, copy, and developer tools 
-window.onload = function () {
+// block save, copy, and developer tools 
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Helper: check if event is inside input/textarea/contentEditable
+  function isEditableElement(el) {
+    return (
+      el.tagName === "INPUT" ||
+      el.tagName === "TEXTAREA" ||
+      el.isContentEditable
+    );
+  }
+
   // Disable right-click context menu
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-  });
+  document.addEventListener(
+    "contextmenu",
+    function (e) {
+      if (!isEditableElement(e.target)) {
+        e.preventDefault();
+      }
+    },
+    true
+  );
 
   // Disable text selection
-  document.addEventListener('selectstart', function (e) {
-    e.preventDefault();
-  });
+  document.addEventListener(
+    "selectstart",
+    function (e) {
+      if (!isEditableElement(e.target)) {
+        e.preventDefault();
+      }
+    },
+    true
+  );
 
   // Disable drag and drop
-  document.addEventListener('dragstart', function (e) {
-    e.preventDefault();
-  });
+  document.addEventListener(
+    "dragstart",
+    function (e) {
+      e.preventDefault();
+    },
+    true
+  );
 
   // Disable common keyboard shortcuts
-  document.addEventListener('keydown', function (e) {
-    // Block F12
-    if (e.keyCode === 123) {
-      e.preventDefault();
-    }
-    // Block Ctrl+Shift+I (DevTools)
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-      e.preventDefault();
-    }
-    // Block Ctrl+Shift+C (Element Inspector)
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
-      e.preventDefault();
-    }
-    // Block Ctrl+Shift+J (Console)
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-      e.preventDefault();
-    }
-    // Block Ctrl+U (View Source)
-    if (e.ctrlKey && e.keyCode === 85) {
-      e.preventDefault();
-    }
-    // Block Ctrl+S (Save)
-    if (e.ctrlKey && e.keyCode === 83) {
-      e.preventDefault();
-    }
-    // Block Ctrl+P (Print)
-    if (e.ctrlKey && e.keyCode === 80) {
-      e.preventDefault();
-    }
-    // Block Ctrl+C (Copy)
-    if (e.ctrlKey && e.keyCode === 67) {
-      e.preventDefault();
-    }
-    // Block Ctrl+X (Cut)
-    if (e.ctrlKey && e.keyCode === 88) {
-      e.preventDefault();
-    }
-    // Block Ctrl+V (Paste)
-    if (e.ctrlKey && e.keyCode === 86) {
-      e.preventDefault();
-    }
-    // Block Ctrl+A (Select All)
-    if (e.ctrlKey && e.keyCode === 65) {
-      e.preventDefault();
-    }
-    // Block Shift+F10 (Context Menu)
-    if (e.shiftKey && e.keyCode === 121) {
-      e.preventDefault();
-    }
-  });
-}
+  document.addEventListener(
+    "keydown",
+    function (e) {
+      if (isEditableElement(e.target)) return; // 允许输入框正常使用
+
+      // 常见快捷键屏蔽
+      const key = e.key.toLowerCase();
+      if (
+        e.keyCode === 123 || // F12
+        (e.ctrlKey && e.shiftKey && ["i", "c", "j"].includes(key)) || // DevTools
+        (e.ctrlKey && ["u", "s", "p", "c", "x", "v", "a"].includes(key)) || // 常见复制、打印、保存
+        (e.shiftKey && e.keyCode === 121) // Shift+F10
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    true
+  );
+});
+
+
+
+///////////////////////////
+
 
 const select = document.getElementById('content-select');
 const offset = 80; // 向下偏移 80px

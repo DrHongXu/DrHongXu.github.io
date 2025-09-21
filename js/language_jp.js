@@ -1,4 +1,112 @@
+ /* 日本 region 英文 -> 日文 映射（ipinfo.io 返回 region 的英文名称） */
+ const japanRegions = {
+    "Hokkaido": "北海道","Aomori":"青森県","Iwate":"岩手県","Miyagi":"宮城県","Akita":"秋田県","Yamagata":"山形県","Fukushima":"福島県",
+    "Ibaraki":"茨城県","Tochigi":"栃木県","Gunma":"群馬県","Saitama":"埼玉県","Chiba":"千葉県","Tokyo":"東京都","Kanagawa":"神奈川県",
+    "Niigata":"新潟県","Toyama":"富山県","Ishikawa":"石川県","Fukui":"福井県","Yamanashi":"山梨県","Nagano":"長野県","Gifu":"岐阜県",
+    "Shizuoka":"静岡県","Aichi":"愛知県","Mie":"三重県","Shiga":"滋賀県","Kyoto":"京都府","Osaka":"大阪府","Hyogo":"兵庫県",
+    "Nara":"奈良県","Wakayama":"和歌山県","Tottori":"鳥取県","Shimane":"島根県","Okayama":"岡山県","Hiroshima":"広島県",
+    "Yamaguchi":"山口県","Tokushima":"徳島県","Kagawa":"香川県","Ehime":"愛媛県","Kochi":"高知県","Fukuoka":"福岡県",
+    "Saga":"佐賀県","Nagasaki":"長崎県","Kumamoto":"熊本県","Oita":"大分県","Miyazaki":"宮崎県","Kagoshima":"鹿児島県","Okinawa":"沖縄県"
+  };
+  
+  /* 获取 countries.json（若不存在或不可用，代码依然能工作） */
+  async function fetchCountries() {
+    try {
+      const resp = await fetch('/js/countries.json');
+      if (!resp.ok) throw new Error('countries.json fetch failed');
+      return await resp.json();
+    } catch (e) {
+      console.warn('无法加载 /js/countries.json，后备使用最小信息', e);
+      return []; // 返回空数组，后续会 fallback
+    }
+  }
+  
+  /* 根据国家代码查名字（大小写不敏感），并有后备顺序 */
+  function getCountryNameByCode(countries, code, language = 'japanese') {
+    if (!code) return '地球';
+    const target = (code || '').toUpperCase();
+    const country = (countries || []).find(c => c.abbr && c.abbr.toUpperCase() === target);
+    if (!country) return '地球';
+    // 返回优先级：指定语言 -> english -> chinese -> abbr
+    return (country[language] || country.english || country.chinese || country.abbr || '地球');
+  }
+  
+  /* 主逻辑 */
+  async function displayCountryAndRegion() {
+    const geoSpans = document.querySelectorAll('.geo-location');
+    const flagImgs = document.querySelectorAll('.country-flag');
+  
+    try {
+      const countries = await fetchCountries();
+  
+      // 获取 IP 信息
+      const resp = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
+      if (!resp.ok) throw new Error('ipinfo fetch failed');
+      const data = await resp.json();
+  
+      const countryCode = (data.country || '').toUpperCase();
+      const regionEnglish = (data.region || '').trim(); // ipinfo 的 prefecture（如 "Tokyo"）
+      let displayText = '地球';
+  
+      if (countryCode === 'JP') {
+        // 日本：若能映射到都道府県，则显示日文名；否则 fallback 显示 “日本”
+        if (regionEnglish && japanRegions[regionEnglish]) {
+          displayText = japanRegions[regionEnglish];
+        } else {
+          displayText = '日本'; // fallback
+        }
+      } else {
+        // 其他国家，尝试用 countries.json 的目标语言（japanese）或回退
+        displayText = getCountryNameByCode(countries, countryCode, 'japanese');
+      }
+  
+      // 更新所有 geo-location 元素
+      geoSpans.forEach(el => { el.textContent = displayText; });
+  
+      // 更新所有 flag 图片：先尝试大写文件名（例如 JP.png），若失败再尝试小写（jp.png），最后 fallback un.png
+      flagImgs.forEach(img => {
+        let triedLower = false;
+        img.alt = displayText;
+  
+        img.onerror = function() {
+          // 如果还没试过小写，就试试小写文件名
+          if (!triedLower) {
+            triedLower = true;
+            img.src = `./images/wflags/${countryCode.toLowerCase()}.png`;
+          } else {
+            // 最后回退到联合国旗或你指定的默认图
+            img.onerror = null; // 防止死循环
+            img.src = './images/wflags/un.png';
+            img.alt = '地球';
+          }
+        };
+  
+        // 开始尝试：优先大写文件名（与多数资源库一致）
+        if (countryCode) {
+          img.src = `./images/wflags/${countryCode.toUpperCase()}.png`;
+        } else {
+          img.src = './images/wflags/un.png';
+        }
+      });
+  
+    } catch (err) {
+      console.error('displayCountryAndRegion 出错，使用回退值：', err);
+      // 回退：显示地球 + UN 旗帜
+      geoSpans.forEach(el => { el.textContent = '地球'; });
+      flagImgs.forEach(img => {
+        img.onerror = null;
+        img.src = './images/wflags/un.png';
+        img.alt = '地球';
+      });
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', displayCountryAndRegion);
 
+
+
+
+  
 // 设置导航栏目宽度分配
 function measureAndDistributeNavWidths() {
   const navItems = document.querySelectorAll('.nav-container > div');

@@ -12,127 +12,20 @@ if (typeof cnProvincesMap === 'undefined') {
   };
 }
 
-// 异步数据获取函数（带缓存）
-let countriesCache = null;
-let cityMapCache = null;
-
+// 异步数据获取函数
 async function fetchCountries() {
-  if (countriesCache) return countriesCache;
   const response = await fetch('/js/countries.json');
-  countriesCache = await response.json();
-  return countriesCache;
+  return response.json();
 }
 
 async function fetchCityMap() {
-  if (cityMapCache) return cityMapCache;
   const response = await fetch('/js/city_name.json');
-  cityMapCache = await response.json();
-  return cityMapCache;
+  return response.json();
 }
 
 function getCountryNameByCode(countries, code, language = 'chinese') {
   const country = countries.find(c => c.abbr === code);
   return country ? (country[language] || country.chinese) : '地球';
-}
-
-// 从index.html缓存获取设备信息的辅助函数
-function getDeviceInfoFromCache() {
-  const deviceInfo = localStorage.getItem('deviceInfo');
-  if (deviceInfo) {
-    try {
-      return JSON.parse(deviceInfo);
-    } catch (e) {
-      console.warn('Failed to parse deviceInfo from cache');
-      return null;
-    }
-  }
-  return null;
-}
-
-// 获取设备类型（从index.html缓存）
-function getDeviceTypeFromCache() {
-  const deviceInfo = getDeviceInfoFromCache();
-  return deviceInfo?.deviceType || 'unknown';
-}
-
-// 获取屏幕宽度（从index.html缓存）
-function getScreenWidthFromCache() {
-  const deviceInfo = getDeviceInfoFromCache();
-  return deviceInfo?.viewport?.width || window.innerWidth;
-}
-
-// 获取用户语言（从index.html缓存）
-function getUserLanguageFromCache() {
-  const deviceInfo = getDeviceInfoFromCache();
-  return deviceInfo?.language?.primary || navigator.language;
-}
-
-// 立即更新显示（使用缓存，无延迟）
-function updateDisplayImmediatelyFromCache() {
-  const deviceInfo = getDeviceInfoFromCache();
-  if (!deviceInfo) return;
-  
-  const countryCode = deviceInfo.geoLocation?.countryCode || "";
-  const regionEnglish = deviceInfo.geoLocation?.region || "";
-  const cityEnglish = deviceInfo.geoLocation?.city || "";
-  
-  // 保持默认的"地球"显示，不显示国家代码
-  // document.querySelectorAll(".geo-location").forEach(span => {
-  //   span.textContent = "地球";
-  // });
-  
-  // 立即更新国旗
-  const countryFlagImg = document.getElementById('country-flag-local-storage');
-  if (countryFlagImg && countryCode) {
-    const lowerCode = countryCode.toLowerCase();
-    const flagPath = `./images/wflags/${lowerCode}.png`;
-    countryFlagImg.src = flagPath;
-    countryFlagImg.alt = `Flag of ${countryCode.toUpperCase()}`;
-    
-    countryFlagImg.onerror = function() {
-      this.src = './images/wflags/un.png';
-      this.alt = 'United Nations';
-    };
-  }
-  
-  // 立即更新语言国旗
-  updateFlagIcon();
-  
-  console.log('立即更新显示（使用缓存）:', countryCode);
-  
-  // 异步获取完整的地理位置名称
-  setTimeout(async () => {
-    try {
-      const countries = await fetchCountries();
-      const cityArray = await fetchCityMap();
-      
-      // 计算城市/省/国家显示
-      let content = null;
-      for (const cityObj of cityArray) {
-        if (cityObj[cityEnglish]) {
-          content = cityObj[cityEnglish]['ZH-CN'];
-          break;
-        }
-      }
-
-      if (!content && countryCode === "CN") {
-        content = cnProvincesMap[regionEnglish] || "中国";
-      }
-
-      if (!content) {
-        content = getCountryNameByCode(countries, countryCode, 'chinese');
-      }
-      
-      // 更新为完整的地理位置名称
-      document.querySelectorAll(".geo-location").forEach(span => {
-        span.textContent = content || "地球";
-      });
-      
-      console.log('更新为完整地理位置名称:', content);
-    } catch (error) {
-      console.warn('获取完整地理位置名称失败:', error);
-    }
-  }, 100);
 }
 
 // 全局变量和状态管理
@@ -168,45 +61,23 @@ function updateFlagIcon(mode = null) {
   }
 }
 
-// 根据countryCode动态显示国旗（使用index.html的缓存）
+// 根据countryCode动态显示国旗
 function updateCountryFlag() {
   const countryFlagImg = document.getElementById('country-flag-local-storage');
   
-  // 优先从index.html的deviceInfo缓存获取
+  // 优先从countryCodeCache获取，如果没有则从countryCode获取
   let cachedCode = null;
-  const deviceInfo = localStorage.getItem('deviceInfo');
+  const countryCodeCache = localStorage.getItem('countryCodeCache');
   
-  if (deviceInfo) {
+  if (countryCodeCache) {
     try {
-      const deviceData = JSON.parse(deviceInfo);
-      cachedCode = deviceData.geoLocation?.countryCode;
+      const cacheData = JSON.parse(countryCodeCache);
+      cachedCode = cacheData.countryCode;
     } catch (e) {
-      // 如果解析失败，回退到旧方法
-      const countryCodeCache = localStorage.getItem('countryCodeCache');
-      if (countryCodeCache) {
-        try {
-          const cacheData = JSON.parse(countryCodeCache);
-          cachedCode = cacheData.countryCode;
-        } catch (e2) {
-          cachedCode = localStorage.getItem('countryCode');
-        }
-      } else {
-        cachedCode = localStorage.getItem('countryCode');
-      }
-    }
-  } else {
-    // 回退到旧方法
-    const countryCodeCache = localStorage.getItem('countryCodeCache');
-    if (countryCodeCache) {
-      try {
-        const cacheData = JSON.parse(countryCodeCache);
-        cachedCode = cacheData.countryCode;
-      } catch (e) {
-        cachedCode = localStorage.getItem('countryCode');
-      }
-    } else {
       cachedCode = localStorage.getItem('countryCode');
     }
+  } else {
+    cachedCode = localStorage.getItem('countryCode');
   }
   
   if (cachedCode && countryFlagImg && cachedCode.trim() !== '' && cachedCode.length > 1) {
@@ -397,27 +268,12 @@ function handleChange(select) {
   }
 }
 
-// 立即更新显示，使用index.html的缓存信息
-function updateDisplayImmediate() {
-  // 从index.html的deviceInfo缓存获取信息
-  const deviceInfo = localStorage.getItem('deviceInfo');
-  let countryCode = "", regionEnglish = "", cityEnglish = "";
-  
-  if (deviceInfo) {
-    try {
-      const deviceData = JSON.parse(deviceInfo);
-      countryCode = deviceData.geoLocation?.countryCode || "";
-      regionEnglish = deviceData.geoLocation?.region || "";
-      cityEnglish = deviceData.geoLocation?.city || "";
-    } catch (e) {
-      console.warn('Failed to parse deviceInfo from index.html cache');
-    }
-  }
-  
-  // 保持默认的"地球"显示，不显示国家代码
-  // document.querySelectorAll(".geo-location").forEach(span => {
-  //   span.textContent = countryCode || "地球";
-  // });
+// 立即更新显示，不进行网络请求
+function updateDisplayImmediate(countryCode, regionEnglish, cityEnglish) {
+  // 更新 geo-location
+  document.querySelectorAll(".geo-location").forEach(span => {
+    span.textContent = countryCode || "地球";
+  });
 
   // 初始化DOM元素引用
   if (!button) button = document.getElementById("language-button");
@@ -579,40 +435,10 @@ async function displayGeoLocation() {
   if (geoLocationLoaded) return;
   geoLocationLoaded = true;
   
-  // 优先使用index.html的deviceInfo缓存
-  const deviceInfo = localStorage.getItem('deviceInfo');
+  // 检查缓存，如果有有效的缓存就直接使用
+  let cached = localStorage.getItem('countryCodeCache');
   let countryCode = "", regionEnglish = "", cityEnglish = "";
   
-  if (deviceInfo) {
-    try {
-      const deviceData = JSON.parse(deviceInfo);
-      const now = Date.now();
-      // 如果deviceInfo缓存时间少于30分钟，直接使用
-      if (now - deviceData.timestamp < 1800) {
-        countryCode = deviceData.geoLocation?.countryCode || "";
-        regionEnglish = deviceData.geoLocation?.region || "";
-        cityEnglish = deviceData.geoLocation?.city || "";
-        
-        // 立即更新显示，不等待网络请求
-        updateDisplayImmediatelyFromCache();
-        
-        // 异步加载数据，不阻塞页面
-        setTimeout(() => {
-          Promise.all([fetchCountries(), fetchCityMap()]).then(([countries, cityArray]) => {
-            updateDisplay(countryCode, regionEnglish, cityEnglish, countries, cityArray);
-          }).catch(() => {
-            // 静默处理错误
-          });
-        }, 100);
-        return;
-      }
-    } catch (e) {
-      console.warn('Failed to parse deviceInfo from index.html cache');
-    }
-  }
-  
-  // 回退到旧的countryCodeCache方法
-  let cached = localStorage.getItem('countryCodeCache');
   if (cached) {
     const cachedData = JSON.parse(cached);
     const now = Date.now();
@@ -623,7 +449,7 @@ async function displayGeoLocation() {
       cityEnglish = cachedData.cityEnglish;
       
       // 立即更新显示，不等待网络请求
-      updateDisplayImmediatelyFromCache();
+      updateDisplayImmediate(countryCode, regionEnglish, cityEnglish);
       
       // 异步加载数据，不阻塞页面
       setTimeout(() => {
@@ -638,7 +464,7 @@ async function displayGeoLocation() {
   }
   
   // 显示默认内容，不进行任何网络请求
-  updateDisplayImmediatelyFromCache();
+  updateDisplayImmediate("", "", "");
   
   // 异步加载所有数据，不阻塞页面
   setTimeout(async () => {
@@ -646,7 +472,7 @@ async function displayGeoLocation() {
       const countries = await fetchCountries();
       const cityArray = await fetchCityMap();
       
-      // 异步刷新 IPInfo（仅在必要时）
+      // 异步刷新 IPInfo
       try {
         const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
         const data = await response.json();
@@ -655,7 +481,6 @@ async function displayGeoLocation() {
         const newRegion = data.region || "";
         const newCity = data.city || "";
 
-        // 更新旧的缓存格式（向后兼容）
         localStorage.setItem('countryCodeCache', JSON.stringify({
           countryCode: newCountryCode, 
           regionEnglish: newRegion, 
@@ -703,9 +528,6 @@ if (!localStorage.interceptorAdded) {
 
 // 页面加载时的初始化
 document.addEventListener("DOMContentLoaded", function() {
-  // 立即使用缓存更新显示
-  updateDisplayImmediatelyFromCache();
-  
   // 默认简体或者 localStorage 中的保存值
   var savedMode = localStorage.getItem("langMode") || "simplified";
   switchLanguage(savedMode);
@@ -717,31 +539,15 @@ document.addEventListener("DOMContentLoaded", function() {
   updateLanguageDisplay(savedMode);
 });
 
-// 立即执行，不等待DOMContentLoaded
-if (document.readyState === 'loading') {
-  // 如果DOM还在加载，等待DOMContentLoaded
-  document.addEventListener('DOMContentLoaded', updateDisplayImmediatelyFromCache);
-} else {
-  // 如果DOM已经加载完成，立即执行
-  updateDisplayImmediatelyFromCache();
-}
-
 // 地理定位初始化
 document.addEventListener('DOMContentLoaded', displayGeoLocation);
 
 
 
-// 设置导航栏目宽度分配（使用index.html的缓存信息）
+// 设置导航栏目宽度分配
 function measureAndDistributeNavWidths() {
   const navItems = document.querySelectorAll('.nav-container > div');
   const measurements = [];
-  
-  // 获取缓存的设备信息
-  const deviceInfo = getDeviceInfoFromCache();
-  const deviceType = deviceInfo?.deviceType || 'unknown';
-  const screenWidth = deviceInfo?.viewport?.width || window.innerWidth;
-  
-  console.log(`使用缓存的设备信息: 类型=${deviceType}, 屏幕宽度=${screenWidth}px`);
   
   // 创建临时测量容器
   const measureContainer = document.createElement('div');
@@ -786,16 +592,16 @@ function measureAndDistributeNavWidths() {
   const totalWidth = measurements.reduce((sum, item) => sum + item.width, 0);
   const containerWidth = document.querySelector('.nav-container').offsetWidth;
   
-  console.log(`总内容宽度: ${totalWidth}px, 容器宽度: ${containerWidth}px, 设备类型: ${deviceType}`);
+  console.log(`总内容宽度: ${totalWidth}px, 容器宽度: ${containerWidth}px`);
   
   // 应用动态比例 - 使用 table-layout: fixed 和 width 百分比
   measurements.forEach(item => {
     let ratio = (item.width / totalWidth * 100).toFixed(2);
     
-    // 最后一个导航项（语言选择）减少5%宽度
+    // 最后一个导航项（语言选择）减少40%宽度
     if (item.index === measurements.length) {
-      ratio = (ratio * 0.95).toFixed(2);
-      console.log(`导航项 ${item.index} (语言选择) 宽度减少5%`);
+      ratio = (ratio * 0.6).toFixed(2);
+      console.log(`导航项 ${item.index} (语言选择) 宽度减少40%`);
     }
     
     item.element.style.width = `${ratio}%`;
@@ -805,7 +611,7 @@ function measureAndDistributeNavWidths() {
   return measurements;
 }
 
-// 缓存系统（使用index.html的设备信息）
+// 缓存系统
 function getCachedNavWidths() {
   const cacheKey = 'navWidthsCache';
   const cached = localStorage.getItem(cacheKey);
@@ -817,19 +623,8 @@ function getCachedNavWidths() {
       
       // 检查缓存是否过期（24小时）
       if (now - cacheData.timestamp < 24 * 60 * 60 * 1000) {
-        // 验证设备信息是否匹配
-        const deviceInfo = getDeviceInfoFromCache();
-        const currentDeviceType = deviceInfo?.deviceType || 'unknown';
-        const currentScreenWidth = deviceInfo?.viewport?.width || window.innerWidth;
-        
-        if (cacheData.deviceType === currentDeviceType && 
-            Math.abs(cacheData.screenWidth - currentScreenWidth) < 50) {
-          console.log('使用缓存的导航宽度设置（设备信息匹配）');
-          return cacheData.widths;
-        } else {
-          console.log('设备信息已变化，重新测量导航宽度');
-          localStorage.removeItem(cacheKey);
-        }
+        console.log('使用缓存的导航宽度设置');
+        return cacheData.widths;
       } else {
         console.log('导航宽度缓存已过期，重新测量');
         localStorage.removeItem(cacheKey);
@@ -845,17 +640,14 @@ function getCachedNavWidths() {
 
 function setCachedNavWidths(widths) {
   const cacheKey = 'navWidthsCache';
-  const deviceInfo = getDeviceInfoFromCache();
   const cacheData = {
     widths: widths,
-    timestamp: Date.now(),
-    deviceType: deviceInfo?.deviceType || 'unknown',
-    screenWidth: deviceInfo?.viewport?.width || window.innerWidth
+    timestamp: Date.now()
   };
   
   try {
     localStorage.setItem(cacheKey, JSON.stringify(cacheData));
-    console.log('导航宽度设置已缓存（包含设备信息）');
+    console.log('导航宽度设置已缓存');
   } catch (e) {
     console.log('无法缓存导航宽度设置:', e);
   }
@@ -886,9 +678,9 @@ function initializeNavWidths() {
     const widths = measurements.map(item => {
       let ratio = (item.width / measurements.reduce((sum, m) => sum + m.width, 0) * 100).toFixed(2);
       
-      // 最后一个导航项减少5%宽度
+      // 最后一个导航项减少40%宽度
       if (item.index === measurements.length) {
-        ratio = (ratio * 0.95).toFixed(2);
+        ratio = (ratio * 0.6).toFixed(2);
       }
       
       return `${ratio}%`;
