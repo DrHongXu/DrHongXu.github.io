@@ -127,6 +127,11 @@ section {
   display: block;
 }
 
+/* 禁止页面左右滑动 */
+html, body {
+  overflow-x: visible;
+}
+
 body {
   line-height: 1;
 }
