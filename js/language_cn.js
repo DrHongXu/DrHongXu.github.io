@@ -67,6 +67,108 @@ function getUserLanguageFromCache() {
   return deviceInfo?.language?.primary || navigator.language;
 }
 
+// 根据时区获取问候语
+function getGreetingByTimezone(timezone) {
+  try {
+    const now = new Date();
+    
+    // 使用24小时制格式
+    const options = {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: timezone
+    };
+    
+    const timeString = new Intl.DateTimeFormat('en-US', options).format(now);
+    const [hour, minute] = timeString.split(':').map(Number);
+    const timeInMinutes = hour * 60 + minute;
+    
+    console.log(`时区 ${timezone}: 时间 ${timeString}, 分钟数 ${timeInMinutes}`);
+    
+    // 05:00-08:59: 早安
+    if (timeInMinutes >= 300 && timeInMinutes < 540) {
+      console.log('匹配规则: 早安! (05:00-08:59)');
+      return '早安!';
+    }
+    // 09:00-11:29: 上午好
+    else if (timeInMinutes >= 540 && timeInMinutes < 690) {
+      console.log('匹配规则: 上午好! (09:00-11:29)');
+      return '上午好!';
+    }
+    // 11:30-13:29: 午安
+    else if (timeInMinutes >= 690 && timeInMinutes < 810) {
+      console.log('匹配规则: 午安! (11:30-13:29)');
+      return '午安!';
+    }
+    // 13:30-17:59: 下午好
+    else if (timeInMinutes >= 810 && timeInMinutes < 1080) {
+      console.log('匹配规则: 下午好! (13:30-17:59)');
+      return '下午好!';
+    }
+    // 18:00-04:59: 晚上好
+    else {
+      console.log('匹配规则: 晚上好! (18:00-04:59)');
+      return '晚上好!';
+    }
+  } catch (error) {
+    console.warn('获取时区问候语失败:', error);
+    return null;
+  }
+}
+
+// 更新问候语显示
+function updateGreeting() {
+  const greetingElement = document.querySelector('.morning-night-greeting');
+  if (!greetingElement) {
+    console.log('未找到问候语元素');
+    return;
+  }
+  
+  // 默认问候语
+  const defaultGreeting = '你好!';
+  
+  try {
+    // 获取设备信息
+    const deviceInfo = getDeviceInfoFromCache();
+    let timezone = null;
+    
+    if (deviceInfo) {
+      // 优先获取IP info缓存的时区信息
+      timezone = deviceInfo.geoLocation?.timezone ||
+                 deviceInfo.languageInfo?.timeZone || 
+                 localStorage.getItem('userTimeZone');
+      
+      console.log('时区获取优先级检查:');
+      console.log('IP地理位置时区:', deviceInfo.geoLocation?.timezone);
+      console.log('浏览器时区:', deviceInfo.languageInfo?.timeZone);
+      console.log('用户设置时区:', localStorage.getItem('userTimeZone'));
+      console.log('最终使用时区:', timezone);
+    }
+    
+    // 如果没有时区信息，使用浏览器默认时区
+    if (!timezone) {
+      timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      console.log(`使用浏览器默认时区: ${timezone}`);
+    }
+    
+    // 获取问候语
+    const greeting = getGreetingByTimezone(timezone);
+    if (greeting) {
+      greetingElement.textContent = greeting;
+      console.log(`更新问候语: ${greeting} (时区: ${timezone})`);
+    } else {
+      // 如果获取失败，设置为默认问候语
+      greetingElement.textContent = defaultGreeting;
+      console.log(`获取问候语失败，设置为默认: ${defaultGreeting}`);
+    }
+  } catch (error) {
+    // 任何错误都设置为默认问候语
+    greetingElement.textContent = defaultGreeting;
+    console.log(`问候语更新出错，设置为默认: ${defaultGreeting}`, error);
+  }
+}
+
 // 立即更新显示（使用缓存，无延迟）
 function updateDisplayImmediatelyFromCache() {
   const deviceInfo = getDeviceInfoFromCache();
@@ -100,7 +202,7 @@ function updateDisplayImmediatelyFromCache() {
   
   console.log('立即更新显示（使用缓存）:', countryCode);
   
-  // 异步获取完整的地理位置名称
+  // 异步获取完整的地理位置名称和更新问候语
   setTimeout(async () => {
     try {
       const countries = await fetchCountries();
@@ -128,9 +230,15 @@ function updateDisplayImmediatelyFromCache() {
         span.textContent = content || "地球";
       });
       
+      // 在获取完整地理位置信息后更新问候语
+      updateGreeting();
+      
       console.log('更新为完整地理位置名称:', content);
+      console.log('问候语已同步更新');
     } catch (error) {
       console.warn('获取完整地理位置名称失败:', error);
+      // 即使失败也要更新问候语
+      updateGreeting();
     }
   }, 100);
 }
@@ -493,6 +601,9 @@ function updateDisplay(countryCode, regionEnglish, cityEnglish, countries, cityA
   document.querySelectorAll(".geo-location").forEach(span => {
     span.textContent = content;
   });
+  
+  // 更新问候语
+  updateGreeting();
 
   // 初始化DOM元素引用
   if (!button) button = document.getElementById("language-button");
@@ -575,12 +686,31 @@ function updateDisplay(countryCode, regionEnglish, cityEnglish, countries, cityA
 }
 
 async function displayGeoLocation() {
-  // 如果已经加载过，直接返回
+  // 检查是否需要重新加载（IP变化时）
+  const deviceInfo = localStorage.getItem('deviceInfo');
+  if (deviceInfo && geoLocationLoaded) {
+    try {
+      const deviceData = JSON.parse(deviceInfo);
+      const now = Date.now();
+      // 如果缓存时间超过30分钟，重新加载
+      if (now - deviceData.timestamp > 1800) {
+        console.log('地理位置缓存已过期，重新获取...');
+        geoLocationLoaded = false;
+      } else {
+        // 缓存仍然有效，直接返回
+        return;
+      }
+    } catch (e) {
+      console.warn('解析设备信息失败，重新获取地理位置');
+      geoLocationLoaded = false;
+    }
+  }
+  
+  // 如果已经加载过且缓存有效，直接返回
   if (geoLocationLoaded) return;
   geoLocationLoaded = true;
   
   // 优先使用index.html的deviceInfo缓存
-  const deviceInfo = localStorage.getItem('deviceInfo');
   let countryCode = "", regionEnglish = "", cityEnglish = "";
   
   if (deviceInfo) {
@@ -715,6 +845,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // 确保语言显示在页面加载时正确显示
   updateLanguageDisplay(savedMode);
+  
+  // 确保问候语在页面加载时正确显示
+  updateGreeting();
 });
 
 // 立即执行，不等待DOMContentLoaded
@@ -1083,3 +1216,220 @@ window.addEventListener('resize', function() {
   localStorage.removeItem('navWidthsCache');
   setTimeout(initializeNavWidths, 50);
 });
+
+// 全局测试函数：测试问候语功能
+window.testGreeting = function(timezone = null) {
+  console.log('=== 测试问候语功能 ===');
+  
+  // 检查问候语元素是否存在
+  const greetingElement = document.querySelector('.morning-night-greeting');
+  if (!greetingElement) {
+    console.error('未找到 .morning-night-greeting 元素');
+    return;
+  }
+  console.log(`找到问候语元素，当前内容: "${greetingElement.textContent}"`);
+  
+  // 获取设备信息
+  const deviceInfo = getDeviceInfoFromCache();
+  console.log('设备信息:', deviceInfo);
+  
+  const testTimezone = timezone || 
+    (() => {
+      const tz = deviceInfo?.geoLocation?.timezone ||
+                 deviceInfo?.languageInfo?.timeZone || 
+                 localStorage.getItem('userTimeZone') ||
+                 Intl.DateTimeFormat().resolvedOptions().timeZone;
+      console.log(`获取到时区: ${tz}`);
+      return tz;
+    })();
+  
+  try {
+    const now = new Date();
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      timeZone: testTimezone
+    };
+    
+    const timeString = new Intl.DateTimeFormat('en-US', options).format(now);
+    const [hour, minute] = timeString.split(':').map(Number);
+    const timeInMinutes = hour * 60 + minute;
+    
+    console.log(`测试时区: ${testTimezone}`);
+    console.log(`当前时间: ${timeString} (${timeInMinutes}分钟)`);
+    
+    const greeting = getGreetingByTimezone(testTimezone);
+    console.log(`计算出的问候语: ${greeting}`);
+    
+    // 显示时间规则
+    console.log('时间规则:');
+    console.log('05:00-08:59: 早安!');
+    console.log('09:00-11:29: 上午好!');
+    console.log('11:30-13:29: 午安!');
+    console.log('13:30-17:59: 下午好!');
+    console.log('18:00-04:59: 晚上好!');
+    
+  } catch (error) {
+    console.error('测试问候语失败:', error);
+  }
+  
+  // 手动更新问候语显示
+  console.log('开始更新问候语...');
+  updateGreeting();
+  console.log(`更新后问候语内容: "${greetingElement.textContent}"`);
+};
+
+// 全局函数：强制更新问候语
+window.forceUpdateGreeting = function() {
+  updateGreeting();
+  console.log('强制更新问候语完成');
+};
+
+// 全局函数：测试苏黎世时区
+window.testZurich = function() {
+  console.log('=== 测试苏黎世时区 ===');
+  testGreeting('Europe/Zurich');
+};
+
+// 全局函数：测试所有时区
+window.testAllTimezones = function() {
+  const timezones = [
+    'Europe/Zurich',
+    'Europe/Paris', 
+    'Asia/Shanghai',
+    'America/New_York',
+    'Europe/London'
+  ];
+  
+  console.log('=== 测试所有时区 ===');
+  timezones.forEach(tz => {
+    console.log(`\n--- ${tz} ---`);
+    testGreeting(tz);
+  });
+};
+
+// 全局函数：检查缓存中的时区信息
+window.checkTimezoneCache = function() {
+  console.log('=== 检查时区缓存信息 ===');
+  
+  const deviceInfo = getDeviceInfoFromCache();
+  if (deviceInfo) {
+    console.log('设备信息缓存:', deviceInfo);
+    console.log('地理位置时区:', deviceInfo.geoLocation?.timezone);
+    console.log('语言信息时区:', deviceInfo.languageInfo?.timeZone);
+    console.log('用户设置时区:', localStorage.getItem('userTimeZone'));
+    console.log('浏览器默认时区:', Intl.DateTimeFormat().resolvedOptions().timeZone);
+    
+    // 计算实际使用的时区
+    const actualTimezone = deviceInfo.geoLocation?.timezone ||
+                          deviceInfo.languageInfo?.timeZone || 
+                          localStorage.getItem('userTimeZone') ||
+                          Intl.DateTimeFormat().resolvedOptions().timeZone;
+    console.log('实际使用的时区:', actualTimezone);
+  } else {
+    console.log('没有找到设备信息缓存');
+  }
+};
+
+// 全局函数：清除时区缓存并重新获取
+window.refreshTimezone = function() {
+  console.log('=== 刷新时区信息 ===');
+  
+  // 重置地理位置加载状态
+  geoLocationLoaded = false;
+  
+  // 清除相关缓存
+  localStorage.removeItem('deviceInfo');
+  localStorage.removeItem('countryCodeCache');
+  localStorage.removeItem('userTimeZone');
+  
+  console.log('已清除时区相关缓存');
+  
+  // 重新获取地理位置信息
+  if (typeof displayGeoLocation === 'function') {
+    displayGeoLocation();
+  }
+  
+  // 延迟更新问候语
+  setTimeout(() => {
+    updateGreeting();
+    console.log('问候语已更新');
+  }, 2000);
+};
+
+// 全局函数：强制重新获取地理位置（IP变化时使用）
+window.forceRefreshGeoLocation = function() {
+  console.log('=== 强制刷新地理位置信息 ===');
+  
+  // 重置地理位置加载状态
+  geoLocationLoaded = false;
+  
+  // 重新获取地理位置信息
+  if (typeof displayGeoLocation === 'function') {
+    displayGeoLocation();
+  }
+  
+  // 延迟更新问候语
+  setTimeout(() => {
+    updateGreeting();
+    console.log('地理位置和问候语已更新');
+  }, 1000);
+};
+
+// 全局函数：检查IP变化并更新时区
+window.checkIPChangeAndUpdateTimezone = function() {
+  console.log('=== 检查IP变化并更新时区 ===');
+  
+  // 获取当前缓存的IP信息
+  const deviceInfo = getDeviceInfoFromCache();
+  const cachedIP = deviceInfo?.geoLocation?.ip;
+  const cachedTimezone = deviceInfo?.geoLocation?.timezone;
+  
+  console.log('当前缓存的IP:', cachedIP);
+  console.log('当前缓存的时区:', cachedTimezone);
+  
+  // 重新获取IP信息
+  fetch('https://ipinfo.io/json?token=228a7bb192c4fc')
+    .then(response => response.json())
+    .then(data => {
+      const newIP = data.ip;
+      const newTimezone = data.timezone;
+      
+      console.log('新获取的IP:', newIP);
+      console.log('新获取的时区:', newTimezone);
+      
+      // 检查IP是否变化
+      if (cachedIP !== newIP) {
+        console.log('检测到IP变化，更新时区信息');
+        
+        // 更新设备信息缓存
+        if (deviceInfo) {
+          deviceInfo.geoLocation = {
+            ip: data.ip,
+            city: data.city,
+            region: data.region,
+            country: data.country,
+            countryCode: data.country,
+            timezone: data.timezone,
+            org: data.org,
+            postal: data.postal,
+            loc: data.loc
+          };
+          deviceInfo.timestamp = Date.now();
+          
+          // 保存更新后的设备信息
+          localStorage.setItem('deviceInfo', JSON.stringify(deviceInfo));
+          
+          // 更新问候语
+          updateGreeting();
+          
+          console.log('IP变化检测完成，时区已更新');
+        }
+      } else {
+        console.log('IP未变化，无需更新');
+      }
+    })
+    .catch(error => {
+      console.error('检查IP变化失败:', error);
+    });
+};
