@@ -14,7 +14,44 @@ function getCountryNameByCode(countries, code, language = 'english') {
     return country ? (country[language] || country.english) : 'Unknown';
 }
 
-async function updateDisplay(countryCode, countries, regionName = '', cityName = '') {
+function updateGreeting(timezone) {
+    const greetingEl = document.querySelector('.morning-night-greeting');
+    if (!greetingEl) return;
+
+    try {
+        // 获取指定时区的当前时间
+        const now = new Date();
+        const timeInTimezone = new Date(now.toLocaleString("en-US", {timeZone: timezone}));
+        const hour = timeInTimezone.getHours();
+
+        let greeting;
+        if (hour >= 5 && hour < 12) {
+            greeting = 'Good Morning!';
+        } else if (hour >= 12 && hour < 17) {
+            greeting = 'Good Afternoon!';
+        } else {
+            greeting = 'Good Evening!';
+        }
+
+        greetingEl.textContent = greeting;
+        console.log(`时区 ${timezone} 当前时间: ${timeInTimezone.toLocaleString()}, 问候语: ${greeting}`);
+    } catch (error) {
+        console.error('更新问候语失败:', error);
+        // 如果时区获取失败，使用本地时间
+        const hour = new Date().getHours();
+        let greeting;
+        if (hour >= 5 && hour < 12) {
+            greeting = 'Good Morning!';
+        } else if (hour >= 12 && hour < 17) {
+            greeting = 'Good Afternoon!';
+        } else {
+            greeting = 'Good Evening!';
+        }
+        greetingEl.textContent = greeting;
+    }
+}
+
+async function updateDisplay(countryCode, countries, regionName = '', cityName = '', timezone = '') {
     const locationEl = document.getElementById("location");
     const location2El = document.getElementById("location2");
     const flagImg = document.getElementById("country-flag");
@@ -30,6 +67,11 @@ async function updateDisplay(countryCode, countries, regionName = '', cityName =
 
     if (locationEl) locationEl.textContent = fullLocation;
     if (location2El) location2El.textContent = fullLocation;
+
+    // 更新问候语
+    if (timezone) {
+        updateGreeting(timezone);
+    }
 
     // --- 国旗处理 ---
     if (flagImg) {
@@ -90,17 +132,20 @@ async function displayCountryName() {
         const newCode = (data.country || '').toLowerCase();
         const regionName = data.region || '';
         const cityName = data.city || '';
+        const timezone = data.timezone || '';
 
-        await updateDisplay(newCode, countries, regionName,cityName);
+        await updateDisplay(newCode, countries, regionName, cityName, timezone);
         localStorage.setItem('countryCode', newCode);
+        localStorage.setItem('userTimezone', timezone);
 
     } catch (err) {
         console.error('获取 IPInfo 失败，使用缓存或默认值', err);
 
-        // 如果失败，用缓存国家码（只显示国家名）
+        // 如果失败，用缓存国家码和时区
         const cachedCode = localStorage.getItem('countryCode');
+        const cachedTimezone = localStorage.getItem('userTimezone');
         if (cachedCode) {
-            await updateDisplay(cachedCode, countries);
+            await updateDisplay(cachedCode, countries, '', '', cachedTimezone);
         }
     }
 

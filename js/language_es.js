@@ -14,7 +14,44 @@ function getCountryNameByCode(countries, code, language = 'spanish') {
     return country ? (country[language] || country.spanish || country.english) : 'mundo';
 }
 
-async function updateDisplay(countryCode, countries) {
+function updateSpanishGreeting(timezone) {
+    const greetingEl = document.querySelector('.morning-night-greeting');
+    if (!greetingEl) return;
+
+    try {
+        // 获取指定时区的当前时间
+        const now = new Date();
+        const timeInTimezone = new Date(now.toLocaleString("en-US", {timeZone: timezone}));
+        const hour = timeInTimezone.getHours();
+
+        let greeting;
+        if (hour >= 5 && hour < 12) {
+            greeting = '¡Buenos días!';
+        } else if (hour >= 12 && hour < 18) {
+            greeting = '¡Buenas tardes!';
+        } else {
+            greeting = '¡Buenas noches!';
+        }
+
+        greetingEl.textContent = greeting;
+        console.log(`时区 ${timezone} 当前时间: ${timeInTimezone.toLocaleString()}, 西班牙语问候语: ${greeting}`);
+    } catch (error) {
+        console.error('更新西班牙语问候语失败:', error);
+        // 如果时区获取失败，使用本地时间
+        const hour = new Date().getHours();
+        let greeting;
+        if (hour >= 5 && hour < 12) {
+            greeting = '¡Buenos días!';
+        } else if (hour >= 12 && hour < 18) {
+            greeting = '¡Buenas tardes!';
+        } else {
+            greeting = '¡Buenas noches!';
+        }
+        greetingEl.textContent = greeting;
+    }
+}
+
+async function updateDisplay(countryCode, countries, timezone = '') {
     const locationEl = document.getElementById("location");
     const location2El = document.getElementById("location2");
     const flagImg = document.getElementById("country-flag");
@@ -24,6 +61,11 @@ async function updateDisplay(countryCode, countries) {
 
     if (locationEl) locationEl.textContent = countryName;
     if (location2El) location2El.textContent = countryName;
+
+    // 更新西班牙语问候语
+    if (timezone) {
+        updateSpanishGreeting(timezone);
+    }
 
     if (flagImg) {
         flagImg.src = `./images/wflags/${countryCode}.png`;
@@ -76,27 +118,34 @@ async function updateDisplay(countryCode, countries) {
 async function displayCountryName() {
     const countries = await fetchCountries();
 
-    // 1. 先显示缓存的 countryCode（如果有）
+    // 1. 先显示缓存的 countryCode 和时区（如果有）
     let cachedCode = localStorage.getItem('countryCode');
+    let cachedTimezone = localStorage.getItem('userTimezone');
     if (cachedCode) {
-        await updateDisplay(cachedCode, countries);
+        await updateDisplay(cachedCode, countries, cachedTimezone);
     }
 
-    // 2. 延迟 1 分钟后重新获取最新 IP
+    // 2. 延迟 10 秒后重新获取最新 IP 和时区
     setTimeout(async () => {
         try {
             const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
             const data = await response.json();
             const newCode = (data.country || '').toLowerCase();
+            const timezone = data.timezone || '';
 
             if (!cachedCode || newCode !== cachedCode) {
-                await updateDisplay(newCode, countries);
+                await updateDisplay(newCode, countries, timezone);
                 localStorage.setItem('countryCode', newCode);
+                localStorage.setItem('userTimezone', timezone);
+            } else if (timezone && timezone !== cachedTimezone) {
+                // 如果国家码相同但时区不同，也更新问候语
+                await updateDisplay(newCode, countries, timezone);
+                localStorage.setItem('userTimezone', timezone);
             }
         } catch (err) {
             console.error('延迟获取 IPInfo 失败', err);
         }
-    }, 10000); // 1 分钟延迟
+    }, 10000); // 10 秒延迟
 }
 
 document.addEventListener('DOMContentLoaded', displayCountryName);
