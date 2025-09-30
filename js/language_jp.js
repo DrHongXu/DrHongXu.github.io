@@ -31,6 +31,45 @@
     return (country[language] || country.english || country.chinese || country.abbr || '地球');
   }
   
+  /* 根据时区获取日语问候语 */
+  function getJapaneseGreeting(timezone) {
+    const now = new Date();
+    let localTime;
+    
+    if (timezone) {
+      // 使用指定时区
+      try {
+        localTime = new Date(now.toLocaleString("en-US", {timeZone: timezone}));
+      } catch (e) {
+        // 时区无效，使用本地时间
+        localTime = now;
+      }
+    } else {
+      // 没有时区信息，使用本地时间
+      localTime = now;
+    }
+    
+    const hour = localTime.getHours();
+    
+    if (hour >= 5 && hour < 11) {
+      return "おはよう！";
+    } else if (hour >= 11 && hour < 18) {
+      return "こんにちは！";
+    } else {
+      return "こんばんは！";
+    }
+  }
+
+  /* 更新问候语显示 */
+  function updateGreeting(timezone) {
+    const greetingElements = document.querySelectorAll('.morning-night-greeting');
+    const greeting = getJapaneseGreeting(timezone);
+    
+    greetingElements.forEach(element => {
+      element.textContent = greeting;
+    });
+  }
+
   /* 主逻辑 */
   async function displayCountryAndRegion() {
     const geoSpans = document.querySelectorAll('.geo-location');
@@ -43,10 +82,14 @@
       const resp = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
       if (!resp.ok) throw new Error('ipinfo fetch failed');
       const data = await resp.json();
-  
+
       const countryCode = (data.country || '').toUpperCase();
       const regionEnglish = (data.region || '').trim(); // ipinfo 的 prefecture（如 "Tokyo"）
+      const timezone = data.timezone; // 获取时区信息
       let displayText = '地球';
+
+      // 更新问候语
+      updateGreeting(timezone);
   
       if (countryCode === 'JP') {
         // 日本：若能映射到都道府県，则显示日文名；否则 fallback 显示 “日本”
@@ -91,13 +134,15 @@
   
     } catch (err) {
       console.error('displayCountryAndRegion 出错，使用回退值：', err);
-      // 回退：显示地球 + UN 旗帜
+      // 回退：显示地球 + UN 旗帜 + 默认问候语
       geoSpans.forEach(el => { el.textContent = '地球'; });
       flagImgs.forEach(img => {
         img.onerror = null;
         img.src = './images/wflags/un.png';
         img.alt = '地球';
       });
+      // 使用本地时间作为回退
+      updateGreeting(null);
     }
   }
   
