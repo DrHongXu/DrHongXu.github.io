@@ -84,31 +84,24 @@ function getGreetingByTimezone(timezone) {
     const [hour, minute] = timeString.split(':').map(Number);
     const timeInMinutes = hour * 60 + minute;
     
-    console.log(`时区 ${timezone}: 时间 ${timeString}, 分钟数 ${timeInMinutes}`);
-    
     // 05:00-08:59: 早安
     if (timeInMinutes >= 300 && timeInMinutes < 540) {
-      console.log('匹配规则: 早安! (05:00-08:59)');
-      return '早安!';
+      return '早上好!';
     }
     // 09:00-11:29: 上午好
     else if (timeInMinutes >= 540 && timeInMinutes < 690) {
-      console.log('匹配规则: 上午好! (09:00-11:29)');
       return '上午好!';
     }
     // 11:30-13:29: 午安
     else if (timeInMinutes >= 690 && timeInMinutes < 810) {
-      console.log('匹配规则: 午安! (11:30-13:29)');
-      return '午安!';
+      return '中午好!';
     }
     // 13:30-17:59: 下午好
     else if (timeInMinutes >= 810 && timeInMinutes < 1080) {
-      console.log('匹配规则: 下午好! (13:30-17:59)');
       return '下午好!';
     }
     // 18:00-04:59: 晚上好
     else {
-      console.log('匹配规则: 晚上好! (18:00-04:59)');
       return '晚上好!';
     }
   } catch (error) {
@@ -121,7 +114,6 @@ function getGreetingByTimezone(timezone) {
 function updateGreeting() {
   const greetingElement = document.querySelector('.morning-night-greeting');
   if (!greetingElement) {
-    console.log('未找到问候语元素');
     return;
   }
   
@@ -138,34 +130,24 @@ function updateGreeting() {
       timezone = deviceInfo.geoLocation?.timezone ||
                  deviceInfo.languageInfo?.timeZone || 
                  localStorage.getItem('userTimeZone');
-      
-      console.log('时区获取优先级检查:');
-      console.log('IP地理位置时区:', deviceInfo.geoLocation?.timezone);
-      console.log('浏览器时区:', deviceInfo.languageInfo?.timeZone);
-      console.log('用户设置时区:', localStorage.getItem('userTimeZone'));
-      console.log('最终使用时区:', timezone);
     }
     
     // 如果没有时区信息，使用浏览器默认时区
     if (!timezone) {
       timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      console.log(`使用浏览器默认时区: ${timezone}`);
     }
     
     // 获取问候语
     const greeting = getGreetingByTimezone(timezone);
     if (greeting) {
       greetingElement.textContent = greeting;
-      console.log(`更新问候语: ${greeting} (时区: ${timezone})`);
     } else {
       // 如果获取失败，设置为默认问候语
       greetingElement.textContent = defaultGreeting;
-      console.log(`获取问候语失败，设置为默认: ${defaultGreeting}`);
     }
   } catch (error) {
     // 任何错误都设置为默认问候语
     greetingElement.textContent = defaultGreeting;
-    console.log(`问候语更新出错，设置为默认: ${defaultGreeting}`, error);
   }
 }
 
@@ -200,8 +182,6 @@ function updateDisplayImmediatelyFromCache() {
   // 立即更新语言国旗
   updateFlagIcon();
   
-  console.log('立即更新显示（使用缓存）:', countryCode);
-  
   // 异步获取完整的地理位置名称和更新问候语
   setTimeout(async () => {
     try {
@@ -232,11 +212,7 @@ function updateDisplayImmediatelyFromCache() {
       
       // 在获取完整地理位置信息后更新问候语
       updateGreeting();
-      
-      console.log('更新为完整地理位置名称:', content);
-      console.log('问候语已同步更新');
     } catch (error) {
-      console.warn('获取完整地理位置名称失败:', error);
       // 即使失败也要更新问候语
       updateGreeting();
     }
@@ -326,13 +302,11 @@ function updateCountryFlag() {
     
     // 如果图片加载失败，显示默认的UN旗帜
     countryFlagImg.onerror = function() {
-      console.log(`Failed to load flag: ${flagPath}, using default UN flag`);
       this.src = './images/wflags/un.png';
       this.alt = 'United Nations';
     };
   } else if (countryFlagImg) {
     // 如果没有国家代码，显示默认旗帜
-    console.log(`No valid country code found (${cachedCode}), using default UN flag`);
     countryFlagImg.src = './images/wflags/un.png';
     countryFlagImg.alt = 'United Nations';
   }
@@ -411,7 +385,6 @@ function switchLanguage(mode) {
 
 // 繁体中文切换函数
 function runFanTiJavaScript() {
-  console.log('切换到繁体中文...');
   const scriptId = 'tongwenlet_tw';
   let script = document.getElementById(scriptId);
 
@@ -432,7 +405,6 @@ function runFanTiJavaScript() {
 
 // 简体中文切换函数
 function runJianTiJavaScript() {
-  console.log('切换到簡體中文...');
   const scriptId = 'tongwenlet_cn';
   let script = document.getElementById(scriptId);
 
@@ -518,7 +490,7 @@ function updateDisplayImmediate() {
       regionEnglish = deviceData.geoLocation?.region || "";
       cityEnglish = deviceData.geoLocation?.city || "";
     } catch (e) {
-      console.warn('Failed to parse deviceInfo from index.html cache');
+      // 静默处理解析错误
     }
   }
   
@@ -874,8 +846,6 @@ function measureAndDistributeNavWidths() {
   const deviceType = deviceInfo?.deviceType || 'unknown';
   const screenWidth = deviceInfo?.viewport?.width || window.innerWidth;
   
-  console.log(`使用缓存的设备信息: 类型=${deviceType}, 屏幕宽度=${screenWidth}px`);
-  
   // 创建临时测量容器
   const measureContainer = document.createElement('div');
   measureContainer.style.cssText = `
@@ -909,8 +879,6 @@ function measureAndDistributeNavWidths() {
       width: width,
       content: item.textContent.trim()
     });
-    
-    console.log(`导航项 ${index + 1}: "${item.textContent.trim()}" - 宽度: ${width}px`);
   });
   
   document.body.removeChild(measureContainer);
@@ -919,8 +887,6 @@ function measureAndDistributeNavWidths() {
   const totalWidth = measurements.reduce((sum, item) => sum + item.width, 0);
   const containerWidth = document.querySelector('.nav-container').offsetWidth;
   
-  console.log(`总内容宽度: ${totalWidth}px, 容器宽度: ${containerWidth}px, 设备类型: ${deviceType}`);
-  
   // 应用动态比例 - 使用 table-layout: fixed 和 width 百分比
   measurements.forEach(item => {
     let ratio = (item.width / totalWidth * 100).toFixed(2);
@@ -928,11 +894,9 @@ function measureAndDistributeNavWidths() {
     // 最后一个导航项（语言选择）减少5%宽度
     if (item.index === measurements.length) {
       ratio = (ratio * 0.95).toFixed(2);
-      console.log(`导航项 ${item.index} (语言选择) 宽度减少5%`);
     }
     
     item.element.style.width = `${ratio}%`;
-    console.log(`导航项 ${item.index} 设置宽度: ${ratio}% (${item.width}px)`);
   });
   
   return measurements;
@@ -957,18 +921,14 @@ function getCachedNavWidths() {
         
         if (cacheData.deviceType === currentDeviceType && 
             Math.abs(cacheData.screenWidth - currentScreenWidth) < 50) {
-          console.log('使用缓存的导航宽度设置（设备信息匹配）');
           return cacheData.widths;
         } else {
-          console.log('设备信息已变化，重新测量导航宽度');
           localStorage.removeItem(cacheKey);
         }
       } else {
-        console.log('导航宽度缓存已过期，重新测量');
         localStorage.removeItem(cacheKey);
       }
     } catch (e) {
-      console.log('导航宽度缓存数据损坏，重新测量');
       localStorage.removeItem(cacheKey);
     }
   }
@@ -988,9 +948,8 @@ function setCachedNavWidths(widths) {
   
   try {
     localStorage.setItem(cacheKey, JSON.stringify(cacheData));
-    console.log('导航宽度设置已缓存（包含设备信息）');
   } catch (e) {
-    console.log('无法缓存导航宽度设置:', e);
+    // 静默处理缓存错误
   }
 }
 
@@ -1000,7 +959,6 @@ function applyCachedWidths(cachedWidths) {
   navItems.forEach((item, index) => {
     if (cachedWidths[index]) {
       item.style.width = cachedWidths[index];
-      console.log(`导航项 ${index + 1} 应用缓存宽度: ${cachedWidths[index]}`);
     }
   });
 }
@@ -1042,7 +1000,6 @@ function applyNavWidthsImmediately() {
         item.style.width = cachedWidths[index];
       }
     });
-    console.log('立即应用缓存的导航宽度设置');
     return true;
   }
   return false;
@@ -1061,7 +1018,6 @@ function tryApplyCacheEarly() {
           item.style.width = cachedWidths[index];
         }
       });
-      console.log('早期应用缓存的导航宽度设置');
       return true;
     }
   }
@@ -1116,8 +1072,6 @@ function addNavWidthCSS() {
     style.id = 'nav-width-cache';
     style.textContent = css;
     document.head.appendChild(style);
-    
-    console.log('添加导航宽度CSS预加载');
   }
 }
 
@@ -1137,7 +1091,6 @@ function applyCacheSynchronously() {
               }
             });
             observer.disconnect(); // 应用完成后停止监听
-            console.log('同步应用缓存的导航宽度设置');
           }
         }
       });
@@ -1171,7 +1124,6 @@ function applyCacheSynchronously() {
         }
       });
       observer.disconnect();
-      console.log('立即应用缓存的导航宽度设置');
     }
   }
 }
@@ -1194,7 +1146,6 @@ applyCacheSynchronously();
       style.id = 'nav-width-inline';
       style.textContent = css;
       document.head.appendChild(style);
-      console.log('立即注入导航宽度CSS');
     } else {
       // 如果head还不存在，等待它出现
       const checkHead = setInterval(() => {
@@ -1204,7 +1155,6 @@ applyCacheSynchronously();
           style.textContent = css;
           document.head.appendChild(style);
           clearInterval(checkHead);
-          console.log('延迟注入导航宽度CSS');
         }
       }, 1);
     }
