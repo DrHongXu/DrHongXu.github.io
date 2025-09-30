@@ -112,8 +112,8 @@ function getGreetingByTimezone(timezone) {
 
 // 更新问候语显示
 function updateGreeting() {
-  const greetingElement = document.querySelector('.morning-night-greeting');
-  if (!greetingElement) {
+  const greetingElements = document.querySelectorAll('.morning-night-greeting');
+  if (greetingElements.length === 0) {
     return;
   }
   
@@ -139,15 +139,17 @@ function updateGreeting() {
     
     // 获取问候语
     const greeting = getGreetingByTimezone(timezone);
-    if (greeting) {
-      greetingElement.textContent = greeting;
-    } else {
-      // 如果获取失败，设置为默认问候语
-      greetingElement.textContent = defaultGreeting;
-    }
+    const finalGreeting = greeting || defaultGreeting;
+    
+    // 更新所有问候语元素
+    greetingElements.forEach(element => {
+      element.textContent = finalGreeting;
+    });
   } catch (error) {
     // 任何错误都设置为默认问候语
-    greetingElement.textContent = defaultGreeting;
+    greetingElements.forEach(element => {
+      element.textContent = defaultGreeting;
+    });
   }
 }
 
