@@ -110,6 +110,29 @@ function getGreetingByTimezone(timezone) {
   }
 }
 
+// 打字机动画效果
+function typeWriter(element, text, speed = 100) {
+  return new Promise((resolve) => {
+    let i = 0;
+    element.textContent = '';
+    
+    function type() {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+        
+        // 随机停顿时间，模拟真实打字效果
+        const randomDelay = speed + Math.random() * 50;
+        setTimeout(type, randomDelay);
+      } else {
+        resolve();
+      }
+    }
+    
+    type();
+  });
+}
+
 // 更新问候语显示
 function updateGreeting() {
   const greetingElements = document.querySelectorAll('.morning-night-greeting');
@@ -151,6 +174,38 @@ function updateGreeting() {
       element.textContent = defaultGreeting;
     });
   }
+}
+
+// 启动打字机动画
+function startTypingAnimation() {
+  const typingElements = document.querySelectorAll('.typing-animation');
+  
+  typingElements.forEach(async (element) => {
+    // 检查是否已经播放过动画
+    if (element.dataset.animationPlayed === 'true') {
+      return;
+    }
+    
+    // 保存原始内容
+    const originalContent = element.innerHTML;
+    
+    // 提取纯文本内容（不包含HTML标签）
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = originalContent;
+    const textContent = tempDiv.textContent || tempDiv.innerText || '';
+    
+    // 标记动画已播放
+    element.dataset.animationPlayed = 'true';
+    
+    // 清空内容
+    element.innerHTML = '';
+    
+    // 开始打字机动画
+    await typeWriter(element, textContent, 80);
+    
+    // 动画完成后恢复原始HTML结构
+    element.innerHTML = originalContent;
+  });
 }
 
 // 立即更新显示（使用缓存，无延迟）
@@ -822,6 +877,11 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // 确保问候语在页面加载时正确显示
   updateGreeting();
+  
+  // 启动打字机动画（延迟启动，确保其他内容已加载）
+  setTimeout(() => {
+    startTypingAnimation();
+  }, 1000);
 });
 
 // 立即执行，不等待DOMContentLoaded
