@@ -52,11 +52,11 @@
     const hour = localTime.getHours();
     
     if (hour >= 5 && hour < 11) {
-      return "おはよう！";
+      return "おはよう!";
     } else if (hour >= 11 && hour < 18) {
-      return "こんにちは！";
+      return "こんにちは!";
     } else {
-      return "こんばんは！";
+      return "こんばんは!";
     }
   }
 
