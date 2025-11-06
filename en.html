@@ -18,9 +18,22 @@
   <!-- Mobile Specific Metas
   ================================================== -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- DNS预解析和资源预加载优化 -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://code.jquery.com">
+  <link rel="dns-prefetch" href="https://w.bookcdn.com">
+  <link rel="dns-prefetch" href="https://s01.flagcounter.com">
+  <link rel="dns-prefetch" href="https://24timezones.com">
+  <!-- ipinfo.io 优先加载 - DNS预解析和预连接 -->
+  <link rel="dns-prefetch" href="https://ipinfo.io">
+  <link rel="preconnect" href="https://ipinfo.io" crossorigin>
 
   <!-- CSS
   ================================================== -->
+  <!-- 关键CSS内联或优先加载 -->
   <link rel="stylesheet" href="stylesheets/base.css">
   <link rel="stylesheet" href="stylesheets/skeleton.css">
   <link rel="stylesheet" href="stylesheets/layout.css">
@@ -29,13 +42,63 @@
   <link rel="stylesheet" href="stylesheets/navi6.css">
   <link rel="stylesheet" href="stylesheets/type.css">
   <link rel="stylesheet" href="stylesheets/slider.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- 非关键CSS异步加载 -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+  <!-- 设备优化器 - 异步加载 -->
+  <script src="js/device-optimizer.js" defer></script>
   
- <!-- 设备优化器 - 优先加载 -->
- <script src="js/device-optimizer.js"></script>
+  <!-- 提前发起 ipinfo.io API 调用，不阻塞页面渲染 -->
+  <script>
+    // 立即发起 API 调用，不等待其他脚本加载
+    (function() {
+      // 检查是否已有缓存，如果有且较新（24小时内），直接使用
+      const cachedData = localStorage.getItem('ipinfo_cache');
+      const cacheTime = localStorage.getItem('ipinfo_cache_time');
+      const now = Date.now();
+      
+      if (cachedData && cacheTime && (now - parseInt(cacheTime)) < 24 * 60 * 60 * 1000) {
+        // 使用缓存，但仍然后台更新
+        try {
+          const data = JSON.parse(cachedData);
+          window.ipinfoCache = data;
+        } catch(e) {
+          // 缓存解析失败，继续请求
+        }
+      }
+      
+      // 无论是否有缓存，都发起新的请求（后台更新）
+      fetch('https://ipinfo.io/json?token=228a7bb192c4fc')
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.json();
+        })
+        .then(data => {
+          // 存储到 window 对象，供 language_en.js 使用
+          window.ipinfoData = data;
+          // 同时更新缓存
+          localStorage.setItem('ipinfo_cache', JSON.stringify(data));
+          localStorage.setItem('ipinfo_cache_time', now.toString());
+          // 触发自定义事件，通知其他脚本数据已准备好
+          window.dispatchEvent(new CustomEvent('ipinfoReady', { detail: data }));
+        })
+        .catch(err => {
+          console.warn('ipinfo.io API call failed:', err);
+          // 如果失败，尝试使用缓存
+          if (cachedData) {
+            try {
+              window.ipinfoData = JSON.parse(cachedData);
+            } catch(e) {
+              // 忽略错误
+            }
+          }
+        });
+    })();
+  </script>
   
   <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <!-- HTML5 shim 延迟加载，因为现代浏览器不需要 -->
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" defer></script>
   <![endif]-->
 
   <!-- Favicons
@@ -207,9 +270,9 @@
 
   </style>
 
-<script src="js/language_en.js"></script>
+<script src="js/language_en.js" defer></script>
 
-<script src="js/language.js"></script>
+<script src="js/language.js" defer></script>
 
 
   <nav class="display-mobile">
@@ -347,28 +410,134 @@
         </style>
         
         <script>
-          const button = document.getElementById("language-button");
-          const flagButton = document.getElementById("flag-button");
-          const menu = document.getElementById("language-menu");
+          // 延迟执行，避免阻塞页面渲染
+          document.addEventListener('DOMContentLoaded', function() {
+            const button = document.getElementById("language-button");
+            const flagButton = document.getElementById("flag-button");
+            const menu = document.getElementById("language-menu");
 
-          // 为En文字添加点击事件
-          button.addEventListener("click", (event) => {
-            event.stopPropagation(); // 阻止事件冒泡
-            menu.classList.toggle("hidden");
+            if (!button || !flagButton || !menu) return;
+
+            // 为En文字添加点击事件
+            button.addEventListener("click", (event) => {
+              event.stopPropagation(); // 阻止事件冒泡
+              menu.classList.toggle("hidden");
+            });
+
+            // 为国旗图标添加点击事件
+            flagButton.addEventListener("click", (event) => {
+              event.stopPropagation(); // 阻止事件冒泡
+              menu.classList.toggle("hidden");
+            });
+
+            // 点击页面其他地方收起菜单
+            document.addEventListener("click", () => {
+              menu.classList.add("hidden");
+            });
+            
+            // 优先使用提前获取的 ipinfo 数据，不等待 language_en.js 加载
+            function useIpinfoData() {
+              const data = window.ipinfoData || window.ipinfoCache;
+              if (!data) return false;
+              
+              // 立即更新显示，使用提前获取的数据
+              const countryCode = (data.country || '').toLowerCase();
+              const regionName = data.region || '';
+              const cityName = data.city || '';
+              const timezone = data.timezone || '';
+              
+              // 更新 localStorage
+              if (countryCode) {
+                localStorage.setItem('countryCode', countryCode);
+              }
+              if (timezone) {
+                localStorage.setItem('userTimezone', timezone);
+              }
+              
+              // 标记数据已使用
+              window.ipinfoDataUsed = true;
+              return true;
+            }
+            
+            // 如果数据已准备好，立即使用
+            if (useIpinfoData()) {
+              // 数据已使用，等待 language_en.js 加载后刷新显示
+              window.addEventListener('ipinfoReady', function() {
+                if (typeof displayCountryName === 'function') {
+                  displayCountryName();
+                }
+              });
+            } else {
+              // 数据未准备好，监听就绪事件
+              window.addEventListener('ipinfoReady', function(event) {
+                useIpinfoData();
+                if (typeof displayCountryName === 'function') {
+                  displayCountryName();
+                }
+              });
+            }
+            
+            // displayCountryName 函数在 language_en.js 中定义，由于使用了 defer，需要等待脚本加载完成
+            // 包装 displayCountryName，让它优先使用提前获取的数据
+            function callDisplayCountryName() {
+              if (typeof displayCountryName === 'function') {
+                // 如果已经有提前获取的数据，修改 displayCountryName 使用它
+                if ((window.ipinfoData || window.ipinfoCache) && !window.ipinfoDataUsed) {
+                  const originalDisplayCountryName = displayCountryName;
+                  const cachedData = window.ipinfoData || window.ipinfoCache;
+                  
+                  // 临时替换 displayCountryName 以使用缓存数据
+                  displayCountryName = async function() {
+                    // 先尝试使用缓存数据
+                    if (cachedData && !window.ipinfoDataUsed) {
+                      window.ipinfoDataUsed = true;
+                      try {
+                        // 确保必要的函数已加载
+                        if (typeof fetchCountries === 'function' && typeof updateDisplay === 'function') {
+                          const countries = await fetchCountries();
+                          const countryCode = (cachedData.country || '').toLowerCase();
+                          const regionName = cachedData.region || '';
+                          const cityName = cachedData.city || '';
+                          const timezone = cachedData.timezone || '';
+                          await updateDisplay(countryCode, countries, regionName, cityName, timezone);
+                          localStorage.setItem('countryCode', countryCode);
+                          localStorage.setItem('userTimezone', timezone);
+                          return;
+                        }
+                      } catch(e) {
+                        console.warn('Failed to use cached ipinfo data:', e);
+                        // 如果失败，回退到原始函数
+                        window.ipinfoDataUsed = false;
+                      }
+                    }
+                    // 如果没有缓存或使用失败，调用原始函数
+                    return originalDisplayCountryName.call(this);
+                  };
+                }
+                displayCountryName();
+                return true;
+              }
+              return false;
+            }
+            
+            // 立即检查一次
+            if (callDisplayCountryName()) {
+              return;
+            }
+            
+            // 如果函数仍未加载，使用短间隔轮询
+            let attempts = 0;
+            const maxAttempts = 40; // 最多等待2秒 (40 * 50ms)
+            const checkInterval = setInterval(function() {
+              attempts++;
+              if (callDisplayCountryName()) {
+                clearInterval(checkInterval);
+              } else if (attempts >= maxAttempts) {
+                clearInterval(checkInterval);
+                console.warn('displayCountryName function not loaded after timeout');
+              }
+            }, 50);
           });
-
-          // 为国旗图标添加点击事件
-          flagButton.addEventListener("click", (event) => {
-            event.stopPropagation(); // 阻止事件冒泡
-            menu.classList.toggle("hidden");
-          });
-
-          // 点击页面其他地方收起菜单
-          document.addEventListener("click", () => {
-            menu.classList.add("hidden");
-          });
-
-          document.addEventListener('DOMContentLoaded', displayCountryName);
 
         </script>
       <!-- 保持原有样式，只按内容宽度比例分配 -->
@@ -422,7 +591,7 @@
   <!-- Delete everything in this .container and get started on your own site! -->
   <div class="display-mobile" style="position: relative">
     <img class="display-mobile" src="images/banner_mobile_en3.gif"
-      style="margin-top: -10px; width: 113%; max-width: 113%;" />
+      style="margin-top: -10px; width: 113%; max-width: 113%;" loading="lazy" decoding="async" />
     <div class="red-dot" alt="Munich" style="position: absolute; top: 24.3%; left: 61.7%; max-width: 113%;"></div>
   </div>
 
@@ -432,7 +601,7 @@
     <div class="hidden-mobile" class="three columns sidebar">
       <nav>
         <h3 id="logo" style="text-align:center;">
-          <img id="optionalstuff" src="images/banner_cns3_left.gif" width="155" />
+          <img id="optionalstuff" src="images/banner_cns3_left.gif" width="155" loading="lazy" decoding="async" />
           <div style="margin-bottom: 17px;"></div>
           <h3 class="hidden-mobile" align="left">Dr. Hong Xu</h3>
 
@@ -474,7 +643,7 @@
       <!--<img class="hidden-mobile" src="images/banner_en2.png" width="800" />-->
 
       <div class="image-wrapper hidden-mobile">
-        <img src="images/banner_cns3.gif" width="800" alt="banner Image" />
+        <img src="images/banner_cns3.gif" width="800" alt="banner Image" loading="lazy" decoding="async" />
         
         <div class="banner-text" style="position:absolute;top:20%;left:3.5%;font-family:'Georgia',serif;font-size:24px;line-height:1.2;color:white;">There’re Two Kinds of<br> <span class="banner-bar-length">Games in the World</span></div>
         <div class="banner-text-2" style="position:absolute;bottom:22%;left:3.5%;font-family:'Georgia',serif;font-size:24px;line-height:1.2;color:white;">Finite and<br>Infinite</div>
@@ -693,7 +862,7 @@
             <a class="hidden-mobile" id="weather" target="_blank"
               href="https://www.booked.net/weather/beijing-18391"><img
                 src="https://w.bookcdn.com/weather/picture/5_18391_1_1_137AE9_160_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=w209&anc_id=60060"
-                width="100px" alt="booked.net" style="margin-left: 110px; margin-top: -10px;" /></a>
+                width="100px" alt="booked.net" style="margin-left: 110px; margin-top: -10px;" loading="lazy" decoding="async" /></a>
 
           </h3>
         </div>
@@ -719,36 +888,36 @@
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg7_en.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg7_en_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg7_en.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg7_en_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <!-- <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg8_en.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg8_en_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg8_en.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg8_en_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div> -->
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg9_en.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg9_en_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg9_en.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg9_en_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg11_en.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg11_en_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg11_en.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg11_en_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg13_en.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg13_en_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg13_en.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg13_en_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
@@ -814,7 +983,7 @@
                 object-fit: fill;
                 object-position: top right;
                 transform: translateX(0%) translateY(40%);
-              " />
+              " loading="lazy" decoding="async" />
                 </a> <!-- https://www.flagcounter.me/regenerate/eVF MFQClYKOU 英语-->
           <!-- <br>
           <a href="https://info.flagcounter.com/D897" target="_blank"><img
@@ -1021,7 +1190,8 @@
       }
     }
 
-    window.onload = checkHoliday;
+    // 使用DOMContentLoaded而非window.onload，更快执行
+    document.addEventListener('DOMContentLoaded', checkHoliday);
   </script>
 
   <script>
@@ -1073,14 +1243,11 @@ function getCurrentDateFormatted(locale) {
   </script>
 
   <script>
+    // 全局变量，确保函数可以访问
     let slideIndex = 1;
-    showSlides(slideIndex);
+    let slideInterval;
 
-    // Auto transition the slides every 1.5 seconds
-    let slideInterval = setInterval(() => {
-      plusSlides(1);
-    }, 3500);
-
+    // 全局函数，供 onclick 事件使用
     function plusSlides(n) {
       clearInterval(slideInterval);
       showSlides(slideIndex += n);
@@ -1112,10 +1279,21 @@ function getCurrentDateFormatted(locale) {
       slides[slideIndex - 1].style.display = "block";
       dots[slideIndex - 1].className += " active";
     }
+
+    // 延迟初始化 slider，避免阻塞页面渲染
+    document.addEventListener('DOMContentLoaded', function() {
+      showSlides(slideIndex);
+
+      // Auto transition the slides every 3.5 seconds
+      slideInterval = setInterval(() => {
+        plusSlides(1);
+      }, 3500);
+    });
   </script>
 
-  <script type="text/javascript">
-    window.onload = function () {
+  <script type="text/javascript" defer>
+    // 使用DOMContentLoaded而非window.onload，更快执行
+    document.addEventListener('DOMContentLoaded', function () {
       // Block certain keyboard shortcuts
       document.onkeydown = function (e) {
         e = e || window.event;
@@ -1152,25 +1330,28 @@ function getCurrentDateFormatted(locale) {
       document.onselectstart = function () {
         return false;
       };
-    };
+    });
   </script>
 
 <script>
 
-window.addEventListener("load", () => {
+// 使用DOMContentLoaded而非window.load，更快执行
+document.addEventListener("DOMContentLoaded", () => {
   const secondLine = document.querySelector(".banner-bar-length");
   const orangeBar = document.querySelector(".orange-bar");
 
-  // 获取第二行文字的像素宽度
-  const width = secondLine.offsetWidth;
+  if (secondLine && orangeBar) {
+    // 获取第二行文字的像素宽度
+    const width = secondLine.offsetWidth;
 
-  // 设置橙条的宽度
-  orangeBar.style.width = width + "px";
+    // 设置橙条的宽度
+    orangeBar.style.width = width + "px";
+  }
 });
 
 </script>
 
-  <script type="text/javascript" src="update_info_script.js"></script>
+  <script type="text/javascript" src="update_info_script.js" defer></script>
 
   <!-- End Document
 ================================================== -->
