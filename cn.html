@@ -18,9 +18,18 @@
     <!-- Mobile Specific Metas
   ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- DNS预解析和资源预加载优化 -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://code.jquery.com">
+    <link rel="dns-prefetch" href="https://w.bookcdn.com">
+    <link rel="dns-prefetch" href="https://s01.flagcounter.com">
 
     <!-- CSS
   ================================================== -->
+    <!-- 关键CSS内联或优先加载 -->
     <link rel="stylesheet" href="stylesheets/base.css">
     <link rel="stylesheet" href="stylesheets/skeleton.css">
     <link rel="stylesheet" href="stylesheets/layout.css">
@@ -31,11 +40,17 @@
     <link rel="stylesheet" href="stylesheets/footer.css">
     <link rel="stylesheet" href="stylesheets/type.css">
     <link rel="stylesheet" href="stylesheets/slider.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 非关键CSS异步加载 -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+    <!-- Google Fonts优化 - 使用display=swap避免阻塞 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet"></noscript>
 
-  <!-- 设备优化器 - 优先加载 -->
-  <script src="js/device-optimizer.js"></script>
+  <!-- 设备优化器 - 异步加载 -->
+  <script src="js/device-optimizer.js" defer></script>
 
     <!-- Favicons
   ================================================== -->
@@ -148,13 +163,14 @@
 
     </style>
 
-<script src="js/language_cn.js"></script>
+<script src="js/language_cn.js" defer></script>
 
 
     <!-- block save as
       ================================================== -->
-    <script type="text/javascript">
-        window.onload = function () {
+    <script type="text/javascript" defer>
+        // 使用DOMContentLoaded而非window.onload，更快执行
+        document.addEventListener('DOMContentLoaded', function () {
             document.onkeydown = function () {
                 var e = window.event || arguments[0];
                 //屏蔽F12
@@ -176,7 +192,7 @@
 
                 return false;
             }
-        }
+        });
     </script>
 
 <nav class="display-mobile">
@@ -374,9 +390,10 @@
 <!-- 60px 替换为你的导航实际高度 -->
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 移除重复的jQuery加载，统一在底部加载 -->
+    <!-- prefixfree异步加载 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js" defer></script>
+    <!-- jQuery在底部统一加载，避免重复 -->
 
 
 
@@ -399,7 +416,7 @@
     <img class="display-mobile" id="mobileBanner" src="images/banner_mobile_cn3.gif" 
     data-simplified="images/banner_mobile_cn3.gif" 
     data-traditional="images/banner_mobile_zh3.gif" width="800"
-      style="margin-top: -10px; width: 113%; max-width: 113%;">
+      style="margin-top: -10px; width: 113%; max-width: 113%;" loading="lazy" decoding="async">
     <div class="red-dot" alt="Munich" style="position: absolute; top: 24.3%; left: 61.7%; max-width: 113%;"></div>
   </div>
 
@@ -411,7 +428,7 @@
         <div class="hidden-mobile" class="three columns sidebar">
             <nav>
                 <h3 id="logo" style="text-align:center;">
-                    <img class="hidden-mobile" src="images/banner_cns3_left.gif" width="155" />
+                    <img class="hidden-mobile" src="images/banner_cns3_left.gif" width="155" loading="lazy" decoding="async" />
                     <div style="margin-bottom: 15px;"></div>
                     <h3 class="hidden-mobile" align="left"><ruby>徐<rt><text style="letter-spacing: -5px;">ㄒㄩˊ</text>
                             </rt></ruby>&nbsp;<ruby>泓<rt><text style="letter-spacing: -4px;">ㄏㄨㄥˊ</text></rt></ruby>
@@ -445,7 +462,7 @@
   <!-- Content -->
             <div class="twelve columns offset-by-four content">
               <div class="image-wrapper hidden-mobile">
-                <img src="images/banner_cns3.gif" width="800" alt="banner Image" />
+                <img src="images/banner_cns3.gif" width="800" alt="banner Image" loading="lazy" decoding="async" />
 
                 <div style="position:absolute;top:20%;left:3.5%;font-family:'Times New Roman', 'Noto Serif SC', 'Songti SC', 'STSong', SimSun, serif;font-size:24px;line-height:1.2;font-weight:bold;color:white;">世界 上 至少 有<br>两种 游戏</div>
                 <div style="position:absolute;bottom:22%;left:3.5%;font-family:'Times New Roman','Noto Serif SC', 'Songti SC', 'STSong', SimSun, serif;font-size:24px;line-height:1.2;font-weight:bold;color:white;">有限 vs 无限<br>的 游戏</div>
@@ -683,7 +700,7 @@
             <!-- weather widget start --><a class="hidden-mobile" id="weather" target="_blank"
               href="https://www.booked.net/weather/beijing-18391"><img
                 src="https://w.bookcdn.com/weather/picture/5_18391_1_1_137AE9_160_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=w209&anc_id=60060"
-                width="100px" alt="booked.net" style="margin-left: 110px; margin-top: -10px;" /></a>
+                width="100px" alt="booked.net" style="margin-left: 110px; margin-top: -10px;" loading="lazy" decoding="async" /></a>
             <!-- weather widget end -->
           </h3>
         </div>
@@ -829,7 +846,7 @@
                 object-fit: fill;
                 object-position: top right;
                 transform: translateX(0%) translateY(40%);
-              " />
+              " loading="lazy" decoding="async" />
                 </a> <!---   https://www.flagcounter.me/regenerate/eVE  Password:8iExFwT7N  中文  -->
 
 
@@ -902,7 +919,7 @@
 
 
     <!-- js partial -->
-    <script src="./js/navi7.js"></script>
+    <script src="./js/navi7.js" defer></script>
     <!--<script src="./js/fetch_citation_number.js"></script>-->
     <script>
       const orangeDots = document.querySelectorAll('.orange-dot');
@@ -1060,17 +1077,18 @@
 
 
 
-    <script type="text/javascript" src="/js/cn_holiday_display.js"></script>
+    <script type="text/javascript" src="/js/cn_holiday_display.js" defer></script>
 
 
 
 
 
     <!-- partial -->
-    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="/js/navi-mobile.js"></script>
-    <script src="/js/navi-sidebar.js"></script>
-    <script type="text/javascript" src="update_info_script.js"></script>
+    <!-- 统一使用jQuery 3.6.0，移除重复的2.1.3版本 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/navi-mobile.js" defer></script>
+    <script src="/js/navi-sidebar.js" defer></script>
+    <script type="text/javascript" src="update_info_script.js" defer></script>
 
 
     <!-- End Document
