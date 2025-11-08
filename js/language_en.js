@@ -125,10 +125,9 @@ async function updateDisplay(countryCode, countries, regionName = '', cityName =
 async function displayCountryName() {
     const countries = await fetchCountries();
 
-    try {
-        const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
-        const data = await response.json();
-
+    // 1. 优先使用提前获取的数据（从 en.html 的提前加载）
+    if (window.ipinfoData || window.ipinfoCache) {
+        const data = window.ipinfoData || window.ipinfoCache;
         const newCode = (data.country || '').toLowerCase();
         const regionName = data.region || '';
         const cityName = data.city || '';
@@ -137,20 +136,41 @@ async function displayCountryName() {
         await updateDisplay(newCode, countries, regionName, cityName, timezone);
         localStorage.setItem('countryCode', newCode);
         localStorage.setItem('userTimezone', timezone);
-
-    } catch (err) {
-        console.error('获取 IPInfo 失败，使用缓存或默认值', err);
-
-        // 如果失败，用缓存国家码和时区
-        const cachedCode = localStorage.getItem('countryCode');
-        const cachedTimezone = localStorage.getItem('userTimezone');
-        if (cachedCode) {
-            await updateDisplay(cachedCode, countries, '', '', cachedTimezone);
-        }
+        
+        // 标记数据已使用
+        window.ipinfoDataUsed = true;
+        return;
     }
 
-    // 延迟每分钟刷新一次
-    setTimeout(displayCountryName, 10000);
+    // 2. 如果没有提前获取的数据，先显示缓存（类似 de.html）
+    let cachedCode = localStorage.getItem('countryCode');
+    let cachedTimezone = localStorage.getItem('userTimezone');
+    if (cachedCode) {
+        await updateDisplay(cachedCode, countries, '', '', cachedTimezone);
+    }
+
+    // 3. 后台更新 API 数据（延迟请求，不阻塞显示）
+    setTimeout(async () => {
+        try {
+            const response = await fetch('https://ipinfo.io/json?token=228a7bb192c4fc');
+            const data = await response.json();
+
+            const newCode = (data.country || '').toLowerCase();
+            const regionName = data.region || '';
+            const cityName = data.city || '';
+            const timezone = data.timezone || '';
+
+            // 只在数据变化时更新显示
+            if (!cachedCode || newCode !== cachedCode || timezone !== cachedTimezone) {
+                await updateDisplay(newCode, countries, regionName, cityName, timezone);
+                localStorage.setItem('countryCode', newCode);
+                localStorage.setItem('userTimezone', timezone);
+            }
+        } catch (err) {
+            console.error('获取 IPInfo 失败，使用缓存或默认值', err);
+            // 失败时继续使用缓存，不更新
+        }
+    }, 500); // 延迟 500ms，让页面先渲染
 }
 
 

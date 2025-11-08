@@ -48,6 +48,66 @@
   <!-- 设备优化器 - 异步加载 -->
   <script src="js/device-optimizer.js" defer></script>
   
+  <!-- 立即更新问候语和位置，不等待任何 API 或脚本加载 -->
+  <script>
+    // 立即更新问候语和位置，基于本地时间和缓存，不等待 API
+    (function() {
+      function updateContentImmediate() {
+        // 1. 立即更新问候语（基于本地时间）
+        const greetingEl = document.querySelector('.morning-night-greeting');
+        if (greetingEl) {
+          const hour = new Date().getHours();
+          let greeting;
+          if (hour >= 5 && hour < 12) {
+            greeting = 'Good Morning!';
+          } else if (hour >= 12 && hour < 17) {
+            greeting = 'Good Afternoon!';
+          } else {
+            greeting = 'Good Evening!';
+          }
+          greetingEl.textContent = greeting;
+        }
+        
+        // 2. 立即更新位置（如果有缓存）- 异步加载国家名称，不阻塞
+        const cachedCode = localStorage.getItem('countryCode');
+        if (cachedCode) {
+          // 异步加载 countries.json 获取国家名称（不阻塞页面渲染）
+          fetch('./js/countries.json')
+            .then(response => response.json())
+            .then(countries => {
+              const country = countries.find(c => c.abbr.toLowerCase() === cachedCode.toLowerCase());
+              const countryName = country ? (country.english || country.name || 'the World') : 'the World';
+              const locationEl = document.getElementById('location');
+              const location2El = document.getElementById('location2');
+              if (locationEl) locationEl.textContent = countryName;
+              if (location2El) location2El.textContent = countryName;
+            })
+            .catch(() => {
+              // 如果加载失败，使用简单的映射作为后备
+              const simpleMap = {
+                'us': 'the United States', 'gb': 'the United Kingdom', 'ca': 'Canada',
+                'au': 'Australia', 'de': 'Germany', 'fr': 'France', 'it': 'Italy',
+                'es': 'Spain', 'cn': 'China', 'jp': 'Japan', 'kr': 'South Korea',
+                'in': 'India', 'br': 'Brazil', 'mx': 'Mexico', 'ru': 'Russia'
+              };
+              const countryName = simpleMap[cachedCode.toLowerCase()] || 'the World';
+              const locationEl = document.getElementById('location');
+              const location2El = document.getElementById('location2');
+              if (locationEl) locationEl.textContent = countryName;
+              if (location2El) location2El.textContent = countryName;
+            });
+        }
+      }
+      
+      // 如果 DOM 已加载，立即更新
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateContentImmediate);
+      } else {
+        updateContentImmediate();
+      }
+    })();
+  </script>
+  
   <!-- 提前发起 ipinfo.io API 调用，不阻塞页面渲染 -->
   <script>
     // 立即发起 API 调用，不等待其他脚本加载
@@ -62,6 +122,15 @@
         try {
           const data = JSON.parse(cachedData);
           window.ipinfoCache = data;
+          // 如果有时区信息，更新问候语
+          if (data.timezone) {
+            setTimeout(() => {
+              const greetingEl = document.querySelector('.morning-night-greeting');
+              if (greetingEl && typeof updateGreeting === 'function') {
+                updateGreeting(data.timezone);
+              }
+            }, 100);
+          }
         } catch(e) {
           // 缓存解析失败，继续请求
         }
@@ -79,6 +148,13 @@
           // 同时更新缓存
           localStorage.setItem('ipinfo_cache', JSON.stringify(data));
           localStorage.setItem('ipinfo_cache_time', now.toString());
+          // 更新问候语（如果时区可用）
+          if (data.timezone) {
+            const greetingEl = document.querySelector('.morning-night-greeting');
+            if (greetingEl && typeof updateGreeting === 'function') {
+              updateGreeting(data.timezone);
+            }
+          }
           // 触发自定义事件，通知其他脚本数据已准备好
           window.dispatchEvent(new CustomEvent('ipinfoReady', { detail: data }));
         })
@@ -271,8 +347,7 @@
   </style>
 
 <script src="js/language_en.js" defer></script>
-
-<script src="js/language.js" defer></script>
+<!-- language.js 移除：en.html 不使用 jQuery，该文件不必要 -->
 
 
   <nav class="display-mobile">
@@ -435,85 +510,10 @@
               menu.classList.add("hidden");
             });
             
-            // 优先使用提前获取的 ipinfo 数据，不等待 language_en.js 加载
-            function useIpinfoData() {
-              const data = window.ipinfoData || window.ipinfoCache;
-              if (!data) return false;
-              
-              // 立即更新显示，使用提前获取的数据
-              const countryCode = (data.country || '').toLowerCase();
-              const regionName = data.region || '';
-              const cityName = data.city || '';
-              const timezone = data.timezone || '';
-              
-              // 更新 localStorage
-              if (countryCode) {
-                localStorage.setItem('countryCode', countryCode);
-              }
-              if (timezone) {
-                localStorage.setItem('userTimezone', timezone);
-              }
-              
-              // 标记数据已使用
-              window.ipinfoDataUsed = true;
-              return true;
-            }
-            
-            // 如果数据已准备好，立即使用
-            if (useIpinfoData()) {
-              // 数据已使用，等待 language_en.js 加载后刷新显示
-              window.addEventListener('ipinfoReady', function() {
-                if (typeof displayCountryName === 'function') {
-                  displayCountryName();
-                }
-              });
-            } else {
-              // 数据未准备好，监听就绪事件
-              window.addEventListener('ipinfoReady', function(event) {
-                useIpinfoData();
-                if (typeof displayCountryName === 'function') {
-                  displayCountryName();
-                }
-              });
-            }
-            
+            // 简化逻辑：类似 de.html，先显示缓存，后台更新
             // displayCountryName 函数在 language_en.js 中定义，由于使用了 defer，需要等待脚本加载完成
-            // 包装 displayCountryName，让它优先使用提前获取的数据
             function callDisplayCountryName() {
               if (typeof displayCountryName === 'function') {
-                // 如果已经有提前获取的数据，修改 displayCountryName 使用它
-                if ((window.ipinfoData || window.ipinfoCache) && !window.ipinfoDataUsed) {
-                  const originalDisplayCountryName = displayCountryName;
-                  const cachedData = window.ipinfoData || window.ipinfoCache;
-                  
-                  // 临时替换 displayCountryName 以使用缓存数据
-                  displayCountryName = async function() {
-                    // 先尝试使用缓存数据
-                    if (cachedData && !window.ipinfoDataUsed) {
-                      window.ipinfoDataUsed = true;
-                      try {
-                        // 确保必要的函数已加载
-                        if (typeof fetchCountries === 'function' && typeof updateDisplay === 'function') {
-                          const countries = await fetchCountries();
-                          const countryCode = (cachedData.country || '').toLowerCase();
-                          const regionName = cachedData.region || '';
-                          const cityName = cachedData.city || '';
-                          const timezone = cachedData.timezone || '';
-                          await updateDisplay(countryCode, countries, regionName, cityName, timezone);
-                          localStorage.setItem('countryCode', countryCode);
-                          localStorage.setItem('userTimezone', timezone);
-                          return;
-                        }
-                      } catch(e) {
-                        console.warn('Failed to use cached ipinfo data:', e);
-                        // 如果失败，回退到原始函数
-                        window.ipinfoDataUsed = false;
-                      }
-                    }
-                    // 如果没有缓存或使用失败，调用原始函数
-                    return originalDisplayCountryName.call(this);
-                  };
-                }
                 displayCountryName();
                 return true;
               }
@@ -525,16 +525,16 @@
               return;
             }
             
-            // 如果函数仍未加载，使用短间隔轮询
+            // 如果函数仍未加载，使用短间隔轮询（减少轮询次数，因为问候语已经立即显示了）
             let attempts = 0;
-            const maxAttempts = 40; // 最多等待2秒 (40 * 50ms)
+            const maxAttempts = 20; // 减少到1秒 (20 * 50ms)，因为主要功能已经可用
             const checkInterval = setInterval(function() {
               attempts++;
               if (callDisplayCountryName()) {
                 clearInterval(checkInterval);
               } else if (attempts >= maxAttempts) {
                 clearInterval(checkInterval);
-                console.warn('displayCountryName function not loaded after timeout');
+                // 不显示警告，因为主要功能已经可用
               }
             }, 50);
           });
@@ -699,7 +699,7 @@
 
 
       <p class="hidden-mobile"></p>
-      <h3 class="hidden-mobile"><span class="morning-night-greeting">Hello! </span><small><small><small> Welcome friends from <span id="location">the World</span>
+      <h3 class="hidden-mobile"><span class="morning-night-greeting" id="greeting-text">Hello! </span><small><small><small> Welcome friends from <span id="location">the World</span>
               :-)</small></small> </small>
         <span style="float:right;font-family:verdana;">
           <img src="./images/wflags_svg/gb.svg" alt="flag"
@@ -1117,81 +1117,83 @@
   </script>
 
 
-  <script>
-    let holidays = [
-      // Fixed-date holidays
-      { date: '01-01', greeting: 'Happy New Year!<br>', range: 5 },
-      { date: '01-06', greeting: 'Happy PhD Graduation Anniversary!<br>', range: 1 },
-      { date: '04-05', greeting: 'Today is My Birthday!<br>', range: 1 },
-      { date: '05-01', greeting: 'Happy International Labor Day!<br>', range: 1 },
-      { date: '10-31', greeting: 'Happy Halloween!<br>', range: 2 },
-      { date: '12-25', greeting: 'Merry Christmas!<br>', range: 5 },
-      // Lunar calendar holidays for specific years
-      { date: '2024-02-10', greeting: 'Happy Chinese New Year of Dragon!<br>', range: 7, lunar: true },
-      { date: '2025-01-29', greeting: 'Happy Chinese New Year of Snake!<br>', range: 7, lunar: true },
-      { date: '2026-02-17', greeting: 'Happy Chinese New Year of Horse!<br>', range: 7, lunar: true },
-      { date: '2027-02-06', greeting: 'Happy Chinese New Year of Goat!<br>', range: 7, lunar: true },
-      { date: '2028-01-26', greeting: 'Happy Chinese New Year of Monday!<br>', range: 7, lunar: true },
-      { date: '2029-02-13', greeting: 'Happy Chinese New Year of Rooster!<br>', range: 7, lunar: true },
-      { date: '2030-02-03', greeting: 'Happy Chinese New Year of Dog!<br>', range: 7, lunar: true },
+  <script defer>
+    // 延迟执行节日检查，不阻塞页面渲染
+    (function() {
+      const holidays = [
+        // Fixed-date holidays
+        { date: '01-01', greeting: 'Happy New Year!<br>', range: 5 },
+        { date: '01-06', greeting: 'Happy PhD Graduation Anniversary!<br>', range: 1 },
+        { date: '04-05', greeting: 'Today is My Birthday!<br>', range: 1 },
+        { date: '05-01', greeting: 'Happy International Labor Day!<br>', range: 1 },
+        { date: '10-31', greeting: 'Happy Halloween!<br>', range: 2 },
+        { date: '12-25', greeting: 'Merry Christmas!<br>', range: 5 },
+        // Lunar calendar holidays for specific years
+        { date: '2024-02-10', greeting: 'Happy Chinese New Year of Dragon!<br>', range: 7, lunar: true },
+        { date: '2025-01-29', greeting: 'Happy Chinese New Year of Snake!<br>', range: 7, lunar: true },
+        { date: '2026-02-17', greeting: 'Happy Chinese New Year of Horse!<br>', range: 7, lunar: true },
+        { date: '2027-02-06', greeting: 'Happy Chinese New Year of Goat!<br>', range: 7, lunar: true },
+        { date: '2028-01-26', greeting: 'Happy Chinese New Year of Monday!<br>', range: 7, lunar: true },
+        { date: '2029-02-13', greeting: 'Happy Chinese New Year of Rooster!<br>', range: 7, lunar: true },
+        { date: '2030-02-03', greeting: 'Happy Chinese New Year of Dog!<br>', range: 7, lunar: true },
+        { date: '2024-03-29', greeting: 'Happy Easter!<br>', range: 4, lunar: true },
+        { date: '2025-04-18', greeting: 'Happy Easter!<br>', range: 4, lunar: true },
+        { date: '2026-04-03', greeting: 'Happy Easter!<br>', range: 4, lunar: true },
+        { date: '2024-06-10', greeting: 'Happy Dragon Boat Festival!<br>', range: 3, lunar: true },
+        { date: '2024-09-15', greeting: 'Happy Moon Festival!<br>', range: 3, lunar: true },
+        { date: '2025-10-06', greeting: 'Happy Moon Festival!<br>', range: 3, lunar: true },
+        { date: '2026-09-25', greeting: 'Happy Moon Festival!<br>', range: 3, lunar: true },
+        { date: '2024-02-24', greeting: 'Happy Lantern Festival!<br>', range: 1, lunar: true },
+        { date: '2024-10-01', greeting: 'Happy Chinese National Day!<br>', range: 1, lunar: true },
+        { date: '2024-08-27', greeting: 'Today Marks My 10th Year in Europe!<br>', range: 1, lunar: true },
+      ];
 
-      { date: '2024-03-29', greeting: 'Happy Easter!<br>', range: 4, lunar: true },
-      { date: '2025-04-18', greeting: 'Happy Easter!<br>', range: 4, lunar: true },
-      { date: '2026-04-03', greeting: 'Happy Easter!<br>', range: 4, lunar: true },
+      function isHolidayNear(today, holiday) {
+        const todayDate = new Date(today);
+        let holidayDate = new Date(holiday.date);
 
-      { date: '2024-06-10', greeting: 'Happy Dragon Boat Festival!<br>', range: 3, lunar: true },
+        if (!holiday.lunar) {
+          holidayDate.setFullYear(todayDate.getFullYear());
+        }
 
-      { date: '2024-09-15', greeting: 'Happy Moon Festival!<br>', range: 3, lunar: true },
-      { date: '2025-10-06', greeting: 'Happy Moon Festival!<br>', range: 3, lunar: true },
-      { date: '2026-09-25', greeting: 'Happy Moon Festival!<br>', range: 3, lunar: true },
+        const startRange = new Date(holidayDate.getTime() - holiday.range * 24 * 60 * 60 * 1000);
+        const endRange = new Date(holidayDate.getTime() + holiday.range * 24 * 60 * 60 * 1000);
 
-      { date: '2024-02-24', greeting: 'Happy Lantern Festival!<br>', range: 1, lunar: true },
-
-      { date: '2024-10-01', greeting: 'Happy Chinese National Day!<br>', range: 1, lunar: true },
-
-      { date: '2024-08-27', greeting: 'Today Marks My 10th Year in Europe!<br>', range: 1, lunar: true },
-    ];
-
-    function isHolidayNear(today, holiday) {
-      const todayDate = new Date(today);
-      let holidayDate = new Date(holiday.date);
-
-      if (!holiday.lunar) {
-        holidayDate.setFullYear(todayDate.getFullYear());
+        return todayDate >= startRange && todayDate <= endRange;
       }
 
-      const startRange = new Date(holidayDate.getTime() - holiday.range * 24 * 60 * 60 * 1000);
-      const endRange = new Date(holidayDate.getTime() + holiday.range * 24 * 60 * 60 * 1000);
+      function checkHoliday() {
+        const greetingElement = document.getElementById("greetings");
+        if (!greetingElement) return;
+        
+        greetingElement.style.display = 'none'; // Initially hide the greeting
+        const today = new Date().toISOString().slice(0, 10);
 
-      return todayDate >= startRange && todayDate <= endRange;
-    }
+        // Check lunar holidays first
+        for (let holiday of holidays) {
+          if (holiday.lunar && isHolidayNear(today, holiday)) {
+            greetingElement.innerHTML = holiday.greeting + '<br>';
+            greetingElement.style.display = 'block';
+            return;
+          }
+        }
 
-    function checkHoliday() {
-      const today = new Date().toISOString().slice(0, 10);
-      let greetingElement = document.getElementById("greetings");
-      greetingElement.style.display = 'none'; // Initially hide the greeting
-
-      // Check lunar holidays first
-      for (let holiday of holidays) {
-        if (holiday.lunar && isHolidayNear(today, holiday)) {
-          greetingElement.innerHTML = holiday.greeting + '<br>'; // Include the greeting and line break
-          greetingElement.style.display = 'block'; // Show the greeting
-          return;
+        // Check fixed-date holidays
+        for (let holiday of holidays) {
+          if (!holiday.lunar && isHolidayNear(today, holiday)) {
+            greetingElement.innerHTML = holiday.greeting + '<br>';
+            greetingElement.style.display = 'block';
+            return;
+          }
         }
       }
 
-      // Check fixed-date holidays
-      for (let holiday of holidays) {
-        if (!holiday.lunar && isHolidayNear(today, holiday)) {
-          greetingElement.innerHTML = holiday.greeting + '<br>'; // Include the greeting and line break
-          greetingElement.style.display = 'block'; // Show the greeting
-          return;
-        }
-      }
-    }
-
-    // 使用DOMContentLoaded而非window.onload，更快执行
-    document.addEventListener('DOMContentLoaded', checkHoliday);
+      // 延迟执行，不阻塞页面渲染
+      document.addEventListener('DOMContentLoaded', function() {
+        // 延迟 100ms 执行，让页面先渲染
+        setTimeout(checkHoliday, 100);
+      });
+    })();
   </script>
 
   <script>
