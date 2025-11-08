@@ -26,6 +26,10 @@
     <link rel="dns-prefetch" href="https://code.jquery.com">
     <link rel="dns-prefetch" href="https://w.bookcdn.com">
     <link rel="dns-prefetch" href="https://s01.flagcounter.com">
+    <link rel="dns-prefetch" href="https://24timezones.com">
+    <!-- ipinfo.io 优先加载 - DNS预解析和预连接 -->
+    <link rel="dns-prefetch" href="https://ipinfo.io">
+    <link rel="preconnect" href="https://ipinfo.io" crossorigin>
 
     <!-- CSS
   ================================================== -->
@@ -51,6 +55,423 @@
 
   <!-- 设备优化器 - 异步加载 -->
   <script src="js/device-optimizer.js" defer></script>
+  
+  <!-- 立即更新问候语、位置和旗帜，不等待任何 API 或脚本加载 -->
+  <script>
+    // 立即更新问候语、位置和旗帜，基于本地时间和缓存，不等待 API
+    (function() {
+      function updateContentImmediate() {
+        // 1. 立即更新问候语（基于本地时间）
+        const greetingEls = document.querySelectorAll('.morning-night-greeting');
+        if (greetingEls.length > 0) {
+          const hour = new Date().getHours();
+          let greeting;
+          // 05:00-08:59: 早安
+          if (hour >= 5 && hour < 9) {
+            greeting = '早上好!';
+          }
+          // 09:00-11:29: 上午好
+          else if (hour >= 9 && hour < 12) {
+            greeting = '上午好!';
+          }
+          // 11:30-13:29: 午安
+          else if (hour >= 12 && hour < 14) {
+            greeting = '中午好!';
+          }
+          // 13:30-17:59: 下午好
+          else if (hour >= 14 && hour < 18) {
+            greeting = '下午好!';
+          }
+          // 18:00-04:59: 晚上好
+          else {
+            greeting = '晚上好!';
+          }
+          
+          greetingEls.forEach(el => {
+            el.textContent = greeting;
+          });
+        }
+        
+        // 2. 立即更新旗帜（如果有缓存）
+        const cachedData = localStorage.getItem('ipinfo_cache');
+        const deviceInfo = localStorage.getItem('deviceInfo');
+        let countryCode = null;
+        
+        if (cachedData) {
+          try {
+            const data = JSON.parse(cachedData);
+            countryCode = data.country || null;
+          } catch(e) {
+            // 忽略错误
+          }
+        }
+        
+        if (!countryCode && deviceInfo) {
+          try {
+            const deviceData = JSON.parse(deviceInfo);
+            countryCode = deviceData.geoLocation?.countryCode || null;
+          } catch(e) {
+            // 忽略错误
+          }
+        }
+        
+        if (countryCode) {
+          const upperCode = countryCode.toUpperCase();
+          const lowerCode = countryCode.toLowerCase();
+          const flagPath = `./images/wflags/${lowerCode}.png`;
+          
+          // 更新移动端旗帜
+          const countryFlagImg = document.getElementById('country-flag-local-storage');
+          if (countryFlagImg) {
+            countryFlagImg.src = flagPath;
+            countryFlagImg.alt = `Flag of ${upperCode}`;
+            countryFlagImg.onerror = function() {
+              this.src = './images/wflags/un.png';
+              this.alt = 'United Nations';
+            };
+          }
+          
+          // 更新 banner 上的旗帜
+          const bannerFlagImg = document.querySelector(".country-flag");
+          if (bannerFlagImg) {
+            if (upperCode === "TW") {
+              bannerFlagImg.style.display = "none";
+            } else {
+              bannerFlagImg.style.display = "inline-block";
+              bannerFlagImg.src = flagPath;
+              bannerFlagImg.alt = upperCode;
+              bannerFlagImg.onerror = function() {
+                this.src = './images/wflags/un.png';
+                this.alt = 'United Nations';
+              };
+            }
+          }
+          
+          // 更新语言旗帜
+          const simplifiedFlag = document.getElementById("simplifed-language-flag");
+          const traditionalFlag = document.getElementById("traditional-language-flag");
+          const traditionalFlagAdd = document.getElementById("traditional-add-language-flag");
+          
+          // 先隐藏所有旗帜
+          if (simplifiedFlag) simplifiedFlag.style.display = "none";
+          if (traditionalFlag) traditionalFlag.style.display = "none";
+          if (traditionalFlagAdd) traditionalFlagAdd.style.display = "none";
+          
+          // 根据国家代码显示对应的旗帜
+          if (upperCode === "SG") {
+            if (simplifiedFlag) { 
+              simplifiedFlag.style.display = "inline-block"; 
+              simplifiedFlag.src = "./images/wflags_svg/sg.svg";
+              simplifiedFlag.alt = "Singapore flag";
+            }
+            if (traditionalFlag) { 
+              traditionalFlag.style.display = "inline-block"; 
+              traditionalFlag.src = "./images/wflags_svg/mo.svg";
+              traditionalFlag.alt = "Macau flag";
+            }
+          } else if (upperCode === "MY") {
+            if (simplifiedFlag) { 
+              simplifiedFlag.style.display = "inline-block"; 
+              simplifiedFlag.src = "./images/wflags_svg/my.svg";
+              simplifiedFlag.alt = "Malaysia flag";
+            }
+            if (traditionalFlag) { 
+              traditionalFlag.style.display = "inline-block"; 
+              traditionalFlag.src = "./images/wflags_svg/mo.svg";
+              traditionalFlag.alt = "Macau flag";
+            }
+          } else if (upperCode === "TW") {
+            if (traditionalFlag) { 
+              traditionalFlag.style.display = "inline-block"; 
+              traditionalFlag.src = "./images/wflags_svg/tw.svg";
+              traditionalFlag.alt = "Taiwan flag";
+            }
+            if (traditionalFlagAdd) { 
+              traditionalFlagAdd.style.display = "inline-block"; 
+              traditionalFlagAdd.src = "./images/wflags_svg/mo.svg";
+              traditionalFlagAdd.alt = "Macau flag";
+            }
+          } else {
+            // 其他情况显示澳门旗帜（繁体）
+            if (traditionalFlag) { 
+              traditionalFlag.style.display = "inline-block"; 
+              traditionalFlag.src = "./images/wflags_svg/mo.svg";
+              traditionalFlag.alt = "Macau flag";
+            }
+          }
+        }
+      }
+      
+      // 如果 DOM 已加载，立即更新
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateContentImmediate);
+      } else {
+        updateContentImmediate();
+      }
+    })();
+  </script>
+  
+  <!-- 提前发起 ipinfo.io API 调用，不阻塞页面渲染 -->
+  <script>
+    // 立即发起 API 调用，不等待其他脚本加载
+    (function() {
+      // 检查是否已有缓存，如果有且较新（24小时内），直接使用
+      const cachedData = localStorage.getItem('ipinfo_cache');
+      const cacheTime = localStorage.getItem('ipinfo_cache_time');
+      const now = Date.now();
+      
+      if (cachedData && cacheTime && (now - parseInt(cacheTime)) < 24 * 60 * 60 * 1000) {
+        // 使用缓存，但仍然后台更新
+        try {
+          const data = JSON.parse(cachedData);
+          window.ipinfoCache = data;
+          // 更新 deviceInfo 缓存
+          const deviceInfo = localStorage.getItem('deviceInfo');
+          if (deviceInfo) {
+            try {
+              const deviceData = JSON.parse(deviceInfo);
+              deviceData.geoLocation = {
+                countryCode: data.country || '',
+                region: data.region || '',
+                city: data.city || '',
+                timezone: data.timezone || ''
+              };
+              localStorage.setItem('deviceInfo', JSON.stringify(deviceData));
+            } catch(e) {
+              // 忽略错误
+            }
+          }
+          
+          // 如果 DOM 已加载，立即更新旗帜
+          if (document.readyState !== 'loading') {
+            setTimeout(() => {
+              const countryCode = (data.country || '').toUpperCase();
+              if (countryCode) {
+                const lowerCode = countryCode.toLowerCase();
+                const flagPath = `./images/wflags/${lowerCode}.png`;
+                
+                // 更新移动端旗帜
+                const countryFlagImg = document.getElementById('country-flag-local-storage');
+                if (countryFlagImg) {
+                  countryFlagImg.src = flagPath;
+                  countryFlagImg.alt = `Flag of ${countryCode}`;
+                  countryFlagImg.onerror = function() {
+                    this.src = './images/wflags/un.png';
+                    this.alt = 'United Nations';
+                  };
+                }
+                
+                // 更新 banner 上的旗帜
+                const bannerFlagImg = document.querySelector(".country-flag");
+                if (bannerFlagImg) {
+                  if (countryCode === "TW") {
+                    bannerFlagImg.style.display = "none";
+                  } else {
+                    bannerFlagImg.style.display = "inline-block";
+                    bannerFlagImg.src = flagPath;
+                    bannerFlagImg.alt = countryCode;
+                    bannerFlagImg.onerror = function() {
+                      this.src = './images/wflags/un.png';
+                      this.alt = 'United Nations';
+                    };
+                  }
+                }
+                
+                // 更新语言旗帜
+                const simplifiedFlag = document.getElementById("simplifed-language-flag");
+                const traditionalFlag = document.getElementById("traditional-language-flag");
+                const traditionalFlagAdd = document.getElementById("traditional-add-language-flag");
+                
+                // 先隐藏所有旗帜
+                if (simplifiedFlag) simplifiedFlag.style.display = "none";
+                if (traditionalFlag) traditionalFlag.style.display = "none";
+                if (traditionalFlagAdd) traditionalFlagAdd.style.display = "none";
+                
+                // 根据国家代码显示对应的旗帜
+                if (countryCode === "SG") {
+                  if (simplifiedFlag) { 
+                    simplifiedFlag.style.display = "inline-block"; 
+                    simplifiedFlag.src = "./images/wflags_svg/sg.svg";
+                    simplifiedFlag.alt = "Singapore flag";
+                  }
+                  if (traditionalFlag) { 
+                    traditionalFlag.style.display = "inline-block"; 
+                    traditionalFlag.src = "./images/wflags_svg/mo.svg";
+                    traditionalFlag.alt = "Macau flag";
+                  }
+                } else if (countryCode === "MY") {
+                  if (simplifiedFlag) { 
+                    simplifiedFlag.style.display = "inline-block"; 
+                    simplifiedFlag.src = "./images/wflags_svg/my.svg";
+                    simplifiedFlag.alt = "Malaysia flag";
+                  }
+                  if (traditionalFlag) { 
+                    traditionalFlag.style.display = "inline-block"; 
+                    traditionalFlag.src = "./images/wflags_svg/mo.svg";
+                    traditionalFlag.alt = "Macau flag";
+                  }
+                } else if (countryCode === "TW") {
+                  if (traditionalFlag) { 
+                    traditionalFlag.style.display = "inline-block"; 
+                    traditionalFlag.src = "./images/wflags_svg/tw.svg";
+                    traditionalFlag.alt = "Taiwan flag";
+                  }
+                  if (traditionalFlagAdd) { 
+                    traditionalFlagAdd.style.display = "inline-block"; 
+                    traditionalFlagAdd.src = "./images/wflags_svg/mo.svg";
+                    traditionalFlagAdd.alt = "Macau flag";
+                  }
+                } else {
+                  // 其他情况显示澳门旗帜（繁体）
+                  if (traditionalFlag) { 
+                    traditionalFlag.style.display = "inline-block"; 
+                    traditionalFlag.src = "./images/wflags_svg/mo.svg";
+                    traditionalFlag.alt = "Macau flag";
+                  }
+                }
+              }
+            }, 100);
+          }
+        } catch(e) {
+          // 缓存解析失败，继续请求
+        }
+      }
+      
+      // 无论是否有缓存，都发起新的请求（后台更新）
+      fetch('https://ipinfo.io/json?token=228a7bb192c4fc')
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.json();
+        })
+        .then(data => {
+          // 存储到 window 对象，供 language_cn.js 使用
+          window.ipinfoData = data;
+          // 同时更新缓存
+          localStorage.setItem('ipinfo_cache', JSON.stringify(data));
+          localStorage.setItem('ipinfo_cache_time', now.toString());
+          
+          // 更新 deviceInfo 缓存
+          const deviceInfo = localStorage.getItem('deviceInfo');
+          if (deviceInfo) {
+            try {
+              const deviceData = JSON.parse(deviceInfo);
+              deviceData.geoLocation = {
+                countryCode: data.country || '',
+                region: data.region || '',
+                city: data.city || '',
+                timezone: data.timezone || ''
+              };
+              localStorage.setItem('deviceInfo', JSON.stringify(deviceData));
+            } catch(e) {
+              // 忽略错误
+            }
+          }
+          
+          // 立即更新旗帜（如果 DOM 已加载）
+          if (document.readyState !== 'loading') {
+            const countryCode = (data.country || '').toUpperCase();
+            if (countryCode) {
+              const lowerCode = countryCode.toLowerCase();
+              const flagPath = `./images/wflags/${lowerCode}.png`;
+              
+              // 更新移动端旗帜
+              const countryFlagImg = document.getElementById('country-flag-local-storage');
+              if (countryFlagImg) {
+                countryFlagImg.src = flagPath;
+                countryFlagImg.alt = `Flag of ${countryCode}`;
+                countryFlagImg.onerror = function() {
+                  this.src = './images/wflags/un.png';
+                  this.alt = 'United Nations';
+                };
+              }
+              
+              // 更新 banner 上的旗帜
+              const bannerFlagImg = document.querySelector(".country-flag");
+              if (bannerFlagImg) {
+                if (countryCode === "TW") {
+                  bannerFlagImg.style.display = "none";
+                } else {
+                  bannerFlagImg.style.display = "inline-block";
+                  bannerFlagImg.src = flagPath;
+                  bannerFlagImg.alt = countryCode;
+                  bannerFlagImg.onerror = function() {
+                    this.src = './images/wflags/un.png';
+                    this.alt = 'United Nations';
+                  };
+                }
+              }
+              
+              // 更新语言旗帜
+              const simplifiedFlag = document.getElementById("simplifed-language-flag");
+              const traditionalFlag = document.getElementById("traditional-language-flag");
+              const traditionalFlagAdd = document.getElementById("traditional-add-language-flag");
+              
+              // 先隐藏所有旗帜
+              if (simplifiedFlag) simplifiedFlag.style.display = "none";
+              if (traditionalFlag) traditionalFlag.style.display = "none";
+              if (traditionalFlagAdd) traditionalFlagAdd.style.display = "none";
+              
+              // 根据国家代码显示对应的旗帜
+              if (countryCode === "SG") {
+                if (simplifiedFlag) { 
+                  simplifiedFlag.style.display = "inline-block"; 
+                  simplifiedFlag.src = "./images/wflags_svg/sg.svg";
+                  simplifiedFlag.alt = "Singapore flag";
+                }
+                if (traditionalFlag) { 
+                  traditionalFlag.style.display = "inline-block"; 
+                  traditionalFlag.src = "./images/wflags_svg/mo.svg";
+                  traditionalFlag.alt = "Macau flag";
+                }
+              } else if (countryCode === "MY") {
+                if (simplifiedFlag) { 
+                  simplifiedFlag.style.display = "inline-block"; 
+                  simplifiedFlag.src = "./images/wflags_svg/my.svg";
+                  simplifiedFlag.alt = "Malaysia flag";
+                }
+                if (traditionalFlag) { 
+                  traditionalFlag.style.display = "inline-block"; 
+                  traditionalFlag.src = "./images/wflags_svg/mo.svg";
+                  traditionalFlag.alt = "Macau flag";
+                }
+              } else if (countryCode === "TW") {
+                if (traditionalFlag) { 
+                  traditionalFlag.style.display = "inline-block"; 
+                  traditionalFlag.src = "./images/wflags_svg/tw.svg";
+                  traditionalFlag.alt = "Taiwan flag";
+                }
+                if (traditionalFlagAdd) { 
+                  traditionalFlagAdd.style.display = "inline-block"; 
+                  traditionalFlagAdd.src = "./images/wflags_svg/mo.svg";
+                  traditionalFlagAdd.alt = "Macau flag";
+                }
+              } else {
+                // 其他情况显示澳门旗帜（繁体）
+                if (traditionalFlag) { 
+                  traditionalFlag.style.display = "inline-block"; 
+                  traditionalFlag.src = "./images/wflags_svg/mo.svg";
+                  traditionalFlag.alt = "Macau flag";
+                }
+              }
+            }
+          }
+          
+          // 触发自定义事件，通知其他脚本数据已准备好
+          window.dispatchEvent(new CustomEvent('ipinfoReady', { detail: data }));
+        })
+        .catch(err => {
+          console.warn('ipinfo.io API call failed:', err);
+          // 如果失败，尝试使用缓存
+          if (cachedData) {
+            try {
+              window.ipinfoData = JSON.parse(cachedData);
+            } catch(e) {
+              // 忽略错误
+            }
+          }
+        });
+    })();
+  </script>
 
     <!-- Favicons
   ================================================== -->
@@ -725,50 +1146,50 @@
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg_cn.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg_cn_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg_cn.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg_cn_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg7_cn.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg7_cn_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg7_cn.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg7_cn_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg8_cn.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg8_cn_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg8_cn.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg8_cn_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg9_cn.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg9_cn_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg9_cn.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg9_cn_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg11_cn.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg11_cn_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg11_cn.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg11_cn_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg13_cn.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg13_cn_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg13_cn.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg13_cn_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img class="hidden-mobile" src="images/sdg/slider_sdg14_cn.webp" style="width:100%">
-            <img class="display-mobile" src="images/sdg/slider_sdg14_cn_mobi.webp" style="width:100%">
+            <img class="hidden-mobile" src="images/sdg/slider_sdg14_cn.webp" style="width:100%" loading="lazy" decoding="async">
+            <img class="display-mobile" src="images/sdg/slider_sdg14_cn_mobi.webp" style="width:100%" loading="lazy" decoding="async">
             <div class="text"></div>
           </div>
 
@@ -973,14 +1394,11 @@
 
 
     <script>
+      // 全局变量，确保函数可以访问
       let slideIndex = 1;
-      showSlides(slideIndex);
+      let slideInterval;
 
-      // Auto transition the slides every 1.5 seconds
-      let slideInterval = setInterval(() => {
-        plusSlides(1);
-      }, 3500);
-
+      // 全局函数，供 onclick 事件使用
       function plusSlides(n) {
         clearInterval(slideInterval);
         showSlides(slideIndex += n);
@@ -1012,9 +1430,20 @@
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
       }
+
+      // 延迟初始化 slider，避免阻塞页面渲染
+      document.addEventListener('DOMContentLoaded', function() {
+        showSlides(slideIndex);
+
+        // Auto transition the slides every 3.5 seconds
+        slideInterval = setInterval(() => {
+          plusSlides(1);
+        }, 3500);
+      });
     </script>
 
-    <script>
+    <script defer>
+      // 延迟加载脚本，不阻塞页面渲染
       function loadScript(scriptUrl, scriptId) {
         var existingScript = document.getElementById(scriptId);
         if (existingScript != null) {
@@ -1040,7 +1469,11 @@
         }
       }
 
-      window.onload = loadAppropriateScript;
+      // 使用DOMContentLoaded而非window.onload，更快执行
+      document.addEventListener('DOMContentLoaded', function() {
+        // 延迟加载，不阻塞页面渲染
+        setTimeout(loadAppropriateScript, 500);
+      });
     </script>
 
     <script>
