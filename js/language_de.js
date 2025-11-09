@@ -2,19 +2,19 @@ const germanStateGreetings = {
     "Baden-Württemberg": "Grüß Gott!",
     "Bavaria": "Servus!",
     "Berlin": "Juten Tach!",
-    "Brandenburg": "Hallo!",
+    "Brandenburg": "Guten Tag!",
     "Bremen": "Moin Moin!",
     "Hamburg": "Moin Moin!",
     "Hesse": "Ei Gude!",
     "Lower Saxony": "Moin Moin!",
     "Mecklenburg-Vorpommern": "Moin Moin!",
-    "North Rhine-Westphalia": "Hallo!",
+    "North Rhine-Westphalia": "Guten Tag!",
     "Rhineland-Palatinate": "Gunn Tach!",
     "Saarland": "Gemoje!",
     "Saxony": "Tagchen!",
     "Saxony-Anhalt": "Tagchen!",
     "Schleswig-Holstein": "Moin Moin!",
-    "Thuringia": "Hallo!"
+    "Thuringia": "Guten Tag!"
 };
 
 const otherGermanCountryGreetings = {
@@ -44,68 +44,83 @@ function getCountryNameByCode(countries, code, language = 'german') {
 }
 
 async function updateDisplay(countryCode, countries, regionName = '') {
-    const locationEl = document.getElementById("location");
-    const location2El = document.getElementById("location2");
-    const flagImg = document.getElementById("country-flag");
-    const languageFlag = document.getElementById("language-flag");
+  const locationEl = document.getElementById("location");
+  const location2El = document.getElementById("location2");
+  const flagImg = document.getElementById("country-flag");
+  const languageFlag = document.getElementById("language-flag");
 
-    const countryName = getCountryNameByCode(countries, countryCode, 'germen');
+  const countryName = getCountryNameByCode(countries, countryCode, 'germen');
 
-    if (locationEl) locationEl.textContent = countryName;
-    if (location2El) location2El.textContent = countryName;
+  if (locationEl) locationEl.textContent = countryName;
+  if (location2El) location2El.textContent = countryName;
 
-    if (flagImg) {
-        flagImg.src = `./images/wflags/${countryCode}.png`;
-        flagImg.alt = countryName;
-        flagImg.onerror = () => {
-            flagImg.src = './images/wflags/un.png';
-            flagImg.alt = 'United Nations';
-        };
-    }
+  if (flagImg) {
+      flagImg.src = `./images/wflags/${countryCode}.png`;
+      flagImg.alt = countryName;
+      flagImg.onerror = () => {
+          flagImg.src = './images/wflags/un.png';
+          flagImg.alt = 'United Nations';
+      };
+  }
 
-    const languageCountryFlagMap = {
-        'at': 'flag-at', 
-        'ch': 'flag-ch', 
-        'li': 'flag-li', 
-        'lu': 'flag-lu'
-    };
+  const languageCountryFlagMap = {
+      'at': 'flag-at', 
+      'ch': 'flag-ch', 
+      'li': 'flag-li', 
+      'lu': 'flag-lu'
+  };
 
-    if (languageFlag) {
-        if (languageCountryFlagMap[countryCode]) {
-            languageFlag.src = `./images/wflags_svg/${countryCode}.svg`;
-            languageFlag.alt = countryName + ' flag';
-            languageFlag.style.display = 'inline-block';
-            languageFlag.style.height = '15px';
-            languageFlag.style.objectFit = 'cover';
-            languageFlag.style.left = '5px';
-            languageFlag.style.top = '3px';
+  if (languageFlag) {
+      if (languageCountryFlagMap[countryCode]) {
+          languageFlag.src = `./images/wflags_svg/${countryCode}.svg`;
+          languageFlag.alt = countryName + ' flag';
+          languageFlag.style.display = 'inline-block';
+          languageFlag.style.height = '15px';
+          languageFlag.style.objectFit = 'cover';
+          languageFlag.style.left = '5px';
+          languageFlag.style.top = '3px';
 
-            if (countryCode === 'ch') {
-                languageFlag.style.width = 'auto';
-            } else {
-                languageFlag.style.width = '24px';
-            }
+          if (countryCode === 'ch') {
+              languageFlag.style.width = 'auto';
+          } else {
+              languageFlag.style.width = '24px';
+          }
 
-            languageFlag.onerror = () => {
-                languageFlag.style.display = 'none';
-            };
-        } else {
-            languageFlag.style.display = 'none';
-        }
-    }
+          languageFlag.onerror = () => {
+              languageFlag.style.display = 'none';
+          };
+      } else {
+          languageFlag.style.display = 'none';
+      }
+  }
 
-    // --- 设置问候语 ---
-    const defaultGreeting = "Hallo!";
-    let greeting = defaultGreeting;
+  // --- 设置问候语 ---
+  const defaultGreeting = "Hallo!";
+  let greeting = defaultGreeting;
 
-    if (countryCode === "de" && regionName) {
-        greeting = germanStateGreetings[regionName] || defaultGreeting;
-    } else if (otherGermanCountryGreetings[countryCode.toUpperCase()]) {
-        greeting = otherGermanCountryGreetings[countryCode.toUpperCase()];
-    }
+  // 获取当前时间（本地时间）
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const currentTime = hours * 60 + minutes; // 转换为分钟数
+  const eveningStart = 17 * 60 + 30; // 17:30
+  const morningEnd = 4 * 60; // 04:00
 
-    const spans = document.querySelectorAll(".greeting");
-    spans.forEach(span => span.textContent = greeting + " ");
+  // 判断时间是否在 17:30 - 04:00 之间
+  const isEvening = currentTime >= eveningStart || currentTime <= morningEnd;
+
+  if (isEvening) {
+      greeting = "Guten Abend";
+  } else {
+      if (countryCode === "de" && regionName) {
+          greeting = germanStateGreetings[regionName] || defaultGreeting;
+      } else if (otherGermanCountryGreetings[countryCode.toUpperCase()]) {
+          greeting = otherGermanCountryGreetings[countryCode.toUpperCase()];
+      }
+  }
+
+  const spans = document.querySelectorAll(".greeting");
+  spans.forEach(span => span.textContent = greeting + " ");
 }
 
 async function displayCountryName() {
