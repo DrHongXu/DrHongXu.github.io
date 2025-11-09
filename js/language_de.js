@@ -1,16 +1,133 @@
-// ============ 问候语和国旗模块 ============
+// ============ 问候语和国旗模块（扩展版） ============
+
+// 德国各州问候语（按时段）
 const germanStateGreetings = {
-  "Baden-Württemberg": "Grüß Gott!", "Bavaria": "Servus!", "Berlin": "Juten Tach!",
-  "Brandenburg": "Guten Tag!", "Bremen": "Moin Moin!", "Hamburg": "Moin Moin!",
-  "Hesse": "Ei Gude!", "Lower Saxony": "Moin Moin!", "Mecklenburg-Vorpommern": "Moin Moin!",
-  "North Rhine-Westphalia": "Guten Tag!", "Rhineland-Palatinate": "Gunn Tach!",
-  "Saarland": "Gemoje!", "Saxony": "Tagchen!", "Saxony-Anhalt": "Tagchen!",
-  "Schleswig-Holstein": "Moin Moin!", "Thuringia": "Guten Tag!"
+  "Baden-Württemberg": {
+    morning: "Grüß Gott!",
+    day: "Grüß Gott!",
+    evening: "Grüß Gott!"
+  },
+  "Bavaria": {
+    morning: "Grüß Gott!",
+    day: "Servus!",
+    evening: "Grüß Gott!"
+  },
+  "Berlin": {
+    morning: "Guten Morgen!",
+    day: "Juten Tach!",
+    evening: "N'Abend!"
+  },
+  "Brandenburg": {
+    morning: "Guten Morgen!",
+    day: "Guten Tag!",
+    evening: "Guten Abend!"
+  },
+  "Bremen": {
+    morning: "Moin!",
+    day: "Moin Moin!",
+    evening: "Moin!"
+  },
+  "Hamburg": {
+    morning: "Moin!",
+    day: "Moin Moin!",
+    evening: "Moin!"
+  },
+  "Hesse": {
+    morning: "Ei Gude Morge!",
+    day: "Ei Gude!",
+    evening: "Schönen Abend!"
+  },
+  "Lower Saxony": {
+    morning: "Moin!",
+    day: "Moin Moin!",
+    evening: "Moin!"
+  },
+  "Mecklenburg-Vorpommern": {
+    morning: "Moin!",
+    day: "Moin Moin!",
+    evening: "Moin!"
+  },
+  "North Rhine-Westphalia": {
+    morning: "Guten Morgen!",
+    day: "Guten Tag!",
+    evening: "Guten Abend!"
+  },
+  "Rhineland-Palatinate": {
+    morning: "Gunn Morge!",
+    day: "Gunn Tach!",
+    evening: "Gunn Owe!"
+  },
+  "Saarland": {
+    morning: "Gemoje!",
+    day: "Guten Tag!",
+    evening: "Gemoje!"
+  },
+  "Saxony": {
+    morning: "Guten Morgen!",
+    day: "Tagchen!",
+    evening: "N'Abend!"
+  },
+  "Saxony-Anhalt": {
+    morning: "Guten Morgen!",
+    day: "Tagchen!",
+    evening: "Guten Abend!"
+  },
+  "Schleswig-Holstein": {
+    morning: "Moin!",
+    day: "Moin Moin!",
+    evening: "Moin!"
+  },
+  "Thuringia": {
+    morning: "Guten Morgen!",
+    day: "Guten Tag!",
+    evening: "Guten Abend!"
+  }
 };
 
+// 其他德语国家与周边地区问候语
 const otherGermanCountryGreetings = {
-  "CH": "Grüezi!", "AT": "Grüß Gott!", "LI": "Grüß Gott!", "LU": "Moien!",
-  "IT": "Grüß Gott!", "NL": "Hoi!", "BE": "Dag!"
+  "CH": {
+    morning: "Guete Morge!",
+    day: "Grüezi!",
+    evening: "Gueten Abig!"
+  },
+  "AT": {
+    morning: "Grüß Gott!",
+    day: "Servus!",
+    evening: "Grüß Gott!"
+  },
+  "LI": {
+    morning: "Grüß Gott!",
+    day: "Grüß Gott!",
+    evening: "Grüß Gott!"
+  },
+  "LU": {
+    morning: "Moien!",
+    day: "Moien!",
+    evening: "Gudden Owend!"
+  },
+  "IT": {
+    morning: "Grüß Gott!",
+    day: "Grüß Gott!",
+    evening: "Grüß Gott!"
+  },
+  "NL": {
+    morning: "Goedemorgen!",
+    day: "Hoi!",
+    evening: "Goedenavond!"
+  },
+  "BE": {
+    morning: "Goedemorgen!",
+    day: "Dag!",
+    evening: "Goedenavond!"
+  }
+};
+
+// 默认问候语 fallback
+const defaultGreetings = {
+  morning: "Guten Morgen!",
+  day: "Guten Tag!",
+  evening: "Guten Abend!"
 };
 
 // 缓存系统
@@ -50,14 +167,35 @@ async function fetchCountries() {
   }
 }
 
-const isEveningTime = () => {
+// 获取时段：morning (05:00-11:59), day (12:00-17:29), evening (17:30-04:59)
+const getTimePeriod = () => {
   const mins = new Date().getHours() * 60 + new Date().getMinutes();
-  return mins >= 1050 || mins <= 240; // 17:30 - 04:00
+  if (mins >= 300 && mins < 720) return 'morning';      // 05:00-11:59
+  if (mins >= 720 && mins < 1050) return 'day';         // 12:00-17:29
+  return 'evening';                                     // 17:30-04:59
+};
+
+// 获取问候语
+const getGreeting = (code, region) => {
+  const period = getTimePeriod();
+  
+  // 德国境内，按州获取
+  if (code === "de" && region && germanStateGreetings[region]) {
+    return germanStateGreetings[region][period] || defaultGreetings[period];
+  }
+  
+  // 其他德语国家/地区
+  if (otherGermanCountryGreetings[code.toUpperCase()]) {
+    return otherGermanCountryGreetings[code.toUpperCase()][period] || defaultGreetings[period];
+  }
+  
+  // 默认问候语
+  return defaultGreetings[period];
 };
 
 async function updateDisplay(code, countries, region = '') {
-  const country = countries.find(c => c.abbr.toLowerCase() === code)
-  const name = country ? (country.german || country.english) : 'der Welt';
+  const country = countries.find(c => c.abbr.toLowerCase() === code);
+  const name = country ? (country.germen || country.english) : 'der Welt';
   
   ['location', 'location2'].forEach(id => {
       const el = document.getElementById(id);
@@ -90,16 +228,8 @@ async function updateDisplay(code, countries, region = '') {
       }
   }
 
-  // 问候语逻辑
-  let greeting = "Hallo!";
-  if (isEveningTime()) {
-      greeting = "Guten Abend!";
-  } else if (code === "de" && region) {
-      greeting = germanStateGreetings[region] || "Hallo!";
-  } else {
-      greeting = otherGermanCountryGreetings[code.toUpperCase()] || "Hallo!";
-  }
-
+  // 根据国家、地区和时段获取问候语
+  const greeting = getGreeting(code, region);
   document.querySelectorAll(".greeting").forEach(span => span.textContent = greeting + " ");
 }
 
@@ -163,7 +293,7 @@ function measureAndDistributeNavWidths() {
   const total = measurements.reduce((sum, m) => sum + m.width, 0);
   measurements.forEach(m => {
       let ratio = (m.width / total * 100).toFixed(2);
-      if (m.index === measurements.length) ratio = (ratio * 0.6).toFixed(2); // 最后一项减少40%
+      if (m.index === measurements.length) ratio = (ratio * 0.6).toFixed(2);
       m.element.style.width = `${ratio}%`;
   });
   
