@@ -68,7 +68,7 @@ function updateGreeting(timezone) {
 
 async function updateDisplay(code, countries, region = '', city = '', timezone = '') {
     const name = getCountryNameByCode(countries, code);
-    const fullLocation = name; // 可根据需要改为 region, city 等
+    const fullLocation = name;
 
     ['location', 'location2'].forEach(id => {
         const el = document.getElementById(id);
@@ -77,37 +77,32 @@ async function updateDisplay(code, countries, region = '', city = '', timezone =
 
     if (timezone) updateGreeting(timezone);
 
-    // 国旗处理
+    // 🚀 优化：国旗立即显示，不等待加载
     const flagImg = document.getElementById('country-flag');
     if (flagImg) {
-        flagImg.style.display = 'none';
-        flagImg.onload = () => flagImg.style.display = 'inline-block';
+        flagImg.src = `./images/wflags/${code}.png`;
+        flagImg.alt = name;
         flagImg.onerror = () => {
-            flagImg.style.display = 'none';
             flagImg.src = './images/wflags/un.png';
             flagImg.alt = 'United Nations';
         };
-        flagImg.src = `./images/wflags/${code}.png`;
-        flagImg.alt = name;
     }
 
-    // 语言国旗处理
+    // 🚀 优化：语言国旗直接加载，删除预加载逻辑
     const langFlag = document.getElementById('language-flag');
     const langMap = { us: 1, ca: 1, au: 1, nz: 1, ie: 1, za: 1, in: 1, sg: 1, hk: 1 };
     
     if (langFlag) {
-        langFlag.src = './images/wflags_svg/un.svg';
-        langFlag.alt = '';
-        langFlag.style.display = 'inline-block';
-
         if (langMap[code]) {
-            const preload = new Image();
-            preload.onload = () => {
-                langFlag.src = preload.src;
-                langFlag.alt = name + ' flag';
-            };
-            preload.onerror = () => langFlag.style.display = 'none';
-            preload.src = `./images/wflags_svg/${code}.svg`;
+            langFlag.src = `./images/wflags_svg/${code}.svg`;
+            langFlag.alt = name + ' flag';
+            langFlag.style.display = 'inline-block';
+            langFlag.style.height = '15px';
+            langFlag.style.width = '24px';
+            langFlag.style.objectFit = 'cover';
+            langFlag.style.left = '5px';
+            langFlag.style.top = '3px';
+            langFlag.onerror = () => langFlag.style.display = 'none';
         } else {
             langFlag.style.display = 'none';
         }
@@ -183,7 +178,7 @@ function measureAndDistributeNavWidths() {
     const total = measurements.reduce((sum, m) => sum + m.width, 0);
     measurements.forEach(m => {
         let ratio = (m.width / total * 100).toFixed(2);
-        if (m.index === measurements.length) ratio = (ratio * 0.6).toFixed(2); // 最后一项减少40%
+        if (m.index === measurements.length) ratio = (ratio * 0.6).toFixed(2);
         m.element.style.width = `${ratio}%`;
     });
     
