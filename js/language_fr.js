@@ -34,46 +34,50 @@ function addFrenchArticle(countryName) {
 }
 
 function updateFrenchGreeting(timezone) {
-    const greetingEl = document.querySelector('.morning-night-greeting');
-    if (!greetingEl) return;
+  const greetingEls = document.querySelectorAll('.morning-night-greeting');
+  if (!greetingEls.length) return;
 
-    try {
-        // 获取指定时区的当前时间
-        const now = new Date();
-        const timeInTimezone = new Date(now.toLocaleString("en-US", {timeZone: timezone}));
-        const hour = timeInTimezone.getHours();
+  try {
+      // 获取指定时区的当前时间
+      const now = new Date();
+      const timeInTimezone = new Date(now.toLocaleString("en-US", { timeZone: timezone }));
+      const hour = timeInTimezone.getHours();
 
-        let greeting;
-        if (hour >= 5 && hour < 12) {
-            greeting = 'Bonjour!';
-        } else if (hour >= 12 && hour < 17) {
-            greeting = 'Bon après-midi!';
-        } else {
-            greeting = 'Bonsoir!';
-        }
+      let greeting;
+      if (hour >= 5 && hour < 12) {
+          greeting = 'Bonjour!';
+      } else if (hour >= 12 && hour < 18) {
+          greeting = 'Bonjour!';
+      } else {
+          greeting = 'Bonsoir!';
+      }
 
-        greetingEl.textContent = greeting;
-        console.log(`时区 ${timezone} 当前时间: ${timeInTimezone.toLocaleString()}, 法语问候语: ${greeting}`);
-    } catch (error) {
-        console.error('更新法语问候语失败:', error);
-        // 如果时区获取失败，使用本地时间
-        const hour = new Date().getHours();
-        let greeting;
-        if (hour >= 5 && hour < 12) {
-            greeting = 'Bonjour!';
-        } else if (hour >= 12 && hour < 17) {
-            greeting = 'Bon après-midi!';
-        } else {
-            greeting = 'Bonsoir!';
-        }
-        greetingEl.textContent = greeting;
-    }
+      // 更新所有匹配的元素
+      greetingEls.forEach(el => el.textContent = greeting);
+
+      console.log(`时区 ${timezone} 当前时间: ${timeInTimezone.toLocaleString()}, 法语问候语: ${greeting}`);
+  } catch (error) {
+      console.error('更新法语问候语失败:', error);
+
+      const hour = new Date().getHours();
+      let greeting;
+      if (hour >= 5 && hour < 12) {
+          greeting = 'Bonjour!';
+      } else if (hour >= 12 && hour < 18) {
+          greeting = 'Bonjour!';
+      } else {
+          greeting = 'Bonsoir!';
+      }
+
+      greetingEls.forEach(el => el.textContent = greeting);
+  }
 }
 
 async function updateDisplay(countryCode, countries, timezone = '') {
     const locationEl = document.getElementById("location");
     const location2El = document.getElementById("location2");
     const flagImg = document.getElementById("country-flag");
+    const flagImg2 = document.getElementById("country-flag-2");
     const languageFlag = document.getElementById("language-flag");
 
     const countryName = getCountryNameByCode(countries, countryCode, 'french');
@@ -95,6 +99,15 @@ async function updateDisplay(countryCode, countries, timezone = '') {
             flagImg.alt = 'United Nations';
         };
     }
+
+    if (flagImg2) {
+      flagImg2.src = `./images/wflags/${countryCode}.png`;
+      flagImg2.alt = countryName;
+      flagImg2.onerror = () => {
+          flagImg2.src = './images/wflags/un.png';
+          flagImg2.alt = 'United Nations';
+      };
+  }
 
     const languageCountryFlagMap = {
         'be': 'flag-be', // 比利时

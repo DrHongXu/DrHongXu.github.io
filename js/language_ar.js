@@ -18,6 +18,8 @@ async function fetchCountries() {
     const locationEl = document.getElementById("location");
     const location2El = document.getElementById("location2");
     const flagImg = document.getElementById("country-flag");
+    const flagImg2 = document.getElementById("country-flag-2");
+
     const languageFlag = document.getElementById("language-flag");
 
     const countryName = getCountryNameByCode(countries, countryCode, 'ar');
@@ -31,6 +33,15 @@ async function fetchCountries() {
       flagImg.onerror = () => {
         flagImg.src = './images/wflags/un.png';
         flagImg.alt = 'United Nations';
+      };
+    }
+
+    if (flagImg2) {
+      flagImg2.src = `./images/wflags/${countryCode.toLowerCase()}.png`;
+      flagImg2.alt = countryName;
+      flagImg2.onerror = () => {
+        flagImg2.src = './images/wflags/un.png';
+        flagImg2.alt = 'United Nations';
       };
     }
 

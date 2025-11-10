@@ -36,46 +36,50 @@ function addItalianArticle(countryName) {
 }
 
 function updateItalianGreeting(timezone) {
-    const greetingEl = document.querySelector('.morning-night-greeting');
-    if (!greetingEl) return;
+  const greetingEls = document.querySelectorAll('.morning-night-greeting');
+  if (!greetingEls.length) return;
 
-    try {
-        // 获取指定时区的当前时间
-        const now = new Date();
-        const timeInTimezone = new Date(now.toLocaleString("en-US", {timeZone: timezone}));
-        const hour = timeInTimezone.getHours();
+  try {
+      // 获取指定时区的当前时间
+      const now = new Date();
+      const timeInTimezone = new Date(now.toLocaleString("en-US", { timeZone: timezone }));
+      const hour = timeInTimezone.getHours();
 
-        let greeting;
-        if (hour >= 5 && hour < 12) {
-            greeting = 'Buongiorno!';
-        } else if (hour >= 12 && hour < 18) {
-            greeting = 'Buon pomeriggio!';
-        } else {
-            greeting = 'Buonasera!';
-        }
+      let greeting;
+      if (hour >= 5 && hour < 12) {
+          greeting = 'Buongiorno!';
+      } else if (hour >= 12 && hour < 17) {
+          greeting = 'Buongiorno!';
+      } else {
+          greeting = 'Buonasera!';
+      }
 
-        greetingEl.textContent = greeting;
-        console.log(`时区 ${timezone} 当前时间: ${timeInTimezone.toLocaleString()}, 意大利语问候语: ${greeting}`);
-    } catch (error) {
-        console.error('更新意大利语问候语失败:', error);
-        // 如果时区获取失败，使用本地时间
-        const hour = new Date().getHours();
-        let greeting;
-        if (hour >= 5 && hour < 12) {
-            greeting = 'Buongiorno!';
-        } else if (hour >= 12 && hour < 18) {
-            greeting = 'Buon pomeriggio!';
-        } else {
-            greeting = 'Buonasera!';
-        }
-        greetingEl.textContent = greeting;
-    }
+      // 更新所有匹配元素
+      greetingEls.forEach(el => el.textContent = greeting);
+
+      console.log(`时区 ${timezone} 当前时间: ${timeInTimezone.toLocaleString()}, 意大利语问候语: ${greeting}`);
+  } catch (error) {
+      console.error('更新意大利语问候语失败:', error);
+
+      const hour = new Date().getHours();
+      let greeting;
+      if (hour >= 5 && hour < 12) {
+          greeting = 'Buongiorno!';
+      } else if (hour >= 12 && hour < 17) {
+          greeting = 'Buongiorno!';
+      } else {
+          greeting = 'Buonasera!';
+      }
+
+      greetingEls.forEach(el => el.textContent = greeting);
+  }
 }
 
 async function updateDisplay(countryCode, countries, timezone = '') {
     const locationEl = document.getElementById("location");
     const location2El = document.getElementById("location2");
     const flagImg = document.getElementById("country-flag");
+    const flagImg2 = document.getElementById("country-flag-2");
     const languageFlag = document.getElementById("language-flag");
 
     const countryName = getCountryNameByCode(countries, countryCode, 'italian');
@@ -97,6 +101,15 @@ async function updateDisplay(countryCode, countries, timezone = '') {
             flagImg.alt = 'United Nations';
         };
     }
+
+    if (flagImg2) {
+      flagImg2.src = `./images/wflags/${countryCode}.png`;
+      flagImg2.alt = countryName;
+      flagImg2.onerror = () => {
+          flagImg2.src = './images/wflags/un.png';
+          flagImg2.alt = 'United Nations';
+      };
+  }
 
     // 筛选显示意大利语相关国家的 language-flag
     const languageCountryFlagMap = {
