@@ -163,6 +163,8 @@
       document.getElementById("location").textContent = countryName;
       document.getElementById("country-flag").src = `./images/wflags/${countryCode}.png`;
       document.getElementById("country-flag").alt = countryName;
+      document.getElementById("country-flag-2").src = `./images/wflags/${countryCode}.png`;
+      document.getElementById("country-flag-2").alt = countryName;
     }
 
     document.addEventListener('DOMContentLoaded', displayCountryName);
@@ -544,7 +546,7 @@
       <h3 class="hidden-mobile"> <span><ruby>안녕하세요！<rt><text style="color:rgb(255, 255, 255)">An nyeong ha se yo！</text>
             </rt></ruby> <ruby>
             <rt><text style="color:rgb(255, 255, 255)"></text> </rt>
-          </ruby><small><small><small><span id="location">지구</span> 에서 온 친구들을 환영합니다 :-)</small></small> </small>
+          </ruby><small><small><small><span id="location">지구</span>에서 온 친구들을 환영합니다 :-)</small></small> </small>
 
         </span>
         <span style="float:right;font-family:verdana;margin-top:7px;">
@@ -645,32 +647,11 @@
       </div>
 
       <p class="display-mobile" style="text-align:left;margin-bottom:20px;">
-        <text style="color:rgb(237, 118, 7);font-size:15px">➔ 안녕하세요! </text>
-        <span style="float:right;">
-          <span style="float:right;font-family:verdana">
-            <select id="languages" name="languages"
-              style="width: 90px;color:inherit;display:inline-block;margin-bottom:0px;"
-              onchange="window.location.href=this.options [this.selectedIndex].value">
-              <option value="kr.html" select>🇰🇷 한국어</option>
-              <option value="jp.html">🇯🇵 日本語</option>
-              <option value="cn.html">🇨🇳 中文</option>
-              <option value="de.html">🇩🇪 Deutsch</option>
-              <option value="en.html">🇬🇧 English</option>
-              <option value="es.html">🇪🇸 Español</option>
-              <option value="fr.html">🇫🇷 Français</option>
-              <option value="it.html">🇮🇹 Italiano</option>
-              <option value="ru.html">🇷🇺 Русский</option>
-              <option value="ar.html">🇸🇦 اللغة العربية</option>
-
-
-
-            </select>
-          </span>
-        </span>
+        <text style="color:rgb(237, 118, 7);font-size:15px">➔ 안녕하세요! <span id="location2">지구</span>에서 오신 친구 :-）<img style="float:right;height:14px;margin-top:4px;" id="country-flag-2" src="./images/wflags/un.png"></text>
       </p>
 
       <p align="justify">
-        <span class="display-mobile">환영합니다, <span id="location2">지구</span>에서 온 친구들 :-）</br></br></span>
+        <span class="display-mobile"></span>
 
         나무를 마찰하여 불을 피우던 시절부터 전기차 시대에 이르기까지, 에너지는 문명의 발전을 규정하는 근간입니다. 그는 <strong>‘창선-창신–창효’</strong>의 이념을 바탕으로, 서홍 (<script id="first-script">const currentYear = new Date().getFullYear() - 1993; document.write(currentYear);</script>세) 박사로서 <strong>에너지 및 교통</strong> 분야에서 <strong>효율 향상</strong>과 <strong>탄소 중립</strong> 달성을 위해 힘쓰고 있으며, 연구 분야는 태양전지, 리튬전지, 전해조, 수소연료전지를 포함합니다. 그는 학위 과정 동안 다국적 기업 및 중유럽 학술 기관과 협력하여 <strong>논문<span class="no_of_papers"></span>편 이상</strong>(인용 <span class="google_scholar_citation"></span>회 이상)을 발표하고, <strong><span class="no_of_patents_sum"></span>건의 특허</strong>를 출원(그중 3건은 등록 완료)하였습니다. <strong><a href="https://psi.ch" target="_blank">스위스 광원</a></strong>과 <strong><a href="https://www.tytlabs.co.jp/" target="_blank">토요타 중앙연구소</a></strong>와의 공동 연구를 통해 개발된 연료전지 건강 진단용 초고속(0.1s) 고해상도(0.4µm) X선 CT 기술은 스위스 연방 <strong><a href="https://psi.ch" target="_blank">파울 쉐러 연구소</a></strong>에서 과학적 하이라이트로 선정되었으며, <strong>미국 전기화학 학회</strong>의 초청을 받아 애틀랜타 학회 발표에 필요한 자금 지원을 받았습니다. 또한 그는 <strong><a href="https://unfccc.int/" target="_blank">유엔 본 기후변화회의</a></strong>에서 ‘<strong>중국 에너지 전환</strong>과 기술 혁신’ 주제 세션을 주최하였고, <strong><a href="https://unece.org/" target="_blank">유엔 유럽경제위원회</a></strong>의 <strong>교통 및 기후 전문가 그룹</strong> 회의와 <strong>수소 에너지 워킹그룹</strong> 회의에도 여러 차례 참여했습니다. 그는 에너지 및 교통 분야의 고인용 학술지 10편 이상에서 <strong>심사위원</strong>을 맡았으며, 스위스 <strong><a href="https://symposium.org/" target="_blank">생갈렌 국제경제포럼</a></strong> 학술평가자, <strong><a href="https://tum.de" target="_blank">독일 뮌헨 공과대학</a></strong> 동문 멘토, <strong><a href="https://oxfordenergy.org" target="_blank">영국 옥스포드 에너지 연구소</a></strong> 방문 연구원, <strong><a href="https://salzburgglobal.org" target="_blank">오스트리아 잘츠부르크 국제</a></strong> 학자로 활동했습니다.
               
