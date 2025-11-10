@@ -43,29 +43,32 @@ function getCountryNameByCode(countries, code) {
 }
 
 function updateGreeting(timezone) {
-    const greetingEl = document.querySelector('.morning-night-greeting');
-    if (!greetingEl) return;
+  const greetingEls = document.querySelectorAll('.morning-night-greeting');
+  if (!greetingEls.length) return;
 
-    try {
-        const now = new Date();
-        const timeInTimezone = new Date(now.toLocaleString("en-US", {timeZone: timezone}));
-        const hour = timeInTimezone.getHours();
+  try {
+      const now = new Date();
+      const timeInTimezone = new Date(now.toLocaleString("en-US", { timeZone: timezone }));
+      const hour = timeInTimezone.getHours();
 
-        const greeting = hour >= 5 && hour < 12 ? 'Good Morning!' 
-                       : hour >= 12 && hour < 17 ? 'Good Afternoon!' 
-                       : 'Good Evening!';
+      const greeting = hour >= 5 && hour < 12 ? 'Good Morning!'
+                     : hour >= 12 && hour < 17 ? 'Good Afternoon!'
+                     : 'Good Evening!';
 
-        greetingEl.textContent = greeting;
-        console.log(`时区 ${timezone} 当前时间: ${timeInTimezone.toLocaleString()}, 问候语: ${greeting}`);
-    } catch (error) {
-        console.error('更新问候语失败:', error);
-        const hour = new Date().getHours();
-        greetingEl.textContent = hour >= 5 && hour < 12 ? 'Good Morning!' 
-                               : hour >= 12 && hour < 17 ? 'Good Afternoon!' 
-                               : 'Good Evening!';
-    }
+      greetingEls.forEach(el => {
+          el.textContent = greeting;
+      });
+
+      console.log(`时区 ${timezone} 当前时间: ${timeInTimezone.toLocaleString()}, 问候语: ${greeting}`);
+  } catch (error) {
+      console.error('更新问候语失败:', error);
+      const hour = new Date().getHours();
+      const fallbackGreeting = hour >= 5 && hour < 12 ? 'Good Morning!'
+                            : hour >= 12 && hour < 17 ? 'Good Afternoon!'
+                            : 'Good Evening!';
+      greetingEls.forEach(el => el.textContent = fallbackGreeting);
+  }
 }
-
 async function updateDisplay(code, countries, region = '', city = '', timezone = '') {
     const name = getCountryNameByCode(countries, code);
     const fullLocation = name;

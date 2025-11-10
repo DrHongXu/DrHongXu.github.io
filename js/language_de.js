@@ -240,6 +240,16 @@ async function updateDisplay(code, countries, region = '') {
       };
   }
 
+  const flagImg2 = document.getElementById('country-flag-2');
+  if (flagImg2) {
+      flagImg2.src = `./images/wflags/${code}.png`;
+      flagImg2.alt = name;
+      flagImg2.onerror = () => {
+          flagImg2.src = './images/wflags/un.png';
+          flagImg2.alt = 'United Nations';
+      };
+  }
+
   const langFlag = document.getElementById('language-flag');
   const langMap = { at: 1, ch: 1, li: 1, lu: 1 };
   if (langFlag) {
