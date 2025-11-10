@@ -100,7 +100,7 @@ async function updateDisplay(countryCode, countries, timezone = '') {
 
     // 筛选显示意大利语相关国家的 language-flag
     const languageCountryFlagMap = {
-        'it': 'flag-it', // 意大利
+        // 'it': 'flag-it', // 意大利
         'ch': 'flag-ch', // 瑞士意大利语区
         'sm': 'flag-sm', // 圣马力诺
         'va': 'flag-va'  // 梵蒂冈
