@@ -1,131 +1,157 @@
 // ============ 问候语和国旗模块（扩展版） ============
 
-// 德国各州问候语（按时段）
+// ============ 问候语和国旗模块（含午餐时段扩展） ============
+
+// 德国各州问候语（按时段 + 午餐时段）
 const germanStateGreetings = {
   "Baden-Württemberg": {
     morning: "Grüß Gott!",
+    lunch: "Mahlzeit!",
     day: "Grüß Gott!",
     evening: "Grüß Gott!"
   },
   "Bavaria": {
-    morning: "Grüß Gott!",
+    morning: "Servus!",
+    lunch: "An Guadn!",
     day: "Servus!",
-    evening: "Grüß Gott!"
+    evening: "Servus!"
   },
   "Berlin": {
     morning: "Guten Morgen!",
+    lunch: "Mahlzeit!",
     day: "Juten Tach!",
     evening: "N'Abend!"
   },
   "Brandenburg": {
     morning: "Guten Morgen!",
+    lunch: "Mahlzeit!",
     day: "Guten Tag!",
     evening: "Guten Abend!"
   },
   "Bremen": {
     morning: "Moin!",
+    lunch: "Mahlzeit!",
     day: "Moin Moin!",
     evening: "Moin!"
   },
   "Hamburg": {
     morning: "Moin!",
+    lunch: "Mahlzeit!",
     day: "Moin Moin!",
     evening: "Moin!"
   },
   "Hesse": {
-    morning: "Ei Gude Morge!",
+    morning: "Gude Morge!",
+    lunch: "Mahlzeit!",
     day: "Ei Gude!",
-    evening: "Schönen Abend!"
+    evening: "Gude Owend!"
   },
   "Lower Saxony": {
     morning: "Moin!",
+    lunch: "Mahlzeit!",
     day: "Moin Moin!",
     evening: "Moin!"
   },
   "Mecklenburg-Vorpommern": {
     morning: "Moin!",
+    lunch: "Mahlzeit!",
     day: "Moin Moin!",
     evening: "Moin!"
   },
   "North Rhine-Westphalia": {
     morning: "Guten Morgen!",
+    lunch: "Mahlzeit!",
     day: "Guten Tag!",
     evening: "Guten Abend!"
   },
   "Rhineland-Palatinate": {
-    morning: "Gunn Morge!",
-    day: "Gunn Tach!",
-    evening: "Gunn Owe!"
+    morning: "Guden Morje!",
+    lunch: "Mahlzeit!",
+    day: "Guden Daach!",
+    evening: "Guden Owend!"
   },
   "Saarland": {
     morning: "Gemoje!",
+    lunch: "Mahlzeit!",
     day: "Guten Tag!",
     evening: "Gemoje!"
   },
   "Saxony": {
     morning: "Guten Morgen!",
+    lunch: "Mahlzeit!",
     day: "Tagchen!",
     evening: "N'Abend!"
   },
   "Saxony-Anhalt": {
     morning: "Guten Morgen!",
+    lunch: "Mahlzeit!",
     day: "Tagchen!",
     evening: "Guten Abend!"
   },
   "Schleswig-Holstein": {
     morning: "Moin!",
+    lunch: "Mahlzeit!",
     day: "Moin Moin!",
     evening: "Moin!"
   },
   "Thuringia": {
     morning: "Guten Morgen!",
+    lunch: "Mahlzeit!",
     day: "Guten Tag!",
     evening: "Guten Abend!"
   }
 };
 
-// 其他德语国家与周边地区问候语
+// 其他德语国家与周边地区问候语（含午餐时段）
 const otherGermanCountryGreetings = {
-  "CH": {
+  "CH": { // 瑞士
     morning: "Guete Morge!",
+    lunch: "En Guete!",
     day: "Grüezi!",
     evening: "Gueten Abig!"
   },
-  "AT": {
+  "AT": { // 奥地利
     morning: "Grüß Gott!",
-    day: "Servus!",
-    evening: "Grüß Gott!"
-  },
-  "LI": {
-    morning: "Grüß Gott!",
+    lunch: "Mahlzeit!",
     day: "Grüß Gott!",
     evening: "Grüß Gott!"
   },
-  "LU": {
-    morning: "Moien!",
-    day: "Moien!",
+  "LI": { // 列支敦士登
+    morning: "Grüß Gott!",
+    lunch: "Mahlzeit!",
+    day: "Grüß Gott!",
+    evening: "Grüß Gott!"
+  },
+  "LU": { // 卢森堡
+    morning: "Gudde Moien!",
+    lunch: "Gudden Appetit!",
+    day: "GuddeMoien!",
     evening: "Gudden Owend!"
   },
-  "IT": {
+  "IT": { // 南蒂罗尔（意大利德语区）
     morning: "Grüß Gott!",
+    lunch: "Mahlzeit!",
     day: "Grüß Gott!",
     evening: "Grüß Gott!"
   },
-  "NL": {
+  "NL": { // 荷兰边境地区
     morning: "Goedemorgen!",
+    lunch: "Eet smakelijk!",
     day: "Hoi!",
     evening: "Goedenavond!"
   },
-  "BE": {
+  "BE": { // 比利时德语区
     morning: "Goedemorgen!",
+    lunch: "Smakelijk eten!",
     day: "Dag!",
     evening: "Goedenavond!"
   }
 };
 
-// 默认问候语 fallback
+// 默认问候语（含午餐时段）
 const defaultGreetings = {
   morning: "Guten Morgen!",
+  lunch: "Mahlzeit!",
   day: "Guten Tag!",
   evening: "Guten Abend!"
 };
@@ -167,28 +193,30 @@ async function fetchCountries() {
   }
 }
 
-// 获取时段：morning (05:00-11:59), day (12:00-17:29), evening (17:30-04:59)
+// 获取时段：morning (05:00–11:29), lunch (11:30–13:30), day (13:31–17:29), evening (17:30–04:59)
 const getTimePeriod = () => {
   const mins = new Date().getHours() * 60 + new Date().getMinutes();
-  if (mins >= 300 && mins < 720) return 'morning';      // 05:00-11:59
-  if (mins >= 720 && mins < 1050) return 'day';         // 12:00-17:29
-  return 'evening';                                     // 17:30-04:59
+  
+  if (mins >= 300 && mins < 690) return 'morning';      // 05:00–11:29
+  if (mins >= 690 && mins < 810) return 'lunch';        // 11:30–13:30
+  if (mins >= 810 && mins < 1050) return 'day';         // 13:31–17:29
+  return 'evening';                                     // 17:30–04:59
 };
 
-// 获取问候语
+// 获取问候语（含午餐时段）
 const getGreeting = (code, region) => {
   const period = getTimePeriod();
-  
+
   // 德国境内，按州获取
   if (code === "de" && region && germanStateGreetings[region]) {
     return germanStateGreetings[region][period] || defaultGreetings[period];
   }
-  
+
   // 其他德语国家/地区
   if (otherGermanCountryGreetings[code.toUpperCase()]) {
     return otherGermanCountryGreetings[code.toUpperCase()][period] || defaultGreetings[period];
   }
-  
+
   // 默认问候语
   return defaultGreetings[period];
 };
