@@ -298,7 +298,7 @@ async function displayCountryName() {
       } catch (err) {
           console.error('获取 IP 信息失败', err);
       }
-  }, 10000);
+  }, 10);
 }
 
 document.addEventListener('DOMContentLoaded', displayCountryName);
