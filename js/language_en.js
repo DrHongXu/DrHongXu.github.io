@@ -150,7 +150,7 @@ async function displayCountryName() {
         } catch (err) {
             console.error('获取 IPInfo 失败，使用缓存', err);
         }
-    }, 500);
+    }, 100);
 }
 
 

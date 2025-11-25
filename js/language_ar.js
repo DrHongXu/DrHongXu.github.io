@@ -106,7 +106,7 @@ async function fetchCountries() {
       } catch (err) {
         console.error('延迟获取 IPInfo 失败', err);
       }
-    }, 10000); // 1 分钟延迟
+    }, 1000); // 1 分钟延迟
   }
 
   document.addEventListener('DOMContentLoaded', displayCountryName);

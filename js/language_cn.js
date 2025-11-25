@@ -503,5 +503,5 @@ window.refreshTimezone = () => {
   geoLocationLoaded = false;
   ['deviceInfo', 'countryCodeCache', 'userTimeZone'].forEach(k => localStorage.removeItem(k));
   displayGeoLocation();
-  setTimeout(updateGreeting, 2000);
+  setTimeout(updateGreeting, 1000);
 };
