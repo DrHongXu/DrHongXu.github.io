@@ -4,12 +4,12 @@
 const data = {
     "age": new Date().getFullYear() - 1993,
     "web_update_year": 2026,
-    "web_update_month": "01",
+    "web_update_month": "10",
     "web_update_day": 1,
     "born_year": 1993,
     "year_of_experience": 8,
     "no_of_papers": 15,
-    "google_scholar_citation": 500,  // 默认值
+    "google_scholar_citation": 570,  // 默认值
     "h_index": 11,
     "no_of_journals_for_review": 10,
     "no_of_reviews": 55,
@@ -21,8 +21,8 @@ const data = {
     "phd_thesis_views": 2200,
     "phd_thesis_downloads": 660,
     "zhihu_followers": 13800,
-    "linkedin_followers": 1900,
-    "xiaohongshu_followers": 3200,
+    "linkedin_followers": 2200,
+    "xiaohongshu_followers": 3700,
     "visited_countries": 40
   };
   
